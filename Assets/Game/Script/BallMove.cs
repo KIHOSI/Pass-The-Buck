@@ -4,38 +4,67 @@ using UnityEngine;
 
 public class BallMove : MonoBehaviour {
 
-    //float thrust = 1.5f;
-    //float horizontal = Input.GetAxis("Horizontal");
-    public Rigidbody2D rg2d;
+    Rigidbody2D ballRigidbody2D;
 
-    // Use this for initialization
+    public float speedX;    //球的水平速度
+    public float speedY;    //球的垂直速度
+  
     void Start () {
-        rg2d = GetComponent<Rigidbody2D>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
-        //transform.Translate(Vector3.up * 0.1f);
-
-
-        /*Vector2 force2D = Vector2.zero; 
-        force2D.y += 1.5f;
-        rg2d.AddForce(force2D);
-        */
-
-
-        rg2d.AddForce(Vector3.up * 10f * Time.deltaTime);
-        // rg2d.AddForce(new Vector2(horizontal,0));
-        // rg2d.AddForce(new Vector2(horizontal, 0), ForceMode2D.Force); //Force mode: 對物件施加具方向性的力，同AddForce基本定義.
-        //rg2d.AddForce(new Vector2(horizontal, 0), ForceMode2D.Impulse); //Impluse mode: 對物件施加一個脈衝力，該力量一樣具有方向性.
-        //rg2d.AddForce(transform.up * horizontal);
-        //rg2d.AddForce(transform.up * 100);
-
-        //rg2d.AddForce(Vector3.up * 300);
+        ballRigidbody2D = GetComponent<Rigidbody2D>();
+        ballRigidbody2D.velocity = new Vector2(speedX, speedY);
     }
-   /* void FixedUpdate()
+	
+	
+	void Update () {
+        
+      
+    }
+
+    void OnCollisionEnter2D(Collision2D collision) //發生碰撞時
     {
-        rg2d.AddForce(transform.up * 100);
-    }*/
+        lockSpeed();
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("背景"))
+        {
+            // = true;
+            //EdgeCollider2D collisionEdgeCollider2D = collision.gameObject.GetComponent<EdgeCollider2D>(); //取得EdgeCollider2D
+            //collisionEdgeCollider2D.enabled = true;
+        }
+    }
+
+    void lockSpeed() //保持速度
+    {
+        Vector2 lockSpeed = new Vector2(ResetSpeedX(), ResetSpeedY());
+        ballRigidbody2D.velocity = lockSpeed;
+    }
+
+    float ResetSpeedX() //保持水平速度
+    {
+        float currentSpeedX = ballRigidbody2D.velocity.x; //現在球的實際水平速度
+        if(currentSpeedX < 0) //左邊
+        {
+            return -speedX;
+        }
+        else //右邊
+        {
+            return speedX;
+        }
+    }
+    
+    float ResetSpeedY() //保持垂直速度
+    {
+        float currentSpeedY = ballRigidbody2D.velocity.y; //現在球的實際水平速度
+        if (currentSpeedY < 0) //下面
+        {
+            return -speedY;
+        }
+        else //上面
+        {
+            return speedY;
+        }
+    }
+  
 }
