@@ -4,10 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - "\u80CC\u666F"
-  - "\u5DE6\u908A\u7684\u7403"
-  - "\u53F3\u908A\u7684\u7403"
-  - "\u908A\u6846"
+  - Fire
   layers:
   - Default
   - TransparentFX
@@ -17,7 +14,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - PlayerLayer
   - 
   - 
   - 
@@ -45,12 +42,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Bg
-    uniqueID: 3721050365
+  - name: Background
+    uniqueID: 1093696345
     locked: 0
-  - name: Edge_Portal
-    uniqueID: 2737032297
+  - name: Foreground
+    uniqueID: 1859086223
     locked: 0
-  - name: Ball
-    uniqueID: 617856171
+  - name: Characters
+    uniqueID: 3940858523
+    locked: 0
+  - name: UI
+    uniqueID: 771169021
     locked: 0
