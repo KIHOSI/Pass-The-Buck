@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 50961874603152588}
   m_Layer: 0
   m_Name: Ball1
-  m_TagString: Untagged
+  m_TagString: "\u5DE6\u908A\u7684\u7403"
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,11 +58,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 5dbfa5eb447157e4f968e9130d9482c1, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &58524169146947544
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -88,6 +88,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c6538e77e9fd94d8ad8f6667420d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moneyText: {fileID: 114912025851121604, guid: d2af962cf584cb945bcf6487f300a87f,
+    type: 2}
+  speedX: 5
+  speedY: 5
+  ballState: 0
 --- !u!212 &212492829171049200
 SpriteRenderer:
   m_ObjectHideFlags: 1

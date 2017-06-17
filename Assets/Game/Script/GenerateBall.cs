@@ -9,7 +9,8 @@ public class GenerateBall : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         Invoke("generateBall", 3);
-	}
+        //generateBall();
+    }
 	
 	// Update is called once per frame
 	void Update () {
