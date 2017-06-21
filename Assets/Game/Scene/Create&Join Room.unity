@@ -498,6 +498,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114943005005070550, guid: db93316e89c554e47abec3feecb304d2,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db93316e89c554e47abec3feecb304d2, type: 2}
   m_IsPrefabParent: 0
@@ -825,7 +830,7 @@ Prefab:
     - target: {fileID: 114805104680845116, guid: b387e765d1202b74a88768c6c51f2cb6,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadJoinRoomScene
+      value: LoadCharacterChoosingforJoinScene
       objectReference: {fileID: 0}
     - target: {fileID: 114805104680845116, guid: b387e765d1202b74a88768c6c51f2cb6,
         type: 2}
@@ -1093,7 +1098,7 @@ Prefab:
     - target: {fileID: 114720626460645860, guid: 1a75feb62ad78cc46a0bc40bd913fc22,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadCreateRoomScene
+      value: LoadMapChoosingScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1a75feb62ad78cc46a0bc40bd913fc22, type: 2}
