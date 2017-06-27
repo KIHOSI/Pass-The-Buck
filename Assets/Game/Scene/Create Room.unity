@@ -1417,27 +1417,6 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224410487521666432, guid: c0339760bb2279348b3ae2ea60271678,
     type: 2}
   m_PrefabInternal: {fileID: 1777803909}
---- !u!1 &1777803911 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1561900045045582, guid: c0339760bb2279348b3ae2ea60271678,
-    type: 2}
-  m_PrefabInternal: {fileID: 1777803909}
---- !u!114 &1777803912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1777803911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33f586c6b06082d409d1d54f68892094, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxPlayerChoosed: 
-  MaxPlayersPerRoom: 0
-  GameRoomName: 
-  menuIndex: 0
-  menuOptions: []
 --- !u!1 &1890594189
 GameObject:
   m_ObjectHideFlags: 0
@@ -1450,6 +1429,7 @@ GameObject:
   - component: {fileID: 1890594192}
   - component: {fileID: 1890594191}
   - component: {fileID: 1890594190}
+  - component: {fileID: 1890594195}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1527,6 +1507,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1890594195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1890594189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f586c6b06082d409d1d54f68892094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxPlayerChoosed: 
+  MaxPlayersPerRoom: 0
+  GameRoomName: 
+  menuIndex: 0
+  menuOptions: []
 --- !u!1001 &2058142352
 Prefab:
   m_ObjectHideFlags: 0

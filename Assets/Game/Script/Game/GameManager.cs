@@ -103,24 +103,10 @@ namespace Com.MyProject.MyPassTheBuckGame
 			SceneManager.LoadScene (4);
 		}
 
-		//載入開房間頁面
-		public void LoadCreateRoomScene()
-		{
-			SceneManager.LoadScene(5);
-		}
-
-
 		//載入角色選擇頁面
 		public void LoadCharacterChoosingforJoinScene()
 		{
 			SceneManager.LoadScene (6);
-		}
-
-
-		//載入加入房間頁面
-		public void LoadJoinRoomScene()
-		{
-			SceneManager.LoadScene(7);
 		}
 
 		//載入個人背包頁面

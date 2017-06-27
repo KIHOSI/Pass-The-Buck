@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Com.MyProject.MyPassTheBuckGame
 {
-	public class Marquee :Photon.PunBehaviour
+   public class Marquee :Photon.PunBehaviour
    {
 	 public string message = "歡迎來到政客踢皮球";
 	 public float scrollSpeed = 50;

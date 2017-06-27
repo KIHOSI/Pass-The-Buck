@@ -10,16 +10,34 @@ EditorBuildSettings:
     guid: eb5dafe92c1d76a4dbf73ffb466a821d
   - enabled: 1
     path: Assets/Game/Scene/Main.unity
-    guid: 00000000000000000000000000000000
+    guid: ac3543cc0621a8944a0b0d784d149696
   - enabled: 1
     path: Assets/Game/Scene/Create&Join Room.unity
     guid: 768046c80dc97404fb53d5ecb2868979
   - enabled: 1
+    path: Assets/Game/Scene/Map Choosing.unity
+    guid: 34bc970320d5b8d458e5a59e0f8368e0
+  - enabled: 1
+    path: Assets/Game/Scene/Character Choosing.unity
+    guid: 0feed00024a547d4e995bdeeac8f53be
+  - enabled: 1
     path: Assets/Game/Scene/Create Room.unity
     guid: c0e20f655e78c784c88cd897c6c636e2
+  - enabled: 1
+    path: Assets/Game/Scene/ChracterChoosingForJoin.unity
+    guid: 57d6ee9c13a021a4b98c3f55b4ed6c6c
   - enabled: 1
     path: Assets/Game/Scene/Join Room.unity
     guid: f85ffab8da1258940adf7b6260af98a0
   - enabled: 1
     path: Assets/Game/Scene/Waiting Room.unity
     guid: d26ba24d0aac80f4aa251075de1ddde2
+  - enabled: 1
+    path: Assets/Game/Scene/Bag.unity
+    guid: c72aeb8f3515be34aa938146ef1ceb70
+  - enabled: 1
+    path: Assets/Game/Scene/Story.unity
+    guid: 5be3ff0ba9c42404bb952675682619a1
+  - enabled: 1
+    path: Assets/Game/Scene/Setting.unity
+    guid: 0398f86f83952f645a3ba08a59e1784a
