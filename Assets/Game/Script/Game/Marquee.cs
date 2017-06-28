@@ -6,14 +6,47 @@ namespace Com.MyProject.MyPassTheBuckGame
 {
    public class Marquee :Photon.PunBehaviour
    {
-	 public string message = "歡迎來到政客踢皮球";
+
 	 public float scrollSpeed = 50;
-	 public GameObject MarqueeTx;
-	 Text MText;
+	 public Text MarqueeTx;
 
-	 Rect messageRect;
 
-	 void OnGUI ()
+	 // Use this for initialization
+	 void Start () 
+	 {
+			
+		//MarqueeTx.transform.position = new Vector3(368.0f, 175.0f, 0.0f);
+		Vector3 Pos = MarqueeTx.transform.position;
+		Debug.Log(Pos);
+
+	 }
+
+	 void Update()
+	 {
+		float step = scrollSpeed * Time.deltaTime;
+		Vector3 temp = new Vector3(step,0.0f,0.0f);
+		Vector3 forReset = new Vector3 (378.0f, 525.7f, 0.0f);
+
+		if (Vector3.Distance(MarqueeTx.transform.position, forReset) < 1.0f) 
+		{
+			MarqueeTx.transform.position = new Vector3 (907.8f, 525.7f, 0.0f);
+		} 
+		else 
+		{
+			MarqueeTx.transform.position -= temp;
+		}
+	 }
+
+
+
+	 #region Public Methods
+
+
+	 #endregion
+
+	
+	 
+	 /*void OnGUI ()
 	 {
 		MText = MarqueeTx.GetComponent<Text> ();
 		// Set up message's rect if we haven't already.
@@ -33,6 +66,8 @@ namespace Com.MyProject.MyPassTheBuckGame
 		}
 
 		GUI.Label(messageRect, message);
-	 }
+
+	 } */
+	 
    }
 }

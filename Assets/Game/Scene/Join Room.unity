@@ -730,9 +730,15 @@ Prefab:
   m_IsPrefabParent: 0
 --- !u!224 &1361463799 stripped
 RectTransform:
-  m_PrefabParentObject: {fileID: 224011812066478002, guid: 564beb8036ba30b499148519e37d13b3,
+  m_PrefabParentObject: {fileID: 224442764203826496, guid: 564beb8036ba30b499148519e37d13b3,
     type: 2}
   m_PrefabInternal: {fileID: 1361463798}
+--- !u!114 &1361463800 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114586622458315596, guid: 564beb8036ba30b499148519e37d13b3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1361463798}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &1725239595
 Prefab:
   m_ObjectHideFlags: 0
@@ -1223,6 +1229,7 @@ GameObject:
   - component: {fileID: 2018487357}
   - component: {fileID: 2018487356}
   - component: {fileID: 2018487361}
+  - component: {fileID: 2018487362}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1312,6 +1319,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameRoomName: 
+--- !u!114 &2018487362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2018487355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed1e875a2e2f6364caf22d4cf321c75f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: 50
+  MarqueeTx: {fileID: 1361463800}
 --- !u!224 &2019541945 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224945300804715534, guid: f2e5147309c82ad48b9f6c7b0d7ff94d,

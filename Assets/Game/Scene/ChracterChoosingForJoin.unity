@@ -228,6 +228,17 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 564beb8036ba30b499148519e37d13b3, type: 2}
   m_IsPrefabParent: 0
+--- !u!224 &37055034 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 224442764203826496, guid: 564beb8036ba30b499148519e37d13b3,
+    type: 2}
+  m_PrefabInternal: {fileID: 37055033}
+--- !u!114 &37055035 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114586622458315596, guid: 564beb8036ba30b499148519e37d13b3,
+    type: 2}
+  m_PrefabInternal: {fileID: 37055033}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &175752483
 Prefab:
   m_ObjectHideFlags: 0
@@ -365,6 +376,7 @@ GameObject:
   - component: {fileID: 203237666}
   - component: {fileID: 203237665}
   - component: {fileID: 203237670}
+  - component: {fileID: 203237671}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -459,6 +471,19 @@ MonoBehaviour:
   role1Intro: "\u5927\u5BB6\u597D\uFF0C\u6211\u662F\u8521\u4E2D\u6587"
   role2Intro: "\u5927\u5BB6\u597D\u963F! \u6211\u662F\u99AC\u82F1\u516B"
   role3Intro: "\u642D\u7D66\u5F8C\uFF0C\u6316\u7CFB\u8607\u8C9E\u660C! \u885D\u885D\u885D!"
+--- !u!114 &203237671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 203237664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed1e875a2e2f6364caf22d4cf321c75f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: 50
+  MarqueeTx: {fileID: 37055035}
 --- !u!1001 &215732438
 Prefab:
   m_ObjectHideFlags: 0
@@ -1512,11 +1537,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ae80c30ecd58e824c9da0ddeeaf30d2f, type: 2}
   m_IsPrefabParent: 0
---- !u!224 &978575335 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 224011812066478002, guid: 564beb8036ba30b499148519e37d13b3,
-    type: 2}
-  m_PrefabInternal: {fileID: 37055033}
 --- !u!1 &1032526770
 GameObject:
   m_ObjectHideFlags: 0
@@ -1603,7 +1623,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1759812295}
-  - {fileID: 978575335}
+  - {fileID: 37055034}
   - {fileID: 854141610}
   - {fileID: 2014293781}
   - {fileID: 23366856}

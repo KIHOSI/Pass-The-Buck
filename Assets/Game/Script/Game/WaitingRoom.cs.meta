@@ -1,25 +1,25 @@
 fileFormatVersion: 2
 guid: 12928772b280ad046a465cca8db6294d
-timeCreated: 1498312407
+timeCreated: 1498552546
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
-  - Player1Tx: {fileID: 1642834302047610, guid: 4d8bef86a9f21364391c008921848b27,
+  - Player1Tx: {fileID: 114711888304117968, guid: 4d8bef86a9f21364391c008921848b27,
       type: 2}
-  - Player2Tx: {fileID: 1057711496846666, guid: c42ebc8e2549e4f4faf39c33dd206c5e,
+  - Player2Tx: {fileID: 114771723909574984, guid: c42ebc8e2549e4f4faf39c33dd206c5e,
       type: 2}
-  - Player3Tx: {fileID: 1115160570809192, guid: c5c8c742fa96fe24d954abe4101d80c3,
+  - Player3Tx: {fileID: 114668126675583188, guid: c5c8c742fa96fe24d954abe4101d80c3,
       type: 2}
-  - Player4Tx: {fileID: 1614049984297938, guid: f3eeda0a40c41e64f90f71c105b64ba5,
+  - Player4Tx: {fileID: 114760742249700594, guid: f3eeda0a40c41e64f90f71c105b64ba5,
       type: 2}
-  - FrameImg1: {fileID: 1692803443281132, guid: f17530561f914e14a97005e43c18d33c,
+  - FrameImg1: {fileID: 114094124221884738, guid: f17530561f914e14a97005e43c18d33c,
       type: 2}
-  - FrameImg2: {fileID: 1060285191784318, guid: 7063e83636541a84791017250fb1efd0,
+  - FrameImg2: {fileID: 114167063166239268, guid: 7063e83636541a84791017250fb1efd0,
       type: 2}
-  - FrameImg3: {fileID: 1324912196946874, guid: d32cd826cbde18a49b2ff2c79eec9b38,
+  - FrameImg3: {fileID: 114739147597571756, guid: d32cd826cbde18a49b2ff2c79eec9b38,
       type: 2}
-  - FrameImg4: {fileID: 1033679305851092, guid: 2e725339c6b78654d93c1746c59f3145,
+  - FrameImg4: {fileID: 114999538850888616, guid: 2e725339c6b78654d93c1746c59f3145,
       type: 2}
   executionOrder: 0
   icon: {instanceID: 0}

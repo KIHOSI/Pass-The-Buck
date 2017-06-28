@@ -31,6 +31,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public void JoinGameRoom()
 		{
 			GameRoomName = GameObject.Find ("GameRoomNameIp2").GetComponent<InputField>().text;
+			Debug.Log(GameRoomName);
 			PhotonNetwork.JoinRoom(GameRoomName);
 		}
 

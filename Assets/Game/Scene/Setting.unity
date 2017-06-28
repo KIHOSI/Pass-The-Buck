@@ -113,11 +113,6 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224164124662679836, guid: 194ae082686987546826cdcb66d053c3,
     type: 2}
   m_PrefabInternal: {fileID: 1554076724}
---- !u!224 &163256103 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 224011812066478002, guid: 564beb8036ba30b499148519e37d13b3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1712728573}
 --- !u!224 &318353437 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224077279131701852, guid: 3d82cb820826368449cc16a66851b4e8,
@@ -245,6 +240,7 @@ GameObject:
   - component: {fileID: 583307412}
   - component: {fileID: 583307411}
   - component: {fileID: 583307410}
+  - component: {fileID: 583307415}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -322,6 +318,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &583307415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 583307409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed1e875a2e2f6364caf22d4cf321c75f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: 50
+  MarqueeTx: {fileID: 1712728575}
 --- !u!1001 &659623698
 Prefab:
   m_ObjectHideFlags: 0
@@ -718,7 +727,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 2009819630}
-  - {fileID: 163256103}
+  - {fileID: 1712728574}
   - {fileID: 318353437}
   - {fileID: 334032445}
   - {fileID: 1391904209}
@@ -1221,6 +1230,17 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 564beb8036ba30b499148519e37d13b3, type: 2}
   m_IsPrefabParent: 0
+--- !u!224 &1712728574 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 224442764203826496, guid: 564beb8036ba30b499148519e37d13b3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1712728573}
+--- !u!114 &1712728575 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114586622458315596, guid: 564beb8036ba30b499148519e37d13b3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1712728573}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &1881547777
 Prefab:
   m_ObjectHideFlags: 0
