@@ -4,18 +4,16 @@ using UnityEngine.UI;
 public class BallMove : MonoBehaviour {
 
     Rigidbody2D ballRigidbody2D;
-    public Text moneyText;
-    int money = NowState.getMoney(); //得到現在錢的狀態
 
     public float speedX;    //球的水平速度
     public float speedY;    //球的垂直速度
 
     public bool ballState = false; //球的狀態，false:左 | true:右
 
-    void Start () {
+    void Start()
+    {
         ballRigidbody2D = GetComponent<Rigidbody2D>();
         ballRigidbody2D.velocity = new Vector2(speedX, speedY);
-        //moneyText.text = "金錢 x100"; 
     }
 	
 	
@@ -39,18 +37,14 @@ public class BallMove : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("洞口"))
+        /*if (collision.gameObject.CompareTag("洞口"))
         {
-            money = NowState.getMoney(); //得到現在錢的狀態
-            money -= 10; //減錢
+            NowState.reduceMoney(); //減錢
+            int money = NowState.getMoney(); //得到現在錢的狀態
+            //money -= 10; //減錢
             print("現在的錢:" + money);
             moneyText.text = "金錢 x" + money;
-            
-
-            // = true;
-            //EdgeCollider2D collisionEdgeCollider2D = collision.gameObject.GetComponent<EdgeCollider2D>(); //取得EdgeCollider2D
-            //collisionEdgeCollider2D.enabled = true;
-        }
+        }*/
     }
 
     void lockSpeed() //保持速度
