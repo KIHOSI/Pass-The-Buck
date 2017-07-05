@@ -36,9 +36,14 @@ public class NowState : MonoBehaviour {
             money -= 10;
             moneyText.text = "金錢 x" + money;
         }
-        else if(collision.gameObject.CompareTag("左邊的金球") || collision.gameObject.CompareTag("右邊的金球"))
+        if(collision.gameObject.CompareTag("左邊的金球") || collision.gameObject.CompareTag("右邊的金球"))
         { //金球
             money += 10;
+            moneyText.text = "金錢 x" + money;
+        }
+        if (collision.gameObject.CompareTag("炸彈"))
+        { //炸彈，扣50%的錢
+            money = money / 2;
             moneyText.text = "金錢 x" + money;
         }
     }

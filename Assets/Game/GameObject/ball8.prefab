@@ -88,9 +88,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c6538e77e9fd94d8ad8f6667420d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedX: -5
-  speedY: 5
+  speedX: -2
+  speedY: 2
   ballState: 0
+  method: 0
+  speedDelta: 1
+  decelerate: 1
+  v: {x: 0, y: 0, z: 0}
+  maxSpeed: 5
 --- !u!212 &212442153809908244
 SpriteRenderer:
   m_ObjectHideFlags: 1
