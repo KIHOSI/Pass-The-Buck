@@ -91,9 +91,7 @@ MonoBehaviour:
   speedX: -2
   speedY: -2
   ballState: 0
-  method: 0
   speedDelta: 1
-  decelerate: 1
   v: {x: 0, y: 0, z: 0}
   maxSpeed: 5
 --- !u!212 &212423699051700308

@@ -14,7 +14,7 @@ public class GenerateBall : MonoBehaviour {
     void Start () {
         //Invoke("generateBall", 3);
         InvokeRepeating("generateBall", 5, 5); //第一個為方法名、第二個為「第一次調用」要隔幾秒、第三個則是「每隔幾秒調用一次」
-        InvokeRepeating("generateItem", 10, 20);
+        InvokeRepeating("generateItem", 10, 10);
     }
 	
 	// Update is called once per frame
@@ -32,7 +32,7 @@ public class GenerateBall : MonoBehaviour {
         showItem = (Random.value > 0.5f); //true or false
         if (showItem)
         {
-            itemIndex = Random.Range(0, ItemArray.Length); //隨機產生一個在0到最大值間的數(含0)
+            itemIndex = Random.Range(0,ItemArray.Length); //隨機產生一個在0到最大值間的數(含0)
             Instantiate(ItemArray[itemIndex], transform.position, new Quaternion(0, 0, 0, 0));
         }
     }

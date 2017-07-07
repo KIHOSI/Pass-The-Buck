@@ -337,6 +337,7 @@ GameObject:
   - component: {fileID: 681168230}
   - component: {fileID: 681168229}
   - component: {fileID: 681168228}
+  - component: {fileID: 681168232}
   m_Layer: 0
   m_Name: "Portal3\u908A\u6846"
   m_TagString: "\u908A\u6846"
@@ -350,13 +351,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 681168227}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57e57aa8ead863544b7b68621ef4ec0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BallArray:
   - {fileID: 1191376611697486, guid: b6a3e109a227b2a48b3e9c2ee3e6c35a, type: 2}
+  ItemArray: []
 --- !u!68 &681168229
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -420,6 +422,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &681168232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 681168227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02937f2dc9aee3444bb6301d91849a4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PortalBall: {fileID: 1191376611697486, guid: b6a3e109a227b2a48b3e9c2ee3e6c35a, type: 2}
 --- !u!1 &705665993
 GameObject:
   m_ObjectHideFlags: 0
@@ -967,7 +981,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1094222556}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57e57aa8ead863544b7b68621ef4ec0f, type: 3}
   m_Name: 
@@ -977,6 +991,9 @@ MonoBehaviour:
   - {fileID: 1351087307199690, guid: 64774662610283b4597e707c1fcda975, type: 2}
   - {fileID: 1747319549175886, guid: f3a54535b0aa2de42bc262e619c2b9ff, type: 2}
   - {fileID: 1775970814399372, guid: 19abac45e46066b4199ae2dfc468a310, type: 2}
+  ItemArray:
+  - {fileID: 1765187116463052, guid: 02c5e2657c01f7643bdb0fc2c71a054b, type: 2}
+  - {fileID: 1231691690448264, guid: cf8b0c34b39e87e478325fdf05ecbc3f, type: 2}
 --- !u!68 &1094222558
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -1110,6 +1127,7 @@ GameObject:
   - component: {fileID: 1248547125}
   - component: {fileID: 1248547124}
   - component: {fileID: 1248547123}
+  - component: {fileID: 1248547127}
   m_Layer: 0
   m_Name: "Portal1\u908A\u6846"
   m_TagString: "\u908A\u6846"
@@ -1123,13 +1141,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1248547122}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57e57aa8ead863544b7b68621ef4ec0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BallArray:
   - {fileID: 1072632753154762, guid: 69a0bee9361d60e4bba6ae4912f7e279, type: 2}
+  ItemArray: []
 --- !u!68 &1248547124
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -1193,6 +1212,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1248547127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1248547122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02937f2dc9aee3444bb6301d91849a4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PortalBall: {fileID: 1072632753154762, guid: 69a0bee9361d60e4bba6ae4912f7e279, type: 2}
 --- !u!1 &1298528247
 GameObject:
   m_ObjectHideFlags: 0
@@ -1640,6 +1671,7 @@ GameObject:
   - component: {fileID: 1796180932}
   - component: {fileID: 1796180931}
   - component: {fileID: 1796180930}
+  - component: {fileID: 1796180935}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1715,6 +1747,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1796180935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1796180929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1690312454, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &2007934107
 GameObject:
   m_ObjectHideFlags: 0
@@ -1802,7 +1848,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2007934107}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57e57aa8ead863544b7b68621ef4ec0f, type: 3}
   m_Name: 
@@ -1812,6 +1858,9 @@ MonoBehaviour:
   - {fileID: 1283109369194606, guid: 1d55c2ce67263424795ba5e5a5aab0ea, type: 2}
   - {fileID: 1277578286475622, guid: 09d49b3068c8769469c3d5ca87e80a17, type: 2}
   - {fileID: 1255222071050568, guid: 70093062021577243bb158b40c6d1937, type: 2}
+  ItemArray:
+  - {fileID: 1765187116463052, guid: 02c5e2657c01f7643bdb0fc2c71a054b, type: 2}
+  - {fileID: 1231691690448264, guid: cf8b0c34b39e87e478325fdf05ecbc3f, type: 2}
 --- !u!1 &2054408479
 GameObject:
   m_ObjectHideFlags: 0
@@ -1857,7 +1906,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1557934999
+  m_SortingLayerID: -1877553549
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1f2d4636af19cbd4285d46cb04b000cb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

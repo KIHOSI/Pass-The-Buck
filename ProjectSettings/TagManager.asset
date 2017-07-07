@@ -11,6 +11,9 @@ TagManager:
   - "\u6D1E\u53E3"
   - "\u5DE6\u908A\u7684\u91D1\u7403"
   - "\u53F3\u908A\u7684\u91D1\u7403"
+  - "\u70B8\u5F48"
+  - "\u9EA5\u514B\u98A8"
+  - "\u5831\u7D19"
   layers:
   - Default
   - TransparentFX
@@ -53,6 +56,12 @@ TagManager:
     locked: 0
   - name: Edge_Portal
     uniqueID: 2737032297
+    locked: 0
+  - name: Person
+    uniqueID: 2417413747
+    locked: 0
+  - name: Bomb
+    uniqueID: 4122960819
     locked: 0
   - name: Ball
     uniqueID: 617856171

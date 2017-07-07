@@ -337,6 +337,7 @@ GameObject:
   - component: {fileID: 681168230}
   - component: {fileID: 681168229}
   - component: {fileID: 681168228}
+  - component: {fileID: 681168232}
   m_Layer: 0
   m_Name: "Portal3\u908A\u6846"
   m_TagString: "\u908A\u6846"
@@ -350,7 +351,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 681168227}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57e57aa8ead863544b7b68621ef4ec0f, type: 3}
   m_Name: 
@@ -421,6 +422,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &681168232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 681168227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02937f2dc9aee3444bb6301d91849a4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PortalBall: {fileID: 1191376611697486, guid: b6a3e109a227b2a48b3e9c2ee3e6c35a, type: 2}
 --- !u!1 &705665993
 GameObject:
   m_ObjectHideFlags: 0
@@ -915,6 +928,7 @@ GameObject:
   - component: {fileID: 1248547125}
   - component: {fileID: 1248547124}
   - component: {fileID: 1248547123}
+  - component: {fileID: 1248547127}
   m_Layer: 0
   m_Name: "Portal1\u908A\u6846"
   m_TagString: "\u908A\u6846"
@@ -928,7 +942,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1248547122}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57e57aa8ead863544b7b68621ef4ec0f, type: 3}
   m_Name: 
@@ -999,6 +1013,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1248547127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1248547122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02937f2dc9aee3444bb6301d91849a4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PortalBall: {fileID: 1072632753154762, guid: 69a0bee9361d60e4bba6ae4912f7e279, type: 2}
 --- !u!1 &1298528247
 GameObject:
   m_ObjectHideFlags: 0
@@ -1566,7 +1592,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1557934999
+  m_SortingLayerID: -1877553549
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1f2d4636af19cbd4285d46cb04b000cb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1579,7 +1605,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1993886280}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.28, y: -4.45, z: 0}
+  m_LocalPosition: {x: -2.257, y: -4.497, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

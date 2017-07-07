@@ -43,8 +43,11 @@ public class NowState : MonoBehaviour {
         }
         if (collision.gameObject.CompareTag("炸彈"))
         { //炸彈，扣50%的錢
-            money = money / 2;
-            moneyText.text = "金錢 x" + money;
+            if(money > 0)
+            {
+                money = money / 2;
+                moneyText.text = "金錢 x" + money;
+            }
         }
     }
 
