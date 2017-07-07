@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: c1182368f1e82414faacdaef4ccd7e04
+timeCreated: 1498125395
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - role1: {fileID: 21300000, guid: feae5854373c37f4b9742e0443135930, type: 3}
+  - role2: {fileID: 21300000, guid: 001e6dbc11a468b428f8d9c0757e517d, type: 3}
+  - role3: {fileID: 21300000, guid: 0ca4e77bbace8924f9622d772f85d001, type: 3}
+  - CharecterImg: {fileID: 1826535607633560, guid: f09462f0667a49241a6c84035c629837,
+      type: 2}
+  - CharecterInfoTx: {fileID: 1448215730196582, guid: b568c75e129fd7e478fa031782a9931c,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

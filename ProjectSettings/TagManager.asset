@@ -14,6 +14,7 @@ TagManager:
   - "\u70B8\u5F48"
   - "\u9EA5\u514B\u98A8"
   - "\u5831\u7D19"
+  - Fire
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - PlayerLayer
   - 
   - 
   - 
@@ -51,11 +52,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Bg
-    uniqueID: 3721050365
+  - name: Background
+    uniqueID: 1093696345
     locked: 0
-  - name: Edge_Portal
-    uniqueID: 2737032297
+  - name: Foreground
+    uniqueID: 1859086223
+    locked: 0
+  - name: Characters
+    uniqueID: 3940858523
     locked: 0
   - name: Person
     uniqueID: 2417413747
@@ -65,4 +69,6 @@ TagManager:
     locked: 0
   - name: Ball
     uniqueID: 617856171
+  - name: UI
+    uniqueID: 771169021
     locked: 0
