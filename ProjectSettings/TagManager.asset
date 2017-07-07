@@ -55,6 +55,9 @@ TagManager:
   - name: Background
     uniqueID: 1093696345
     locked: 0
+  - name: Edge_Portal
+    uniqueID: 3033284253
+    locked: 0
   - name: Foreground
     uniqueID: 1859086223
     locked: 0
@@ -69,6 +72,7 @@ TagManager:
     locked: 0
   - name: Ball
     uniqueID: 617856171
+    locked: 0
   - name: UI
     uniqueID: 771169021
     locked: 0

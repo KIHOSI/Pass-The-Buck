@@ -74,6 +74,7 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.585
@@ -91,9 +92,7 @@ MonoBehaviour:
   speedX: -2
   speedY: 2
   ballState: 0
-  method: 0
   speedDelta: 1
-  decelerate: 1
   v: {x: 0, y: 0, z: 0}
   maxSpeed: 5
 --- !u!212 &212466035994610520
@@ -126,8 +125,14 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 617856171
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a4ad342d55bd9814aabcc916a148f289, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.17, y: 1.11}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
