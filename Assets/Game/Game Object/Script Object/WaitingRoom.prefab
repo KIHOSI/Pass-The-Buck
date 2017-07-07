@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4212362230008030}
-  - component: {fileID: 114953216693255736}
+  - component: {fileID: 114764641339935134}
   m_Layer: 0
   m_Name: WaitingRoom
   m_TagString: Untagged
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114953216693255736
+--- !u!114 &114764641339935134
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -51,12 +51,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12928772b280ad046a465cca8db6294d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 0}
+  role1: {fileID: 21300000, guid: feae5854373c37f4b9742e0443135930, type: 3}
+  role2: {fileID: 21300000, guid: 001e6dbc11a468b428f8d9c0757e517d, type: 3}
+  role3: {fileID: 21300000, guid: 0ca4e77bbace8924f9622d772f85d001, type: 3}
+  PlayerCharecter1Img: {fileID: 0}
+  PlayerCharecter2Img: {fileID: 0}
+  PlayerCharecter3Img: {fileID: 0}
+  PlayerCharecter4Img: {fileID: 0}
+  PlayerTx1: {fileID: 0}
+  PlayerTx2: {fileID: 0}
+  PlayerTx3: {fileID: 0}
+  PlayerTx4: {fileID: 0}
+  Frame1Img: {fileID: 0}
+  Frame2Img: {fileID: 0}
+  Frame3Img: {fileID: 0}
+  Frame4Img: {fileID: 0}
+  ReadyORStartBt: {fileID: 0}
   RoomName: 
-  Player1Tx: {fileID: 1642834302047610, guid: 4d8bef86a9f21364391c008921848b27, type: 2}
-  Player2Tx: {fileID: 1057711496846666, guid: c42ebc8e2549e4f4faf39c33dd206c5e, type: 2}
-  Player3Tx: {fileID: 1115160570809192, guid: c5c8c742fa96fe24d954abe4101d80c3, type: 2}
-  Player4Tx: {fileID: 1614049984297938, guid: f3eeda0a40c41e64f90f71c105b64ba5, type: 2}
-  FrameImg1: {fileID: 1692803443281132, guid: f17530561f914e14a97005e43c18d33c, type: 2}
-  FrameImg2: {fileID: 1060285191784318, guid: 7063e83636541a84791017250fb1efd0, type: 2}
-  FrameImg3: {fileID: 1324912196946874, guid: d32cd826cbde18a49b2ff2c79eec9b38, type: 2}
-  FrameImg4: {fileID: 1033679305851092, guid: 2e725339c6b78654d93c1746c59f3145, type: 2}
+  PlayerTextList: []
+  FrameImgList: []
+  PlayerCharecterImgList: []

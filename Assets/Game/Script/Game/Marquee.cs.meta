@@ -1,11 +1,11 @@
 fileFormatVersion: 2
 guid: ed1e875a2e2f6364caf22d4cf321c75f
-timeCreated: 1497883675
+timeCreated: 1499327081
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
-  - MarqueeTx: {fileID: 1769233689192738, guid: 82ad690eaf3e9ac47957eaff6b39160a,
+  - marqueeTx: {fileID: 114101981854326768, guid: e589c91a946588144b3a7c86bb9280da,
       type: 2}
   executionOrder: 0
   icon: {instanceID: 0}

@@ -14,13 +14,14 @@ namespace Com.MyProject.MyPassTheBuckGame
 		#region Public Variables
 
 		public string GameRoomName;
+		Text TestTx;
 
 		#endregion
 
 	    // Use this for initialization
 	    void Start () 
 	    {
-	 	
+	 	    
 	    }
 	
 
@@ -48,11 +49,15 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public override void OnJoinedRoom()
 		{
 			Debug.Log("你已進入\""+PhotonNetwork.room.Name+"\"房");
+			TestTx = GameObject.Find ("TestTx").GetComponent<Text> ();
+			TestTx.text = "你已進入\"" + PhotonNetwork.room.Name + "\"房";
 			SceneManager.LoadScene(8);
 		}
 
 		public override void OnPhotonJoinRoomFailed(object[] codeAndMsg)
 		{
+			TestTx = GameObject.Find ("TestTx").GetComponent<Text> ();
+			TestTx.text = "加入房間失敗，請重新輸入";
 			Debug.Log("加入房間失敗，請重新輸入");
 		}
 

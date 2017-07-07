@@ -20,7 +20,6 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public string role2Intro="大家好阿! 我是馬英八";
 		public string role3Intro="搭給後，挖系蘇貞昌! 衝衝衝!";
 
-		// Use this for initialization
 		void Start () 
 		{
 

@@ -16,6 +16,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 		/// The PUN loglevel
 		public PhotonLogLevel Loglevel = PhotonLogLevel.Informational;
+		public GameObject audio;
 
 		#endregion
 
@@ -50,6 +51,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 		// MonoBehaviour method called on GameObject by Unity during initialization phase.
 		void Start()
 		{
+			DontDestroyOnLoad(audio);
 		}
 
 
@@ -62,7 +64,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 
 		//開始連線
-		public void Connect()
+		public void Connect(Button pt)
 		{
 
 			Debug.Log("system try to connect!");
@@ -75,6 +77,9 @@ namespace Com.MyProject.MyPassTheBuckGame
 			}else{
 
 				//連線到server
+				pt.GetComponent<Image> ().color = new Color32(255,255,225,0);
+				pt.GetComponentInChildren<Text>().text = "與伺服器連線中，請稍後...";
+				pt.GetComponentInChildren<Text> ().fontSize = 25;
 				PhotonNetwork.ConnectUsingSettings(_gameVersion); 
 			}
 		}
@@ -126,14 +131,6 @@ namespace Com.MyProject.MyPassTheBuckGame
 		{
 			SceneManager.LoadScene(11);
 		}
-			
-			
-
-		//離開房間
-		public void LeaveRoom()
-		{
-			PhotonNetwork.LeaveRoom();
-		}
 
 
 		#endregion
@@ -151,14 +148,8 @@ namespace Com.MyProject.MyPassTheBuckGame
 			
 		public override void OnDisconnectedFromPhoton()
 		{
-			Debug.LogWarning("DemoAnimator/Launcher: OnDisconnectedFromPhoton() was called by PUN");        
-		}
-			
-			
-
-		public override void OnLeftRoom()
-		{
-			SceneManager.LoadScene(1);
+			Debug.LogWarning("DemoAnimator/Launcher: OnDisconnectedFromPhoton() was called by PUN");
+			SceneManager.LoadScene(0);
 		}
 
 

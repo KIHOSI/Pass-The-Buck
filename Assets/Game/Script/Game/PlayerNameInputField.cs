@@ -19,7 +19,6 @@ namespace Com.MyProject.MyPassTheBuckGame
 		#endregion
 	
 
-		/// MonoBehaviour method called on GameObject by Unity during initialization phase.
 		void Start () {
 
 
@@ -43,10 +42,6 @@ namespace Com.MyProject.MyPassTheBuckGame
 		#region Public Methods
 
 
-		/// <summary>
-		/// Sets the name of the player, and save it in the PlayerPrefs for future sessions.
-		/// </summary>
-		/// <param name="value">The name of the Player</param>
 		public void SetPlayerName()
 		{
 			_inputField = GameObject.Find ("NameIp").GetComponent<InputField>(); 

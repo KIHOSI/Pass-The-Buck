@@ -1,12 +1,14 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement; 
 
 namespace Com.MyProject.MyPassTheBuckGame
 {
 	public class WaitingRoom :Photon.PunBehaviour {
 
+		public PhotonView photonView;
 		public Sprite role1;
 		public Sprite role2;
 		public Sprite role3;
@@ -23,83 +25,113 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public Image Frame2Img;
 		public Image Frame3Img;
 		public Image Frame4Img;
+		public Button ReadyORStartBt;
 
 		public string RoomName;
 		public List<Text> PlayerTextList;
 		public List<Image> FrameImgList;
 		public List<Image> PlayerCharecterImgList;
-		//public  Vector2  vector1;
-		//public  Vector2  vector2;
 
-		//public float x;
-		//public float y;
-
-		// Use this for initialization
 		public void Start () 
 		{
 
 			PlayerTextList = new List<Text>(){PlayerTx1,PlayerTx2,PlayerTx3,PlayerTx4};
 			FrameImgList = new List<Image>(){Frame1Img,Frame2Img,Frame3Img,Frame4Img};
 			PlayerCharecterImgList = new List<Image>(){PlayerCharecter1Img,PlayerCharecter2Img,PlayerCharecter3Img,PlayerCharecter4Img};
-			RoomName = PhotonNetwork.room.name;
+
+			//判斷玩家是房主還是其他玩家。如果是房主，Button文字更改為開始；是其他玩家，Button文字改為準備
+			if (PhotonNetwork.isMasterClient) 
+			{
+				ReadyORStartBt.GetComponentInChildren<Text>().text= "開始";
+			} 
+			else 
+			{
+				ReadyORStartBt.GetComponentInChildren<Text>().text = "準備";
+			}
+
+
+			//取得房名
+			RoomName = PhotonNetwork.room.Name;
 			GameObject.Find ("RoomNameTx").GetComponent<Text> ().text="房名:"+RoomName;
 
-			Debug.Log(PlayerTextList [0].text);
-
-			//vector1.x=(float)680;
-			//vector1.y=(float)1000;
-			//vector2.x=(float)635;
-			//vector2.y=(float)355;
-
+			//更新玩家名單
 			UpdatePlayerList (PlayerTextList,FrameImgList);
 
 		}
 
 		#region Public Methods
 
-
+		//更新玩家名單
 		public void UpdatePlayerList (List<Text> PTL,List<Image> FIL)
 		{
+			int j = 0;
 			for (int i = 0; i < PhotonNetwork.playerList.Length; i++) 
 			{
-				//Text playerTx = (Text)Instantiate (PlayerPrefab,vector1,transform.rotation);
-				//playerTx.GetComponent<Transform>().SetParent (GameObject.Find("Canvas").GetComponent<Transform>(),true);
-				//playerTx.GetComponent<Text> ().text = PhotonNetwork.playerList [i].name;
-				//vector1.y-=30;
 
-				//Image frameImg = (Image)Instantiate (FrameImgPrefab,vector2,transform.rotation);
-				//frameImg.GetComponent<Transform>().SetParent (GameObject.Find("Canvas").GetComponent<Transform>(),true);
-				//vector2.y-=30;
-
-				if (i == 0) 
-				{
-					PTL [i].text = PhotonNetwork.playerList [i].name + "(創建者)";
-				} 
-				else 
-				{
-					PTL [i].text = PhotonNetwork.playerList [i].name;
+				if (PhotonNetwork.playerList [i].IsMasterClient) {
+					PTL [i].text = PhotonNetwork.playerList [i].NickName + "(房主)";
+					FIL [i].color = Color.blue;
+				} else {
+					PTL [i].text = PhotonNetwork.playerList [i].NickName;
+					FIL [i].color = Color.blue;
 				}
-				FIL [i].color = Color.blue;
-				Debug.Log(PTL [i].text);
 
+				j++;
 
-				Debug.Log(PhotonNetwork.playerList [i].name);
 			}
+
+			for ( int g=j ; g < PTL.Count; g++) 
+			{
+
+				PTL [g].text = "";
+				FIL [g].color = new Color32(255,255,225,0);
+
+			}
+			
+		}
+
+		/*
+		public void LeaveRoom2()
+		{
+			if (PhotonNetwork.isMasterClient) 
+			{
+				photonView.RPC ("Leave", PhotonTargets.All);
+			} 
+			else
+			{
+				Leave ();
+			}
+		}*/
+
+		//離開房間
+		//[PunRPC]
+		public void Leave()
+		{
+			PhotonNetwork.LeaveRoom ();
 		}
 
 		#endregion
 
 		#region Photon.PunBehaviour CallBacks
 
-		void OnPhotonPlayerConnected(PhotonPlayer otherPlayer)
+		public override void OnPhotonPlayerConnected(PhotonPlayer otherPlayer)
 		{
 			UpdatePlayerList (PlayerTextList,FrameImgList);
 		}
 
-		void OnPhotonPlayerDisconnected(PhotonPlayer otherPlayer)
+		public override void OnPhotonPlayerDisconnected(PhotonPlayer otherPlayer)
 		{
 			UpdatePlayerList (PlayerTextList,FrameImgList);
-			PhotonNetwork.Disconnect();
+		}
+			
+		public override void OnMasterClientSwitched(PhotonPlayer player)
+		{
+			Leave ();
+		}
+			
+		public override void OnLeftRoom()
+		{
+			SceneManager.LoadScene(2);
 		}
 
 		#endregion

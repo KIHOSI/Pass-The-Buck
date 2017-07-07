@@ -7,17 +7,19 @@ namespace Com.MyProject.MyPassTheBuckGame
    public class Marquee :Photon.PunBehaviour
    {
 
-	 public float scrollSpeed = 50;
-	 public Text MarqueeTx;
+	 public float scrollSpeed = 100;
+	 float x;
+	 float y;
+	 public Text marqueeTx;
 
 
 	 // Use this for initialization
 	 void Start () 
 	 {
-			
 		//MarqueeTx.transform.position = new Vector3(368.0f, 175.0f, 0.0f);
-		Vector3 Pos = MarqueeTx.transform.position;
-		Debug.Log(Pos);
+		Vector3 Pos = marqueeTx.transform.position;
+		x = marqueeTx.transform.position.x;
+		y = marqueeTx.transform.position.y;
 
 	 }
 
@@ -25,21 +27,27 @@ namespace Com.MyProject.MyPassTheBuckGame
 	 {
 		float step = scrollSpeed * Time.deltaTime;
 		Vector3 temp = new Vector3(step,0.0f,0.0f);
-		Vector3 forReset = new Vector3 (378.0f, 525.7f, 0.0f);
+		Vector3 forReset = new Vector3 (x-480, y, 0.0f);
 
-		if (Vector3.Distance(MarqueeTx.transform.position, forReset) < 1.0f) 
+		if (Vector3.Distance(marqueeTx.transform.position, forReset) < 1.0f) 
 		{
-			MarqueeTx.transform.position = new Vector3 (907.8f, 525.7f, 0.0f);
+			marqueeTx.transform.position = new Vector3 (x, y, 0.0f);
 		} 
 		else 
 		{
-			MarqueeTx.transform.position -= temp;
+			marqueeTx.transform.position -= temp;
 		}
 	 }
 
 
 
 	 #region Public Methods
+
+	 public void setText(string t)
+	 {
+		this.marqueeTx.text = t;
+	 
+	 }
 
 
 	 #endregion

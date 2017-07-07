@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4962741724688324}
-  - component: {fileID: 114818382878443934}
+  - component: {fileID: 114671351955369698}
   m_Layer: 0
   m_Name: Marquee
   m_TagString: Untagged
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114818382878443934
+--- !u!114 &114671351955369698
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -51,6 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed1e875a2e2f6364caf22d4cf321c75f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "\u6B61\u8FCE\u4F86\u5230\u653F\u5BA2\u8E22\u76AE\u7403"
-  scrollSpeed: 50
-  MarqueeTx: {fileID: 1769233689192738, guid: 82ad690eaf3e9ac47957eaff6b39160a, type: 2}
+  scrollSpeed: 100
+  marqueeTx: {fileID: 114101981854326768, guid: e589c91a946588144b3a7c86bb9280da,
+    type: 2}
