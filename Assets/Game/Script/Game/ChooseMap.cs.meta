@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: b30712d511ff10c4cae86acc59279718
+timeCreated: 1498060465
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - island: {fileID: 21300000, guid: 2659861284a6b004a9e06fa6af2c697c, type: 3}
+  - islandWithLock: {fileID: 21300000, guid: bc18fbb8c3e7345478646f2156afd051, type: 3}
+  - Island1Bt: {fileID: 1440702305880784, guid: dbac558221b74b54ebef85cc16151b75,
+      type: 2}
+  - Island2Bt: {fileID: 1594336174027890, guid: 392ec7e8ca86c954989b47ad81b17f88,
+      type: 2}
+  - Island3Bt: {fileID: 1244979626546130, guid: ad1a847a1fd125145bb5c3500324a508,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

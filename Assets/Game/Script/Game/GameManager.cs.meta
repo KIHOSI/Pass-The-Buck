@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 384aed3ff8282f44f8c42130b174423f
+timeCreated: 1499270376
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - PlayBt: {fileID: 1422142104179322, guid: f1775f972aad6824d8b7e8047178ed95, type: 2}
+  - ProcessTx: {fileID: 1981354062248114, guid: a619a054d42d02e4c884a2259c1c9691,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

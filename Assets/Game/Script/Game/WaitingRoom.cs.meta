@@ -1,0 +1,28 @@
+fileFormatVersion: 2
+guid: 12928772b280ad046a465cca8db6294d
+timeCreated: 1499012785
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - role1: {fileID: 21300000, guid: feae5854373c37f4b9742e0443135930, type: 3}
+  - role2: {fileID: 21300000, guid: 001e6dbc11a468b428f8d9c0757e517d, type: 3}
+  - role3: {fileID: 21300000, guid: 0ca4e77bbace8924f9622d772f85d001, type: 3}
+  - PlayerCharecter1Img: {instanceID: 0}
+  - PlayerCharecter2Img: {instanceID: 0}
+  - PlayerCharecter3Img: {instanceID: 0}
+  - PlayerCharecter4Img: {instanceID: 0}
+  - PlayerTx1: {instanceID: 0}
+  - PlayerTx2: {instanceID: 0}
+  - PlayerTx3: {instanceID: 0}
+  - PlayerTx4: {instanceID: 0}
+  - Frame1Img: {instanceID: 0}
+  - Frame2Img: {instanceID: 0}
+  - Frame3Img: {instanceID: 0}
+  - Frame4Img: {instanceID: 0}
+  - ReadyORStartBt: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
