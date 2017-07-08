@@ -8,7 +8,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 {
 	public class WaitingRoom :Photon.PunBehaviour {
 
-		public PhotonView photonView;
+		//public PhotonView photonView;
 		public Sprite role1;
 		public Sprite role2;
 		public Sprite role3;
@@ -25,7 +25,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public Image Frame2Img;
 		public Image Frame3Img;
 		public Image Frame4Img;
-		public Button ReadyORStartBt;
+		public Button StartBt;
 
 		public string RoomName;
 		public List<Text> PlayerTextList;
@@ -39,16 +39,6 @@ namespace Com.MyProject.MyPassTheBuckGame
 			FrameImgList = new List<Image>(){Frame1Img,Frame2Img,Frame3Img,Frame4Img};
 			PlayerCharecterImgList = new List<Image>(){PlayerCharecter1Img,PlayerCharecter2Img,PlayerCharecter3Img,PlayerCharecter4Img};
 
-			//判斷玩家是房主還是其他玩家。如果是房主，Button文字更改為開始；是其他玩家，Button文字改為準備
-			if (PhotonNetwork.isMasterClient) 
-			{
-				ReadyORStartBt.GetComponentInChildren<Text>().text= "開始";
-			} 
-			else 
-			{
-				ReadyORStartBt.GetComponentInChildren<Text>().text = "準備";
-			}
-
 
 			//取得房名
 			RoomName = PhotonNetwork.room.Name;
@@ -57,6 +47,17 @@ namespace Com.MyProject.MyPassTheBuckGame
 			//更新玩家名單
 			UpdatePlayerList (PlayerTextList,FrameImgList);
 
+		}
+
+		public void Update ()
+		{
+			if (PhotonNetwork.isMasterClient) 
+			{
+				if (PhotonNetwork.room.PlayerCount == PhotonNetwork.room.MaxPlayers)
+				{
+					StartBt.GetComponent<Button> ().interactable = true;
+				}
+			}
 		}
 
 		#region Public Methods
@@ -102,6 +103,12 @@ namespace Com.MyProject.MyPassTheBuckGame
 				Leave ();
 			}
 		}*/
+
+		//開始遊戲
+		public void StartGame()
+		{
+			PhotonNetwork.LoadLevel("Stage1");
+		}
 
 		//離開房間
 		//[PunRPC]

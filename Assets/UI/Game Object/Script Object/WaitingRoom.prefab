@@ -51,7 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12928772b280ad046a465cca8db6294d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  photonView: {fileID: 0}
   role1: {fileID: 21300000, guid: feae5854373c37f4b9742e0443135930, type: 3}
   role2: {fileID: 21300000, guid: 001e6dbc11a468b428f8d9c0757e517d, type: 3}
   role3: {fileID: 21300000, guid: 0ca4e77bbace8924f9622d772f85d001, type: 3}
@@ -67,7 +66,7 @@ MonoBehaviour:
   Frame2Img: {fileID: 0}
   Frame3Img: {fileID: 0}
   Frame4Img: {fileID: 0}
-  ReadyORStartBt: {fileID: 0}
+  StartBt: {fileID: 114883849893465574, guid: 51bcaabd773fa3f4e829f9ed296b0bb8, type: 2}
   RoomName: 
   PlayerTextList: []
   FrameImgList: []
