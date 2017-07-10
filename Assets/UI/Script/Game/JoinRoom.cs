@@ -52,6 +52,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 			TestTx = GameObject.Find ("TestTx").GetComponent<Text> ();
 			TestTx.text = "你已進入\"" + PhotonNetwork.room.Name + "\"房";
 			SceneManager.LoadScene(8);
+
 		}
 
 		public override void OnPhotonJoinRoomFailed(object[] codeAndMsg)

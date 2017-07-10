@@ -89,11 +89,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 		{
 			Debug.Log ("創立房間失敗");
 		}
-
-		public override void OnLeftRoom()
-		{
-			SceneManager.LoadScene(0);
-		}
+			
 
 		#endregion
 
