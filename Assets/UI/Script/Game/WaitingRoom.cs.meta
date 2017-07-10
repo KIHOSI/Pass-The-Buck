@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 12928772b280ad046a465cca8db6294d
-timeCreated: 1499012785
+timeCreated: 1499525925
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
@@ -20,7 +20,8 @@ MonoImporter:
   - Frame2Img: {instanceID: 0}
   - Frame3Img: {instanceID: 0}
   - Frame4Img: {instanceID: 0}
-  - ReadyORStartBt: {instanceID: 0}
+  - StartBt: {fileID: 114004284556372488, guid: 95c61182ca28b1540b7324ceafa6b3dc,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
