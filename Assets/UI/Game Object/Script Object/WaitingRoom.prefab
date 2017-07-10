@@ -67,6 +67,7 @@ MonoBehaviour:
   Frame3Img: {fileID: 0}
   Frame4Img: {fileID: 0}
   StartBt: {fileID: 114883849893465574, guid: 51bcaabd773fa3f4e829f9ed296b0bb8, type: 2}
+  LeaveBt: {fileID: 114393201810542686, guid: fc9ff722d83d44742ae5bc08ffb90fc2, type: 2}
   RoomName: 
   PlayerTextList: []
   FrameImgList: []

@@ -625,8 +625,8 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.1
   apiCompatibilityLevel: 2
-  cloudProjectId: fcdc4623-73d9-4e38-ab58-49265f1b8300
-  projectName: PassTheBuck
-  organizationId: kihosi
+  cloudProjectId: ca019c1f-c9f0-4761-9bf3-ac42de934a5c
+  projectName: Pass-The-Buck
+  organizationId: cathy841106
   cloudEnabled: 0
   enableNewInputSystem: 0

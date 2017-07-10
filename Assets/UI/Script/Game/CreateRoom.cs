@@ -82,7 +82,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public override void OnCreatedRoom()
 		{
 			Debug.Log("你已進入遊戲室!"+"遊戲室名稱為:"+PhotonNetwork.room.Name+"、最大遊玩人數:"+MaxPlayersPerRoom);
-			SceneManager.LoadScene(9);
+			SceneManager.LoadScene(8);
 		}
 
 		public override void OnPhotonCreateRoomFailed (object[] codeAndMsg)

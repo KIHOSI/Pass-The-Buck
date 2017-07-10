@@ -117,19 +117,19 @@ namespace Com.MyProject.MyPassTheBuckGame
 		//載入個人背包頁面
 		public void LoadBagScene()
 		{
-			SceneManager.LoadScene(10);
+			SceneManager.LoadScene(9);
 		}
 
 		//載入故事頁面
 		public void LoadStoryScene()
 		{
-			SceneManager.LoadScene(11);
+			SceneManager.LoadScene(10);
 		}
 
 		//載入設定頁面
 		public void LoadSettingScene()
 		{
-			SceneManager.LoadScene(12);
+			SceneManager.LoadScene(11);
 		}
 
 

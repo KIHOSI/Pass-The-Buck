@@ -8,7 +8,6 @@ namespace Com.MyProject.MyPassTheBuckGame
 {
 	public class WaitingRoom :Photon.PunBehaviour {
 
-		//public PhotonView photonView;
 		public Sprite role1;
 		public Sprite role2;
 		public Sprite role3;
@@ -26,6 +25,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public Image Frame3Img;
 		public Image Frame4Img;
 		public Button StartBt;
+		public Button LeaveBt;
 
 		public string RoomName;
 		public List<Text> PlayerTextList;
@@ -39,6 +39,17 @@ namespace Com.MyProject.MyPassTheBuckGame
 			FrameImgList = new List<Image>(){Frame1Img,Frame2Img,Frame3Img,Frame4Img};
 			PlayerCharecterImgList = new List<Image>(){PlayerCharecter1Img,PlayerCharecter2Img,PlayerCharecter3Img,PlayerCharecter4Img};
 
+			if (!PhotonNetwork.isMasterClient) 
+			{
+				StartBt.GetComponent<Image> ().color = new Color32 (255, 255, 225, 0);
+				StartBt.GetComponentInChildren<Text>().text = "";
+				StartBt.GetComponent<Button> ().interactable = false;
+				LeaveBt.transform.localPosition = new Vector3 (3.3f, -234.3f, 0.0f);
+			} 
+			else 
+			{
+				StartBt.GetComponent<Button> ().interactable = false;
+			}
 
 			//取得房名
 			RoomName = PhotonNetwork.room.Name;
@@ -48,17 +59,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 			UpdatePlayerList (PlayerTextList,FrameImgList);
 
 		}
-
-		public void Update ()
-		{
-			if (PhotonNetwork.isMasterClient) 
-			{
-				if (PhotonNetwork.room.PlayerCount == PhotonNetwork.room.MaxPlayers)
-				{
-					StartBt.GetComponent<Button> ().interactable = true;
-				}
-			}
-		}
+			
 
 		#region Public Methods
 
@@ -91,19 +92,22 @@ namespace Com.MyProject.MyPassTheBuckGame
 			
 		}
 
-		/*
-		public void LeaveRoom2()
+		//檢查房間人數是否已滿。滿的話將開始按鈕設成可以按開始；反之不行
+		public void CheckRoomFull ()
 		{
 			if (PhotonNetwork.isMasterClient) 
 			{
-				photonView.RPC ("Leave", PhotonTargets.All);
-			} 
-			else
-			{
-				Leave ();
+				if (PhotonNetwork.room.PlayerCount == PhotonNetwork.room.MaxPlayers)
+				{
+					StartBt.GetComponent<Button> ().interactable = true;
+				} 
+				else
+				{
+					StartBt.GetComponent<Button> ().interactable = false;
+				}
 			}
-		}*/
-
+		} 
+			
 		//開始遊戲
 		public void StartGame()
 		{
@@ -124,11 +128,13 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public override void OnPhotonPlayerConnected(PhotonPlayer otherPlayer)
 		{
 			UpdatePlayerList (PlayerTextList,FrameImgList);
+			CheckRoomFull ();
 		}
 
 		public override void OnPhotonPlayerDisconnected(PhotonPlayer otherPlayer)
 		{
 			UpdatePlayerList (PlayerTextList,FrameImgList);
+			CheckRoomFull ();
 		}
 			
 		public override void OnMasterClientSwitched(PhotonPlayer player)
