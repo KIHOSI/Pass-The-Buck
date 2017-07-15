@@ -5,23 +5,34 @@ using UnityEngine;
 public class Raycaster : MonoBehaviour {
     Rigidbody2D ballRigidbody2D; //存被打到的物件
     GameObject gb;
+    Touch touch;
 
-   // private Vector3 prePos; //滑鼠點選位置
+    // private Vector3 prePos; //滑鼠點選位置
     private Vector3 clickPos; //滑鼠最初點選的位置
     private float speedDelta = 1.0f;
+
     // Use this for initialization
     void Start () {
-		
-	}
+        
+    }
 	
 	// Update is called once per frame
 	void Update () {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 10, 1); //偵測
-
-        if (Input.GetTouch(0).phase == TouchPhase.Began) // Began: 觸控點開始移動時
+        
+        if (Input.touchCount > 0)
         {
-            if(hit.collider.name == "Edge1" || hit.collider.name == "Edge2") //不能移動背景物
+            touch = Input.GetTouch(0);
+        }
+
+        if (touch.phase == TouchPhase.Began) // Began: 觸控點開始移動時
+        {
+            if(hit == false) //沒擊到東西
+            {
+                return;
+            }
+            else if(hit.collider.name == "Edge1" || hit.collider.name == "Edge2") //不能移動背景物
             {
                 return;
             }
@@ -37,7 +48,7 @@ public class Raycaster : MonoBehaviour {
             //TowardTarget();
 
         }*/
-        if (Input.GetTouch(0).phase == TouchPhase.Ended) // Ended: 手指離開螢幕
+        if (touch.phase == TouchPhase.Ended) // Ended: 手指離開螢幕
         {
             //在滑鼠放開的時候，根據一開始按球的點與放球的點距離，來做速度
             Vector3 curPos = Input.mousePosition;
@@ -45,7 +56,10 @@ public class Raycaster : MonoBehaviour {
             float dist = dir.magnitude;
             float v = dist / Time.deltaTime;
 
-            ballRigidbody2D.AddForce(dir.normalized * v * Time.deltaTime * speedDelta);
+            if (ballRigidbody2D != null) 
+            {
+                ballRigidbody2D.AddForce(dir.normalized * v * Time.deltaTime * speedDelta);
+            }
 
             gb = null; //初始化
             ballRigidbody2D = null;

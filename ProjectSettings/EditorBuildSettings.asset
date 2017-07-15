@@ -41,9 +41,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/UI/Scene/Setting.unity
     guid: 0398f86f83952f645a3ba08a59e1784a
-  - enabled: 1
-    path: Assets/Game/Stage2.unity
+  - enabled: 0
+    path: 
     guid: de2e948b8b5542d4ababc13aa7ce8c55
   - enabled: 0
-    path: Assets/Game/Touch.unity
+    path: 
     guid: 6fd018e3a214ba2489248975de7964f7
+  - enabled: 1
+    path: Assets/Game/Stage2.unity
+    guid: c68cbaf4b57ad6047ba64c82819e6393
