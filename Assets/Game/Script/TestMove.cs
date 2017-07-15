@@ -1,7 +1,8 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class BallMove : MonoBehaviour {
+public class TestMove : MonoBehaviour {
 
     Rigidbody2D ballRigidbody2D;
 
@@ -10,13 +11,16 @@ public class BallMove : MonoBehaviour {
 
     public bool ballState = false; //球的狀態，false:左 | true:右
 
-    //public enum DragMethod { Force,SmoothDamp}; //兩種拖曳方式
-    //public DragMethod method = DragMethod.SmoothDamp; 
+    public enum DragMethod { Force, SmoothDamp }; //兩種拖曳方式
+    public DragMethod method = DragMethod.SmoothDamp;
 
     public float speedDelta = 1.0f;
-    //public float decelerate = 1.0f;
+    public float decelerate = 1.0f;
     private bool startDrag;
     private Vector3 prePos;
+
+
+    private bool isMouseDrag;
 
     void Start()
     {
@@ -25,15 +29,17 @@ public class BallMove : MonoBehaviour {
 
         prePos = Camera.main.WorldToScreenPoint(transform.position);
         //ballRigidbody2D.drag = decelerate; //使用這個來讓物體逐漸停止，也可以在Rigidbody中設定drag值，這樣就可以移除這行
-    
-}
-	
-	
-	void Update () {
-        //switch (method)
-        //{
-       /*     case DragMethod.Force:
-                if (Input.GetKeyUp(KeyCode.Mouse0))
+
+    }
+
+
+    void Update()
+    {
+        switch (method)
+        {
+            case DragMethod.Force:
+                //if (Input.GetKeyUp(KeyCode.Mouse0))
+                if(Input.GetMouseButtonUp(0))
                 {
                     startDrag = false;
                 }
@@ -41,11 +47,14 @@ public class BallMove : MonoBehaviour {
                 {
                     ForceCalculate(); //如果拖曳中，就一直給物體施加滑鼠造成的力
                 }
-            break;
-*/
-          //  case DragMethod.SmoothDamp:
-                if (Input.GetKeyUp(KeyCode.Mouse0)) //當按下滑鼠左鍵
+                break;
+
+            case DragMethod.SmoothDamp:
+                //if (Input.GetKeyUp(KeyCode.Mouse0))
+                if(Input.GetMouseButtonUp(0))
                 {
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    RaycastHit hit;
                     if (startDrag) //如果放開滑鼠，就停止物體追隨滑鼠的效果，並讓物體朝著最後移動的向量移動
                     {
                         ballRigidbody2D.velocity = v;
@@ -58,8 +67,8 @@ public class BallMove : MonoBehaviour {
                     prePos = Input.mousePosition;
                     TowardTarget(); //如果拖曳中，就讓物體往滑鼠的座標移動
                 }
-           // break;
-        //}
+                break;
+        }
 
 
         if (transform.position.y > 10 || transform.position.y < -10)
@@ -71,16 +80,16 @@ public class BallMove : MonoBehaviour {
 
     private void OnMouseDown() //當滑鼠點下物件的時候重設一些數值
     {
-        //switch (method)
-        //{
-        //    case DragMethod.Force:
-        //        prePos = Input.mousePosition;
-         //   break;
+        switch (method)
+        {
+            case DragMethod.Force:
+                prePos = Input.mousePosition;
+                break;
 
-         //   case DragMethod.SmoothDamp:
+            case DragMethod.SmoothDamp:
                 prePos = Camera.main.WorldToScreenPoint(transform.position);
-        //    break;
-        //}
+                break;
+        }
         startDrag = true;
     }
 
@@ -142,7 +151,7 @@ public class BallMove : MonoBehaviour {
             }
         }
     }
-    
+
     float ResetSpeedY() //保持垂直速度
     {
         float currentSpeedY = ballRigidbody2D.velocity.y; //現在球的實際水平速度
@@ -156,7 +165,7 @@ public class BallMove : MonoBehaviour {
         }
     }
 
-    /*//施力的方式移動
+    //施力的方式移動
     void ForceCalculate()
     {
         Vector3 curPos = Input.mousePosition;
@@ -166,7 +175,7 @@ public class BallMove : MonoBehaviour {
 
         ballRigidbody2D.AddForce(dir.normalized * v * Time.deltaTime * speedDelta);
         prePos = curPos;
-    }*/
+    }
 
     //朝著滑鼠的方式移動
     public Vector3 v;
