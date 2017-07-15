@@ -41,6 +41,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/UI/Scene/Setting.unity
     guid: 0398f86f83952f645a3ba08a59e1784a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Game/Stage1.unity
     guid: f0d0e4622bb7f664788a8bbc9f99f8d2
+  - enabled: 1
+    path: Assets/Game/Stage2.unity
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/UI/Scene/Role Choose for 2.unity
+    guid: b99a48bc68049824fb3fcb1d3ae78fd9
+  - enabled: 1
+    path: Assets/UI/Scene/Role Choosing for 4.unity
+    guid: df2afa094a632c0479ca17a40412964e

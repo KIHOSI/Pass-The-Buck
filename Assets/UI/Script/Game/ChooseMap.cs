@@ -55,7 +55,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 	 //載入角色選擇頁面
 	 public void LoadCharacterChoosingScene()
 	 {
-		SceneManager.LoadScene (4);
+		SceneManager.LoadScene ("Character Choosing");
 		//之後會在這加上判斷式，判斷玩家選擇的島嶼Button物件名稱
 		//然後將選擇的島嶼名稱加入playerPrefs裡(playerPrefs定義一個mapChoosing參數，存玩家選擇的地圖)
 	 }

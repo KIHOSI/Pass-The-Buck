@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 using UnityEngine.SceneManagement; 
 
 namespace Com.MyProject.MyPassTheBuckGame
@@ -26,6 +27,8 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public Image Frame4Img;
 		public Button StartBt;
 		public Button LeaveBt;
+		public Hashtable hash;
+		public string ClickStart;
 
 		public string RoomName;
 		public List<Text> PlayerTextList;
@@ -59,6 +62,22 @@ namespace Com.MyProject.MyPassTheBuckGame
 			UpdatePlayerList (PlayerTextList,FrameImgList);
 
 		}
+
+		public void Update()
+		{
+			if (PhotonNetwork.masterClient.CustomProperties ["ClickStart"] == "true")
+			{
+				if (PhotonNetwork.room.MaxPlayers == 2)
+				{
+					SceneManager.LoadScene("Role Choose for 2");
+				}
+				else if (PhotonNetwork.room.MaxPlayers == 4)
+				{
+					SceneManager.LoadScene("Role Choosing for 4");
+				}
+			}
+
+		}
 			
 
 		#region Public Methods
@@ -72,10 +91,10 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 				if (PhotonNetwork.playerList [i].IsMasterClient) {
 					PTL [i].text = PhotonNetwork.playerList [i].NickName + "(房主)";
-					FIL [i].color = Color.blue;
+					FIL [i].color = Color.black;
 				} else {
 					PTL [i].text = PhotonNetwork.playerList [i].NickName;
-					FIL [i].color = Color.blue;
+					FIL [i].color = Color.black;
 				}
 
 				j++;
@@ -111,11 +130,22 @@ namespace Com.MyProject.MyPassTheBuckGame
 		//開始遊戲
 		public void StartGame()
 		{
-			PhotonNetwork.LoadLevel("Stage1");
+			hash = new Hashtable();
+			ClickStart = "true";
+			hash.Add("ClickStart", ClickStart);
+			PhotonNetwork.player.SetCustomProperties(hash);
+
+			if (PhotonNetwork.room.MaxPlayers == 2)
+			{
+				SceneManager.LoadScene("Role Choose for 2");
+			}
+			else if (PhotonNetwork.room.MaxPlayers == 4)
+			{
+				SceneManager.LoadScene("Role Choosing for 4");
+			}
 		}
 
 		//離開房間
-		//[PunRPC]
 		public void Leave()
 		{
 			PhotonNetwork.LeaveRoom ();
@@ -144,7 +174,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 			
 		public override void OnLeftRoom()
 		{
-			SceneManager.LoadScene(2);
+			SceneManager.LoadScene("Create&Join Room");
 		}
 
 		#endregion

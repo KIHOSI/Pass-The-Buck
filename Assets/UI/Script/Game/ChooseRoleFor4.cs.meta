@@ -1,0 +1,30 @@
+fileFormatVersion: 2
+guid: fabf96788a88c3442a6e83de8b478635
+timeCreated: 1499939235
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - BlueRole1: {fileID: 21300000, guid: 001e6dbc11a468b428f8d9c0757e517d, type: 3}
+  - BlueRole2: {fileID: 21300000, guid: 0ca4e77bbace8924f9622d772f85d001, type: 3}
+  - GreenRole1: {fileID: 21300000, guid: feae5854373c37f4b9742e0443135930, type: 3}
+  - GreenRole2: {fileID: 21300000, guid: d8d4c702a1b832248805fc5d00f2d6d7, type: 3}
+  - Player1NameTx: {instanceID: 0}
+  - Player2NameTx: {instanceID: 0}
+  - Player1RoleInfoTx: {instanceID: 0}
+  - Player2RoleInfoTx: {instanceID: 0}
+  - Player1MessageTx: {instanceID: 0}
+  - Player2MessageTx: {instanceID: 0}
+  - Player1RoleImg: {instanceID: 0}
+  - Player2RoleImg: {instanceID: 0}
+  - ChooseBt1: {instanceID: 0}
+  - ChooseBt2: {instanceID: 0}
+  - LeftArrowBt1: {instanceID: 0}
+  - RightArrowBt1: {instanceID: 0}
+  - LeftArrowBt2: {instanceID: 0}
+  - RightArrowBt2: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -89,14 +89,14 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public void LoadCreateRoomScene()
 		{
 
-			SceneManager.LoadScene (5);
+			SceneManager.LoadScene ("Create Room");
 		}
 
 		//載入加入房間頁面
 		public void LoadJoinRoomScene()
 		{
 			
-			SceneManager.LoadScene (7);
+			SceneManager.LoadScene ("Join Room");
 		}
 
 

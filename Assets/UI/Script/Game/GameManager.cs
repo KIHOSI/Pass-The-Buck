@@ -73,7 +73,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 			//檢查是否已連線，是:轉換到開房間創房間頁面；否:與伺服器建立連線
 			if (PhotonNetwork.connected)
 			{
-				SceneManager.LoadScene(2);  //載入開房間創房間頁面
+				SceneManager.LoadScene("Create&Join Room");  //載入開房間創房間頁面
 			}else{
 
 				//連線到server
@@ -87,49 +87,49 @@ namespace Com.MyProject.MyPassTheBuckGame
 		//載入主頁
 		public void LoadJMainPageScene()
 		{
-			SceneManager.LoadScene(1);
+			SceneManager.LoadScene("Main");
 		}
 
 		//載入加入、創建房間頁面
 		public void LoadJCreateJoinScene()
 		{
-			SceneManager.LoadScene(2);
+			SceneManager.LoadScene("Create&Join Room");
 		}
 
 		//載入選地圖頁面
 		public void LoadMapChoosingScene()
 		{
-			SceneManager.LoadScene (3);
+			SceneManager.LoadScene ("Map Choosing");
 		}
 
 		//載入角色選擇頁面
 		public void LoadCharacterChoosingScene()
 		{
-			SceneManager.LoadScene (4);
+			SceneManager.LoadScene ("Character Choosing");
 		}
 
 		//載入角色選擇頁面
 		public void LoadCharacterChoosingforJoinScene()
 		{
-			SceneManager.LoadScene (6);
+			SceneManager.LoadScene ("ChracterChoosingForJoin");
 		}
 
 		//載入個人背包頁面
 		public void LoadBagScene()
 		{
-			SceneManager.LoadScene(9);
+			SceneManager.LoadScene("Bag");
 		}
 
 		//載入故事頁面
 		public void LoadStoryScene()
 		{
-			SceneManager.LoadScene(10);
+			SceneManager.LoadScene("Story");
 		}
 
 		//載入設定頁面
 		public void LoadSettingScene()
 		{
-			SceneManager.LoadScene(11);
+			SceneManager.LoadScene("Setting");
 		}
 
 
@@ -142,14 +142,14 @@ namespace Com.MyProject.MyPassTheBuckGame
 		{
 
 			Debug.Log("DemoAnimator/Launcher: OnConnectedToMaster() was called by PUN");
-			SceneManager.LoadScene(2);
+			SceneManager.LoadScene("Create&Join Room");
 
 		}
 			
 		public override void OnDisconnectedFromPhoton()
 		{
 			Debug.LogWarning("DemoAnimator/Launcher: OnDisconnectedFromPhoton() was called by PUN");
-			SceneManager.LoadScene(0);
+			SceneManager.LoadScene("Main");
 		}
 
 

@@ -39,7 +39,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 		//按返回鍵
 		public void Back()
 		{
-			SceneManager.LoadScene(6);
+			SceneManager.LoadScene("ChracterChoosingForJoin");
 		}
 
 		#endregion
@@ -51,7 +51,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 			Debug.Log("你已進入\""+PhotonNetwork.room.Name+"\"房");
 			TestTx = GameObject.Find ("TestTx").GetComponent<Text> ();
 			TestTx.text = "你已進入\"" + PhotonNetwork.room.Name + "\"房";
-			SceneManager.LoadScene(8);
+			SceneManager.LoadScene("Waiting Room");
 
 		}
 
