@@ -10,31 +10,12 @@ namespace Com.MyProject.MyPassTheBuckGame
 	public class GameManager : Photon.PunBehaviour
 	{
 
-
-		#region Public Variables
-
-
-		/// The PUN loglevel
 		public PhotonLogLevel Loglevel = PhotonLogLevel.Informational;
 		public GameObject audio;
-
-		#endregion
-
-
-		#region Private Variables
-
 
 		//設定遊戲版本
 		string _gameVersion = "1";
 
-
-		#endregion
-
-
-		#region MonoBehaviour CallBacks
-
-
-		// MonoBehaviour method called on GameObject by Unity during early initialization phase.
 		void Awake()
 		{
 			// we don't join the lobby. There is no need to join a lobby to get the list of rooms.
@@ -46,19 +27,12 @@ namespace Com.MyProject.MyPassTheBuckGame
 			// Force LogLevel
 			PhotonNetwork.logLevel = Loglevel;
 		}
-
-
-		// MonoBehaviour method called on GameObject by Unity during initialization phase.
+			
 		void Start()
 		{
 			DontDestroyOnLoad(audio);
 		}
-
-
-
-
-		#endregion
-
+			
 
 		#region Public Methods
 
@@ -73,8 +47,10 @@ namespace Com.MyProject.MyPassTheBuckGame
 			//檢查是否已連線，是:轉換到開房間創房間頁面；否:與伺服器建立連線
 			if (PhotonNetwork.connected)
 			{
-				SceneManager.LoadScene(2);  //載入開房間創房間頁面
-			}else{
+				SceneManager.LoadScene("Create&Join Room");  //載入開房間創房間頁面
+			}
+			else
+			{
 
 				//連線到server
 				pt.GetComponent<Image> ().color = new Color32(255,255,225,0);
@@ -87,49 +63,62 @@ namespace Com.MyProject.MyPassTheBuckGame
 		//載入主頁
 		public void LoadJMainPageScene()
 		{
-			SceneManager.LoadScene(1);
+			SceneManager.LoadScene("Main");
 		}
 
 		//載入加入、創建房間頁面
 		public void LoadJCreateJoinScene()
 		{
-			SceneManager.LoadScene(2);
+			SceneManager.LoadScene("Create&Join Room");
 		}
 
 		//載入選地圖頁面
 		public void LoadMapChoosingScene()
 		{
-			SceneManager.LoadScene (3);
+			SceneManager.LoadScene ("Map Choosing");
 		}
 
 		//載入角色選擇頁面
 		public void LoadCharacterChoosingScene()
 		{
-			SceneManager.LoadScene (4);
+			SceneManager.LoadScene ("Character Choosing");
 		}
 
 		//載入角色選擇頁面
 		public void LoadCharacterChoosingforJoinScene()
 		{
-			SceneManager.LoadScene (6);
+			SceneManager.LoadScene ("ChracterChoosingForJoin");
 		}
 
 		//載入個人背包頁面
 		public void LoadBagScene()
 		{
-			SceneManager.LoadScene(9);
+			SceneManager.LoadScene("Bag");
 		}
 
 		//載入故事頁面
 		public void LoadStoryScene()
 		{
-			SceneManager.LoadScene(10);
+			SceneManager.LoadScene("Story");
 		}
 
 		//載入設定頁面
 		public void LoadSettingScene()
 		{
-			SceneManager.LoadScene(11);
+			SceneManager.LoadScene("Setting");
+		}
+
+		public void onTips(string tips_str)
+		{
+			GameObject parent = GameObject.Find ("Canvas");
+			GameObject toast = GameObject.Find ("Toast"); // 加载预制体
+			GameObject m_toast = GameObject.Instantiate(toast, parent.transform, false);  // 对象初始化
+			//m_toast.transform.parent = parent.transform;            //　附加到父节点（需要显示的UI下）
+			m_toast.transform.localScale = Vector3.one;
+			m_toast.transform.localPosition = new Vector3 (3.3f, -234.3f, 0.0f);
+			Text tips = m_toast.GetComponent<Text>();
+			tips.text = tips_str;
+			Destroy(m_toast, 3); // 2秒后 销毁
 		}
 
 
@@ -142,14 +131,16 @@ namespace Com.MyProject.MyPassTheBuckGame
 		{
 
 			Debug.Log("DemoAnimator/Launcher: OnConnectedToMaster() was called by PUN");
-			SceneManager.LoadScene(2);
+			SceneManager.LoadScene("Create&Join Room");
 
 		}
 			
+		//與伺服器失去連接
 		public override void OnDisconnectedFromPhoton()
 		{
 			Debug.LogWarning("DemoAnimator/Launcher: OnDisconnectedFromPhoton() was called by PUN");
-			SceneManager.LoadScene(0);
+			onTips("與伺服器失去連線");
+			SceneManager.LoadScene("Main");
 		}
 
 

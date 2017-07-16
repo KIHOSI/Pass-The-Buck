@@ -47,6 +47,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 		  else if (bt.GetComponent<Image> ().sprite == islandWithLock)
 		  {
 			 Debug.Log("該關卡尚未解鎖，請選擇已解鎖關卡");
+			 onTips("該關卡尚未解鎖，請選擇已解鎖關卡");
 		  }
 
 
@@ -55,10 +56,27 @@ namespace Com.MyProject.MyPassTheBuckGame
 	 //載入角色選擇頁面
 	 public void LoadCharacterChoosingScene()
 	 {
-		SceneManager.LoadScene (4);
+		SceneManager.LoadScene ("Character Choosing");
 		//之後會在這加上判斷式，判斷玩家選擇的島嶼Button物件名稱
 		//然後將選擇的島嶼名稱加入playerPrefs裡(playerPrefs定義一個mapChoosing參數，存玩家選擇的地圖)
 	 }
+	
+
+	public void onTips(string tips_str)
+	{
+		GameObject parent = GameObject.Find ("MapChoosePanel");
+		GameObject toast = GameObject.Find ("Toast"); // 加载预制体
+		GameObject m_toast = GameObject.Instantiate(toast, parent.transform, false);  // 对象初始化
+		//m_toast.transform.parent = parent.transform;            //　附加到父节点（需要显示的UI下）
+		m_toast.transform.localScale = Vector3.one;
+		m_toast.transform.localPosition = new Vector3 (3.3f, -234.3f, 0.0f);
+		Text tips = m_toast.GetComponent<Text>();
+		tips.text = tips_str;
+		Destroy(m_toast, 2); // 2秒后 销毁
+	}
+
+
+
 
 
 
