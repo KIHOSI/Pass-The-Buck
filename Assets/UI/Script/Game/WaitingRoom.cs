@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 using UnityEngine.SceneManagement; 
 
 namespace Com.MyProject.MyPassTheBuckGame
@@ -26,6 +27,8 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public Image Frame4Img;
 		public Button StartBt;
 		public Button LeaveBt;
+		public Hashtable hash;
+		public string ClickStart;
 
 		public string RoomName;
 		public List<Text> PlayerTextList;
@@ -59,6 +62,22 @@ namespace Com.MyProject.MyPassTheBuckGame
 			UpdatePlayerList (PlayerTextList,FrameImgList);
 
 		}
+
+		public void Update()
+		{
+			if (PhotonNetwork.masterClient.CustomProperties ["ClickStart"] == "true")
+			{
+				if (PhotonNetwork.room.MaxPlayers == 2)
+				{
+					SceneManager.LoadScene("Role Choose for 2");
+				}
+				else if (PhotonNetwork.room.MaxPlayers == 4)
+				{
+					SceneManager.LoadScene("Role Choosing for 4");
+				}
+			}
+
+		}
 			
 
 		#region Public Methods
@@ -72,10 +91,10 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 				if (PhotonNetwork.playerList [i].IsMasterClient) {
 					PTL [i].text = PhotonNetwork.playerList [i].NickName + "(房主)";
-					FIL [i].color = Color.blue;
+					FIL [i].color = Color.black;
 				} else {
 					PTL [i].text = PhotonNetwork.playerList [i].NickName;
-					FIL [i].color = Color.blue;
+					FIL [i].color = Color.black;
 				}
 
 				j++;
@@ -111,15 +130,40 @@ namespace Com.MyProject.MyPassTheBuckGame
 		//開始遊戲
 		public void StartGame()
 		{
-			PhotonNetwork.LoadLevel("Stage1");
+			hash = new Hashtable();
+			ClickStart = "true";
+			hash.Add("ClickStart", ClickStart);
+			PhotonNetwork.player.SetCustomProperties(hash);
+
+			if (PhotonNetwork.room.MaxPlayers == 2)
+			{
+				SceneManager.LoadScene("Role Choose for 2");
+			}
+			else if (PhotonNetwork.room.MaxPlayers == 4)
+			{
+				SceneManager.LoadScene("Role Choosing for 4");
+			}
 		}
 
 		//離開房間
-		//[PunRPC]
 		public void Leave()
 		{
 			PhotonNetwork.LeaveRoom ();
 		}
+
+		public void onTips(string tips_str)
+		{
+			GameObject parent = GameObject.Find ("Canvas");
+			GameObject toast = GameObject.Find ("Toast"); // 加载预制体
+			GameObject m_toast = GameObject.Instantiate(toast, parent.transform, false);  // 对象初始化
+			//m_toast.transform.parent = parent.transform;            //　附加到父节点（需要显示的UI下）
+			m_toast.transform.localScale = Vector3.one;
+			m_toast.transform.localPosition = new Vector3 (3.3f, -234.3f, 0.0f);
+			Text tips = m_toast.GetComponent<Text>();
+			tips.text = tips_str;
+			Destroy(m_toast, 3); // 2秒后 销毁
+		}
+
 
 		#endregion
 
@@ -139,12 +183,13 @@ namespace Com.MyProject.MyPassTheBuckGame
 			
 		public override void OnMasterClientSwitched(PhotonPlayer player)
 		{
+			onTips("房主已退出房間");
 			Leave ();
 		}
 			
 		public override void OnLeftRoom()
 		{
-			SceneManager.LoadScene(2);
+			SceneManager.LoadScene("Create&Join Room");
 		}
 
 		#endregion
