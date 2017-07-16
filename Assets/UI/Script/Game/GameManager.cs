@@ -10,31 +10,12 @@ namespace Com.MyProject.MyPassTheBuckGame
 	public class GameManager : Photon.PunBehaviour
 	{
 
-
-		#region Public Variables
-
-
-		/// The PUN loglevel
 		public PhotonLogLevel Loglevel = PhotonLogLevel.Informational;
 		public GameObject audio;
-
-		#endregion
-
-
-		#region Private Variables
-
 
 		//設定遊戲版本
 		string _gameVersion = "1";
 
-
-		#endregion
-
-
-		#region MonoBehaviour CallBacks
-
-
-		// MonoBehaviour method called on GameObject by Unity during early initialization phase.
 		void Awake()
 		{
 			// we don't join the lobby. There is no need to join a lobby to get the list of rooms.
@@ -46,19 +27,12 @@ namespace Com.MyProject.MyPassTheBuckGame
 			// Force LogLevel
 			PhotonNetwork.logLevel = Loglevel;
 		}
-
-
-		// MonoBehaviour method called on GameObject by Unity during initialization phase.
+			
 		void Start()
 		{
 			DontDestroyOnLoad(audio);
 		}
-
-
-
-
-		#endregion
-
+			
 
 		#region Public Methods
 
@@ -74,7 +48,9 @@ namespace Com.MyProject.MyPassTheBuckGame
 			if (PhotonNetwork.connected)
 			{
 				SceneManager.LoadScene("Create&Join Room");  //載入開房間創房間頁面
-			}else{
+			}
+			else
+			{
 
 				//連線到server
 				pt.GetComponent<Image> ().color = new Color32(255,255,225,0);
@@ -132,6 +108,19 @@ namespace Com.MyProject.MyPassTheBuckGame
 			SceneManager.LoadScene("Setting");
 		}
 
+		public void onTips(string tips_str)
+		{
+			GameObject parent = GameObject.Find ("Canvas");
+			GameObject toast = GameObject.Find ("Toast"); // 加载预制体
+			GameObject m_toast = GameObject.Instantiate(toast, parent.transform, false);  // 对象初始化
+			//m_toast.transform.parent = parent.transform;            //　附加到父节点（需要显示的UI下）
+			m_toast.transform.localScale = Vector3.one;
+			m_toast.transform.localPosition = new Vector3 (3.3f, -234.3f, 0.0f);
+			Text tips = m_toast.GetComponent<Text>();
+			tips.text = tips_str;
+			Destroy(m_toast, 3); // 2秒后 销毁
+		}
+
 
 		#endregion
 
@@ -146,9 +135,11 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 		}
 			
+		//與伺服器失去連接
 		public override void OnDisconnectedFromPhoton()
 		{
 			Debug.LogWarning("DemoAnimator/Launcher: OnDisconnectedFromPhoton() was called by PUN");
+			onTips("與伺服器失去連線");
 			SceneManager.LoadScene("Main");
 		}
 

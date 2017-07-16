@@ -151,6 +151,20 @@ namespace Com.MyProject.MyPassTheBuckGame
 			PhotonNetwork.LeaveRoom ();
 		}
 
+		public void onTips(string tips_str)
+		{
+			GameObject parent = GameObject.Find ("Canvas");
+			GameObject toast = GameObject.Find ("Toast"); // 加载预制体
+			GameObject m_toast = GameObject.Instantiate(toast, parent.transform, false);  // 对象初始化
+			//m_toast.transform.parent = parent.transform;            //　附加到父节点（需要显示的UI下）
+			m_toast.transform.localScale = Vector3.one;
+			m_toast.transform.localPosition = new Vector3 (3.3f, -234.3f, 0.0f);
+			Text tips = m_toast.GetComponent<Text>();
+			tips.text = tips_str;
+			Destroy(m_toast, 3); // 2秒后 销毁
+		}
+
+
 		#endregion
 
 		#region Photon.PunBehaviour CallBacks
@@ -169,6 +183,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 			
 		public override void OnMasterClientSwitched(PhotonPlayer player)
 		{
+			onTips("房主已退出房間");
 			Leave ();
 		}
 			
