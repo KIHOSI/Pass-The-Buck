@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 50827705930584872}
   m_Layer: 0
   m_Name: ball5
-  m_TagString: "\u5DE6\u908A\u7684\u91D1\u7403"
+  m_TagString: "\u91D1\u7403"
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,6 +74,7 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.565
@@ -90,12 +91,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedX: 2
   speedY: 2
-  ballState: 0
-  method: 0
-  speedDelta: 1
-  decelerate: 1
-  v: {x: 0, y: 0, z: 0}
-  maxSpeed: 5
 --- !u!212 &212135033427726494
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -126,8 +121,14 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 617856171
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 60315104c86fc0a44b5bf657b13f55e9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1

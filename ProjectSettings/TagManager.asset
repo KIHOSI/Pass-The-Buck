@@ -5,17 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - "\u80CC\u666F"
-  - "\u5DE6\u908A\u7684\u7403"
-  - "\u53F3\u908A\u7684\u7403"
   - "\u908A\u6846"
   - "\u6D1E\u53E3"
-  - "\u5DE6\u908A\u7684\u91D1\u7403"
-  - "\u53F3\u908A\u7684\u91D1\u7403"
   - "\u70B8\u5F48"
   - "\u9EA5\u514B\u98A8"
   - "\u5831\u7D19"
   - Fire
-  - SoccerTag
+  - "\u9ED1\u7403"
+  - "\u91D1\u7403"
   layers:
   - Default
   - TransparentFX
