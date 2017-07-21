@@ -19,7 +19,7 @@ EditorBuildSettings:
     guid: 34bc970320d5b8d458e5a59e0f8368e0
   - enabled: 1
     path: Assets/UI/Scene/LiverIsland.unity
-    guid: 00000000000000000000000000000000
+    guid: b11e43c3150c53b4cb196f6686c85f06
   - enabled: 1
     path: Assets/UI/Scene/Character Choosing.unity
     guid: 0feed00024a547d4e995bdeeac8f53be
@@ -36,7 +36,7 @@ EditorBuildSettings:
     path: Assets/UI/Scene/Waiting Room.unity
     guid: 185430e37910a8349a67275e9297a24b
   - enabled: 0
-    path: Assets/UI/Scene/Bag.unity
+    path: 
     guid: c72aeb8f3515be34aa938146ef1ceb70
   - enabled: 1
     path: Assets/UI/Scene/Story.unity
