@@ -710,7 +710,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000011444, y: -0.000030517578}
+  m_AnchoredPosition: {x: 0.000011444001, y: -0.000030517578}
   m_SizeDelta: {x: 167, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &282149278
@@ -1583,9 +1583,9 @@ MonoBehaviour:
   playerMoney: 0
   postText: {fileID: 0}
   bombObj: {fileID: 1057849301}
-  portalLeft: {fileID: 1362841660}
-  portalUp: {fileID: 1315635753}
-  portalRight: {fileID: 23443473}
+  portalLeft: {fileID: 1112582727}
+  portalUp: {fileID: 1284004400}
+  portalRight: {fileID: 644994499}
   PlayerCharacterImg: {fileID: 1855596363}
   role1: {fileID: 21300000, guid: feae5854373c37f4b9742e0443135930, type: 3}
   role2: {fileID: 21300000, guid: 001e6dbc11a468b428f8d9c0757e517d, type: 3}

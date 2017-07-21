@@ -54,6 +54,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     // Use this for initialization
     void Start() {
         //取得玩家list(同樣順序)
+        PlayerList = new List<PhotonPlayer>();
         PlayerList.Add(PhotonNetwork.masterClient); //1
         PlayerList.Add(PhotonNetwork.masterClient.GetNext()); //2
         PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext()); //3
@@ -163,10 +164,10 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             portalRight_green.SetActive(false);
         }
 
-            if (PhotonNetwork.isMasterClient) //若是Master Client，遊戲開始
-        {
+        //    if (PhotonNetwork.isMasterClient) //若是Master Client，遊戲開始
+        //{
             InvokeRepeating("timeCountDown", 1, 1); //每隔一秒執行一次 
-        }
+        //}
 
         
                                   
