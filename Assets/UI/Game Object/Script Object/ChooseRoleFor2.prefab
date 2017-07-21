@@ -55,14 +55,17 @@ MonoBehaviour:
   BlueRole2: {fileID: 21300000, guid: 0ca4e77bbace8924f9622d772f85d001, type: 3}
   GreenRole1: {fileID: 21300000, guid: feae5854373c37f4b9742e0443135930, type: 3}
   GreenRole2: {fileID: 21300000, guid: d8d4c702a1b832248805fc5d00f2d6d7, type: 3}
+  GrayPanel: {fileID: 21300000, guid: 6c89924923359fe4b8d9277a783be37a, type: 3}
   Player1NameTx: {fileID: 0}
   Player2NameTx: {fileID: 0}
   Player1RoleInfoTx: {fileID: 0}
   Player2RoleInfoTx: {fileID: 0}
   Player1MessageTx: {fileID: 0}
   Player2MessageTx: {fileID: 0}
+  AfterChooseTx1: {fileID: 0}
   Player1RoleImg: {fileID: 0}
   Player2RoleImg: {fileID: 0}
+  AfterChooseImg1: {fileID: 0}
   ChooseBt1: {fileID: 0}
   ChooseBt2: {fileID: 0}
   LeftArrowBt1: {fileID: 0}
@@ -71,3 +74,7 @@ MonoBehaviour:
   RightArrowBt2: {fileID: 0}
   PartyColor: 
   RoleChoosed: 
+  BlueRole1Intro: "\u5927\u540D:\u99AC\u82F1\u516B\n\u6027\u5225:\u7537\n\u6240\u5C6C\u9EE8\u7C4D:\u4E0D\u9732\u9EE8\n\u8208\u8DA3:\u8DD1\u6B65\n"
+  BlueRole2Intro: "\u5927\u540D:\u8607\u8C9E\u660C\n\u6027\u5225:\u7537\n\u6240\u5C6C\u9EE8\u7C4D:\u4E0D\u9732\u9EE8\n\u8208\u8DA3:\u558A\u53E3\u865F\n\u53E3\u982D\u79AA:\u885D\u885D\u885D"
+  GreenRole1Intro: "\u5927\u540D:\u8521\u4E2D\u6587\n\u6027\u5225:\u5973\n\u6240\u5C6C\u9EE8\u7C4D:\u683Cring\u9EE8\n\u8208\u8DA3:\u990A\u8C93\n"
+  GreenRole2Intro: "\u5927\u540D:\u9673\u6A58\n\u6027\u5225:\u5973\n\u6240\u5C6C\u9EE8\u7C4D:\u683Cring\u9EE8\n\u8208\u8DA3:?\n"

@@ -6,25 +6,27 @@ using UnityEngine.UI;
 
 namespace Com.MyProject.MyPassTheBuckGame
 {
-   public class ChooseMap : MonoBehaviour {
+	public class ChooseMap : Photon.PunBehaviour {
 
-	  public Sprite island;
-	  public Sprite islandWithLock;
+	  public Sprite Pisland;
+	  public Sprite PislandWithLock;
+	  public Sprite Gisland;
+	  public Sprite GislandWithLock;
+	  public Sprite Lisland;
+	  public Sprite LislandWithLock;
 
-	  public GameObject Island1Bt;
-	  public GameObject Island2Bt;
-	  public GameObject Island3Bt;
+	  public Button Island1Bt;
+	  public Button Island2Bt;
+	  public Button Island3Bt;
 
-	  Button Island1;
-	  Button Island2;
-	  Button Island3;
+
 
 	  // Use this for initialization
 	  void Start () 
 	  {
-		 Island1 = Island1Bt.GetComponent<Button> ();
-		 Island2 = Island2Bt.GetComponent<Button> ();
-		 Island3 = Island3Bt.GetComponent<Button> ();
+		 Island1Bt = GameObject.Find ("Island1Bt").GetComponent<Button> ();
+		 Island2Bt = GameObject.Find ("Island2Bt").GetComponent<Button> ();
+		 Island3Bt = GameObject.Find ("Island3Bt").GetComponent<Button> ();
 
 		 //會有資料庫存玩家已解鎖的島嶼名稱
 
@@ -38,28 +40,81 @@ namespace Com.MyProject.MyPassTheBuckGame
 	  //檢查關卡已解鎖或未解鎖
 	  public void CheckLockorUnlock(Button bt)
 	  {
-		  //button.isenable = false;
+		  Island1Bt = GameObject.Find ("Island1Bt").GetComponent<Button> ();
+		  Island2Bt = GameObject.Find ("Island2Bt").GetComponent<Button> ();
+		  Island3Bt = GameObject.Find ("Island3Bt").GetComponent<Button> ();
 
-		  if (bt.GetComponent<Image> ().sprite == island) 
+		  if (bt.Equals (Island1Bt)) 
 		  {
-			 LoadCharacterChoosingScene ();
-		  } 
-		  else if (bt.GetComponent<Image> ().sprite == islandWithLock)
+				if (bt.GetComponent<Image> ().sprite == Pisland) 
+				{
+					LoadPeopleIslandScene ();
+				} 
+				else if (bt.GetComponent<Image> ().sprite == PislandWithLock)
+				{
+					Debug.Log("該關卡尚未解鎖，請選擇已解鎖關卡");
+					onTips("該關卡尚未解鎖，請選擇已解鎖關卡");
+				}
+		  }
+		  else if (bt.Equals (Island2Bt)) 
 		  {
-			 Debug.Log("該關卡尚未解鎖，請選擇已解鎖關卡");
-			 onTips("該關卡尚未解鎖，請選擇已解鎖關卡");
+				if (bt.GetComponent<Image> ().sprite == Lisland) 
+				{
+					LoadLiverIslandScene ();
+				} 
+				else if (bt.GetComponent<Image> ().sprite == LislandWithLock)
+				{
+					Debug.Log("該關卡尚未解鎖，請選擇已解鎖關卡");
+					onTips("該關卡尚未解鎖，請選擇已解鎖關卡");
+				}
+		  }
+		  else if (bt.Equals (Island3Bt)) 
+		  {
+				if (bt.GetComponent<Image> ().sprite == Gisland) 
+				{
+					LoadGIslandScene ();
+				} 
+				else if (bt.GetComponent<Image> ().sprite == GislandWithLock)
+				{
+					Debug.Log("該關卡尚未解鎖，請選擇已解鎖關卡");
+					onTips("該關卡尚未解鎖，請選擇已解鎖關卡");
+				}
 		  }
 
-
+		  
 	  }
 
-	 //載入角色選擇頁面
-	 public void LoadCharacterChoosingScene()
+	 //載入爆肝島頁面
+	 public void LoadLiverIslandScene()
 	 {
-		SceneManager.LoadScene ("Character Choosing");
+		SceneManager.LoadScene ("LiverIsland");
 		//之後會在這加上判斷式，判斷玩家選擇的島嶼Button物件名稱
 		//然後將選擇的島嶼名稱加入playerPrefs裡(playerPrefs定義一個mapChoosing參數，存玩家選擇的地圖)
 	 }
+
+	 //載入大眾島頁面
+	 public void LoadPeopleIslandScene()
+	 {
+		//SceneManager.LoadScene ("LiverIsland");
+		//之後會在這加上判斷式，判斷玩家選擇的島嶼Button物件名稱
+		//然後將選擇的島嶼名稱加入playerPrefs裡(playerPrefs定義一個mapChoosing參數，存玩家選擇的地圖)
+	 }
+
+	 //載入金雞島頁面
+	 public void LoadGIslandScene()
+	 {
+		//SceneManager.LoadScene ("LiverIsland");
+		//之後會在這加上判斷式，判斷玩家選擇的島嶼Button物件名稱
+		//然後將選擇的島嶼名稱加入playerPrefs裡(playerPrefs定義一個mapChoosing參數，存玩家選擇的地圖)
+	 }
+
+	//載入設定暱稱頁面
+	public void LoadCharacterChoosingScene()
+	{
+		SceneManager.LoadScene ("Character Choosing");
+		//之後會在這加上判斷式，判斷玩家選擇的島嶼Button物件名稱
+		//然後將選擇的島嶼名稱加入playerPrefs裡(playerPrefs定義一個mapChoosing參數，存玩家選擇的地圖)
+	}
 	
 
 	public void onTips(string tips_str)
@@ -74,13 +129,14 @@ namespace Com.MyProject.MyPassTheBuckGame
 		tips.text = tips_str;
 		Destroy(m_toast, 2); // 2秒后 销毁
 	}
-
-
-
-
-
-
+			
 	#endregion
+
+    public override void OnDisconnectedFromPhoton()
+	{
+		Debug.LogWarning("DemoAnimator/Launcher: OnDisconnectedFromPhoton() was called by PUN");
+		SceneManager.LoadScene("Main");
+	}
 
 
   }

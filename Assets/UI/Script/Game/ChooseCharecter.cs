@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Com.MyProject.MyPassTheBuckGame
 {
-	public class ChooseCharecter : MonoBehaviour {
+	public class ChooseCharecter : Photon.PunBehaviour {
 
 		public Sprite role1;
 		public Sprite role2;
@@ -99,9 +99,13 @@ namespace Com.MyProject.MyPassTheBuckGame
 			SceneManager.LoadScene ("Join Room");
 		}
 
-
-
 		#endregion
+
+		public override void OnDisconnectedFromPhoton()
+		{
+			Debug.LogWarning("DemoAnimator/Launcher: OnDisconnectedFromPhoton() was called by PUN");
+			SceneManager.LoadScene("Main");
+		}
 
 
 	}

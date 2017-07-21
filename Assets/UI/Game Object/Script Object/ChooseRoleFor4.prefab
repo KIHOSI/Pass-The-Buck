@@ -55,14 +55,21 @@ MonoBehaviour:
   BlueRole2: {fileID: 21300000, guid: 0ca4e77bbace8924f9622d772f85d001, type: 3}
   GreenRole1: {fileID: 21300000, guid: feae5854373c37f4b9742e0443135930, type: 3}
   GreenRole2: {fileID: 21300000, guid: d8d4c702a1b832248805fc5d00f2d6d7, type: 3}
+  BluePanel: {fileID: 21300000, guid: 220a0cb960d3ad940beac30f7209b143, type: 3}
+  GreenPanel: {fileID: 21300000, guid: 3d31427b5f068784881ece6800a40dc2, type: 3}
+  GrayPanel: {fileID: 21300000, guid: 6c89924923359fe4b8d9277a783be37a, type: 3}
   Player1NameTx: {fileID: 0}
   Player2NameTx: {fileID: 0}
   Player1RoleInfoTx: {fileID: 0}
   Player2RoleInfoTx: {fileID: 0}
   Player1MessageTx: {fileID: 0}
   Player2MessageTx: {fileID: 0}
+  AfterChooseTx1: {fileID: 0}
+  AfterChooseTx2: {fileID: 0}
   Player1RoleImg: {fileID: 0}
   Player2RoleImg: {fileID: 0}
+  AfterChooseImg1: {fileID: 0}
+  AfterChooseImg2: {fileID: 0}
   ChooseBt1: {fileID: 0}
   ChooseBt2: {fileID: 0}
   LeftArrowBt1: {fileID: 0}

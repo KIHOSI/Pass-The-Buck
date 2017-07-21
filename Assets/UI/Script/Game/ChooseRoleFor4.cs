@@ -17,14 +17,21 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public Sprite BlueRole2;
 		public Sprite GreenRole1;
 		public Sprite GreenRole2;
+		public Sprite BluePanel;
+		public Sprite GreenPanel;
+		public Sprite GrayPanel;
 		public Text Player1NameTx;
 		public Text Player2NameTx;
 		public Text Player1RoleInfoTx;
 		public Text Player2RoleInfoTx;
 		public Text Player1MessageTx;
 		public Text Player2MessageTx;
+		public Text AfterChooseTx1;
+		public Text AfterChooseTx2;
 		public Image Player1RoleImg;
 		public Image Player2RoleImg;
+		public Image AfterChooseImg1;
+		public Image AfterChooseImg2;
 		public Button ChooseBt1;
 		public Button ChooseBt2;
 		public Button LeftArrowBt1;
@@ -74,12 +81,11 @@ namespace Com.MyProject.MyPassTheBuckGame
 			{
 				Player1NameTx.text = "Player1:" + PlayerList [2].NickName+"(you)" ;
 				Player2NameTx.text = "Player2:" + PlayerList [3].NickName;
-				Player2NameTx.GetComponent<Text> ().color = Color.green;
 				Player1RoleImg.sprite = GreenRole1;
 				Player1RoleInfoTx.text = GreenRole1Intro;
 				Player2RoleImg.sprite = GreenRole1;
 				Player2RoleInfoTx.text = GreenRole1Intro;
-				GameObject.Find ("RoleChoosePanel1-4" ).GetComponent<Image> ().color = Color.green;
+				GameObject.Find ("RoleChoosePanel1-4" ).GetComponent<Image> ().sprite = GreenPanel;
 
 			}
 			//第四個玩家
@@ -87,7 +93,6 @@ namespace Com.MyProject.MyPassTheBuckGame
 			{
 				Player1NameTx.text = "Player1:" + PlayerList [2].NickName;
 				Player2NameTx.text = "Player2:" + PlayerList [3].NickName+"(you)" ;
-				Player2NameTx.GetComponent<Text> ().color = Color.green;
 				Player1MessageTx.GetComponent<Text> ().text = "選擇中...";
 				Player2MessageTx.GetComponent<Text> ().text = "請等待對方選擇...";
 				Player1RoleImg.sprite = GreenRole1;
@@ -97,7 +102,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 				LeftArrowBt1.GetComponent< Button> ().interactable = false;
 				RightArrowBt1.GetComponent< Button> ().interactable = false;
 				ChooseBt1.GetComponent< Button> ().interactable = false;
-				GameObject.Find ("RoleChoosePanel1-4" ).GetComponent<Image> ().color = Color.green;
+				GameObject.Find ("RoleChoosePanel1-4" ).GetComponent<Image> ().sprite = GreenPanel;
 			}
 
 		}
@@ -105,11 +110,11 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 		void Update () 
 		{
+
 			//第二個玩家
 			if (PhotonNetwork.player.Equals (PlayerList [1]))
 			{
-				//判斷玩家1黨派顏色是否有資料
-				//有的話player2的按紐設成可以選，第二個框框設成藍色，然後從player1取資料，設定圖片
+				//第二位玩家已完成選擇
 				if (PlayerList [0].CustomProperties ["PartyColor"] != null && PlayerList [1].CustomProperties ["PartyColor"] != null) 
 				{
 					//設定按鈕
@@ -117,12 +122,25 @@ namespace Com.MyProject.MyPassTheBuckGame
 					LeftArrowBt2.GetComponent< Button> ().interactable = false;
 					RightArrowBt2.GetComponent< Button> ().interactable = false;
 
-					//接到另一個頁面或顯示"等待綠隊選擇"
-					if (PlayerList [3].CustomProperties ["PartyColor"] == null) {
-						Player2MessageTx.text = "綠隊尚未完成選擇，請等待";
+					//顯示"等待綠隊選擇"
+					if (PlayerList [3].CustomProperties ["PartyColor"] == null)
+					{
+						GameObject.Find ("AfterChoosePanel2-4" ).GetComponent<Image> ().color = new Color32(221,221,221,255);
+						AfterChooseImg2.GetComponent<Image> ().color = new Color32(255,255,255,255);
+						AfterChooseTx2.GetComponent<Text> ().text = "你選擇了"+"\n'"+PlayerList [1].CustomProperties ["Role"]+"'\n"+"請等待綠隊選擇";
+
+						if (PlayerList [1].CustomProperties ["Role"].Equals("馬英八")) 
+						{
+							AfterChooseImg2.sprite = BlueRole1;
+						} 
+						else if (PlayerList [1].CustomProperties ["Role"].Equals("蘇貞昌")) 
+						{
+							AfterChooseImg2.sprite = BlueRole2;
+						}
 					} 
+						
 				
-				}
+				} //第一位玩家已選擇，輪到第二位玩家
 				else if (PlayerList [0].CustomProperties ["PartyColor"] != null && PlayerList [1].CustomProperties ["PartyColor"] == null)
 				{
 					//設定按鈕
@@ -130,23 +148,31 @@ namespace Com.MyProject.MyPassTheBuckGame
 					LeftArrowBt2.GetComponent< Button> ().interactable = true;
 					RightArrowBt2.GetComponent< Button> ().interactable = true;
 					//更改panel顏色
-					GameObject.Find ("RoleChoosePanel1-4" ).GetComponent<Image> ().color = Color.white;
-					GameObject.Find ("RoleChoosePanel2-4" ).GetComponent<Image> ().color = Color.blue;
-					//更改玩家姓名顏色
-					Player1NameTx.GetComponent<Text> ().color = Color.blue;
-					Player2NameTx.GetComponent<Text> ().color = Color.white;
+					GameObject.Find ("RoleChoosePanel1-4" ).GetComponent<Image> ().sprite = GrayPanel;
+					GameObject.Find ("RoleChoosePanel2-4" ).GetComponent<Image> ().sprite = BluePanel;
 					//更改玩家選角訊息顯示文字與顏色
-					Player1MessageTx.GetComponent<Text> ().text = "選擇了: "+"'"+PlayerList [0].CustomProperties["Role"]+"'";
 					Player2MessageTx.GetComponent<Text> ().text = "請選擇角色";
-					Player1MessageTx.GetComponent<Text> ().color = Color.black;
 					Player2MessageTx.GetComponent<Text> ().color = Color.white;
+
+					GameObject.Find ("AfterChoosePanel1-4" ).GetComponent<Image> ().color = new Color32(221,221,221,255);
+					AfterChooseImg1.GetComponent<Image> ().color = new Color32(255,255,255,255);
+					AfterChooseTx1.GetComponent<Text> ().text = "選擇了"+"\n'"+PlayerList [0].CustomProperties ["Role"]+"'";
+
+					if (PlayerList [0].CustomProperties ["Role"].Equals("馬英八")) 
+					{
+						AfterChooseImg1.sprite = BlueRole1;
+					} 
+					else if (PlayerList [0].CustomProperties ["Role"].Equals("蘇貞昌")) 
+					{
+						AfterChooseImg1.sprite = BlueRole2;
+					}
+
 				}
 			} 
 			//第四個玩家
 			else if (PhotonNetwork.player.Equals (PlayerList [3]))
 			{
-				//判斷玩家3黨派顏色是否有資料
-				//有的話player4的按紐設成可以選，第二個框框設成綠色，然後從player3取資料，設定圖片
+				//第四位玩家已完成選擇
 				if (PlayerList [2].CustomProperties ["PartyColor"] != null && PlayerList [3].CustomProperties ["PartyColor"] != null)
 				{
 					//設定按鈕
@@ -154,11 +180,23 @@ namespace Com.MyProject.MyPassTheBuckGame
 					LeftArrowBt2.GetComponent< Button> ().interactable = false;
 					RightArrowBt2.GetComponent< Button> ().interactable = false;
 
-					//接到另一個頁面或顯示"等待綠隊選擇"
-					if (PlayerList [1].CustomProperties ["PartyColor"] == null) {
-						Player2MessageTx.text = "藍隊尚未選擇完成，請等待";
+					//顯示"等待藍隊選擇"
+					if (PlayerList [1].CustomProperties ["PartyColor"] == null) 
+					{
+						GameObject.Find ("AfterChoosePanel2-4").GetComponent<Image> ().color = new Color32(221,221,221,255);
+						AfterChooseImg2.GetComponent<Image> ().color = new Color32(255,255,255,255);
+						AfterChooseTx2.GetComponent<Text> ().text = "你選擇了"+"\n'"+PlayerList [3].CustomProperties ["Role"]+"'\n"+"請等待藍隊選擇";
+
+						if (PlayerList [2].CustomProperties ["Role"].Equals("蔡中文")) 
+						{
+							AfterChooseImg2.sprite = GreenRole1;
+						} 
+						else if (PlayerList [2].CustomProperties ["Role"].Equals("陳橘")) 
+						{
+							AfterChooseImg2.sprite = GreenRole2;
+						}
 					}
-				}
+				} //第三位玩家已完成選擇，輪到第四位
 				else if (PlayerList [2].CustomProperties ["PartyColor"] != null && PlayerList [3].CustomProperties ["PartyColor"] == null)
 				{
 					//設定按鈕
@@ -166,19 +204,77 @@ namespace Com.MyProject.MyPassTheBuckGame
 					LeftArrowBt2.GetComponent< Button> ().interactable = true;
 					RightArrowBt2.GetComponent< Button> ().interactable = true;
 					//更改panel顏色
-					GameObject.Find ("RoleChoosePanel2-4" ).GetComponent<Image> ().color = Color.green;
-					GameObject.Find ("RoleChoosePanel1-4" ).GetComponent<Image> ().color = Color.white;
-					//更改玩家姓名顏色
-					Player1NameTx.GetComponent<Text> ().color = Color.green;
-					Player2NameTx.GetComponent<Text> ().color = Color.white;
+					GameObject.Find ("RoleChoosePanel2-4").GetComponent<Image> ().sprite = GreenPanel;
+					GameObject.Find ("RoleChoosePanel1-4").GetComponent<Image> ().sprite = GrayPanel;
 					//更改玩家選角訊息與顏色
-					Player1MessageTx.GetComponent<Text> ().text = "選擇了:"+"'"+PlayerList [2].CustomProperties["Role"]+"'";
 					Player2MessageTx.GetComponent<Text> ().text = "請選擇角色";
-					Player1MessageTx.GetComponent<Text> ().color = Color.black;
 					Player2MessageTx.GetComponent<Text> ().color = Color.white;
+
+					GameObject.Find ("AfterChoosePanel1-4").GetComponent<Image> ().color = new Color32(221,221,221,255);
+					AfterChooseImg1.GetComponent<Image> ().color = new Color32(255,255,255,255);
+					AfterChooseTx1.GetComponent<Text> ().text = "選擇了"+"\n'"+PlayerList [2].CustomProperties ["Role"]+"'";
+
+					if (PlayerList [2].CustomProperties ["Role"].Equals("蔡中文")) 
+					{
+						AfterChooseImg1.sprite = GreenRole1;
+					} 
+					else if (PlayerList [2].CustomProperties ["Role"].Equals("陳橘")) 
+					{
+						AfterChooseImg1.sprite = GreenRole2;
+					}
 				}
 
 			} 
+			//第一位玩家
+			else if (PhotonNetwork.player.Equals (PlayerList [0]))
+			{
+				//第二位玩家已完成選擇
+				if (PlayerList [0].CustomProperties ["PartyColor"] != null && PlayerList [1].CustomProperties ["PartyColor"] != null)
+				{
+
+					//顯示"等待綠隊選擇"
+					if (PlayerList [3].CustomProperties ["PartyColor"] == null)
+					{
+						GameObject.Find ("AfterChoosePanel2-4").GetComponent<Image> ().color = new Color32(221,221,221,255);
+						AfterChooseImg2.GetComponent<Image> ().color = new Color32(255,255,255,255);
+						AfterChooseTx2.GetComponent<Text> ().text = "選擇了"+"\n'"+PlayerList [1].CustomProperties ["Role"]+"'\n"+"請等待綠隊選擇";
+
+						if (PlayerList [1].CustomProperties ["Role"].Equals("馬英八")) 
+						{
+							AfterChooseImg2.sprite = BlueRole1;
+						} 
+						else if (PlayerList [1].CustomProperties ["Role"].Equals("蘇貞昌")) 
+						{
+							AfterChooseImg2.sprite = BlueRole2;
+						}
+					} 
+				} 
+			}
+			//第三位玩家
+			else if (PhotonNetwork.player.Equals (PlayerList [2]))
+			{
+				//第四位玩家已完成選擇
+				if (PlayerList [2].CustomProperties ["PartyColor"] != null && PlayerList [3].CustomProperties ["PartyColor"] != null)
+				{
+					//顯示"等待藍隊選擇"
+					if (PlayerList [1].CustomProperties ["PartyColor"] == null) 
+					{
+						GameObject.Find ("AfterChoosePanel2-4").GetComponent<Image> ().color = new Color32(221,221,221,255);
+						AfterChooseImg2.GetComponent<Image> ().color = new Color32(255,255,255,255);
+						AfterChooseTx2.GetComponent<Text> ().text = "選擇了"+"\n'"+PlayerList [3].CustomProperties ["Role"]+"'\n"+"請等待藍隊選擇";
+
+						if (PlayerList [3].CustomProperties ["Role"].Equals("蔡中文")) 
+						{
+							AfterChooseImg2.sprite = GreenRole1;
+						} 
+						else if (PlayerList [3].CustomProperties ["Role"].Equals("陳橘")) 
+						{
+							AfterChooseImg2.sprite = GreenRole2;
+						}
+					}
+				} 
+			}
+		 
 
 			if (PlayerList [1].CustomProperties ["PartyColor"] != null && PlayerList [3].CustomProperties ["PartyColor"] != null) 
 			{
@@ -213,9 +309,13 @@ namespace Com.MyProject.MyPassTheBuckGame
 			Player2MessageTx = GameObject.Find ("Player2MessageTx-4").GetComponent<Text> ();
 			Player1RoleInfoTx = GameObject.Find ("CharecterInfoTx1-4").GetComponent<Text> ();
 			Player2RoleInfoTx = GameObject.Find ("CharecterInfoTx2-4").GetComponent<Text> ();
+			AfterChooseTx1= GameObject.Find ("AfterChooseTx1-4").GetComponent<Text> ();
+			AfterChooseTx2= GameObject.Find ("AfterChooseTx2-4").GetComponent<Text> ();
+			AfterChooseImg1= GameObject.Find ("AfterChooseImg1-4").GetComponent<Image> ();
+			AfterChooseImg2= GameObject.Find ("AfterChooseImg2-4").GetComponent<Image> ();
 
 			//第一個玩家
-			if (PhotonNetwork .player.Equals (PlayerList [0]))
+			if (PhotonNetwork.player.Equals (PlayerList [0]))
 			{
 				//儲存黨派顏色和選擇的角色
 				hash = new Hashtable();
@@ -230,20 +330,28 @@ namespace Com.MyProject.MyPassTheBuckGame
 				LeftArrowBt1.GetComponent< Button> ().interactable = false;
 				RightArrowBt1.GetComponent< Button> ().interactable = false;
 				//更改panel顏色
-				GameObject.Find ("RoleChoosePanel2-4" ).GetComponent<Image> ().color = Color.blue;
-				GameObject.Find ("RoleChoosePanel1-4" ).GetComponent<Image> ().color = Color.white;
-				//更改玩家姓名顏色
-				Player1NameTx.GetComponent<Text> ().color = Color.blue;
-				Player2NameTx.GetComponent<Text> ().color = Color.white;
+				GameObject.Find ("RoleChoosePanel2-4" ).GetComponent<Image> ().sprite = BluePanel;
+				GameObject.Find ("RoleChoosePanel1-4" ).GetComponent<Image> ().sprite = GrayPanel;
 				//更改玩家選角訊息與顏色
-				Player1MessageTx.text = "你選擇了:"+PlayerList [0].CustomProperties["Role"]+"\n"+"請等待對方選擇...";
 				Player2MessageTx.text = "選擇中...";
-				Player1MessageTx.GetComponent<Text> ().color = Color.black;
 				Player2MessageTx.GetComponent<Text> ().color = Color.white;
+
+				GameObject.Find ("AfterChoosePanel1-4" ).GetComponent<Image> ().color = new Color32(221,221,221,255);
+				AfterChooseImg1.GetComponent<Image> ().color = new Color32(255,255,255,255);
+				AfterChooseTx1.GetComponent<Text> ().text = "你選擇了"+"\n"+PlayerList [0].CustomProperties ["Role"];
+
+				if (PlayerList [0].CustomProperties ["Role"].Equals("馬英八")) 
+				{
+					AfterChooseImg1.GetComponent<Image> ().sprite = BlueRole1;
+				} 
+				else if (PlayerList [0].CustomProperties ["Role"].Equals("蘇貞昌")) 
+				{
+					AfterChooseImg1.GetComponent<Image> ().sprite = BlueRole2;
+				}
 
 			} 
 			//第二個玩家
-			else if (PhotonNetwork.player.Equals (PlayerList [ 1]))
+			else if (PhotonNetwork.player.Equals (PlayerList [1]))
 			{
 				//儲存黨派顏色和選擇的角色
 				hash = new Hashtable();
@@ -253,10 +361,9 @@ namespace Com.MyProject.MyPassTheBuckGame
 				hash.Add ("Role",RoleChoosed);
 				PlayerList [1].SetCustomProperties(hash);
 
-		
 			} 
 			//第三個玩家
-			else if (PhotonNetwork.player.Equals (PlayerList [ 2]))
+			else if (PhotonNetwork.player.Equals (PlayerList [2]))
 			{
 				//儲存黨派顏色和選擇的角色
 				hash = new Hashtable();
@@ -271,16 +378,24 @@ namespace Com.MyProject.MyPassTheBuckGame
 				LeftArrowBt1.GetComponent< Button> ().interactable = false;
 				RightArrowBt1.GetComponent< Button> ().interactable = false;
 				//更改panel顏色
-				GameObject.Find ("RoleChoosePanel2-4" ).GetComponent<Image> ().color = Color.green;
-				GameObject.Find ("RoleChoosePanel1-4" ).GetComponent<Image> ().color = Color.white;
-				//更改玩家姓名顏色
-				Player1NameTx.GetComponent<Text> ().color = Color.green;
-				Player2NameTx.GetComponent<Text> ().color = Color.white;
+				GameObject.Find ("RoleChoosePanel2-4" ).GetComponent<Image> ().sprite = BluePanel;
+				GameObject.Find ("RoleChoosePanel1-4" ).GetComponent<Image> ().sprite = GrayPanel;
 				//更改玩家選角訊息與顏色
-				Player1MessageTx.text = "你選擇了:"+PlayerList [2].CustomProperties["Role"]+"\n"+"請等待對方選擇...";
 				Player2MessageTx.text = "選擇中...";
-				Player1MessageTx.GetComponent<Text> ().color = Color.black;
 				Player2MessageTx.GetComponent<Text> ().color = Color.white;
+
+				GameObject.Find ("AfterChoosePanel1-4" ).GetComponent<Image> ().color = new Color32(221,221,221,255);
+				AfterChooseImg1.GetComponent<Image> ().color = new Color32(255,255,255,255);
+				AfterChooseTx1.GetComponent<Text> ().text = "你選擇了"+"\n"+PlayerList [2].CustomProperties ["Role"];
+
+				if (PlayerList [2].CustomProperties ["Role"].Equals("蔡中文")) 
+				{
+					AfterChooseImg1.GetComponent<Image> ().sprite = GreenRole1;
+				} 
+				else if (PlayerList [2].CustomProperties ["Role"].Equals("陳橘")) 
+				{
+					AfterChooseImg1.GetComponent<Image> ().sprite = GreenRole2;
+				}
 
 			}
 			//第四個玩家
@@ -328,7 +443,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 		public string GetPlayer2RoleChoosed()
 		{
-			Sprite P2RIMG = GameObject.Find ("RoleImg2-4" ).GetComponent<Image> ().sprite;
+			Sprite P2RIMG = GameObject.Find ("RoleImg2-4").GetComponent<Image> ().sprite;
 
 			if (P2RIMG == GreenRole1)
 			{
@@ -417,10 +532,44 @@ namespace Com.MyProject.MyPassTheBuckGame
 		//按右箭頭
 		public void ClickRightArrow2()
 		{
+			PlayerList = new List<PhotonPlayer>();
+			PlayerList.Add (PhotonNetwork.masterClient);
+			PlayerList.Add (PhotonNetwork.masterClient.GetNext());
+			PlayerList.Add (PhotonNetwork.masterClient.GetNext().GetNext());
+			PlayerList.Add (PhotonNetwork.masterClient.GetNext().GetNext().GetNext());
+
 			Player2RoleImg = GameObject.Find ("RoleImg2-4").GetComponent<Image> ();
 			Player2RoleInfoTx = GameObject.Find ("CharecterInfoTx2-4").GetComponent<Text> ();
 
+			if (PhotonNetwork.player.Equals (PlayerList [1]))
+			{
+				if(PlayerList [0].CustomProperties ["Role"].Equals("馬英八"))
+				{
+						Player2RoleImg.sprite = BlueRole2;
+						Player2RoleInfoTx.text = BlueRole2Intro;
+				}
+				else if(PlayerList [0].CustomProperties ["Role"].Equals("蘇貞昌"))
+				{
+					Player2RoleImg.sprite = BlueRole1;
+					Player2RoleInfoTx.text = BlueRole1Intro;
+				}
+			} 
 
+			if (PhotonNetwork.player.Equals (PlayerList [3]))
+			{
+				if(PlayerList [2].CustomProperties ["Role"].Equals("蔡中文"))
+				{
+					Player2RoleImg.sprite = GreenRole2;
+					Player2RoleInfoTx.text = GreenRole2Intro;
+				}
+				else if(PlayerList [2].CustomProperties ["Role"].Equals("陳橘"))
+				{
+					Player2RoleImg.sprite = GreenRole1;
+					Player2RoleInfoTx.text = GreenRole1Intro;
+				}
+			} 
+
+			/*
 			if (Player2RoleImg.sprite == BlueRole1) 
 			{
 				Player2RoleImg.sprite = BlueRole2;
@@ -440,17 +589,51 @@ namespace Com.MyProject.MyPassTheBuckGame
 			{
 				Player2RoleImg.sprite = GreenRole1;
 				Player2RoleInfoTx.text =GreenRole1Intro;
-			}
+			}  */
 
 		}
 
 		//按左箭頭
 		public void ClickLeftArrow2()
 		{
+			PlayerList = new List<PhotonPlayer>();
+			PlayerList.Add (PhotonNetwork.masterClient);
+			PlayerList.Add (PhotonNetwork.masterClient.GetNext());
+			PlayerList.Add (PhotonNetwork.masterClient.GetNext().GetNext());
+			PlayerList.Add (PhotonNetwork.masterClient.GetNext().GetNext().GetNext());
 
 			Player2RoleImg = GameObject.Find ("RoleImg2-4").GetComponent<Image> ();
 			Player2RoleInfoTx = GameObject.Find ("CharecterInfoTx2-4").GetComponent<Text> ();
 
+			if (PhotonNetwork.player.Equals (PlayerList [1]))
+			{
+				if(PlayerList [0].CustomProperties ["Role"].Equals("馬英八"))
+				{
+					Player2RoleImg.sprite = BlueRole2;
+					Player2RoleInfoTx.text = BlueRole2Intro;
+				}
+				else if(PlayerList [0].CustomProperties ["Role"].Equals("蘇貞昌"))
+				{
+					Player2RoleImg.sprite = BlueRole1;
+					Player2RoleInfoTx.text = BlueRole1Intro;
+				}
+			} 
+
+			if (PhotonNetwork.player.Equals (PlayerList [3]))
+			{
+				if(PlayerList [2].CustomProperties ["Role"].Equals("蔡中文"))
+				{
+					Player2RoleImg.sprite = GreenRole2;
+					Player2RoleInfoTx.text = GreenRole2Intro;
+				}
+				else if(PlayerList [2].CustomProperties ["Role"].Equals("陳橘"))
+				{
+					Player2RoleImg.sprite = GreenRole1;
+					Player2RoleInfoTx.text = GreenRole1Intro;
+				}
+			} 
+
+			/*
 			if (Player2RoleImg.sprite == BlueRole1) 
 			{
 				Player2RoleImg.sprite = BlueRole2;
@@ -470,8 +653,14 @@ namespace Com.MyProject.MyPassTheBuckGame
 			{
 				Player2RoleImg.sprite = GreenRole1;
 				Player2RoleInfoTx.text =GreenRole1Intro;
-			}
+			} */
 
+		}
+
+		public override void OnDisconnectedFromPhoton()
+		{
+			Debug.LogWarning("DemoAnimator/Launcher: OnDisconnectedFromPhoton() was called by PUN");
+			SceneManager.LoadScene("Main");
 		}
 
 
