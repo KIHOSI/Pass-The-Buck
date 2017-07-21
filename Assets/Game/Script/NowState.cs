@@ -25,22 +25,34 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     public GameObject portalLeft; //左portal
     public GameObject portalUp; //上portal
     public GameObject portalRight; //右portal
-    public byte playerCode; //此player的code，用以判斷要不要接收訊息
+    byte playerCode; //此player的code，用以判斷要不要接收訊息
 
     PhotonPlayer player; //玩家
     string playerName; //玩家名稱
-    string partyColor; //玩家政黨顏色
+    string partyColor = "green"; //玩家政黨顏色(預設:綠)
     string role; //玩家選擇角色
     public Image PlayerCharacterImg; //角色圖片
-
+    
     //人物圖片
     public Sprite role1;
     public Sprite role2;
     public Sprite role3;
     public Sprite role4;
 
+    //Edge、Portal
+    public GameObject edge1_blue;
+    public GameObject edge2_blue;
+    public GameObject edge1_green;
+    public GameObject edge2_green;
+    public GameObject portalLeft_blue;
+    public GameObject portalUp_blue;
+    public GameObject portalRight_blue;
+    public GameObject portalLeft_green;
+    public GameObject portalUp_green;
+    public GameObject portalRight_green;
+
     // Use this for initialization
-    void Start () {
+    void Start() {
         //取得玩家list(同樣順序)
         PlayerList.Add(PhotonNetwork.masterClient); //1
         PlayerList.Add(PhotonNetwork.masterClient.GetNext()); //2
@@ -52,12 +64,11 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         hash.Add("Money", playerMoney); //把變數存進剛剛宣告的hash裡
         PhotonNetwork.player.SetCustomProperties(hash);
 
-
         player = PhotonNetwork.player; //取得現在的player
         playerName = PhotonNetwork.playerName; //取得現在的player的暱稱
         partyColor = (string)PhotonNetwork.player.CustomProperties["PartyColor"]; //政黨顏色
         role = (string)PhotonNetwork.player.CustomProperties["Role"]; //政黨角色
-        
+
         //根據角色換角色圖片
         if (role == "蔡中文")
         {
@@ -76,47 +87,88 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             PlayerCharacterImg.GetComponent<Image>().sprite = role4;
         }
 
-        //判斷是哪個player
-        if(player == PlayerList[0]) //Player1
+        //根據政黨顏色換配置(Edge)
+        if (partyColor == "green") //綠黨
         {
-            playerCode = (byte) 0;
-            portalLeft.GetComponent<SendBall>().setTarget(PlayerList[1],1); //Player2放左
-            portalUp.GetComponent<SendBall>().setTarget(PlayerList[2], 2); //Player3放上
-            portalRight.GetComponent<SendBall>().setTarget(PlayerList[3], 3); //Player4放右
+            edge1_blue.SetActive(false);
+            edge2_blue.SetActive(false);
         }
-        else if(player == PlayerList[1]) //Player2
+        else if (partyColor == "blue") //藍黨
         {
-            playerCode = (byte) 1;
-            portalLeft.GetComponent<SendBall>().setTarget(PlayerList[2], 2); //Player3放左
-            portalUp.GetComponent<SendBall>().setTarget(PlayerList[3], 3); //Player4放上
-            portalRight.GetComponent<SendBall>().setTarget(PlayerList[0], 0); //Player1放右
-        }
-        else if(player == PlayerList[2]) //Player3
-        {
-            playerCode = (byte) 2;
-            portalLeft.GetComponent<SendBall>().setTarget(PlayerList[3], 3); //Player4放左
-            portalUp.GetComponent<SendBall>().setTarget(PlayerList[0], 0); //Player1放上
-            portalLeft.GetComponent<SendBall>().setTarget(PlayerList[1], 1); //Player2放右
-        }
-        else if(player == PlayerList[3]) //Player4
-        {
-            playerCode = (byte) 3;
-            portalLeft.GetComponent<SendBall>().setTarget(PlayerList[0], 0); //Player1放左
-            portalUp.GetComponent<SendBall>().setTarget(PlayerList[1], 1); //Player2放上
-            portalRight.GetComponent<SendBall>().setTarget(PlayerList[2], 2); //Player3放右
-        }
-
-        
-
-
-        if (PhotonNetwork.isMasterClient) //若是Master Client，遊戲開始
-        {
-            InvokeRepeating("timeCountDown", 1, 1); //每隔一秒執行一次 
+            edge1_green.SetActive(false);
+            edge2_green.SetActive(false);
         }
 
         //UI
         moneyText.text = "金錢 x" + money;
         bombObj.SetActive(false); //一開始炸彈不顯示
+
+        //判斷是哪個player
+        if (player == PlayerList[0]) //Player1
+        {
+            playerCode = (byte)0; //setTarget，1.傳送的目標，2.目標code，3.玩家自己的playerCode
+            portalLeft.GetComponent<SendBall>().setTarget(PlayerList[1], 1,playerCode); //Player2放左
+            portalUp.GetComponent<SendBall>().setTarget(PlayerList[2], 2, playerCode); //Player3放上
+            portalRight.GetComponent<SendBall>().setTarget(PlayerList[3], 3, playerCode); //Player4放右
+        }
+        else if (player == PlayerList[1]) //Player2
+        {
+            playerCode = (byte)1;
+            portalLeft.GetComponent<SendBall>().setTarget(PlayerList[2], 2, playerCode); //Player3放左
+            portalUp.GetComponent<SendBall>().setTarget(PlayerList[3], 3, playerCode); //Player4放上
+            portalRight.GetComponent<SendBall>().setTarget(PlayerList[0], 0, playerCode); //Player1放右
+        }
+        else if (player == PlayerList[2]) //Player3
+        {
+            playerCode = (byte)2;
+            portalLeft.GetComponent<SendBall>().setTarget(PlayerList[3], 3, playerCode); //Player4放左
+            portalUp.GetComponent<SendBall>().setTarget(PlayerList[0], 0, playerCode); //Player1放上
+            portalLeft.GetComponent<SendBall>().setTarget(PlayerList[1], 1, playerCode); //Player2放右
+        }
+        else if (player == PlayerList[3]) //Player4
+        {
+            playerCode = (byte)3;
+            portalLeft.GetComponent<SendBall>().setTarget(PlayerList[0], 0, playerCode); //Player1放左
+            portalUp.GetComponent<SendBall>().setTarget(PlayerList[1], 1, playerCode); //Player2放上
+            portalRight.GetComponent<SendBall>().setTarget(PlayerList[2], 2, playerCode); //Player3放右
+        }
+
+
+        //根據政黨顏色換配置(Edge)
+        //左
+        if ((string)portalLeft.GetComponent<SendBall>().targetPlayer.CustomProperties["PartyColor"] == "green")
+        {
+            portalLeft_blue.SetActive(false);
+        }
+        else
+        {
+            portalLeft_green.SetActive(false);
+        }
+        //上
+        if ((string)portalUp.GetComponent<SendBall>().targetPlayer.CustomProperties["PartyColor"] == "green")
+        {
+            portalUp_blue.SetActive(false);
+        }
+        else
+        {
+            portalUp_green.SetActive(false);
+        }
+        //右
+        if ((string)portalRight.GetComponent<SendBall>().targetPlayer.CustomProperties["PartyColor"] == "green")
+        {
+            portalRight_blue.SetActive(false);
+        }
+        else
+        {
+            portalRight_green.SetActive(false);
+        }
+
+            if (PhotonNetwork.isMasterClient) //若是Master Client，遊戲開始
+        {
+            InvokeRepeating("timeCountDown", 1, 1); //每隔一秒執行一次 
+        }
+
+        
                                   
     }
 	

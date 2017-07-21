@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 
 public class SendBall : MonoBehaviour {
-    PhotonPlayer targetPlayer; //該Portal要傳送的目標玩家
+    public PhotonPlayer targetPlayer; //該Portal要傳送的目標玩家
     byte playerCode; //此player的code，用以判斷要不要接收訊息
     byte targetCode; //判斷要傳給誰
     GameObject[] ballArray; //球
@@ -16,11 +16,11 @@ public class SendBall : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        ballArray = GetComponent<GenerateBall>().BallArray; //取得所有球的列表
-        itemArray = GetComponent<GenerateBall>().ItemArray; //取得道具列表
+        ballArray = GameObject.Find("左邊框").GetComponent<GenerateBall>().BallArray; //取得所有球的列表
+        itemArray = GameObject.Find("左邊框").GetComponent<GenerateBall>().ItemArray; //取得道具列表
         allArray = ballArray.Concat(itemArray).ToArray(); // 合併陣列
         //photonView = PhotonView.Get(this); //得到此photonView
-        playerCode = GetComponent<NowState>().playerCode; //得到playercode
+        //playerCode = GetComponent<NowState>().playerCode; //得到playercode
         //Instantiate(ballArray[0], Vector2.zero, Quaternion.identity); //生成一顆炸彈(從中間生出)
     }
 	
@@ -67,10 +67,11 @@ public class SendBall : MonoBehaviour {
         PhotonNetwork.RaiseEvent(targetCode, triggerName, reliable, null); //使用RaiseEvent傳送，不需要PhotonView
     }
 
-    public void setTarget(PhotonPlayer player,int index) //設定目標玩家和其陣列位置，以判斷傳送
+    public void setTarget(PhotonPlayer player,int index,byte pCode) //設定目標玩家和其陣列位置，以判斷傳送；最後為設定此玩家的playerCode，用以判斷是不是回傳給自己
     {
         targetPlayer = player;
         targetCode = (byte)index;
+        playerCode = pCode;
     }
 
     /*//加⼊⼀個RPC⽅法，以⽤作傳值及接收⽤

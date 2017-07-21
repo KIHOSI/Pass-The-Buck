@@ -28,11 +28,11 @@ public class Raycaster : MonoBehaviour {
 
         if (touch.phase == TouchPhase.Began) // Began: 觸控點開始移動時
         {
-            if(hit == false) //沒擊到東西
+            if (hit == false) //沒擊到東西
             {
                 return;
             }
-            else if(hit.collider.name == "Edge1" || hit.collider.name == "Edge2") //不能移動背景物
+            else if (hit.collider.name == "Edge1(藍)" || hit.collider.name == "Edge2(藍)" || hit.collider.name == "Edge1(綠)" || hit.collider.name == "Edge2(綠)") //不能移動背景物
             {
                 return;
             }
