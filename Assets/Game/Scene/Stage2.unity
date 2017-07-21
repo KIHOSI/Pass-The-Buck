@@ -277,7 +277,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
 --- !u!4 &23443475
 Transform:
   m_ObjectHideFlags: 0
@@ -388,7 +387,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
 --- !u!1 &92231783
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,7 +456,6 @@ SpriteRenderer:
   m_Size: {x: 5.3, y: 2.14}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
 --- !u!1 &109844454
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,7 +926,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
 --- !u!114 &644994503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -941,6 +937,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70f6609e04f2fdd4d864ff8a081e7acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allArray:
+  - {fileID: 1247629577660092, guid: 8fb5df84566e33f4cbcc0a2511de8e37, type: 2}
+  - {fileID: 1978916991188750, guid: 3d90717c51c223c4eadbd3ff9031c2ba, type: 2}
+  - {fileID: 1351087307199690, guid: 64774662610283b4597e707c1fcda975, type: 2}
+  - {fileID: 1283109369194606, guid: 1d55c2ce67263424795ba5e5a5aab0ea, type: 2}
+  - {fileID: 1277578286475622, guid: 09d49b3068c8769469c3d5ca87e80a17, type: 2}
+  - {fileID: 1747319549175886, guid: f3a54535b0aa2de42bc262e619c2b9ff, type: 2}
+  - {fileID: 1255222071050568, guid: 70093062021577243bb158b40c6d1937, type: 2}
+  - {fileID: 1775970814399372, guid: 19abac45e46066b4199ae2dfc468a310, type: 2}
+  - {fileID: 1765187116463052, guid: 02c5e2657c01f7643bdb0fc2c71a054b, type: 2}
+  - {fileID: 1231691690448264, guid: cf8b0c34b39e87e478325fdf05ecbc3f, type: 2}
+  - {fileID: 1115240259332214, guid: 889be4d7bca68bf4984133ff0b13a520, type: 2}
 --- !u!1 &681168227
 GameObject:
   m_ObjectHideFlags: 0
@@ -1031,7 +1039,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
 --- !u!4 &681168231
 Transform:
   m_ObjectHideFlags: 0
@@ -1438,7 +1445,6 @@ SpriteRenderer:
   m_Size: {x: 2.67, y: 5.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
 --- !u!1 &908095875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1551,7 +1557,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
 --- !u!4 &973616877
 Transform:
   m_ObjectHideFlags: 0
@@ -1818,7 +1823,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
 --- !u!4 &1094222560
 Transform:
   m_ObjectHideFlags: 0
@@ -1920,7 +1924,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
 --- !u!114 &1112582731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1932,6 +1935,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70f6609e04f2fdd4d864ff8a081e7acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allArray:
+  - {fileID: 1247629577660092, guid: 8fb5df84566e33f4cbcc0a2511de8e37, type: 2}
+  - {fileID: 1978916991188750, guid: 3d90717c51c223c4eadbd3ff9031c2ba, type: 2}
+  - {fileID: 1351087307199690, guid: 64774662610283b4597e707c1fcda975, type: 2}
+  - {fileID: 1283109369194606, guid: 1d55c2ce67263424795ba5e5a5aab0ea, type: 2}
+  - {fileID: 1277578286475622, guid: 09d49b3068c8769469c3d5ca87e80a17, type: 2}
+  - {fileID: 1747319549175886, guid: f3a54535b0aa2de42bc262e619c2b9ff, type: 2}
+  - {fileID: 1255222071050568, guid: 70093062021577243bb158b40c6d1937, type: 2}
+  - {fileID: 1775970814399372, guid: 19abac45e46066b4199ae2dfc468a310, type: 2}
+  - {fileID: 1765187116463052, guid: 02c5e2657c01f7643bdb0fc2c71a054b, type: 2}
+  - {fileID: 1231691690448264, guid: cf8b0c34b39e87e478325fdf05ecbc3f, type: 2}
+  - {fileID: 1115240259332214, guid: 889be4d7bca68bf4984133ff0b13a520, type: 2}
 --- !u!1 &1183681562
 GameObject:
   m_ObjectHideFlags: 0
@@ -2081,7 +2096,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
 --- !u!4 &1248547126
 Transform:
   m_ObjectHideFlags: 0
@@ -2195,7 +2209,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
 --- !u!114 &1284004404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2207,6 +2220,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70f6609e04f2fdd4d864ff8a081e7acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allArray:
+  - {fileID: 1247629577660092, guid: 8fb5df84566e33f4cbcc0a2511de8e37, type: 2}
+  - {fileID: 1978916991188750, guid: 3d90717c51c223c4eadbd3ff9031c2ba, type: 2}
+  - {fileID: 1351087307199690, guid: 64774662610283b4597e707c1fcda975, type: 2}
+  - {fileID: 1283109369194606, guid: 1d55c2ce67263424795ba5e5a5aab0ea, type: 2}
+  - {fileID: 1277578286475622, guid: 09d49b3068c8769469c3d5ca87e80a17, type: 2}
+  - {fileID: 1747319549175886, guid: f3a54535b0aa2de42bc262e619c2b9ff, type: 2}
+  - {fileID: 1255222071050568, guid: 70093062021577243bb158b40c6d1937, type: 2}
+  - {fileID: 1775970814399372, guid: 19abac45e46066b4199ae2dfc468a310, type: 2}
+  - {fileID: 1765187116463052, guid: 02c5e2657c01f7643bdb0fc2c71a054b, type: 2}
+  - {fileID: 1231691690448264, guid: cf8b0c34b39e87e478325fdf05ecbc3f, type: 2}
+  - {fileID: 1115240259332214, guid: 889be4d7bca68bf4984133ff0b13a520, type: 2}
 --- !u!1 &1298528247
 GameObject:
   m_ObjectHideFlags: 0
@@ -2327,7 +2352,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
 --- !u!4 &1315635755
 Transform:
   m_ObjectHideFlags: 0
@@ -2398,7 +2422,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
 --- !u!4 &1340534221
 Transform:
   m_ObjectHideFlags: 0
@@ -2486,7 +2509,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
 --- !u!4 &1346675718
 Transform:
   m_ObjectHideFlags: 0
@@ -2558,7 +2580,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
 --- !u!4 &1362841662
 Transform:
   m_ObjectHideFlags: 0
@@ -2589,7 +2610,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 6.2149963, y: 66}
+  m_AnchoredPosition: {x: 6.214966, y: 66}
   m_SizeDelta: {x: 198, y: 53}
   m_Pivot: {x: 1, y: 0}
 --- !u!1 &1471914127
@@ -2740,7 +2761,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
 --- !u!4 &1526711079
 Transform:
   m_ObjectHideFlags: 0
@@ -2849,7 +2869,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
 --- !u!1 &1619635793
 GameObject:
   m_ObjectHideFlags: 0
@@ -2907,7 +2926,6 @@ SpriteRenderer:
   m_Size: {x: 1.84, y: 1.65}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
 --- !u!4 &1619635795
 Transform:
   m_ObjectHideFlags: 0
@@ -3046,7 +3064,6 @@ SpriteRenderer:
   m_Size: {x: 1.85, y: 1.6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
 --- !u!4 &1794871854
 Transform:
   m_ObjectHideFlags: 0
@@ -3334,7 +3351,6 @@ SpriteRenderer:
   m_Size: {x: 2.68, y: 5.29}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
 --- !u!1 &2007934107
 GameObject:
   m_ObjectHideFlags: 0
@@ -3392,7 +3408,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
 --- !u!4 &2007934110
 Transform:
   m_ObjectHideFlags: 0

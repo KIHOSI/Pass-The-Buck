@@ -55,10 +55,11 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     void Start() {
         //取得玩家list(同樣順序)
         PlayerList = new List<PhotonPlayer>();
+		PlayerList = new List<PhotonPlayer>();
         PlayerList.Add(PhotonNetwork.masterClient); //1
         PlayerList.Add(PhotonNetwork.masterClient.GetNext()); //2
         PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext()); //3
-        PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext()); //4
+		PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext().GetNext()); //4
 
         hash = new Hashtable();
         playerMoney = money;
@@ -70,6 +71,13 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         partyColor = (string)PhotonNetwork.player.CustomProperties["PartyColor"]; //政黨顏色
         role = (string)PhotonNetwork.player.CustomProperties["Role"]; //政黨角色
 
+
+		Debug.Log ("NowPlayerColor:"+partyColor);
+		
+
+		Debug.Log ("PlayerList2 color:"+PlayerList[2].CustomProperties["PartyColor"]);
+		Debug.Log ("PlayerList3 color:"+PlayerList[3].CustomProperties["PartyColor"]);
+	
         //根據角色換角色圖片
         if (role == "蔡中文")
         {
@@ -104,9 +112,13 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         moneyText.text = "金錢 x" + money;
         bombObj.SetActive(false); //一開始炸彈不顯示
 
+		Debug.Log ("Player:"+player.NickName);
+		Debug.Log ("PlayerList[3]:"+PlayerList[0].NickName);
+
         //判斷是哪個player
         if (player == PlayerList[0]) //Player1
         {
+			Debug.Log ("if1");
             playerCode = (byte)0; //setTarget，1.傳送的目標，2.目標code，3.玩家自己的playerCode
             portalLeft.GetComponent<SendBall>().setTarget(PlayerList[1], 1,playerCode); //Player2放左
             portalUp.GetComponent<SendBall>().setTarget(PlayerList[2], 2, playerCode); //Player3放上
@@ -114,6 +126,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         }
         else if (player == PlayerList[1]) //Player2
         {
+			Debug.Log ("if2");
             playerCode = (byte)1;
             portalLeft.GetComponent<SendBall>().setTarget(PlayerList[2], 2, playerCode); //Player3放左
             portalUp.GetComponent<SendBall>().setTarget(PlayerList[3], 3, playerCode); //Player4放上
@@ -121,19 +134,23 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         }
         else if (player == PlayerList[2]) //Player3
         {
+			Debug.Log ("if3");
             playerCode = (byte)2;
             portalLeft.GetComponent<SendBall>().setTarget(PlayerList[3], 3, playerCode); //Player4放左
             portalUp.GetComponent<SendBall>().setTarget(PlayerList[0], 0, playerCode); //Player1放上
-            portalLeft.GetComponent<SendBall>().setTarget(PlayerList[1], 1, playerCode); //Player2放右
+            portalRight.GetComponent<SendBall>().setTarget(PlayerList[1], 1, playerCode); //Player2放右
         }
         else if (player == PlayerList[3]) //Player4
         {
+			Debug.Log ("if4");
             playerCode = (byte)3;
             portalLeft.GetComponent<SendBall>().setTarget(PlayerList[0], 0, playerCode); //Player1放左
             portalUp.GetComponent<SendBall>().setTarget(PlayerList[1], 1, playerCode); //Player2放上
             portalRight.GetComponent<SendBall>().setTarget(PlayerList[2], 2, playerCode); //Player3放右
         }
 
+		Debug.Log ("Green portalLeft targetPlayer:" + portalLeft.GetComponent<SendBall> ().targetPlayer.NickName);
+		Debug.Log ("partyColor:" + (string)portalLeft.GetComponent<SendBall> ().targetPlayer.CustomProperties ["PartyColor"]);
 
         //根據政黨顏色換配置(Edge)
         //左
@@ -164,10 +181,11 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             portalRight_green.SetActive(false);
         }
 
-        //    if (PhotonNetwork.isMasterClient) //若是Master Client，遊戲開始
+        //if (PhotonNetwork.isMasterClient) //若是Master Client，遊戲開始
         //{
             InvokeRepeating("timeCountDown", 1, 1); //每隔一秒執行一次 
         //}
+        
 
         
                                   
@@ -201,6 +219,13 @@ public class NowState : MonoBehaviour { //控制連線及背景component
 
     void OnTriggerEnter2D(Collider2D collision) //進洞
     {
+		//取得玩家list(同樣順序)
+		PlayerList = new List<PhotonPlayer>();
+		PlayerList.Add(PhotonNetwork.masterClient); //1
+		PlayerList.Add(PhotonNetwork.masterClient.GetNext()); //2
+		PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext()); //3
+		PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext().GetNext()); //4
+
         if (collision.gameObject.CompareTag("黑球"))
         { //黑球
             money -= 10;
