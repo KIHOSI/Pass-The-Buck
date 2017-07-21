@@ -12,11 +12,8 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public Sprite role1;
 		public Sprite role2;
 		public Sprite role3;
+		public Sprite FrameImg;
 
-		public Image PlayerCharecter1Img;
-		public Image PlayerCharecter2Img;
-		public Image PlayerCharecter3Img;
-		public Image PlayerCharecter4Img;
 		public Text PlayerTx1;
 	    public Text PlayerTx2;
 		public Text PlayerTx3;
@@ -33,14 +30,12 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public string RoomName;
 		public List<Text> PlayerTextList;
 		public List<Image> FrameImgList;
-		public List<Image> PlayerCharecterImgList;
 
 		public void Start () 
 		{
 
 			PlayerTextList = new List<Text>(){PlayerTx1,PlayerTx2,PlayerTx3,PlayerTx4};
 			FrameImgList = new List<Image>(){Frame1Img,Frame2Img,Frame3Img,Frame4Img};
-			PlayerCharecterImgList = new List<Image>(){PlayerCharecter1Img,PlayerCharecter2Img,PlayerCharecter3Img,PlayerCharecter4Img};
 
 			if (!PhotonNetwork.isMasterClient) 
 			{
@@ -85,16 +80,19 @@ namespace Com.MyProject.MyPassTheBuckGame
 		//更新玩家名單
 		public void UpdatePlayerList (List<Text> PTL,List<Image> FIL)
 		{
+			
 			int j = 0;
 			for (int i = 0; i < PhotonNetwork.playerList.Length; i++) 
 			{
 
 				if (PhotonNetwork.playerList [i].IsMasterClient) {
 					PTL [i].text = PhotonNetwork.playerList [i].NickName + "(房主)";
-					FIL [i].color = Color.black;
+					FIL [i].color = new Color32(255,255,225,255);
+					FIL [i].GetComponent<Image> ().sprite = FrameImg;
 				} else {
 					PTL [i].text = PhotonNetwork.playerList [i].NickName;
-					FIL [i].color = Color.black;
+					FIL [i].color = new Color32(255,255,225,255);
+					FIL [i].GetComponent<Image> ().sprite = FrameImg;
 				}
 
 				j++;
@@ -183,13 +181,18 @@ namespace Com.MyProject.MyPassTheBuckGame
 			
 		public override void OnMasterClientSwitched(PhotonPlayer player)
 		{
-			onTips("房主已退出房間");
 			Leave ();
 		}
 			
 		public override void OnLeftRoom()
 		{
 			SceneManager.LoadScene("Create&Join Room");
+		}
+
+		public override void OnDisconnectedFromPhoton()
+		{
+			Debug.LogWarning("DemoAnimator/Launcher: OnDisconnectedFromPhoton() was called by PUN");
+			SceneManager.LoadScene("Main");
 		}
 
 		#endregion

@@ -31,6 +31,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 		void Start()
 		{
 			DontDestroyOnLoad(audio);
+			//Debug.Log (GameObject.Find ("Toast").transform.localPosition);
 		}
 			
 
@@ -90,10 +91,10 @@ namespace Com.MyProject.MyPassTheBuckGame
 			SceneManager.LoadScene ("ChracterChoosingForJoin");
 		}
 
-		//載入個人背包頁面
-		public void LoadBagScene()
+		//載入角色介紹頁面
+		public void LoadRoleIntroScene()
 		{
-			SceneManager.LoadScene("Bag");
+			SceneManager.LoadScene("RoleIntro");
 		}
 
 		//載入故事頁面
@@ -108,6 +109,12 @@ namespace Com.MyProject.MyPassTheBuckGame
 			SceneManager.LoadScene("Setting");
 		}
 
+		//載入遊戲說明頁面
+		public void LoadGameIntroScene()
+		{
+			SceneManager.LoadScene("GameIntro");
+		}
+
 		public void onTips(string tips_str)
 		{
 			GameObject parent = GameObject.Find ("Canvas");
@@ -115,7 +122,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 			GameObject m_toast = GameObject.Instantiate(toast, parent.transform, false);  // 对象初始化
 			//m_toast.transform.parent = parent.transform;            //　附加到父节点（需要显示的UI下）
 			m_toast.transform.localScale = Vector3.one;
-			m_toast.transform.localPosition = new Vector3 (3.3f, -234.3f, 0.0f);
+			m_toast.transform.localPosition = new Vector3 (15.5f, -113.0f, 0.0f);
 			Text tips = m_toast.GetComponent<Text>();
 			tips.text = tips_str;
 			Destroy(m_toast, 3); // 2秒后 销毁
@@ -139,8 +146,10 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public override void OnDisconnectedFromPhoton()
 		{
 			Debug.LogWarning("DemoAnimator/Launcher: OnDisconnectedFromPhoton() was called by PUN");
-			onTips("與伺服器失去連線");
-			SceneManager.LoadScene("Main");
+			GameObject.Find ("PlayBt").GetComponent<Image> ().color = Color.white;
+			GameObject.Find ("PlayBt").GetComponentInChildren<Text>().text = "開始遊戲";
+			GameObject.Find ("PlayBt").GetComponentInChildren<Text> ().fontSize = 20;
+			onTips("無法與伺服器連線"+"\n"+"請確認是否已開啟連線");
 		}
 
 

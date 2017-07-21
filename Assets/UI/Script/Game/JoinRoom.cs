@@ -71,6 +71,12 @@ namespace Com.MyProject.MyPassTheBuckGame
 			Debug.Log("加入房間失敗，請重新輸入");
 		}
 
+		public override void OnDisconnectedFromPhoton()
+		{
+			Debug.LogWarning("DemoAnimator/Launcher: OnDisconnectedFromPhoton() was called by PUN");
+			SceneManager.LoadScene("Main");
+		}
+
 		#endregion
 
 
