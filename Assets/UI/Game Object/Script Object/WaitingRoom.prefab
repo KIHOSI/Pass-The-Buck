@@ -54,10 +54,7 @@ MonoBehaviour:
   role1: {fileID: 21300000, guid: feae5854373c37f4b9742e0443135930, type: 3}
   role2: {fileID: 21300000, guid: 001e6dbc11a468b428f8d9c0757e517d, type: 3}
   role3: {fileID: 21300000, guid: 0ca4e77bbace8924f9622d772f85d001, type: 3}
-  PlayerCharecter1Img: {fileID: 0}
-  PlayerCharecter2Img: {fileID: 0}
-  PlayerCharecter3Img: {fileID: 0}
-  PlayerCharecter4Img: {fileID: 0}
+  FrameImg: {fileID: 21300000, guid: e556ffece05beba4c8fb46e25b469790, type: 3}
   PlayerTx1: {fileID: 0}
   PlayerTx2: {fileID: 0}
   PlayerTx3: {fileID: 0}
@@ -68,7 +65,7 @@ MonoBehaviour:
   Frame4Img: {fileID: 0}
   StartBt: {fileID: 114883849893465574, guid: 51bcaabd773fa3f4e829f9ed296b0bb8, type: 2}
   LeaveBt: {fileID: 114393201810542686, guid: fc9ff722d83d44742ae5bc08ffb90fc2, type: 2}
+  ClickStart: 
   RoomName: 
   PlayerTextList: []
   FrameImgList: []
-  PlayerCharecterImgList: []

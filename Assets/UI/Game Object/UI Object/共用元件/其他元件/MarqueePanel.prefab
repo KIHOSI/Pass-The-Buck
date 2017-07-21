@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u6B61\u8FCE\u4F86\u5230\u653F\u5BA2\u8E22\u76AE\u7403~~"
+  m_Text: "\u8207\u4F3A\u670D\u5668\u9023\u7DDA\u4E2D..\u8ACB\u7A0D\u5F8C"
 --- !u!114 &114299853593761154
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -145,7 +145,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -102.333694, y: 0.0000052451996}
+  m_AnchoredPosition: {x: -9326.649, y: 0.0000052451996}
   m_SizeDelta: {x: 256, y: 38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224191692054627140
