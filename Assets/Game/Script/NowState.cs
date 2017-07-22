@@ -70,13 +70,6 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         playerName = PhotonNetwork.playerName; //取得現在的player的暱稱
         partyColor = (string)PhotonNetwork.player.CustomProperties["PartyColor"]; //政黨顏色
         role = (string)PhotonNetwork.player.CustomProperties["Role"]; //政黨角色
-
-
-		Debug.Log ("NowPlayerColor:"+partyColor);
-		
-
-		Debug.Log ("PlayerList2 color:"+PlayerList[2].CustomProperties["PartyColor"]);
-		Debug.Log ("PlayerList3 color:"+PlayerList[3].CustomProperties["PartyColor"]);
 	
         //根據角色換角色圖片
         if (role == "蔡中文")
@@ -112,45 +105,35 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         moneyText.text = "金錢 x" + money;
         bombObj.SetActive(false); //一開始炸彈不顯示
 
-		Debug.Log ("Player:"+player.NickName);
-		Debug.Log ("PlayerList[3]:"+PlayerList[0].NickName);
-
         //判斷是哪個player
         if (player == PlayerList[0]) //Player1
         {
-			Debug.Log ("if1");
             playerCode = (byte)0; //setTarget，1.傳送的目標，2.目標code，3.玩家自己的playerCode
-            portalLeft.GetComponent<SendBall>().setTarget(PlayerList[1], 1,playerCode); //Player2放左
-            portalUp.GetComponent<SendBall>().setTarget(PlayerList[2], 2, playerCode); //Player3放上
-            portalRight.GetComponent<SendBall>().setTarget(PlayerList[3], 3, playerCode); //Player4放右
+            portalLeft.GetComponent<SendBall>().setTarget(PlayerList[1], 1,playerCode,0); //Player2放左
+            portalUp.GetComponent<SendBall>().setTarget(PlayerList[2], 2, playerCode,1); //Player3放上
+            portalRight.GetComponent<SendBall>().setTarget(PlayerList[3], 3, playerCode,2); //Player4放右
         }
         else if (player == PlayerList[1]) //Player2
         {
-			Debug.Log ("if2");
             playerCode = (byte)1;
-            portalLeft.GetComponent<SendBall>().setTarget(PlayerList[2], 2, playerCode); //Player3放左
-            portalUp.GetComponent<SendBall>().setTarget(PlayerList[3], 3, playerCode); //Player4放上
-            portalRight.GetComponent<SendBall>().setTarget(PlayerList[0], 0, playerCode); //Player1放右
+            portalLeft.GetComponent<SendBall>().setTarget(PlayerList[2], 2, playerCode,0); //Player3放左
+            portalUp.GetComponent<SendBall>().setTarget(PlayerList[3], 3, playerCode,1); //Player4放上
+            portalRight.GetComponent<SendBall>().setTarget(PlayerList[0], 0, playerCode,2); //Player1放右
         }
         else if (player == PlayerList[2]) //Player3
         {
-			Debug.Log ("if3");
             playerCode = (byte)2;
-            portalLeft.GetComponent<SendBall>().setTarget(PlayerList[3], 3, playerCode); //Player4放左
-            portalUp.GetComponent<SendBall>().setTarget(PlayerList[0], 0, playerCode); //Player1放上
-            portalRight.GetComponent<SendBall>().setTarget(PlayerList[1], 1, playerCode); //Player2放右
+            portalLeft.GetComponent<SendBall>().setTarget(PlayerList[3], 3, playerCode,0); //Player4放左
+            portalUp.GetComponent<SendBall>().setTarget(PlayerList[0], 0, playerCode,1); //Player1放上
+            portalRight.GetComponent<SendBall>().setTarget(PlayerList[1], 1, playerCode,2); //Player2放右
         }
         else if (player == PlayerList[3]) //Player4
         {
-			Debug.Log ("if4");
             playerCode = (byte)3;
-            portalLeft.GetComponent<SendBall>().setTarget(PlayerList[0], 0, playerCode); //Player1放左
-            portalUp.GetComponent<SendBall>().setTarget(PlayerList[1], 1, playerCode); //Player2放上
-            portalRight.GetComponent<SendBall>().setTarget(PlayerList[2], 2, playerCode); //Player3放右
+            portalLeft.GetComponent<SendBall>().setTarget(PlayerList[0], 0, playerCode,0); //Player1放左
+            portalUp.GetComponent<SendBall>().setTarget(PlayerList[1], 1, playerCode,1); //Player2放上
+            portalRight.GetComponent<SendBall>().setTarget(PlayerList[2], 2, playerCode,2); //Player3放右
         }
-
-		Debug.Log ("Green portalLeft targetPlayer:" + portalLeft.GetComponent<SendBall> ().targetPlayer.NickName);
-		Debug.Log ("partyColor:" + (string)portalLeft.GetComponent<SendBall> ().targetPlayer.CustomProperties ["PartyColor"]);
 
         //根據政黨顏色換配置(Edge)
         //左
@@ -193,20 +176,6 @@ public class NowState : MonoBehaviour { //控制連線及背景component
 	
 	// Update is called once per frame
 	void Update () {
-
-        //先將每個玩家的錢取出來
-        /*for(int i =0; i< PlayerList.Count; i++)
-        {
-            if(player == PlayerList[i])
-            {
-                playerMoney[i] = money;
-            }
-        }*/
-
-       
-
-        
-
 
         if (time == 0) //如果時間歸零，就停止減少
         {

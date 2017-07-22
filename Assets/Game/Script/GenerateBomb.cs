@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class GenerateBomb : MonoBehaviour {
     public GameObject Bomb; //要生成的炸彈
-    //public Button btn;
 
     // Use this for initialization
     void Start() {

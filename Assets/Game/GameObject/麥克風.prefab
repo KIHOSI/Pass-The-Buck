@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 58816461504958974}
   - component: {fileID: 50240563366984728}
   - component: {fileID: 114669603022469604}
-  - component: {fileID: 114920612269660988}
   m_Layer: 0
   m_Name: "\u9EA5\u514B\u98A8"
   m_TagString: "\u9EA5\u514B\u98A8"
@@ -90,34 +89,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c6538e77e9fd94d8ad8f6667420d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballRigidbody2D: {fileID: 50240563366984728}
   speedX: 1
   speedY: 1
---- !u!114 &114920612269660988
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1231691690448264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ownerId: 0
-  group: 0
-  OwnerShipWasTransfered: 0
-  prefixBackup: -1
-  synchronization: 0
-  onSerializeTransformOption: 3
-  onSerializeRigidBodyOption: 2
-  ownershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 0}
-  ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
-  currentMasterID: -1
-  isRuntimeInstantiated: 0
 --- !u!212 &212947846655384882
 SpriteRenderer:
   m_ObjectHideFlags: 1

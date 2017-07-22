@@ -6,15 +6,8 @@ public class Raycaster : MonoBehaviour {
     Rigidbody2D ballRigidbody2D; //存被打到的物件
     GameObject gb;
     Touch touch;
-
-    // private Vector3 prePos; //滑鼠點選位置
     private Vector3 clickPos; //滑鼠最初點選的位置
     private float speedDelta = 1.0f;
-
-    // Use this for initialization
-    void Start () {
-        
-    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -42,12 +35,6 @@ public class Raycaster : MonoBehaviour {
             ballRigidbody2D.velocity = Vector2.zero; //把該物件的速度設為0
             clickPos = Input.GetTouch(0).position; //是Vector2 不知道有沒有影響
         }
-       /* if (Input.GetTouch(0).phase == TouchPhase.Moved || Input.GetTouch(0).phase == TouchPhase.Stationary) //Moved: 觸控點移動中
-        {
-            prePos = Input.GetTouch(0).position;
-            //TowardTarget();
-
-        }*/
         if (touch.phase == TouchPhase.Ended) // Ended: 手指離開螢幕
         {
             //在滑鼠放開的時候，根據一開始按球的點與放球的點距離，來做速度
@@ -65,13 +52,4 @@ public class Raycaster : MonoBehaviour {
             ballRigidbody2D = null;
         }
     }
-
-    /*//朝著滑鼠的方式移動
-    Vector3 v;
-    float maxSpeed = 5.0f;
-    void TowardTarget()
-    {
-        Vector3 targetPos = Camera.main.ScreenToWorldPoint(new Vector3(prePos.x, prePos.y, 10f)); //Assume your camera's z is -10 and cube's z is 0
-        gb.transform.position = Vector3.SmoothDamp(gb.transform.position, targetPos, ref v, speedDelta, maxSpeed);
-    }*/
 }
