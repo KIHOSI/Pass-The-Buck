@@ -20,7 +20,7 @@ public class BallMove : MonoBehaviour
     }
     void Update()
     {
-        if (transform.position.x > 3.3 || transform.position.x < -3.3 || transform.position.y > 5 || transform.position.y < -5)
+        if (transform.position.x > 3 || transform.position.x < -3.1 || transform.position.y > 5 || transform.position.y < -5)
         {
             //如果物件的X值大於或小於3，物件的Y值大於5或小於5就將物件刪除(差不多離開手機範圍)
             Destroy(gameObject);

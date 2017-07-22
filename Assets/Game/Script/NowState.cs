@@ -12,13 +12,18 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     public Text timeText; //顯示時間
     int blueMoney; //藍黨總錢
     int greenMoney; //綠黨總錢
-    //int[] playerMoney; //player的錢
     public Hashtable hash; //宣告HashTable變數
     public int playerMoney; //宣告要新增的變數名稱:
     public Text postText; //告示牌
 
     //炸彈
     public GameObject bombObj;
+
+    //報紙
+    public GameObject paperMenu; //報紙選單
+    public GameObject paper; //報紙
+    public Image paperPersonImage; //報紙上的人物
+    public Button[] paperPersonMenu; //人物陣列
 
     //連線
     List<PhotonPlayer> PlayerList; //儲存玩家(要照順序)
@@ -55,11 +60,11 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     void Start() {
         //取得玩家list(同樣順序)
         PlayerList = new List<PhotonPlayer>();
-		PlayerList = new List<PhotonPlayer>();
+        PlayerList = new List<PhotonPlayer>();
         PlayerList.Add(PhotonNetwork.masterClient); //1
         PlayerList.Add(PhotonNetwork.masterClient.GetNext()); //2
         PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext()); //3
-		PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext().GetNext()); //4
+        PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext().GetNext()); //4
 
         hash = new Hashtable();
         playerMoney = money;
@@ -70,7 +75,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         playerName = PhotonNetwork.playerName; //取得現在的player的暱稱
         partyColor = (string)PhotonNetwork.player.CustomProperties["PartyColor"]; //政黨顏色
         role = (string)PhotonNetwork.player.CustomProperties["Role"]; //政黨角色
-	
+
         //根據角色換角色圖片
         if (role == "蔡中文")
         {
@@ -103,36 +108,36 @@ public class NowState : MonoBehaviour { //控制連線及背景component
 
         //UI
         moneyText.text = "金錢 x" + money;
-        bombObj.SetActive(false); //一開始炸彈不顯示
+        //bombObj.SetActive(false); //一開始炸彈不顯示
 
         //判斷是哪個player
         if (player == PlayerList[0]) //Player1
         {
             playerCode = (byte)0; //setTarget，1.傳送的目標，2.目標code，3.玩家自己的playerCode
-            portalLeft.GetComponent<SendBall>().setTarget(PlayerList[1], 1,playerCode,0); //Player2放左
-            portalUp.GetComponent<SendBall>().setTarget(PlayerList[2], 2, playerCode,1); //Player3放上
-            portalRight.GetComponent<SendBall>().setTarget(PlayerList[3], 3, playerCode,2); //Player4放右
+            portalLeft.GetComponent<SendBall>().setTarget(PlayerList[1], 1, playerCode, 0); //Player2放左
+            portalUp.GetComponent<SendBall>().setTarget(PlayerList[2], 2, playerCode, 1); //Player3放上
+            portalRight.GetComponent<SendBall>().setTarget(PlayerList[3], 3, playerCode, 2); //Player4放右
         }
         else if (player == PlayerList[1]) //Player2
         {
             playerCode = (byte)1;
-            portalLeft.GetComponent<SendBall>().setTarget(PlayerList[2], 2, playerCode,0); //Player3放左
-            portalUp.GetComponent<SendBall>().setTarget(PlayerList[3], 3, playerCode,1); //Player4放上
-            portalRight.GetComponent<SendBall>().setTarget(PlayerList[0], 0, playerCode,2); //Player1放右
+            portalLeft.GetComponent<SendBall>().setTarget(PlayerList[2], 2, playerCode, 0); //Player3放左
+            portalUp.GetComponent<SendBall>().setTarget(PlayerList[3], 3, playerCode, 1); //Player4放上
+            portalRight.GetComponent<SendBall>().setTarget(PlayerList[0], 0, playerCode, 2); //Player1放右
         }
         else if (player == PlayerList[2]) //Player3
         {
             playerCode = (byte)2;
-            portalLeft.GetComponent<SendBall>().setTarget(PlayerList[3], 3, playerCode,0); //Player4放左
-            portalUp.GetComponent<SendBall>().setTarget(PlayerList[0], 0, playerCode,1); //Player1放上
-            portalRight.GetComponent<SendBall>().setTarget(PlayerList[1], 1, playerCode,2); //Player2放右
+            portalLeft.GetComponent<SendBall>().setTarget(PlayerList[3], 3, playerCode, 0); //Player4放左
+            portalUp.GetComponent<SendBall>().setTarget(PlayerList[0], 0, playerCode, 1); //Player1放上
+            portalRight.GetComponent<SendBall>().setTarget(PlayerList[1], 1, playerCode, 2); //Player2放右
         }
         else if (player == PlayerList[3]) //Player4
         {
             playerCode = (byte)3;
-            portalLeft.GetComponent<SendBall>().setTarget(PlayerList[0], 0, playerCode,0); //Player1放左
-            portalUp.GetComponent<SendBall>().setTarget(PlayerList[1], 1, playerCode,1); //Player2放上
-            portalRight.GetComponent<SendBall>().setTarget(PlayerList[2], 2, playerCode,2); //Player3放右
+            portalLeft.GetComponent<SendBall>().setTarget(PlayerList[0], 0, playerCode, 0); //Player1放左
+            portalUp.GetComponent<SendBall>().setTarget(PlayerList[1], 1, playerCode, 1); //Player2放上
+            portalRight.GetComponent<SendBall>().setTarget(PlayerList[2], 2, playerCode, 2); //Player3放右
         }
 
         //根據政黨顏色換配置(Edge)
@@ -164,9 +169,14 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             portalRight_green.SetActive(false);
         }
 
+        //讓遊戲時間一致
         //if (PhotonNetwork.isMasterClient) //若是Master Client，遊戲開始
         //{
-            InvokeRepeating("timeCountDown", 1, 1); //每隔一秒執行一次 
+        InvokeRepeating("timeCountDown", 1, 1); //每隔一秒執行一次 
+        //}
+        //else //其他client純顯示
+        //{
+        //    timeText.text = "" + time;
         //}
         
 
@@ -188,12 +198,12 @@ public class NowState : MonoBehaviour { //控制連線及背景component
 
     void OnTriggerEnter2D(Collider2D collision) //進洞
     {
-		//取得玩家list(同樣順序)
-		PlayerList = new List<PhotonPlayer>();
-		PlayerList.Add(PhotonNetwork.masterClient); //1
-		PlayerList.Add(PhotonNetwork.masterClient.GetNext()); //2
-		PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext()); //3
-		PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext().GetNext()); //4
+        /*//取得玩家list(同樣順序)
+        PlayerList = new List<PhotonPlayer>();
+        PlayerList.Add(PhotonNetwork.masterClient); //1
+        PlayerList.Add(PhotonNetwork.masterClient.GetNext()); //2
+        PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext()); //3
+        PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext().GetNext()); //4*/
 
         if (collision.gameObject.CompareTag("黑球"))
         { //黑球
@@ -210,7 +220,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
                 blueMoney -= 10;
             }*/
         }
-        if(collision.gameObject.CompareTag("金球"))
+        if (collision.gameObject.CompareTag("金球"))
         { //金球
             money += 10;
             moneyText.text = "金錢 x" + money;
@@ -227,12 +237,23 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         }
         if (collision.gameObject.CompareTag("炸彈"))
         { //炸彈，扣50%的錢
-            if(money > 0)
+            if (money > 0)
             {
                 money = money / 2;
                 moneyText.text = "金錢 x" + money;
             }
         }
+        if (collision.gameObject.CompareTag("報紙")) //報紙效果:出現選單可以陷害人，指定敵對黨某人有誹聞(意涵:爆料)，被指定者扣錢20%
+        {
+            //先顯示報紙選單
+            paperMenu.SetActive(true);
+
+        }
+        if (collision.gameObject.CompareTag("麥克風"))
+        {
+
+        }
+
 
         //每次變動，將hash裡的金錢更新
         PhotonNetwork.player.SetCustomProperties(hash);
