@@ -39,7 +39,7 @@ public class SendBall : MonoBehaviour {
                                 allGameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(2, -2);
                                 break;
                             case 1: //上
-                                allGameObject = Instantiate(allArray[i], transform.position + new Vector3(0, 1, 0), new Quaternion(0, 0, 0, 0)); //產生球，並對球指定速度；position+x橫向位置，是為了讓球傳送完不馬上觸發onTriggerEnter2D
+                                allGameObject = Instantiate(allArray[i], transform.position + new Vector3(0, -1, 0), new Quaternion(0, 0, 0, 0)); //產生球，並對球指定速度；position+x橫向位置，是為了讓球傳送完不馬上觸發onTriggerEnter2D
                                 allGameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -2);
                                 break;
                             case 2: //右

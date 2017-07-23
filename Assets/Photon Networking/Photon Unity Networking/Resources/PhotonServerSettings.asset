@@ -44,4 +44,13 @@ MonoBehaviour:
   - TaggedPlayer
   - Leave
   - SetBall
+  - SendMessage
+  - SetPaperOn
+  - SetPaperOn1
+  - SetPaperOn2
+  - SetPaperOn3
+  - paperEffect1
+  - paperEffect2
+  - paperEffect3
+  - paperEffect4
   DisableAutoOpenWizard: 1

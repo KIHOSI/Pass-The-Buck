@@ -15,8 +15,11 @@ public class GeneratePortalBall : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        //Invoke("generateBall", 3);
-        InvokeRepeating("generateBall", 5, 5); //第一個為方法名、第二個為「第一次調用」要隔幾秒、第三個則是「每隔幾秒調用一次」
+        //if (PhotonNetwork.isMasterClient)
+       // {
+            InvokeRepeating("generateBall", 5, 5); //第一個為方法名、第二個為「第一次調用」要隔幾秒、第三個則是「每隔幾秒調用一次」
+        //}
+        
         //InvokeRepeating("generateItem", 10, 10);
     }
 

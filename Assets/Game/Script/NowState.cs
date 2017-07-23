@@ -22,7 +22,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     //報紙
     public GameObject paperMenu; //報紙選單
     public GameObject paper; //報紙
-    public Image paperPersonImage; //報紙上的人物
+    public Sprite[] paperPersonImage; //報紙上的人物
     public Button[] paperPersonMenu; //人物陣列
 
     //連線
@@ -60,7 +60,6 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     void Start() {
         //取得玩家list(同樣順序)
         PlayerList = new List<PhotonPlayer>();
-        PlayerList = new List<PhotonPlayer>();
         PlayerList.Add(PhotonNetwork.masterClient); //1
         PlayerList.Add(PhotonNetwork.masterClient.GetNext()); //2
         PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext()); //3
@@ -93,6 +92,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         {
             PlayerCharacterImg.GetComponent<Image>().sprite = role4;
         }
+
 
         //根據政黨顏色換配置(Edge)
         if (partyColor == "green") //綠黨
@@ -247,7 +247,10 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         {
             //先顯示報紙選單
             paperMenu.SetActive(true);
-
+            //paper.SetActive(true);
+            //GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg>().ChangePersonImg3();
+            //GameObject.Find("報紙選單").SetActive(false);
+            
         }
         if (collision.gameObject.CompareTag("麥克風"))
         {
@@ -291,5 +294,152 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     {
         timeText.text = "" + time;
         time--;
+    }
+
+    public void sendPaperMessage(int pIndex) //點選按鈕才可以傳送開啟報紙的資訊
+    {
+        //playerIndex = pIndex; //設定圖片為誰，0:player1、1:player2、2:player3
+        PlayerList = new List<PhotonPlayer>();
+        PlayerList.Add(PhotonNetwork.masterClient); //1
+        PlayerList.Add(PhotonNetwork.masterClient.GetNext()); //2
+        PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext()); //3
+        PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext().GetNext()); //4
+
+        PhotonView photonView = PhotonView.Get(this);
+        switch (pIndex) //判斷是改哪個玩家的圖片
+        {
+            case 0: //第一個人
+                photonView.RPC("SetPaperOn1", PhotonTargets.Others);
+                if (player == PlayerList[0]) //Player1
+                {
+                    photonView.RPC("paperEffect2",PhotonTargets.Others); //扣Player2
+                }
+                else if(player == PlayerList[1]) //Player2
+                {
+                    photonView.RPC("paperEffect3", PhotonTargets.Others); //扣Player3
+                }
+                else if(player == PlayerList[2]) //Player3
+                {
+                    photonView.RPC("paperEffect4", PhotonTargets.Others); //扣Player4
+                }
+                else if(player == PlayerList[3]) //Player4
+                {
+                    photonView.RPC("paperEffect1", PhotonTargets.Others); //扣Player1
+                }
+                break;
+            case 1: //第二個人
+                photonView.RPC("SetPaperOn2", PhotonTargets.Others);
+                if (player == PlayerList[0]) //Player1
+                {
+                    photonView.RPC("paperEffect3", PhotonTargets.Others); //扣Player3
+                }
+                else if (player == PlayerList[1]) //Player2
+                {
+                    photonView.RPC("paperEffect4", PhotonTargets.Others); //扣Player4
+                }
+                else if (player == PlayerList[2]) //Player3
+                {
+                    photonView.RPC("paperEffect1", PhotonTargets.Others); //扣Player1
+                }
+                else if (player == PlayerList[3]) //Player4
+                {
+                    photonView.RPC("paperEffect2", PhotonTargets.Others); //扣Player2
+                }
+                break;
+            case 2: //第三個人
+                photonView.RPC("SetPaperOn3", PhotonTargets.Others);
+                if (player == PlayerList[0]) //Player1
+                {
+                    photonView.RPC("paperEffect4", PhotonTargets.Others); //扣Player4
+                }
+                else if (player == PlayerList[1]) //Player2
+                {
+                    photonView.RPC("paperEffect1", PhotonTargets.Others); //扣Player1
+                }
+                else if (player == PlayerList[2]) //Player3
+                {
+                    photonView.RPC("paperEffect2", PhotonTargets.Others); //扣Player2
+                }
+                else if (player == PlayerList[3]) //Player4
+                {
+                    photonView.RPC("paperEffect3", PhotonTargets.Others); //扣Player3
+                }
+                break;
+        }
+    }
+
+    //傳遞報紙訊息
+    [PunRPC]
+    void SetPaperOn1() //Player1
+    {
+        paper.SetActive(true); //開啟報紙
+        GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg>().ChangePersonImg1();
+    }
+
+    [PunRPC]
+    void SetPaperOn2() //Player2
+    {
+        paper.SetActive(true); //開啟報紙
+        GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg>().ChangePersonImg2();
+    }
+
+    [PunRPC]
+    void SetPaperOn3() //Player3
+    {
+        paper.SetActive(true); //開啟報紙
+        GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg>().ChangePersonImg3();
+    }
+
+    //報紙效果:指定人並扣錢
+    [PunRPC]
+    void paperEffect1() //扣Player1的錢
+    {
+        if(player == PhotonNetwork.masterClient) //如果是Player1才執行
+        {
+            if(money > 0)
+            {
+                money = (int)(money * 0.8);
+                moneyText.text = "金錢 x" + money;
+            }
+        }
+    }
+
+    [PunRPC]
+    void paperEffect2() //扣Player2的錢
+    {
+        if (player == PhotonNetwork.masterClient.GetNext()) //如果是Player2才執行
+        {
+            if(money > 0)
+            {
+                money = (int)(money * 0.8);
+                moneyText.text = "金錢 x" + money;
+            }
+        }
+    }
+
+    [PunRPC]
+    void paperEffect3() //扣Player3的錢
+    {
+        if (player == PhotonNetwork.masterClient.GetNext().GetNext()) //如果是Player3才執行
+        {
+            if(money > 0)
+            {
+                money = (int)(money * 0.8);
+                moneyText.text = "金錢 x" + money;
+            }
+        }
+    }
+
+    [PunRPC]
+    void paperEffect4() //扣Player4的錢
+    {
+        if (player == PhotonNetwork.masterClient.GetNext().GetNext().GetNext()) //如果是Player4才執行
+        {
+            if(money > 0)
+            {
+                money = (int)(money * 0.8);
+                moneyText.text = "金錢 x" + money;
+            }
+        }
     }
 }
