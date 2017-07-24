@@ -195,6 +195,17 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 910524967}
+        m_MethodName: getPaperImg
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 910524967}
         m_MethodName: ChangePersonImg3
         m_Mode: 1
         m_Arguments:
@@ -213,7 +224,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 2
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 2
           m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -578,6 +589,17 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 910524967}
+        m_MethodName: getPaperImg
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 910524967}
         m_MethodName: ChangePersonImg1
         m_Mode: 1
         m_Arguments:
@@ -596,7 +618,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 0
           m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -753,6 +775,17 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 910524967}
+        m_MethodName: getPaperImg
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 910524967}
         m_MethodName: ChangePersonImg2
         m_Mode: 1
         m_Arguments:
@@ -771,7 +804,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 1
           m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -1649,9 +1682,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paperPersonImage:
-  - {fileID: 21300000, guid: 87ee63c13834c1d4aa682c44bb51666c, type: 3}
-  - {fileID: 21300000, guid: 6f4414e086bcfe343bf296f2a5a526ea, type: 3}
-  - {fileID: 21300000, guid: f4442d0228f32c440b3c549c805ce15a, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &973616874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1763,9 +1796,9 @@ MonoBehaviour:
   paperMenu: {fileID: 838894730}
   paper: {fileID: 569580611}
   paperPersonImage:
-  - {fileID: 21300000, guid: 87ee63c13834c1d4aa682c44bb51666c, type: 3}
-  - {fileID: 21300000, guid: 6f4414e086bcfe343bf296f2a5a526ea, type: 3}
-  - {fileID: 21300000, guid: f4442d0228f32c440b3c549c805ce15a, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   paperPersonMenu:
   - {fileID: 164559137}
   - {fileID: 282149278}
@@ -1774,10 +1807,10 @@ MonoBehaviour:
   portalUp: {fileID: 1284004400}
   portalRight: {fileID: 644994499}
   PlayerCharacterImg: {fileID: 1855596363}
-  role1: {fileID: 21300000, guid: feae5854373c37f4b9742e0443135930, type: 3}
-  role2: {fileID: 21300000, guid: 001e6dbc11a468b428f8d9c0757e517d, type: 3}
-  role3: {fileID: 21300000, guid: 0ca4e77bbace8924f9622d772f85d001, type: 3}
-  role4: {fileID: 21300000, guid: d8d4c702a1b832248805fc5d00f2d6d7, type: 3}
+  role1: {fileID: 21300000, guid: b2cf9d74fb79d3244b605f12ce0c1596, type: 3}
+  role2: {fileID: 21300000, guid: 7576d9cf669d5ce478e27acdb1271d76, type: 3}
+  role3: {fileID: 21300000, guid: 77871f56aea2e9540bc84a3669c8b3d4, type: 3}
+  role4: {fileID: 21300000, guid: 8572d488d6aa1854a8fda7a119812ecc, type: 3}
   edge1_blue: {fileID: 80232495}
   edge2_blue: {fileID: 1574370590}
   edge1_green: {fileID: 1794871852}
@@ -3780,14 +3813,14 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1977004258
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1977004257}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02937f2dc9aee3444bb6301d91849a4e, type: 3}
   m_Name: 
@@ -3858,7 +3891,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1977004257}
   m_LocalRotation: {x: -0, y: -0, z: 0.71008813, w: 0.7041129}
-  m_LocalPosition: {x: 0.05, y: 5.83, z: -0.06}
+  m_LocalPosition: {x: -0.04, y: 4.73, z: -0.06}
   m_LocalScale: {x: 0.9704055, y: 1.1740392, z: 0.9704055}
   m_Children: []
   m_Father: {fileID: 0}
