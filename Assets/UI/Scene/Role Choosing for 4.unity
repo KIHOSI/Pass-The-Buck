@@ -518,7 +518,7 @@ Prefab:
     - target: {fileID: 114083553133689344, guid: 03f2ea7d8c23833408c05a5ab9a0c181,
         type: 2}
       propertyPath: m_Text
-      value: "\u5927\u540D:\u6D2A\u54BB\u67F1\n\u6027\u5225:\u5973\n\u9EE8\u7C4D:\u4E0D\u9732\u9EE8\n"
+      value: "\u3010\u6D2A\u54BB\u67F1\u3011\n\n\u795D\u9444\u70B7\u4F47\u99D0\u52A9\u86C0\u67F1\u3002"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03f2ea7d8c23833408c05a5ab9a0c181, type: 2}
@@ -1112,10 +1112,10 @@ MonoBehaviour:
   LeftArrowBt2: {fileID: 1499765125}
   RightArrowBt2: {fileID: 473311380}
   PartyColor: 
-  BlueRole1Intro: "\u5927\u540D:\u6D2A\u54BB\u67F1\n\u6027\u5225:\u5973\n\u9EE8\u7C4D:\u4E0D\u9732\u9EE8"
-  BlueRole2Intro: "\u5927\u540D:\u5433\u6307\u7662\n\u6027\u5225:\u7537\n\u9EE8\u7C4D:\u4E0D\u9732\u9EE8"
-  GreenRole1Intro: "\u5927\u540D:\u8521\u4E2D\u805E\n\u6027\u5225:\u5973\n\u9EE8\u7C4D:\u683Cring\u9EE8\n\u8208\u8DA3:\u990A\u8C93"
-  GreenRole2Intro: "\u5927\u540D:\u8607\u560E\u62F3\n\u6027\u5225:\u7537\n\u9EE8\u7C4D:\u683Cring\u9EE8"
+  BlueRole1Intro: " \u3010\u6D2A\u54BB\u67F1\u3011 \n\n\u795D\u9444\u70B7\u4F47\u99D0\u52A9\u86C0\u67F1\u3002"
+  BlueRole2Intro: " \u3010\u5433\u6307\u7662\u3011 \n\n\u66FE\u70BA\u7E23\u9577\u7684\u65B0\u79D1\u7ACB\u59D4\u3002"
+  GreenRole1Intro: " \u3010\u8521\u4E2D\u805E\u3011 \n\n\u5929\u5929\u6012\u7684\u65B0\u4E0A\u4EFB\u7E3D\u7406\u3002"
+  GreenRole2Intro: " \u3010\u8607\u560E\u62F3\u3011 \n\n\u65B0\u6D41\u6D3E\u6B0A\u6CD5\u7684\u9662\u9577\u3002"
 --- !u!114 &831535832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1434,7 +1434,7 @@ Prefab:
     - target: {fileID: 224775630188087564, guid: d49c5ed990ee9104794c512c415758c9,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 98
+      value: 109.499954
       objectReference: {fileID: 0}
     - target: {fileID: 224775630188087564, guid: d49c5ed990ee9104794c512c415758c9,
         type: 2}
@@ -1444,7 +1444,7 @@ Prefab:
     - target: {fileID: 224775630188087564, guid: d49c5ed990ee9104794c512c415758c9,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 10.125
+      value: -9.999992
       objectReference: {fileID: 0}
     - target: {fileID: 224586363309214700, guid: d49c5ed990ee9104794c512c415758c9,
         type: 2}
@@ -1507,7 +1507,7 @@ Prefab:
     - target: {fileID: 114456420145771320, guid: d49c5ed990ee9104794c512c415758c9,
         type: 2}
       propertyPath: m_Text
-      value: "\u5927\u540D:\u6D2A\u54BB\u67F1\n\u6027\u5225:\u5973\n\u9EE8\u7C4D:\u4E0D\u9732\u9EE8\n"
+      value: "\u3010\u6D2A\u54BB\u67F1\u3011\n\n\u795D\u9444\u70B7\u4F47\u99D0\u52A9\u86C0\u67F1\u3002\n"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d49c5ed990ee9104794c512c415758c9, type: 2}

@@ -21,22 +21,29 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public Sprite loadingImg9;
 		public Image loadingBackground;
 		public int index;
+		public int count;
 
 
 		void Start () 
 		{
 			loadingImgArray = new Sprite[] {loadingImg1,loadingImg2,loadingImg3,
 				                            loadingImg4,loadingImg5,loadingImg6,loadingImg7,loadingImg8,loadingImg9};
-			index = 0;
+			index = 1;
+			count = 0;
 		}
 
 		void FixedUpdate ()
 		{
-			loadingBackground.GetComponent<Image>().sprite = loadingImgArray [index];
-			index++;
+			count++;
 
-			if (index == 8) 
+			if (count == 40) 
 			{
+				
+				loadingBackground.GetComponent<Image>().sprite = loadingImgArray [index];
+				index++;
+				count = 0;
+
+				if(index == 8)
 				if (PhotonNetwork.isMasterClient) 
 				{
 					PhotonNetwork.LoadLevel ("Stage2");
