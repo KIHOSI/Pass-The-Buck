@@ -36,14 +36,20 @@ EditorBuildSettings:
     path: Assets/UI/Scene/Waiting Room.unity
     guid: 185430e37910a8349a67275e9297a24b
   - enabled: 1
+    path: Assets/UI/Scene/RoleIntro.unity
+    guid: e6b0627ca79b7824db69deb645226148
+  - enabled: 1
+    path: Assets/UI/Scene/GameIntro.unity
+    guid: 7f41a58a2e34efc448fd51b20e253c50
+  - enabled: 1
     path: Assets/UI/Scene/Story.unity
     guid: 5be3ff0ba9c42404bb952675682619a1
-  - enabled: 1
-    path: Assets/UI/Scene/Setting.unity
-    guid: 0398f86f83952f645a3ba08a59e1784a
   - enabled: 0
     path: Assets/Game/Scene/Stage1.unity
     guid: f0d0e4622bb7f664788a8bbc9f99f8d2
+  - enabled: 1
+    path: Assets/UI/Scene/Setting.unity
+    guid: 0398f86f83952f645a3ba08a59e1784a
   - enabled: 1
     path: Assets/Game/Scene/Stage2.unity
     guid: c68cbaf4b57ad6047ba64c82819e6393
@@ -53,3 +59,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/UI/Scene/Role Choosing for 4.unity
     guid: df2afa094a632c0479ca17a40412964e
+  - enabled: 1
+    path: Assets/UI/Scene/Loading Animator.unity
+    guid: 35efb4f1122b7e54ab6d848236c33e0e
