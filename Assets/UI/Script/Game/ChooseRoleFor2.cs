@@ -37,10 +37,10 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public string RoleChoosed;
 		public Hashtable hash;
 
-		public string BlueRole1Intro = "大名:馬英八"+"\n"+"性別:男"+"\n"+"所屬黨籍:不露黨"+"\n"+"興趣:跑步"+"\n";
-		public string BlueRole2Intro = "大名:蘇貞昌"+"\n"+"性別:男"+"\n"+"所屬黨籍:不露黨"+"\n"+"興趣:喊口號"+"\n"+"口頭禪:衝衝衝";
-		public string GreenRole1Intro = "大名:蔡中文"+"\n"+"性別:女"+"\n"+"所屬黨籍:格ring黨"+"\n"+"興趣:養貓"+"\n";
-		public string GreenRole2Intro = "大名:陳橘"+"\n"+"性別:女"+"\n"+"所屬黨籍:格ring黨"+"\n"+"興趣:?"+"\n";
+		public string BlueRole1Intro = "大名:洪咻柱"+"\n"+"性別:女"+"\n"+"黨籍:不露黨";
+		public string BlueRole2Intro = "大名:吳指癢"+"\n"+"性別:男"+"\n"+"黨籍:不露黨";
+		public string GreenRole1Intro = "大名:蔡中聞"+"\n"+"性別:女"+"\n"+"黨籍:格ring黨"+"\n"+"興趣:養貓";
+		public string GreenRole2Intro = "大名:蘇嘎拳"+"\n"+"性別:男"+"\n"+"黨籍:格ring黨";
 
 
 		void Start () 
@@ -91,11 +91,11 @@ namespace Com.MyProject.MyPassTheBuckGame
 					AfterChooseImg1.GetComponent<Image> ().color = new Color32(255,255,255,255);
 					AfterChooseTx1.GetComponent<Text> ().text = "選擇了"+"\n'"+PlayerList [0].CustomProperties ["Role"]+"'";
 
-					if (PlayerList [0].CustomProperties ["Role"].Equals("馬英八")) 
+					if (PlayerList [0].CustomProperties ["Role"].Equals("洪咻柱")) 
 					{
 						AfterChooseImg1.GetComponent<Image> ().sprite = BlueRole1;
 					} 
-					else if (PlayerList [0].CustomProperties ["Role"].Equals("蘇貞昌")) 
+					else if (PlayerList [0].CustomProperties ["Role"].Equals("吳指癢")) 
 					{
 						AfterChooseImg1.GetComponent<Image> ().sprite = BlueRole2;
 					}
@@ -106,7 +106,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 			{
 				if (PhotonNetwork.isMasterClient) 
 				{
-					PhotonNetwork.LoadLevel ("Stage2");
+					PhotonNetwork.LoadLevel ("Loading Animator");
 				}
 			}
 		}
@@ -154,11 +154,11 @@ namespace Com.MyProject.MyPassTheBuckGame
 				AfterChooseImg1.GetComponent<Image> ().color = new Color32(255,255,255,255);
 				AfterChooseTx1.GetComponent<Text> ().text = "你選擇了"+"\n"+PlayerList [0].CustomProperties ["Role"];
 
-				if (PlayerList [0].CustomProperties ["Role"].Equals("馬英八")) 
+				if (PlayerList [0].CustomProperties ["Role"].Equals("洪咻柱")) 
 				{
 					AfterChooseImg1.GetComponent<Image> ().sprite = BlueRole1;
 				} 
-				else if (PlayerList [0].CustomProperties ["Role"].Equals("蘇貞昌")) 
+				else if (PlayerList [0].CustomProperties ["Role"].Equals("吳指癢")) 
 				{
 					AfterChooseImg1.GetComponent<Image> ().sprite = BlueRole2;
 				}
@@ -188,11 +188,11 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 			if (P1RIMG == BlueRole1)
 			{
-				return "馬英八";
+				return "洪咻柱";
 			} 
 			else if (P1RIMG == BlueRole2) 
 			{
-				return "蘇貞昌";
+				return "吳指癢";
 			} 
 			else 
 			{
@@ -207,11 +207,11 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 			if (P2RIMG == GreenRole1)
 			{
-				return "蔡中文";
+				return "蔡中聞";
 			} 
 			else if (P2RIMG == GreenRole2)
 			{
-				return "陳橘";
+				return "蘇嘎拳";
 			} 
 			else 
 			{
@@ -304,7 +304,11 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 		public override void OnDisconnectedFromPhoton()
 		{
-			Debug.LogWarning("DemoAnimator/Launcher: OnDisconnectedFromPhoton() was called by PUN");
+			SceneManager.LoadScene("Main");
+		}
+
+		public override void OnPhotonPlayerDisconnected(PhotonPlayer otherPlayer)
+		{
 			SceneManager.LoadScene("Main");
 		}
 

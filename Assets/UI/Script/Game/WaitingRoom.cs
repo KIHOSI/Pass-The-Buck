@@ -60,7 +60,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 		public void Update()
 		{
-			if (PhotonNetwork.masterClient.CustomProperties ["ClickStart"] == "true")
+			if (PhotonNetwork.masterClient.CustomProperties ["ClickStart"] =="true")
 			{
 				if (PhotonNetwork.room.MaxPlayers == 2)
 				{

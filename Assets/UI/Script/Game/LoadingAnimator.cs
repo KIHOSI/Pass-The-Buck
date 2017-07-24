@@ -1,0 +1,51 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement; 
+using UnityEngine.UI;
+
+
+namespace Com.MyProject.MyPassTheBuckGame
+{
+	public class LoadingAnimator : MonoBehaviour
+	{
+		public Sprite[] loadingImgArray;
+		public Sprite loadingImg1;
+		public Sprite loadingImg2;
+		public Sprite loadingImg3;
+		public Sprite loadingImg4;
+		public Sprite loadingImg5;
+		public Sprite loadingImg6;
+		public Sprite loadingImg7;
+		public Sprite loadingImg8;
+		public Sprite loadingImg9;
+		public Image loadingBackground;
+		public int index;
+
+
+		void Start () 
+		{
+			loadingImgArray = new Sprite[] {loadingImg1,loadingImg2,loadingImg3,
+				                            loadingImg4,loadingImg5,loadingImg6,loadingImg7,loadingImg8,loadingImg9};
+			index = 0;
+		}
+
+		void FixedUpdate ()
+		{
+			loadingBackground.GetComponent<Image>().sprite = loadingImgArray [index];
+			index++;
+
+			if (index == 8) 
+			{
+				if (PhotonNetwork.isMasterClient) 
+				{
+					PhotonNetwork.LoadLevel ("Stage2");
+				}
+			}
+
+		}
+
+
+	}
+
+}

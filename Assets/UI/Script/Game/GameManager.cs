@@ -121,8 +121,8 @@ namespace Com.MyProject.MyPassTheBuckGame
 			GameObject toast = GameObject.Find ("Toast"); // 加载预制体
 			GameObject m_toast = GameObject.Instantiate(toast, parent.transform, false);  // 对象初始化
 			//m_toast.transform.parent = parent.transform;            //　附加到父节点（需要显示的UI下）
-			m_toast.transform.localScale = Vector3.one;
-			m_toast.transform.localPosition = new Vector3 (15.5f, -113.0f, 0.0f);
+			//m_toast.transform.localScale = Vector3.one;
+			//m_toast.transform.localPosition = new Vector3 (15.5f, -113.0f, 0.0f);
 			Text tips = m_toast.GetComponent<Text>();
 			tips.text = tips_str;
 			Destroy(m_toast, 3); // 2秒后 销毁

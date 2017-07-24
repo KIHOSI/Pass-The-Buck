@@ -329,6 +329,12 @@ Prefab:
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114280278002863062, guid: 1c4db54f3169c4d47a02a5e5371a4e4a,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: b484726c77d731247b962f31f0b8fa80,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114115173469037528, guid: 1c4db54f3169c4d47a02a5e5371a4e4a, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 1c4db54f3169c4d47a02a5e5371a4e4a, type: 2}
@@ -430,6 +436,12 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114294643518572488, guid: 97740830b2c96f44998a9e6b30ee6111,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: b484726c77d731247b962f31f0b8fa80,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 97740830b2c96f44998a9e6b30ee6111, type: 2}
   m_IsPrefabParent: 0
@@ -720,6 +732,7 @@ GameObject:
   - component: {fileID: 1380344813}
   - component: {fileID: 1380344812}
   - component: {fileID: 1380344818}
+  - component: {fileID: 1380344817}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -797,6 +810,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1380344817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1380344811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc399d8cb14c3c847b01154ce0650cec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windowWidth: 600
+  windowHight: 400
+  mySkin: {fileID: 11400000, guid: 2b5cf28809f3f7643bd4b4adc9531e5e, type: 2}
 --- !u!114 &1380344818
 MonoBehaviour:
   m_ObjectHideFlags: 0
