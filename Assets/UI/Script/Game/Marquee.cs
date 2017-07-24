@@ -17,9 +17,10 @@ namespace Com.MyProject.MyPassTheBuckGame
 	 void Start () 
 	 {
 		//MarqueeTx.transform.position = new Vector3(368.0f, 175.0f, 0.0f);
-		Vector3 Pos = marqueeTx.transform.position;
-		x = marqueeTx.transform.position.x;
-		y = marqueeTx.transform.position.y;
+		marqueeTx=GameObject.Find ("MarqueeTx").GetComponent<Text> ();
+		Vector3 Pos = marqueeTx.transform.localPosition;
+		x = marqueeTx.transform.localPosition.x;
+		y = marqueeTx.transform.localPosition.y;
 
 	 }
 
@@ -27,15 +28,15 @@ namespace Com.MyProject.MyPassTheBuckGame
 	 {
 		float step = scrollSpeed * Time.deltaTime;
 		Vector3 temp = new Vector3(step,0.0f,0.0f);
-		Vector3 forReset = new Vector3 (x-480, y, 0.0f);
+		Vector3 forReset = new Vector3 (-327, 0.0F, 0.0f);
 
-		if (Vector3.Distance(marqueeTx.transform.position, forReset) < 1.0f) 
+		if (Vector3.Distance(marqueeTx.transform.localPosition, forReset) < 1.0f) 
 		{
-			marqueeTx.transform.position = new Vector3 (x, y, 0.0f);
+			marqueeTx.transform.localPosition = new Vector3 (x, y, 0.0f);
 		} 
 		else 
 		{
-			marqueeTx.transform.position -= temp;
+			marqueeTx.transform.localPosition -= temp;
 		}
 	 }
 

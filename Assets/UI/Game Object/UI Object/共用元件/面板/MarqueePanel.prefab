@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 224920856766465990}
   - component: {fileID: 222045894819156354}
   - component: {fileID: 114586622458315596}
+  - component: {fileID: 114024269094742806}
   m_Layer: 5
   m_Name: MarqueeTx
   m_TagString: Untagged
@@ -81,6 +82,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114024269094742806
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1997973133249818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed1e875a2e2f6364caf22d4cf321c75f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: 70
+  marqueeTx: {fileID: 114101981854326768, guid: e589c91a946588144b3a7c86bb9280da,
+    type: 2}
 --- !u!114 &114095487607727010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -297,7 +312,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -360.092}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 199.99994, y: -0.000030517578}
+  m_AnchoredPosition: {x: 183, y: -0.000030517578}
   m_SizeDelta: {x: 62, y: 48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224920856766465990

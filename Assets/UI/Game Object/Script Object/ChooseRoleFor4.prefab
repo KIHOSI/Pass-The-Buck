@@ -51,10 +51,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fabf96788a88c3442a6e83de8b478635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BlueRole1: {fileID: 21300000, guid: 001e6dbc11a468b428f8d9c0757e517d, type: 3}
-  BlueRole2: {fileID: 21300000, guid: 0ca4e77bbace8924f9622d772f85d001, type: 3}
-  GreenRole1: {fileID: 21300000, guid: feae5854373c37f4b9742e0443135930, type: 3}
-  GreenRole2: {fileID: 21300000, guid: d8d4c702a1b832248805fc5d00f2d6d7, type: 3}
+  BlueRole1: {fileID: 21300000, guid: 7576d9cf669d5ce478e27acdb1271d76, type: 3}
+  BlueRole2: {fileID: 21300000, guid: b2cf9d74fb79d3244b605f12ce0c1596, type: 3}
+  GreenRole1: {fileID: 21300000, guid: 77871f56aea2e9540bc84a3669c8b3d4, type: 3}
+  GreenRole2: {fileID: 21300000, guid: 8572d488d6aa1854a8fda7a119812ecc, type: 3}
   BluePanel: {fileID: 21300000, guid: 220a0cb960d3ad940beac30f7209b143, type: 3}
   GreenPanel: {fileID: 21300000, guid: 3d31427b5f068784881ece6800a40dc2, type: 3}
   GrayPanel: {fileID: 21300000, guid: 6c89924923359fe4b8d9277a783be37a, type: 3}
@@ -77,8 +77,7 @@ MonoBehaviour:
   LeftArrowBt2: {fileID: 0}
   RightArrowBt2: {fileID: 0}
   PartyColor: 
-  RoleChoosed: 
-  BlueRole1Intro: "\u5927\u540D:\u99AC\u82F1\u516B\n\u6027\u5225:\u7537\n\u6240\u5C6C\u9EE8\u7C4D:\u4E0D\u9732\u9EE8\n\u8208\u8DA3:\u8DD1\u6B65\n"
-  BlueRole2Intro: "\u5927\u540D:\u8607\u8C9E\u660C\n\u6027\u5225:\u7537\n\u6240\u5C6C\u9EE8\u7C4D:\u4E0D\u9732\u9EE8\n\u8208\u8DA3:\u558A\u53E3\u865F\n\u53E3\u982D\u79AA:\u885D\u885D\u885D"
-  GreenRole1Intro: "\u5927\u540D:\u8521\u4E2D\u6587\n\u6027\u5225:\u5973\n\u6240\u5C6C\u9EE8\u7C4D:\u683Cring\u9EE8\n\u8208\u8DA3:\u990A\u8C93\n"
-  GreenRole2Intro: "\u5927\u540D:\u9673\u6A58\n\u6027\u5225:\u5973\n\u6240\u5C6C\u9EE8\u7C4D:\u683Cring\u9EE8\n\u8208\u8DA3:?\n"
+  BlueRole1Intro: "\u5927\u540D:\u6D2A\u54BB\u67F1\n\u6027\u5225:\u5973\n\u9EE8\u7C4D:\u4E0D\u9732\u9EE8"
+  BlueRole2Intro: "\u5927\u540D:\u5433\u6307\u7662\n\u6027\u5225:\u7537\n\u9EE8\u7C4D:\u4E0D\u9732\u9EE8"
+  GreenRole1Intro: "\u5927\u540D:\u8521\u4E2D\u805E\n\u6027\u5225:\u5973\n\u9EE8\u7C4D:\u683Cring\u9EE8\n\u8208\u8DA3:\u990A\u8C93"
+  GreenRole2Intro: "\u5927\u540D:\u8607\u560E\u62F3\n\u6027\u5225:\u7537\n\u9EE8\u7C4D:\u683Cring\u9EE8"

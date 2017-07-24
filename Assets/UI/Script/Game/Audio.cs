@@ -21,7 +21,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 			if (audiosre.isPlaying)
 			{
 				musicControlBt.GetComponent<Image> ().sprite = musicPlay;
-				musicControlTx.text = "音樂播放中";
+				musicControlTx.text = "音樂播放";
 			}
 			else 
 			{
@@ -48,7 +48,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 				AudioSource audiosre = GameObject.Find ("BackGroundMusic").GetComponent<AudioSource> ();
 				audiosre.Play ();
 				musicControlBt.GetComponent<Image> ().sprite = musicPlay;
-				musicControlTx.text="音樂播放中";
+				musicControlTx.text="音樂播放";
 			}
 		}
 

@@ -64,15 +64,36 @@ namespace Com.MyProject.MyPassTheBuckGame
 			RoomOptions options = new RoomOptions ();
 			options.MaxPlayers = MaxPlayersPerRoom;
 
-			PhotonNetwork.CreateRoom(GameRoomName,options,null);
+
+			if (GameRoomName == "") 
+			{
+				onTips("房名不可空白!");
+			} 
+			else 
+			{
+				PhotonNetwork.CreateRoom(GameRoomName,options,null);
+			}
+				
 
 		}
 			
-
 		//按返回鍵
 		public void Back()
 		{
 			SceneManager.LoadScene("Character Choosing");
+		}
+
+		public void onTips(string tips_str)
+		{
+			GameObject parent = GameObject.Find ("Canvas");
+			GameObject toast = GameObject.Find ("Toast"); // 加载预制体
+			GameObject m_toast = GameObject.Instantiate(toast, parent.transform, false);  // 对象初始化
+			//m_toast.transform.parent = parent.transform;            //　附加到父节点（需要显示的UI下）
+			m_toast.transform.localScale = Vector3.one;
+			m_toast.transform.localPosition = new Vector3 (3.3f, -234.3f, 0.0f);
+			Text tips = m_toast.GetComponent<Text>();
+			tips.text = tips_str;
+			Destroy(m_toast, 3); // 2秒后 销毁
 		}
 
 		#endregion

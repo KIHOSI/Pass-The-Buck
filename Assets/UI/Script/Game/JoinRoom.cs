@@ -32,7 +32,15 @@ namespace Com.MyProject.MyPassTheBuckGame
 		{
 			GameRoomName = GameObject.Find ("GameRoomNameIp2").GetComponent<InputField>().text;
 			Debug.Log(GameRoomName);
-			PhotonNetwork.JoinRoom(GameRoomName);
+
+			if (GameRoomName == "") 
+			{
+				onTips("房名不可空白!");
+			} 
+			else 
+			{
+				PhotonNetwork.JoinRoom(GameRoomName);
+			}
 		}
 
 		//按返回鍵

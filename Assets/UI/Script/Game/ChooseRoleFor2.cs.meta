@@ -1,14 +1,14 @@
 fileFormatVersion: 2
 guid: b61fbc93826c4e247a7360653795854e
-timeCreated: 1500553372
+timeCreated: 1500802885
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
-  - BlueRole1: {fileID: 21300000, guid: 001e6dbc11a468b428f8d9c0757e517d, type: 3}
-  - BlueRole2: {fileID: 21300000, guid: 0ca4e77bbace8924f9622d772f85d001, type: 3}
-  - GreenRole1: {fileID: 21300000, guid: feae5854373c37f4b9742e0443135930, type: 3}
-  - GreenRole2: {fileID: 21300000, guid: d8d4c702a1b832248805fc5d00f2d6d7, type: 3}
+  - BlueRole1: {fileID: 21300000, guid: 7576d9cf669d5ce478e27acdb1271d76, type: 3}
+  - BlueRole2: {fileID: 21300000, guid: b2cf9d74fb79d3244b605f12ce0c1596, type: 3}
+  - GreenRole1: {fileID: 21300000, guid: 77871f56aea2e9540bc84a3669c8b3d4, type: 3}
+  - GreenRole2: {fileID: 21300000, guid: 8572d488d6aa1854a8fda7a119812ecc, type: 3}
   - GrayPanel: {fileID: 21300000, guid: 6c89924923359fe4b8d9277a783be37a, type: 3}
   - Player1NameTx: {instanceID: 0}
   - Player2NameTx: {instanceID: 0}
