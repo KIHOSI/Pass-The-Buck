@@ -53,4 +53,5 @@ MonoBehaviour:
   - paperEffect2
   - paperEffect3
   - paperEffect4
+  - SetPaperOn4
   DisableAutoOpenWizard: 1

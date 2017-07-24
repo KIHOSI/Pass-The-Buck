@@ -31,6 +31,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     public GameObject portalUp; //上portal
     public GameObject portalRight; //右portal
     byte playerCode; //此player的code，用以判斷要不要接收訊息
+    PhotonView photonView;
 
     PhotonPlayer player; //玩家
     string playerName; //玩家名稱
@@ -57,8 +58,6 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     public GameObject portalRight_green;
 
 
-    Image tt;
-
     // Use this for initialization
     void Start() {
         //取得玩家list(同樣順序)
@@ -67,6 +66,8 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         PlayerList.Add(PhotonNetwork.masterClient.GetNext()); //2
         PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext()); //3
         PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext().GetNext()); //4
+
+        photonView = PhotonView.Get(this);
 
         hash = new Hashtable();
         playerMoney = money;
@@ -105,18 +106,10 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             portalLeft.GetComponent<SendBall>().setTarget(PlayerList[1], 1, playerCode, 0); //Player2放左
             portalUp.GetComponent<SendBall>().setTarget(PlayerList[2], 2, playerCode, 1); //Player3放上
             portalRight.GetComponent<SendBall>().setTarget(PlayerList[3], 3, playerCode, 2); //Player4放右
-
-            //setRoleImg(, (string)PlayerList[1].CustomProperties["role"]); //Paper第一個人物圖片
-
-            //setRoleImg(paperPersonMenu[0].GetComponent<Image>(), (string)PlayerList[1].CustomProperties["Role"]); //Paper第一個人物圖片
-            //setRoleImg(paperPersonMenu[0].GetComponent<Image>(), "蔡中聞"); //Paper第一個人物圖片
-
             setRoleImg(paperPersonMenu[0].GetComponent<Image>(), (string)PlayerList[1].CustomProperties["Role"]); //Paper第一個人物圖片
             setRoleImg(paperPersonMenu[1].GetComponent<Image>(), (string)PlayerList[2].CustomProperties["Role"]); //Paper第二個人物圖片
             setRoleImg(paperPersonMenu[2].GetComponent<Image>(), (string)PlayerList[3].CustomProperties["Role"]); //Paper第三個人物圖片
 
-            //paperPersonImage[0].sprite = role1;           
-            //Debug.Log("paperPersonImgae:"+paperPersonImage.Length);
         }
         else if (player == PlayerList[1]) //Player2
         {
@@ -190,10 +183,6 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         //{
         InvokeRepeating("timeCountDown", 1, 1); //每隔一秒執行一次 
         //}
-        //else //其他client純顯示
-        //{
-        //    timeText.text = "" + time;
-        //}
         
 
         
@@ -264,17 +253,6 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             //先顯示報紙選單
             paperMenu.SetActive(true);
             Debug.Log("報紙裡");
-            //更改報紙上按鈕的照片
-            //paperPersonMenu[0].GetComponent<Image>().sprite = role1;
-
-            //paperPersonMenu[0].GetComponent<Image>().sprite = paperPersonImage[0].sprite;
-            //paperPersonMenu[1].GetComponent<Image>().sprite = paperPersonImage[1].sprite;
-            //paperPersonMenu[2].GetComponent<Image>().sprite = paperPersonImage[2].sprite;
-            
-            
-            //paper.SetActive(true);
-            //GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg>().ChangePersonImg3();
-            //GameObject.Find("報紙選單").SetActive(false);
 
         }
         if (collision.gameObject.CompareTag("麥克風"))
@@ -341,6 +319,27 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             personImg.sprite = role4;
         }
     }
+    void sendRoleImg(Image img) //判斷是哪張圖片，傳送該圖片
+    {
+        Debug.Log("imgWW:" + img.sprite.name);
+        if (img.sprite.name == "吳指癢-半身")
+        {
+            
+            photonView.RPC("SetPaperOn1", PhotonTargets.Others);
+        }
+        else if (img.sprite.name == "洪咻柱-半身")
+        {
+            photonView.RPC("SetPaperOn2", PhotonTargets.Others);
+        }
+        else if (img.sprite.name == "蔡中聞-半身")
+        {
+            photonView.RPC("SetPaperOn3", PhotonTargets.Others);
+        }
+        else if (img.sprite.name == "蘇嘎拳-半身")
+        {
+            photonView.RPC("SetPaperOn4", PhotonTargets.Others);
+        }
+    }
 
     public void sendPaperMessage(int pIndex) //點選按鈕才可以傳送開啟報紙的資訊
     {
@@ -351,12 +350,11 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext()); //3
         PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext().GetNext()); //4
 
-        PhotonView photonView = PhotonView.Get(this);
-        Debug.Log("pIndex:"+pIndex);
         switch (pIndex) //判斷是改哪個玩家的圖片
         {
             case 0: //第一個人
-                photonView.RPC("SetPaperOn1", PhotonTargets.Others);
+                //photonView.RPC("SetPaperOn1", PhotonTargets.Others);
+                sendRoleImg(paperPersonImage[0]);
                 if (player == PlayerList[0]) //Player1
                 {
                     photonView.RPC("paperEffect2",PhotonTargets.Others); //扣Player2
@@ -375,7 +373,8 @@ public class NowState : MonoBehaviour { //控制連線及背景component
                 }
                 break;
             case 1: //第二個人
-                photonView.RPC("SetPaperOn2", PhotonTargets.Others);
+                    // photonView.RPC("SetPaperOn2", PhotonTargets.Others);
+                sendRoleImg(paperPersonImage[1]);
                 if (player == PlayerList[0]) //Player1
                 {
                     photonView.RPC("paperEffect3", PhotonTargets.Others); //扣Player3
@@ -394,11 +393,9 @@ public class NowState : MonoBehaviour { //控制連線及背景component
                 }
                 break;
             case 2: //第三個人
-                Debug.Log("剛進來");
-                photonView.RPC("SetPaperOn3", PhotonTargets.Others);
+                sendRoleImg(paperPersonImage[2]);
                 if (player == PlayerList[0]) //Player1
                 {
-                    Debug.Log("imhere");
                     photonView.RPC("paperEffect4", PhotonTargets.Others); //扣Player4
                 }
                 else if (player == PlayerList[1]) //Player2
@@ -422,22 +419,27 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     void SetPaperOn1() //Player1
     {
         paper.SetActive(true); //開啟報紙
-        GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg>().ChangePersonImg1(paperPersonImage[0]);
+        GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg>().ChangeImg1();
     }
 
     [PunRPC]
     void SetPaperOn2() //Player2
     {
         paper.SetActive(true); //開啟報紙
-        GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg>().ChangePersonImg2(paperPersonImage[1]);
+        GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg>().ChangeImg2();
     }
 
     [PunRPC]
     void SetPaperOn3() //Player3
     {
         paper.SetActive(true); //開啟報紙
-        Debug.Log("SetPapeprOn3");
-        GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg>().ChangePersonImg3(paperPersonImage[2]);
+        GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg>().ChangeImg3();
+    }
+    [PunRPC]
+    void SetPaperOn4() //Player4
+    {
+        paper.SetActive(true); //開啟報紙
+        GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg>().ChangeImg4();
     }
 
     //報紙效果:指定人並扣錢

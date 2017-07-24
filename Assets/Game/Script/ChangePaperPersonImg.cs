@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class ChangePaperPersonImg : MonoBehaviour {
     Image paperPerson; //人物圖片
-    public Image[] paperPersonImage; //全部圖片
+    public Image[] paperPersonImage; //該Player的報紙按鈕圖片
+    public Sprite[] paperPersonAllImage; //全部圖片
 
     void Awake()
     {
@@ -14,47 +15,40 @@ public class ChangePaperPersonImg : MonoBehaviour {
 
     public void getPaperImg()
     {
-        Debug.Log("get img");
         for (int i = 0; i < 3; i++) //得到圖片
         {
             paperPersonImage[i] = GameObject.Find("洞口").GetComponent<NowState>().paperPersonImage[i];
         }
-        Debug.Log("change1");
-        //paperPerson.sprite = paperPersonImage[0];
-        Debug.Log("change2");
     }
 
     public void ChangePersonImg1() //Player1
     {
-        Debug.Log("changeImg1");
         paperPerson.sprite = paperPersonImage[0].sprite;
     }
     public void ChangePersonImg2() //Player2
     {
-        Debug.Log("changeImg2");
         paperPerson.sprite = paperPersonImage[1].sprite;
     }
     public void ChangePersonImg3() //Player3
     {
-        Debug.Log("changeImg3");
         paperPerson.sprite = paperPersonImage[2].sprite;
     }
 
-    public void ChangePersonImg1(Image img) //Player1
+    //直接改變人物圖片
+    public void ChangeImg1() //吳指癢
     {
-        Debug.Log("changeImg1");
-        paperPerson.sprite = img.sprite;
+        paperPerson.sprite = paperPersonAllImage[0];
     }
-    public void ChangePersonImg2(Image img) //Player2
+    public void ChangeImg2() //洪咻柱
     {
-        Debug.Log("changeImg2");
-        paperPerson.sprite = img.sprite;
+        paperPerson.sprite = paperPersonAllImage[1];
     }
-    public void ChangePersonImg3(Image img) //Player3
+    public void ChangeImg3() //蔡中聞
     {
-        Debug.Log("changeImg3");
-        paperPerson.sprite = img.sprite;
+        paperPerson.sprite = paperPersonAllImage[2];
     }
-
-
+    public void ChangeImg4() //蘇嘎拳
+    {
+        paperPerson.sprite = paperPersonAllImage[3];
+    }
 }
