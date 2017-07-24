@@ -42,10 +42,10 @@ namespace Com.MyProject.MyPassTheBuckGame
 		string RoleChoosed;
 		public Hashtable hash;
 
-		public string BlueRole1Intro = "大名:洪咻柱"+"\n"+"性別:女"+"\n"+"黨籍:不露黨";
-		public string BlueRole2Intro = "大名:吳指癢"+"\n"+"性別:男"+"\n"+"黨籍:不露黨";
-		public string GreenRole1Intro = "大名:蔡中聞"+"\n"+"性別:女"+"\n"+"黨籍:格ring黨"+"\n"+"興趣:養貓";
-		public string GreenRole2Intro = "大名:蘇嘎拳"+"\n"+"性別:男"+"\n"+"黨籍:格ring黨";
+		public string BlueRole1Intro = " 【洪咻柱】 "+"\n"+"\n"+"祝鑄炷佇駐助蛀柱。";
+		public string BlueRole2Intro = " 【吳指癢】 "+"\n"+"\n"+"曾為縣長的新科立委。";
+		public string GreenRole1Intro = " 【蔡中聞】 "+"\n"+"\n"+"天天怒的新上任總理。";
+		public string GreenRole2Intro = " 【蘇嘎拳】 "+"\n"+"\n"+"新流派權法的院長。";
 
 		void Start () 
 		{

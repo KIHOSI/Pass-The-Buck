@@ -400,10 +400,10 @@ MonoBehaviour:
   RightArrowBt2: {fileID: 515367055}
   PartyColor: 
   RoleChoosed: 
-  BlueRole1Intro: "\u5927\u540D:\u6D2A\u54BB\u67F1\n\u6027\u5225:\u5973\n\u9EE8\u7C4D:\u4E0D\u9732\u9EE8"
-  BlueRole2Intro: "\u5927\u540D:\u5433\u6307\u7662\n\u6027\u5225:\u7537\n\u9EE8\u7C4D:\u4E0D\u9732\u9EE8"
-  GreenRole1Intro: "\u5927\u540D:\u8521\u4E2D\u805E\n\u6027\u5225:\u5973\n\u9EE8\u7C4D:\u683Cring\u9EE8\n\u8208\u8DA3:\u990A\u8C93"
-  GreenRole2Intro: "\u5927\u540D:\u8607\u560E\u62F3\n\u6027\u5225:\u7537\n\u9EE8\u7C4D:\u683Cring\u9EE8"
+  BlueRole1Intro: " \u3010\u6D2A\u54BB\u67F1\u3011 \n\n\u795D\u9444\u70B7\u4F47\u99D0\u52A9\u86C0\u67F1\u3002"
+  BlueRole2Intro: " \u3010\u5433\u6307\u7662\u3011 \n\n\u66FE\u70BA\u7E23\u9577\u7684\u65B0\u79D1\u7ACB\u59D4\u3002"
+  GreenRole1Intro: " \u3010\u8521\u4E2D\u805E\u3011 \n\n\u5929\u5929\u6012\u7684\u65B0\u4E0A\u4EFB\u7E3D\u7406\u3002"
+  GreenRole2Intro: " \u3010\u8607\u560E\u62F3\u3011 \n\n\u65B0\u6D41\u6D3E\u6B0A\u6CD5\u7684\u9662\u9577\u3002"
 --- !u!114 &655183178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -830,7 +830,7 @@ Prefab:
     - target: {fileID: 114605956075434498, guid: 66238da9c5b2c874fb6920dd096a312d,
         type: 2}
       propertyPath: m_Text
-      value: "\u5927\u540D:\u8521\u4E2D\u805E\n\u6027\u5225:\u5973\n\u9EE8\u7C4D:\u4E0D\u9732\u9EE8\n\u8208\u8DA3:\u990A\u8C93\n"
+      value: "\u3010\u8521\u4E2D\u805E\u3011\n\n\u5929\u5929\u6012\u7684\u65B0\u4E0A\u4EFB\u7E3D\u7406\u3002"
       objectReference: {fileID: 0}
     - target: {fileID: 114808083656415822, guid: 66238da9c5b2c874fb6920dd096a312d,
         type: 2}
@@ -1154,7 +1154,7 @@ Prefab:
     - target: {fileID: 114488893850895434, guid: d020124855e0c5f4e943d0d5f1841241,
         type: 2}
       propertyPath: m_Text
-      value: "\u5927\u540D:\u6D2A\u54BB\u67F1\n\u6027\u5225:\u5973\n\u9EE8\u7C4D:\u4E0D\u9732\u9EE8\n"
+      value: "\u3010\u6D2A\u54BB\u67F1\u3011\n\n\u795D\u9444\u70B7\u4F47\u99D0\u52A9\u86C0\u67F1\u3002"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d020124855e0c5f4e943d0d5f1841241, type: 2}
