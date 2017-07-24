@@ -14,19 +14,20 @@ namespace Com.MyProject.MyPassTheBuckGame
 	  public Sprite GislandWithLock;
 	  public Sprite Lisland;
 	  public Sprite LislandWithLock;
+	  public Sprite level2WithLock;
+	  public Sprite level3WithLock;
 
 	  public Button Island1Bt;
 	  public Button Island2Bt;
 	  public Button Island3Bt;
+	  public Button Level2Bt;
+	  public Button Level3Bt;
 
 
 
 	  // Use this for initialization
 	  void Start () 
 	  {
-		 Island1Bt = GameObject.Find ("Island1Bt").GetComponent<Button> ();
-		 Island2Bt = GameObject.Find ("Island2Bt").GetComponent<Button> ();
-		 Island3Bt = GameObject.Find ("Island3Bt").GetComponent<Button> ();
 
 		 //會有資料庫存玩家已解鎖的島嶼名稱
 
@@ -38,7 +39,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 	 #region Public Methods
 
 	  //檢查關卡已解鎖或未解鎖
-	  public void CheckLockorUnlock(Button bt)
+	  public void CheckLockorUnlock1(Button bt)
 	  {
 		  Island1Bt = GameObject.Find ("Island1Bt").GetComponent<Button> ();
 		  Island2Bt = GameObject.Find ("Island2Bt").GetComponent<Button> ();
@@ -52,8 +53,8 @@ namespace Com.MyProject.MyPassTheBuckGame
 				} 
 				else if (bt.GetComponent<Image> ().sprite == PislandWithLock)
 				{
-					Debug.Log("該關卡尚未解鎖，請選擇已解鎖關卡");
-					onTips("該關卡尚未解鎖，請選擇已解鎖關卡");
+					Debug.Log("該島嶼尚未解鎖，請選擇已解鎖島嶼");
+					onTips("該島嶼尚未解鎖，請選擇已解鎖島嶼");
 				}
 		  }
 		  else if (bt.Equals (Island2Bt)) 
@@ -64,8 +65,8 @@ namespace Com.MyProject.MyPassTheBuckGame
 				} 
 				else if (bt.GetComponent<Image> ().sprite == LislandWithLock)
 				{
-					Debug.Log("該關卡尚未解鎖，請選擇已解鎖關卡");
-					onTips("該關卡尚未解鎖，請選擇已解鎖關卡");
+					Debug.Log("該島嶼尚未解鎖，請選擇已解鎖島嶼");
+					onTips("該島嶼尚未解鎖，請選擇已解鎖島嶼");
 				}
 		  }
 		  else if (bt.Equals (Island3Bt)) 
@@ -76,13 +77,42 @@ namespace Com.MyProject.MyPassTheBuckGame
 				} 
 				else if (bt.GetComponent<Image> ().sprite == GislandWithLock)
 				{
-					Debug.Log("該關卡尚未解鎖，請選擇已解鎖關卡");
-					onTips("該關卡尚未解鎖，請選擇已解鎖關卡");
+					Debug.Log("該島嶼尚未解鎖，請選擇已解鎖島嶼");
+					onTips("該島嶼尚未解鎖，請選擇已解鎖島嶼");
 				}
 		  }
 
 		  
 	  }
+
+		//檢查關卡已解鎖或未解鎖
+		public void CheckLockorUnlock2(Button bt)
+		{
+
+			Level2Bt = GameObject.Find ("Level2Bt").GetComponent<Button> ();
+			Level3Bt = GameObject.Find ("Level3Bt").GetComponent<Button> ();
+
+
+			if (bt.Equals (Level2Bt)) 
+			{
+				if (bt.GetComponent<Image> ().sprite == level2WithLock)
+				{
+					Debug.Log("該關卡尚未解鎖，請選擇已解鎖關卡");
+					onTips("該關卡尚未解鎖，請選擇已解鎖關卡");
+				}
+			}
+			else if (bt.Equals (Level3Bt)) 
+			{
+				if (bt.GetComponent<Image> ().sprite == level3WithLock)
+				{
+					Debug.Log("該關卡尚未解鎖，請選擇已解鎖關卡");
+					onTips("該關卡尚未解鎖，請選擇已解鎖關卡");
+				}
+			}
+
+
+		}
+
 
 	 //載入爆肝島頁面
 	 public void LoadLiverIslandScene()
