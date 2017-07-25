@@ -89,9 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c6538e77e9fd94d8ad8f6667420d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballRigidbody2D: {fileID: 50240563366984728}
-  speedX: 1
-  speedY: 1
+  speedX: 2
+  speedY: 2
 --- !u!212 &212947846655384882
 SpriteRenderer:
   m_ObjectHideFlags: 1

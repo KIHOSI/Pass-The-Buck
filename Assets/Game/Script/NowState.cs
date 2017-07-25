@@ -12,9 +12,12 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     public Text timeText; //顯示時間
     int blueMoney; //藍黨總錢
     int greenMoney; //綠黨總錢
-    public Hashtable hash; //宣告HashTable變數
-    public int playerMoney; //宣告要新增的變數名稱:
-    public Text postText; //告示牌
+    int[] playerMoney = new int[4]; //player的錢
+
+    //執政
+    public GameObject winLogo; //中選logo
+    public int winColor = 0 ; //判斷現在是誰執政，0:預設、1:綠、2:藍
+    public GameObject[] allArray; //全部球+道具
 
     //炸彈
     public GameObject bombObj;
@@ -57,22 +60,33 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     public GameObject portalUp_green;
     public GameObject portalRight_green;
 
+    //佈告欄
+    public GameObject greenNoticeBoard;
+    public GameObject blueNoticeBoard;
 
     // Use this for initialization
     void Start() {
+        //得到所有球、
+        allArray = GameObject.Find("左Portal(真)").GetComponent<SendBall>().allArray;
+
         //取得玩家list(同樣順序)
         PlayerList = new List<PhotonPlayer>();
         PlayerList.Add(PhotonNetwork.masterClient); //1
         PlayerList.Add(PhotonNetwork.masterClient.GetNext()); //2
         PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext()); //3
         PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext().GetNext()); //4
-
+        
         photonView = PhotonView.Get(this);
 
-        hash = new Hashtable();
-        playerMoney = money;
-        hash.Add("Money", playerMoney); //把變數存進剛剛宣告的hash裡
-        PhotonNetwork.player.SetCustomProperties(hash);
+        //錢初始化
+        for(int i = 0; i < playerMoney.Length; i++)
+        {
+            playerMoney[i] = money;
+        }
+
+        //hash = new Hashtable();
+        //hash.Add("Money", money); //把變數存進剛剛宣告的hash裡
+        //PhotonNetwork.player.SetCustomProperties(hash);
 
         player = PhotonNetwork.player; //取得現在的player
         playerName = PhotonNetwork.playerName; //取得現在的player的暱稱
@@ -203,42 +217,18 @@ public class NowState : MonoBehaviour { //控制連線及背景component
 
     void OnTriggerEnter2D(Collider2D collision) //進洞
     {
-        /*//取得玩家list(同樣順序)
-        PlayerList = new List<PhotonPlayer>();
-        PlayerList.Add(PhotonNetwork.masterClient); //1
-        PlayerList.Add(PhotonNetwork.masterClient.GetNext()); //2
-        PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext()); //3
-        PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext().GetNext()); //4*/
-
         if (collision.gameObject.CompareTag("黑球"))
         { //黑球
             money -= 10;
             moneyText.text = "金錢 x" + money;
-            /*
-            //依據政黨顏色，來減少總額
-            if (partyColor == "green") 
-            {
-                greenMoney -= 10;
-            }
-            else if(partyColor == "blue")
-            {
-                blueMoney -= 10;
-            }*/
+            identificatePlayerMoney(); //判斷是哪個player
         }
+
         if (collision.gameObject.CompareTag("金球"))
         { //金球
             money += 10;
             moneyText.text = "金錢 x" + money;
-            /*
-            //依據政黨顏色，來減少總額
-            if (partyColor == "green")
-            {
-                greenMoney += 10;
-            }
-            else if (partyColor == "blue")
-            {
-                blueMoney += 10;
-            }*/
+            identificatePlayerMoney(); //判斷是哪個player
         }
         if (collision.gameObject.CompareTag("炸彈"))
         { //炸彈，扣50%的錢
@@ -247,50 +237,142 @@ public class NowState : MonoBehaviour { //控制連線及背景component
                 money = money / 2;
                 moneyText.text = "金錢 x" + money;
             }
+            identificatePlayerMoney(); //判斷是哪個player
         }
         if (collision.gameObject.CompareTag("報紙")) //報紙效果:出現選單可以陷害人，指定敵對黨某人有誹聞(意涵:爆料)，被指定者扣錢20%
         {
             //先顯示報紙選單
             paperMenu.SetActive(true);
-            Debug.Log("報紙裡");
-
         }
         if (collision.gameObject.CompareTag("麥克風"))
         {
 
         }
 
-
-        //每次變動，將hash裡的金錢更新
-        PhotonNetwork.player.SetCustomProperties(hash);
-
         //每次金錢變動時，來檢查金錢總額
+        identificateWinPlayer();
+    }
+
+    void identificateWinPlayer() //判斷誰是執政黨
+    {
         greenMoney = 0; //初始化
         blueMoney = 0;
 
         //判斷是什麼陣營，將錢加總
-        for (int i = 0; i < PlayerList.Count; i++)
+        for (int i = 0; i < PlayerList.Count; i++) //4個player都過濾
         {
             if ((string)PhotonNetwork.playerList[i].CustomProperties["PartyColor"] == "green") //如果是綠的
             {
-                greenMoney += (int)PhotonNetwork.playerList[i].CustomProperties["Money"];
+                greenMoney += playerMoney[i];
             }
             else if ((string)PhotonNetwork.playerList[i].CustomProperties["PartyColor"] == "blue") //藍的
             {
-                blueMoney += (int)PhotonNetwork.playerList[i].CustomProperties["Money"];
+                blueMoney += playerMoney[i];
             }
         }
 
-        //判斷目前藍綠陣營，政黨輪替
-        if (greenMoney - blueMoney > 30)
+        //判斷是誰執政
+        if (greenMoney - blueMoney >= 30) //綠黨執政
         {
-            postText.text = "綠黨執政";
+            if (winColor != 1) //現在不是綠色執政的話，才改
+            {
+                photonView.RPC("showGreenNoticeBroad", PhotonTargets.All); //傳送給大家顯示
+            }
         }
-        else if (blueMoney - greenMoney > 30)
+        else if (blueMoney - greenMoney >= 30) //藍黨執政
         {
-            postText.text = "藍黨執政";
-        }
+            if (winColor != 2) //如果現在不是藍色執政，才變換
+            {
+                photonView.RPC("showBlueNoticeBroad", PhotonTargets.All); //傳送給大家顯示
 
+            }
+        }
+    }
+
+    void identificatePlayerMoney()     //判斷是哪個Player,加到對應的錢
+    {
+        if (player == PhotonNetwork.masterClient)  //player1
+        {
+            playerMoney[0] = money;
+        }
+        else if (player == PhotonNetwork.masterClient.GetNext()) //player2
+        {
+            playerMoney[1] = money;
+        }
+        else if (player == PhotonNetwork.masterClient.GetNext().GetNext()) //player3
+        {
+            playerMoney[2] = money;
+        }
+        else if (player == PhotonNetwork.masterClient.GetNext().GetNext().GetNext()) //player4
+        {
+            playerMoney[3] = money;
+        }
+    }
+
+    [PunRPC] //傳送綠黨執政消息
+    void showGreenNoticeBroad()
+    {
+        greenNoticeBoard.SetActive(true);  //佈告欄-綠
+        winColor = 1;
+        showThreeMinute(); //三秒後結束畫面
+        setWinPlayer(); //判斷執政黨
+        //綠黨執政效果:道具改為每15秒產生一次
+        GameObject.Find("左邊框").GetComponent<GenerateBall>().generateItemseconds = 15;
+        GameObject.Find("右邊框").GetComponent<GenerateBall>().generateItemseconds = 15;
+    }
+
+    [PunRPC] //傳送藍黨執政消息
+    void showBlueNoticeBroad()
+    {
+        blueNoticeBoard.SetActive(true); //佈告欄 - 藍
+        winColor = 2;
+        showThreeMinute(); //三秒後結束畫面
+        setWinPlayer(); //判斷執政黨
+        //藍黨執政效果:所有東西速度變慢
+        
+    }
+
+    void setWinPlayer() //設定執政黨
+    {
+        if(winColor == 1) //綠色執政
+        {
+            if (partyColor == "green") //如果是綠的，可使用執政黨能力
+            {
+                bombObj.SetActive(true); //可使用炸彈
+                winLogo.SetActive(true); //有中選標誌
+            }
+            else if (partyColor == "blue") //藍的，關閉能力
+            {
+                bombObj.SetActive(false);
+                winLogo.SetActive(false);
+            }
+        }
+        else if(winColor == 2) //藍色執政
+        {
+            if (partyColor == "green") //綠的，關閉能力
+            {
+                bombObj.SetActive(false);
+                winLogo.SetActive(false);
+            }
+            else if (partyColor == "blue") //藍的，可使用執政黨能力
+            {
+                bombObj.SetActive(true); //可使用炸彈
+                winLogo.SetActive(true); //有中選標誌
+            }
+        }
+    }
+
+    void showThreeMinute() //僅顯示3秒
+    {
+        if(winColor == 1) //綠
+        {
+            Invoke("greenTimeCountDown", 3);
+        }
+        else if(winColor == 2) //藍
+        {
+            Invoke("blueTimeCountDown", 3);
+        }
+        
     }
 
     void timeCountDown() //時間倒數，每次減一秒
@@ -299,9 +381,18 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         time--;
     }
 
+    void greenTimeCountDown() //顯示三秒便結束(綠)
+    {
+        greenNoticeBoard.SetActive(false);
+    }
+
+    void blueTimeCountDown() //顯示三秒便結束(藍)
+    {
+        blueNoticeBoard.SetActive(false);
+    }
+
     void setRoleImg(Image personImg,string person) //根據player選的人物，給予相應的照片
     {
-        Debug.Log("setRoleImg");
         if (person == "吳指癢")
         {
             personImg.sprite = role1;
@@ -319,12 +410,11 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             personImg.sprite = role4;
         }
     }
+
     void sendRoleImg(Image img) //判斷是哪張圖片，傳送該圖片
     {
-        Debug.Log("imgWW:" + img.sprite.name);
         if (img.sprite.name == "吳指癢-半身")
-        {
-            
+        {         
             photonView.RPC("SetPaperOn1", PhotonTargets.Others);
         }
         else if (img.sprite.name == "洪咻柱-半身")
@@ -453,6 +543,8 @@ public class NowState : MonoBehaviour { //控制連線及背景component
                 money = (int)(money * 0.8);
                 moneyText.text = "金錢 x" + money;
             }
+            identificatePlayerMoney();
+            identificateWinPlayer();
         }
     }
 
@@ -466,6 +558,8 @@ public class NowState : MonoBehaviour { //控制連線及背景component
                 money = (int)(money * 0.8);
                 moneyText.text = "金錢 x" + money;
             }
+            identificatePlayerMoney();
+            identificateWinPlayer();
         }
     }
 
@@ -479,6 +573,8 @@ public class NowState : MonoBehaviour { //控制連線及背景component
                 money = (int)(money * 0.8);
                 moneyText.text = "金錢 x" + money;
             }
+            identificatePlayerMoney();
+            identificateWinPlayer();
         }
     }
 
@@ -492,6 +588,8 @@ public class NowState : MonoBehaviour { //控制連線及背景component
                 money = (int)(money * 0.8);
                 moneyText.text = "金錢 x" + money;
             }
+            identificatePlayerMoney();
+            identificateWinPlayer();
         }
     }
 }

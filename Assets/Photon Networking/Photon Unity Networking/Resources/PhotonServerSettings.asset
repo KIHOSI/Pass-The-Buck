@@ -54,4 +54,6 @@ MonoBehaviour:
   - paperEffect3
   - paperEffect4
   - SetPaperOn4
+  - showBlueNoticeBroad
+  - showGreenNoticeBroad
   DisableAutoOpenWizard: 1

@@ -9,14 +9,16 @@ public class GenerateBall : MonoBehaviour {
     int ballIndex = 0; //球從0開始
     int itemIndex = 0; //道具從0開始
     bool showItem = false; //true代表生成、false代表不生成
+    public int generateBallseconds; //產生球的秒數
+    public int generateItemseconds; //產生道具的秒數
 
     // Use this for initialization
     void Start () {
         
         //if (PhotonNetwork.isMasterClient) //若是Master Client，遊戲開始
         //{
-        InvokeRepeating("generateBall", 5, 5); //第一個為方法名、第二個為「第一次調用」要隔幾秒、第三個則是「每隔幾秒調用一次」
-        InvokeRepeating("generateItem", 10, 10);
+        InvokeRepeating("generateBall", generateBallseconds, generateBallseconds); //第一個為方法名、第二個為「第一次調用」要隔幾秒、第三個則是「每隔幾秒調用一次」
+        InvokeRepeating("generateItem", generateItemseconds, generateItemseconds);
         //}
     }
 	
