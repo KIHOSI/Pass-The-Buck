@@ -267,7 +267,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(bombMusic);
             identificatePlayerMoney(); //判斷是哪個player
 
-            showMessage = role + bombMessage; 
+            showMessage = role + bombMessage;  //炸彈訊息
             photonView.RPC("sendMessage", PhotonTargets.All, showMessage); //第三個參數:傳送要顯示的話
         }
         if (collision.gameObject.CompareTag("報紙")) //報紙效果:出現選單可以陷害人，指定敵對黨某人有誹聞(意涵:爆料)，被指定者扣錢20%
@@ -275,14 +275,14 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             //先顯示報紙選單
             paperMenu.SetActive(true);
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(itemMusic);
-            showMessage = role + paperMessage;
-            photonView.RPC("sendMessage", PhotonTargets.All, showMessage); //第三個參數:傳送要顯示的話
+            //showMessage = role + paperMessage;
+            //photonView.RPC("sendMessage", PhotonTargets.All, showMessage); //第三個參數:傳送要顯示的話
         }
         if (collision.gameObject.CompareTag("麥克風"))
         {
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(itemMusic);
-            showMessage = role + microphoneMessage;
-            photonView.RPC("sendMessage", PhotonTargets.All, showMessage); //第三個參數:傳送要顯示的話
+            //showMessage = role + microphoneMessage;
+            //photonView.RPC("sendMessage", PhotonTargets.All, showMessage); //第三個參數:傳送要顯示的話
         }
 
         //每次金錢變動時，來檢查金錢總額
