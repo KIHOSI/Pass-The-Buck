@@ -56,4 +56,6 @@ MonoBehaviour:
   - SetPaperOn4
   - showBlueNoticeBroad
   - showGreenNoticeBroad
+  - sendTime
+  - sendMessage
   DisableAutoOpenWizard: 1
