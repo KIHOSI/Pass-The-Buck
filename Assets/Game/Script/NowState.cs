@@ -19,7 +19,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     //執政
     public GameObject winLogo; //中選logo
     public int winColor = 0 ; //判斷現在是誰執政，0:預設、1:綠、2:藍
-    //public GameObject[] allArray; //全部球+道具
+    public GameObject[] allArray; //全部球+道具
     public Hashtable hash; //宣告HashTable變數:
 
     //炸彈
@@ -68,6 +68,12 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     public GameObject blueNoticeBoard; //顯示藍黨執政
     public GameObject noticeBoard; //顯示普通訊息
     public Text noticeBoardText; //普通訊息文字
+    string[] blackMessage = { "反對年金改革", "反對同婚","支持一例一休","支持美牛進口","反對加入TPP","反對空服員罷工","反對調漲最低薪資","支持建造四","支持進口核災食品" };
+    string[] goldMessage = { "支持年金改革","支持同婚","反對一例一休","反對美牛進口","支持加入TPP","支持空服員罷工","支持調漲最低薪資","反對建造核四","反對進口核災食品"};
+    string bombMessage = "與企業董事秘密餐會!";
+    string paperMessage = "酒後失態，服務員控訴性騷擾!";
+    string microphoneMessage = "發表直播演說，\n獲得民眾支持";
+    string showMessage; //要傳去sendMessage的參數
 
     //音樂
     public GameObject goldBallMusic; //金球音樂
@@ -94,10 +100,6 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             playerMoney[i] = money;
         }
 
-        //hash = new Hashtable();
-        //hash.Add("Money", money); //把變數存進剛剛宣告的hash裡
-        //PhotonNetwork.player.SetCustomProperties(hash);
-
         player = PhotonNetwork.player; //取得現在的player
         playerName = PhotonNetwork.playerName; //取得現在的player的暱稱
         partyColor = (string)PhotonNetwork.player.CustomProperties["PartyColor"]; //政黨顏色
@@ -106,6 +108,8 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         //根據角色換角色圖片
         setRoleImg(PlayerCharacterImg,role);
 
+        //獲得所有的球+道具
+        allArray = GameObject.Find("左Portal(真)").GetComponent<SendBall>().allArray;
 
         //根據政黨顏色換配置(Edge)
         if (partyColor == "green") //綠黨
@@ -202,11 +206,12 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         }
 
         //讓遊戲時間一致
-        if (PhotonNetwork.isMasterClient) //若是Master Client，遊戲開始
-        {
-            photonView.RPC("sendTime", PhotonTargets.All);
-            Debug.Log("time:"+PhotonNetwork.time);
-        }
+        //if (PhotonNetwork.isMasterClient) //若是Master Client，遊戲開始
+        //{
+          InvokeRepeating("timeCountDown", 1, 1); //每一秒執行一次，時間減一
+            //photonView.RPC("sendTime", PhotonTargets.All);
+            //Debug.Log("time:"+PhotonNetwork.time);
+        //}
  
                                   
     }
@@ -223,8 +228,16 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             moneyText.text = "金錢\n x" + money + "(百萬)";
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(blackBallMusic); 
             identificatePlayerMoney(); //判斷是哪個player
-            noticeBoardText.text = (string)player.CustomProperties["Role"] + "反對年金改革";
-            photonView.RPC("sendMessage", PhotonTargets.All);
+            
+            for(int i =0; i < allArray.Length; i++) //判斷是哪個球，給予對應的話
+            {
+                if (allArray[i].name+"(Clone)" == collision.name)
+                {
+                    showMessage = role + blackMessage[i]; //要記得照順序排
+                    break;
+                }
+            }
+            photonView.RPC("sendMessage", PhotonTargets.All,showMessage); //第三個參數:傳送要顯示的話
         }
 
         if (collision.gameObject.CompareTag("金球"))
@@ -233,6 +246,16 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             moneyText.text = "金錢\n x" + money + "(百萬)";
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(goldBallMusic);
             identificatePlayerMoney(); //判斷是哪個player
+
+            for (int i = 0; i < allArray.Length; i++) //判斷是哪個球，給予對應的話
+            {
+                if (allArray[i].name + "(Clone)" == collision.name)
+                {
+                    showMessage = role + goldMessage[i]; //要記得照順序排
+                    break;
+                }
+            }
+            photonView.RPC("sendMessage", PhotonTargets.All, showMessage); //第三個參數:傳送要顯示的話
         }
         if (collision.gameObject.CompareTag("炸彈"))
         { //炸彈，扣50%的錢
@@ -243,16 +266,23 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             }
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(bombMusic);
             identificatePlayerMoney(); //判斷是哪個player
+
+            showMessage = role + bombMessage; 
+            photonView.RPC("sendMessage", PhotonTargets.All, showMessage); //第三個參數:傳送要顯示的話
         }
         if (collision.gameObject.CompareTag("報紙")) //報紙效果:出現選單可以陷害人，指定敵對黨某人有誹聞(意涵:爆料)，被指定者扣錢20%
         {
             //先顯示報紙選單
             paperMenu.SetActive(true);
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(itemMusic);
+            showMessage = role + paperMessage;
+            photonView.RPC("sendMessage", PhotonTargets.All, showMessage); //第三個參數:傳送要顯示的話
         }
         if (collision.gameObject.CompareTag("麥克風"))
         {
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(itemMusic);
+            showMessage = role + microphoneMessage;
+            photonView.RPC("sendMessage", PhotonTargets.All, showMessage); //第三個參數:傳送要顯示的話
         }
 
         //每次金錢變動時，來檢查金錢總額
@@ -359,19 +389,13 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     }
     
     [PunRPC]
-    void sendMessage() //傳遞訊息
+    void sendMessage(string text) //傳遞訊息
     {
         noticeBoard.SetActive(true); //開啟訊息顯示
-        
+        noticeBoardText.text = text;
         Invoke("threeTimeCountDown", 3); //三秒便會關閉訊息
     }
 
-    [PunRPC]
-    void sendTime() //傳送時間，依據masterClient時間為主
-    {
-        InvokeRepeating("timeCountDown", 1, 1); //每隔一秒執行一次 
-    }
-    
     void timeCountDown() //時間倒數，每次減一秒
     {
         timeText.text = "" + time;
@@ -634,4 +658,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             identificateWinPlayer();
         }
     }
+
+
+    
 }
