@@ -60,8 +60,6 @@ EditorBuildSettings:
     path: Assets/UI/Scene/Loading Animator.unity
     guid: 35efb4f1122b7e54ab6d848236c33e0e
   - enabled: 1
-    path: Assets/UI/Scene/GameWin.unity
-    guid: 0c545ab2b2c92b34694a23a91ce0c99e
-  - enabled: 1
-    path: Assets/UI/Scene/GameLose.unity
-    guid: 625d372cd8fee624d80cb6782453759f
+    path: Assets/UI/Scene/Opening Story.unity
+    guid: 00000000000000000000000000000000
+

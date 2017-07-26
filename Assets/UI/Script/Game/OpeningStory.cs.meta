@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 72db6fad2d7a59a46ab9c179caf5e356
+timeCreated: 1500999413
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - BackImg1: {fileID: 21300000, guid: b287e5b935f7f944d879ee1d209800c2, type: 3}
+  - BackImg2: {fileID: 21300000, guid: f518d5adb7bf22e4292ba463be28c9e8, type: 3}
+  - BackImg3: {fileID: 21300000, guid: 85ea9e3ba30f2ca42ab57b45e66372ec, type: 3}
+  - BackImg4: {fileID: 21300000, guid: 21676876047d2664fa4673a50220360d, type: 3}
+  - BackImg5: {fileID: 21300000, guid: 82decbbece0656a43b6ed15800936d36, type: 3}
+  - BackImg6: {fileID: 21300000, guid: 89d1c4b3814880a47a4a1c3798d46cee, type: 3}
+  - BackGroundImg: {instanceID: 0}
+  - DialogTx: {instanceID: 0}
+  - SelectBt1: {instanceID: 0}
+  - SelectBt2: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
