@@ -51,13 +51,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1182368f1e82414faacdaef4ccd7e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  role1: {fileID: 21300000, guid: feae5854373c37f4b9742e0443135930, type: 3}
-  role2: {fileID: 21300000, guid: 001e6dbc11a468b428f8d9c0757e517d, type: 3}
-  role3: {fileID: 21300000, guid: 0ca4e77bbace8924f9622d772f85d001, type: 3}
-  CharecterImg: {fileID: 1826535607633560, guid: f09462f0667a49241a6c84035c629837,
-    type: 2}
-  CharecterInfoTx: {fileID: 1448215730196582, guid: b568c75e129fd7e478fa031782a9931c,
-    type: 2}
-  role1Intro: "\u5927\u5BB6\u597D\uFF0C\u6211\u662F\u8521\u4E2D\u6587"
-  role2Intro: "\u5927\u5BB6\u597D\u963F! \u6211\u662F\u99AC\u82F1\u516B"
-  role3Intro: "\u642D\u7D66\u5F8C\uFF0C\u6316\u7CFB\u8607\u8C9E\u660C! \u885D\u885D\u885D!"
+  BlueRole1: {fileID: 21300000, guid: d3462fd2536b401418c5d78ee84209ba, type: 3}
+  BlueRole2: {fileID: 21300000, guid: 122f5d5257731974c8d241e07244f0e0, type: 3}
+  GreenRole1: {fileID: 21300000, guid: b38a20254e0f1f64789b90f7f91ed2a1, type: 3}
+  GreenRole2: {fileID: 21300000, guid: 6ca654ab91e5fa04ca9cc51f52347150, type: 3}
+  BlueBackground: {fileID: 21300000, guid: e2a8b24a6e4810a4bb82575288d718c0, type: 3}
+  GreenBackground: {fileID: 21300000, guid: 4b804ec356f021f448d77ee0f788a3b6, type: 3}
+  CharecterImg: {fileID: 0}
+  IntroBackImg: {fileID: 0}
+  CharecterNameTx: {fileID: 0}
+  CharecterInfoTx: {fileID: 0}
+  LeftArrowBt: {fileID: 0}
+  RightArrowBt: {fileID: 0}
+  BlueRole1Intro: "\u795D\u9444\u70B7\u4F47\u99D0\u52A9\u86C0\u67F1"
+  BlueRole2Intro: "\u66FE\u70BA\u7E23\u9577\u7684\u65B0\u79D1\u7ACB\u59D4"
+  GreenRole1Intro: "\u5929\u5929\u6012\u7684\u65B0\u4E0A\u4EFB\u7E3D\u7406"
+  GreenRole2Intro: "\u65B0\u6D41\u6D3E\u6B0A\u6CD5\u7684\u9662\u9577"

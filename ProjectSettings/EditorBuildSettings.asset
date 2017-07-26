@@ -62,3 +62,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/UI/Scene/Loading Animator.unity
     guid: 35efb4f1122b7e54ab6d848236c33e0e
+  - enabled: 1
+    path: Assets/UI/Scene/Opening Story.unity
+    guid: 00000000000000000000000000000000

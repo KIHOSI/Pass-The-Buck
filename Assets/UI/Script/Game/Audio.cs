@@ -11,12 +11,13 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public Sprite musicPause;
 		Button musicControlBt;
 		Text musicControlTx;
+		AudioSource audiosre;
 
 		void Start() {
 
 			musicControlBt=GameObject.Find ("MusicControlBt").GetComponent<Button> ();
 			musicControlTx=GameObject.Find ("MusicControlTx").GetComponent<Text> ();
-			AudioSource audiosre = GameObject.Find ("BackGroundMusic").GetComponent<AudioSource> ();
+			audiosre = GameObject.Find ("BackGroundMusic").GetComponent<AudioSource> ();
 
 			if (audiosre.isPlaying)
 			{
@@ -38,19 +39,32 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 			if (musicControlBt.GetComponent<Image> ().sprite == musicPlay)
 			{
-				AudioSource audiosre = GameObject.Find ("BackGroundMusic").GetComponent<AudioSource> ();
+				audiosre = GameObject.Find ("BackGroundMusic").GetComponent<AudioSource> ();
 				audiosre.Pause ();
 				musicControlBt.GetComponent<Image> ().sprite = musicPause;
 				musicControlTx.text="音樂暫停";
 			}
 			else 
 			{
-				AudioSource audiosre = GameObject.Find ("BackGroundMusic").GetComponent<AudioSource> ();
+				audiosre = GameObject.Find ("BackGroundMusic").GetComponent<AudioSource> ();
 				audiosre.Play ();
 				musicControlBt.GetComponent<Image> ().sprite = musicPlay;
 				musicControlTx.text="音樂播放";
 			}
 		}
+
+		public void MusicPlay (GameObject audio)
+		{
+			audiosre = audio.GetComponent<AudioSource> ();
+			audiosre.Play ();
+		}
+
+		public void MusicStop (GameObject audio)
+		{
+			audiosre = audio.GetComponent<AudioSource> ();
+			audiosre.Stop ();
+		}
+
 
 		/*
 		void OnGUI() {
