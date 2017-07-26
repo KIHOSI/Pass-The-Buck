@@ -1939,12 +1939,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   money: 100
-  time: 120
+  time: 20
   moneyText: {fileID: 1183681563}
   timeText: {fileID: 1471914129}
   winLogo: {fileID: 1586034487}
   winColor: 0
-  allArray: []
   bombObj: {fileID: 1057849301}
   paperMenu: {fileID: 838894730}
   paper: {fileID: 569580611}
@@ -2050,7 +2049,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -60.299988, y: 405.9}
+  m_AnchoredPosition: {x: -60.299988, y: 405.90002}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1057849303
@@ -2113,7 +2112,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 3f6edc71bc91e0f4da3ffccbf8438de4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 67926bf57465d764aa1f34e303c0cc5b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2182,6 +2181,9 @@ MonoBehaviour:
   - {fileID: 1231691690448264, guid: cf8b0c34b39e87e478325fdf05ecbc3f, type: 2}
   generateBallseconds: 10
   generateItemseconds: 20
+  leftOrRight: 2
+  changeSpeedX: 2
+  changeSpeedY: 2
 --- !u!212 &1094222559
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4362,6 +4364,9 @@ MonoBehaviour:
   - {fileID: 1231691690448264, guid: cf8b0c34b39e87e478325fdf05ecbc3f, type: 2}
   generateBallseconds: 10
   generateItemseconds: 20
+  leftOrRight: 1
+  changeSpeedX: 2
+  changeSpeedY: 2
 --- !u!1 &2147248378
 GameObject:
   m_ObjectHideFlags: 0

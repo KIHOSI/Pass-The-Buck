@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
@@ -13,11 +14,12 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     int blueMoney; //藍黨總錢
     int greenMoney; //綠黨總錢
     int[] playerMoney = new int[4]; //player的錢
+    //bool isFirst = true;
 
     //執政
     public GameObject winLogo; //中選logo
     public int winColor = 0 ; //判斷現在是誰執政，0:預設、1:綠、2:藍
-    public GameObject[] allArray; //全部球+道具
+    //public GameObject[] allArray; //全部球+道具
 
     //炸彈
     public GameObject bombObj;
@@ -67,7 +69,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     // Use this for initialization
     void Start() {
         //得到所有球、
-        allArray = GameObject.Find("左Portal(真)").GetComponent<SendBall>().allArray;
+        //allArray = GameObject.Find("左Portal(真)").GetComponent<SendBall>().allArray;
 
         //取得玩家list(同樣順序)
         PlayerList = new List<PhotonPlayer>();
@@ -92,6 +94,9 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         playerName = PhotonNetwork.playerName; //取得現在的player的暱稱
         partyColor = (string)PhotonNetwork.player.CustomProperties["PartyColor"]; //政黨顏色
         role = (string)PhotonNetwork.player.CustomProperties["Role"]; //政黨角色
+
+        Debug.Log("before playerName:" + playerName);
+        Debug.Log("before partyColor:" + partyColor);
 
         //根據角色換角色圖片
         setRoleImg(PlayerCharacterImg,role);
@@ -192,6 +197,28 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             portalRight_green.SetActive(false);
         }
 
+        /*
+        if (player == PhotonNetwork.masterClient)  //player1
+        {
+            Debug.Log("ImPlayer1");
+            SceneManager.LoadScene("GameWin");
+        }
+        else if (player == PhotonNetwork.masterClient.GetNext()) //player2
+        {
+            Debug.Log("ImPlayer2");
+        }
+        else if (player == PhotonNetwork.masterClient.GetNext().GetNext()) //player3
+        {
+            Debug.Log("ImPlayer3");
+            
+            SceneManager.LoadScene("GameLose");
+        }
+        else if (player == PhotonNetwork.masterClient.GetNext().GetNext().GetNext()) //player4
+        {
+            Debug.Log("ImPlayer4");
+        }
+        */
+
         //讓遊戲時間一致
         //if (PhotonNetwork.isMasterClient) //若是Master Client，遊戲開始
         //{
@@ -205,15 +232,38 @@ public class NowState : MonoBehaviour { //控制連線及背景component
 	
 	// Update is called once per frame
 	void Update () {
-
-        if (time == 0) //如果時間歸零，就停止減少
+        /*if(isFirst == true)
         {
-            CancelInvoke("timeCountDown");
-            timeText.text = "Game Over";
-            Time.timeScale = 0f; //時間暫停
+            if (time == 0) //如果時間歸零，就停止減少
+            {
+                CancelInvoke("timeCountDown");
+                timeText.text = "Game Over";
+                Time.timeScale = 0f; //時間暫停
+
+                if (player == PhotonNetwork.masterClient)  //player1
+                {
+                    Debug.Log("ImPlayer1");
+                    SceneManager.LoadScene("GameWin");
+                }
+                else if (player == PhotonNetwork.masterClient.GetNext()) //player2
+                {
+                    Debug.Log("ImPlayer2");
+                }
+                else if (player == PhotonNetwork.masterClient.GetNext().GetNext()) //player3
+                {
+                    Debug.Log("ImPlayer3");
+                    SceneManager.LoadScene("GameLose");
+                }
+                else if (player == PhotonNetwork.masterClient.GetNext().GetNext().GetNext()) //player4
+                {
+                    Debug.Log("ImPlayer4");
+                }
+                isFirst = false;
+            }
             
-        }
-    }
+        }*/
+        
+}
 
     void OnTriggerEnter2D(Collider2D collision) //進洞
     {
@@ -253,7 +303,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         identificateWinPlayer();
     }
 
-    void identificateWinPlayer() //判斷誰是執政黨
+    void identificateWinPlayer() //判斷誰是執政黨，把錢加總
     {
         greenMoney = 0; //初始化
         blueMoney = 0;
@@ -309,29 +359,6 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         }
     }
 
-    [PunRPC] //傳送綠黨執政消息
-    void showGreenNoticeBroad()
-    {
-        greenNoticeBoard.SetActive(true);  //佈告欄-綠
-        winColor = 1;
-        showThreeMinute(); //三秒後結束畫面
-        setWinPlayer(); //判斷執政黨
-        //綠黨執政效果:道具改為每15秒產生一次
-        GameObject.Find("左邊框").GetComponent<GenerateBall>().generateItemseconds = 15;
-        GameObject.Find("右邊框").GetComponent<GenerateBall>().generateItemseconds = 15;
-    }
-
-    [PunRPC] //傳送藍黨執政消息
-    void showBlueNoticeBroad()
-    {
-        blueNoticeBoard.SetActive(true); //佈告欄 - 藍
-        winColor = 2;
-        showThreeMinute(); //三秒後結束畫面
-        setWinPlayer(); //判斷執政黨
-        //藍黨執政效果:所有東西速度變慢
-        
-    }
-
     void setWinPlayer() //設定執政黨
     {
         if(winColor == 1) //綠色執政
@@ -379,6 +406,67 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     {
         timeText.text = "" + time;
         time--;
+        if (time == 0) //如果時間歸零，就停止減少
+        {
+            CancelInvoke("timeCountDown");
+            timeText.text = "Game Over";
+            Time.timeScale = 0f; //時間暫停
+
+            if (player == PhotonNetwork.masterClient)  //player1
+            {
+                Debug.Log("ImPlayer1");
+                SceneManager.LoadScene("GameWin");
+            }
+            else if (player == PhotonNetwork.masterClient.GetNext()) //player2
+            {
+                Debug.Log("ImPlayer2");
+            }
+            else if (player == PhotonNetwork.masterClient.GetNext().GetNext()) //player3
+            {
+                Debug.Log("ImPlayer3");
+                SceneManager.LoadScene("GameLose");
+            }
+            else if (player == PhotonNetwork.masterClient.GetNext().GetNext().GetNext()) //player4
+            {
+                Debug.Log("ImPlayer4");
+            }
+
+            //判斷是哪個黨贏，似乎會跑4遍
+            Debug.Log("after playerName:"+playerName);
+            Debug.Log("after partyColor:" + partyColor);
+            Debug.Log("winColor:"+winColor);
+            if (winColor == 1) //綠贏
+            {
+                if (partyColor == "green") //綠黨顯示贏的畫面
+                {
+                    Debug.Log("Change1");
+                    SceneManager.LoadScene("GameWin");
+                    //PhotonNetwork.LoadLevel("GameWin");
+                }
+                else if (partyColor == "blue") //藍黨顯示輸的畫面
+                {
+                    Debug.Log("Change2");
+                    SceneManager.LoadScene("GameLose");
+                    //PhotonNetwork.LoadLevel("GameLose");
+                }
+            }
+            else if (winColor == 2) //藍贏
+            {
+                if (partyColor == "blue") //藍黨顯示贏的畫面
+                {
+                    Debug.Log("Change3");
+                    SceneManager.LoadScene("GameWin");
+                    //PhotonNetwork.LoadLevel("GameWin");
+                }
+                else if (partyColor == "green") //綠黨顯示輸的畫面
+                {
+                    Debug.Log("Change4");
+                    SceneManager.LoadScene("GameLose");
+                    //PhotonNetwork.LoadLevel("GameLose");
+                }
+            }
+
+        }
     }
 
     void greenTimeCountDown() //顯示三秒便結束(綠)
@@ -502,6 +590,32 @@ public class NowState : MonoBehaviour { //控制連線及背景component
                 }
                 break;
         }
+    }
+
+    [PunRPC] //傳送綠黨執政消息
+    void showGreenNoticeBroad()
+    {
+        greenNoticeBoard.SetActive(true);  //佈告欄-綠
+        winColor = 1;
+        showThreeMinute(); //三秒後結束畫面
+        setWinPlayer(); //判斷執政黨
+        //綠黨執政效果:道具改為每15秒產生一次
+        GameObject.Find("左邊框").GetComponent<GenerateBall>().generateItemseconds = 15;
+        GameObject.Find("右邊框").GetComponent<GenerateBall>().generateItemseconds = 15;
+    }
+
+    [PunRPC] //傳送藍黨執政消息
+    void showBlueNoticeBroad()
+    {
+        blueNoticeBoard.SetActive(true); //佈告欄 - 藍
+        winColor = 2;
+        showThreeMinute(); //三秒後結束畫面
+        setWinPlayer(); //判斷執政黨
+        //藍黨執政效果:所有東西速度變慢(新產生的物體，速度變為1)
+        GameObject.Find("左邊框").GetComponent<GenerateBall>().changeSpeedX = 1;
+        GameObject.Find("右邊框").GetComponent<GenerateBall>().changeSpeedY = 1;
+
+
     }
 
     //傳遞報紙訊息

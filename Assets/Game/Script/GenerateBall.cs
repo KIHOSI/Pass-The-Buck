@@ -11,6 +11,9 @@ public class GenerateBall : MonoBehaviour {
     bool showItem = false; //true代表生成、false代表不生成
     public int generateBallseconds; //產生球的秒數
     public int generateItemseconds; //產生道具的秒數
+    public int leftOrRight; //判斷是左邊框還是右邊框，left:1、right:2
+    public int changeSpeedX = 2; //指定球的速度 
+    public int changeSpeedY = 2; //指定球的速度
 
     // Use this for initialization
     void Start () {
@@ -28,8 +31,17 @@ public class GenerateBall : MonoBehaviour {
 
     void generateBall() //產生球
     {
+        GameObject ball;
         ballIndex = Random.Range(0, BallArray.Length); //隨機產生一個在0到最大值間的數(含0)
-        Instantiate(BallArray[ballIndex], transform.position, new Quaternion(0, 0, 0, 0));
+        ball = Instantiate(BallArray[ballIndex], transform.position, new Quaternion(0, 0, 0, 0));
+        if(leftOrRight == 1) //左邊產生
+        {
+            ball.GetComponent<Rigidbody2D>().velocity = new Vector2(changeSpeedX,changeSpeedY);
+        }
+        else if(leftOrRight == 2) //右邊產生
+        {
+            ball.GetComponent<Rigidbody2D>().velocity = new Vector2(-changeSpeedX, changeSpeedY);
+        }
     }
 
     void generateItem() //產生道具
@@ -37,8 +49,17 @@ public class GenerateBall : MonoBehaviour {
         showItem = (Random.value > 0.5f); //true or false
         if (showItem)
         {
+            GameObject item;
             itemIndex = Random.Range(0,ItemArray.Length); //隨機產生一個在0到最大值間的數(含0)
-            Instantiate(ItemArray[itemIndex], transform.position, new Quaternion(0, 0, 0, 0));
+            item = Instantiate(ItemArray[itemIndex], transform.position, new Quaternion(0, 0, 0, 0));
+            if (leftOrRight == 1) //左邊產生
+            {
+                item.GetComponent<Rigidbody2D>().velocity = new Vector2(changeSpeedX, changeSpeedY);
+            }
+            else if (leftOrRight == 2) //右邊產生
+            {
+                item.GetComponent<Rigidbody2D>().velocity = new Vector2(-changeSpeedX, changeSpeedY);
+            }
         }
     }
 }
