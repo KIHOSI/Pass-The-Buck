@@ -17,13 +17,6 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 		#endregion
 
-	    // Use this for initialization
-	    void Start () 
-	    {
-	 	    
-	    }
-	
-
 
 		#region Public Methods
 

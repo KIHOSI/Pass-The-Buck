@@ -50,13 +50,13 @@ namespace Com.MyProject.MyPassTheBuckGame
 			{
 				MaxPlayersPerRoom = 2;
 			}
-			else if (MaxPlayerChoosed=="3")
-			{
-				MaxPlayersPerRoom = 3;
-			}
 			else if (MaxPlayerChoosed=="4")
 			{
 				MaxPlayersPerRoom = 4;
+			}
+			else if (MaxPlayerChoosed=="")
+			{
+				MaxPlayersPerRoom = 0;
 			}
 
 			Debug.Log(MaxPlayersPerRoom);
@@ -67,8 +67,12 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 			if (GameRoomName == "") 
 			{
-				onTips("房名不可空白!");
-			} 
+				onTips ("房名不可空白!");
+			}
+			else if (MaxPlayersPerRoom == 0)
+			{
+				onTips ("請設定房間人數!");
+			}
 			else 
 			{
 				PhotonNetwork.CreateRoom(GameRoomName,options,null);
@@ -102,13 +106,12 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 		public override void OnCreatedRoom()
 		{
-			Debug.Log("你已進入遊戲室!"+"遊戲室名稱為:"+PhotonNetwork.room.Name+"、最大遊玩人數:"+MaxPlayersPerRoom);
 			SceneManager.LoadScene("Waiting Room");
 		}
 
 		public override void OnPhotonCreateRoomFailed (object[] codeAndMsg)
 		{
-			Debug.Log ("創立房間失敗");
+			onTips ("房間已存在");
 		}
 
 		public override void OnDisconnectedFromPhoton()
