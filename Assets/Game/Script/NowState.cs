@@ -73,12 +73,8 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     public Text goodNoticeBoardText; //金訊息文字
     public Text paperNoticeBoardText; //報紙訊息文字
     public Text bombNoticeBoardText; //炸彈訊息文字
-    //public Text 
     string[] blackMessage = { "反對年金改革", "反對同婚","支持一例一休","支持美牛進口","反對加入TPP","反對空服員罷工","反對調漲最低薪資","支持建造四","支持進口核災食品" };
     string[] goldMessage = { "支持年金改革","支持同婚","反對一例一休","反對美牛進口","支持加入TPP","支持空服員罷工","支持調漲最低薪資","反對建造核四","反對進口核災食品"};
-    //string bombMessage = "與企業董事秘密餐會!";
-    //string paperMessage = "酒後失態，服務員控訴性騷擾!";
-    //string microphoneMessage = "發表直播演說，\n獲得民眾支持";
     string badMessage; //黑訊息
     string goodMessage; //金訊息
     string paperMessage;//報紙訊息
@@ -98,7 +94,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         allArray = GameObject.Find("左Portal(真)").GetComponent<SendBall>().allArray;
         
         //UI
-        moneyText.text = "金錢\n x" + money + "(百萬)";
+        moneyText.text = money + "(百萬)";
 
         //取得玩家list(同樣順序)
         PlayerList = new List<PhotonPlayer>();
@@ -256,11 +252,12 @@ public class NowState : MonoBehaviour { //控制連線及背景component
                     break;
                 }
             }
+            //Destroy(collision.gameObject); //把黑球刪掉
             photonView.RPC("sendBadMessage", PhotonTargets.All, badMessage); //第三個參數:傳送要顯示的話
         }
 
         else if (collision.gameObject.CompareTag("金球"))
-        { //金球
+        { //金球 
             money += 10;
             moneyText.text = "金錢\n x" + money + "(百萬)";
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(goldBallMusic);
@@ -278,6 +275,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
                 }
             }
             Destroy(collision.gameObject); //把金球刪掉
+            //金球吃完後會產生黑球彈出去，意味著拿完好處就丟掉
             //int newBallIndex = ballIndex - (allArray.Length/2); //此金球的黑球相應位置，要記得排好
             int newBallIndex = 1;
             Debug.Log("allArray.Length:" + allArray.Length);
@@ -295,6 +293,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(bombMusic);
             identificatePlayerMoney(); //判斷是哪個player
             bombMessage = role + "與企業董事秘密餐會!";
+            //Destroy(collision.gameObject); //把炸彈刪掉
             photonView.RPC("sendBombMessage", PhotonTargets.All, bombMessage); //第三個參數:傳送要顯示的話
             //showMessage = role + bombMessage;  //炸彈訊息
             //photonView.RPC("sendMessage", PhotonTargets.All, showMessage); //第三個參數:傳送要顯示的話
@@ -304,6 +303,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             //先顯示報紙選單
             paperMenu.SetActive(true);
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(itemMusic);
+            //Destroy(collision.gameObject); //把報紙刪掉
             //paperMessage = "知名政治人物"+ role + "酒後失態，服務員控訴性騷擾!";
         }
         else if (collision.gameObject.CompareTag("麥克風"))
@@ -311,13 +311,16 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(itemMusic);
             microphoneEffect();
             goodMessage = role + "發表直播演說，\n獲得民眾支持";
+            //Destroy(collision.gameObject); //把麥克風刪掉
             photonView.RPC("sendGoodMessage", PhotonTargets.All, goodMessage); //第三個參數:傳送要顯示的話
             //showMessage = role + microphoneMessage;
             //photonView.RPC("sendMessage", PhotonTargets.All, showMessage); //第三個參數:傳送要顯示的話
         }
-
+        
         //每次金錢變動時，來檢查金錢總額
         identificateWinPlayer();
+
+        Destroy(collision.gameObject); //把碰觸到的球刪掉
     }
 
     void timeCountDown() //時間倒數，每次減一秒
@@ -376,11 +379,6 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         {
             playerMoney[3] = money;
         }
-    }
-
-    void changeToBlackBall() //金球吃完後會產生黑球彈出去，意味著拿完好處就丟掉
-    {
-
     }
 
     #region 黑訊息
