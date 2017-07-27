@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ChangePaperPersonImg : MonoBehaviour {
     Image paperPerson; //人物圖片
-    public Image[] paperPersonImage; //該Player的報紙按鈕圖片
+    //public Image[] paperPersonImage; //該Player的報紙按鈕圖片
     public Sprite[] paperPersonAllImage; //全部圖片
 
     void Awake()
@@ -13,15 +13,15 @@ public class ChangePaperPersonImg : MonoBehaviour {
         paperPerson = GetComponent<Image>(); //讀取該人物圖片
     }
 
-    public void getPaperImg()
+    /*public void getPaperImg()
     {
         for (int i = 0; i < 3; i++) //得到圖片
         {
             paperPersonImage[i] = GameObject.Find("洞口").GetComponent<NowState>().paperPersonImage[i];
         }
-    }
+    }*/
 
-    public void ChangePersonImg1() //Player1
+    /*public void ChangePersonImg1() //Player1
     {
         paperPerson.sprite = paperPersonImage[0].sprite;
     }
@@ -32,7 +32,7 @@ public class ChangePaperPersonImg : MonoBehaviour {
     public void ChangePersonImg3() //Player3
     {
         paperPerson.sprite = paperPersonImage[2].sprite;
-    }
+    }*/
 
     //直接改變人物圖片
     public void ChangeImg1() //吳指癢
