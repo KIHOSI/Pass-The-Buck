@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 58527134111237270}
   - component: {fileID: 114614053221254452}
   - component: {fileID: 50444312868109804}
+  - component: {fileID: 114800122162432432}
   m_Layer: 0
   m_Name: PortalBall
   m_TagString: "\u5DE6\u908A\u7684\u7403"
@@ -89,9 +90,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c6538e77e9fd94d8ad8f6667420d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test: {fileID: 1072632753154762}
-  speedX: 2
-  speedY: -2
+  speedX: 0
+  speedY: -5
+--- !u!114 &114800122162432432
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1072632753154762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 0
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 0
+  instantiationId: -1
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
 --- !u!212 &212753855593480978
 SpriteRenderer:
   m_ObjectHideFlags: 1

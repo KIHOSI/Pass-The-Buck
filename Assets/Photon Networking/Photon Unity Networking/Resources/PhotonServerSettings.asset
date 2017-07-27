@@ -61,4 +61,6 @@ MonoBehaviour:
   - sendBombMessage
   - sendBadMessage
   - sendGoodMessage
+  - sendToPortalBall1
+  - sendToPortalBall
   DisableAutoOpenWizard: 1

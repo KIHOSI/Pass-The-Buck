@@ -89,8 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c6538e77e9fd94d8ad8f6667420d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedX: 0
-  speedY: -5
+  speedX: 2
+  speedY: 2
   ballCollisionMusic: {fileID: 0}
 --- !u!212 &212184236094053132
 SpriteRenderer:

@@ -7,7 +7,7 @@ public class BallMove : MonoBehaviour
     Rigidbody2D ballRigidbody2D;
     public float speedX;    //球的水平速度
     public float speedY;    //球的垂直速度
-    public GameObject ballCollisionMusic; //球撞擊聲
+    GameObject ballCollisionMusic; //球撞擊聲
                           
     //初始化函数，在游戏开始时系统自动调用。一般用来创建变量之类的东西。  
     void Awake() //寫在start會覆蓋掉後續的速度改變

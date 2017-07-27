@@ -12,8 +12,8 @@ public class GenerateBall : MonoBehaviour {
     public int generateBallseconds; //產生球的秒數
     public int generateItemseconds; //產生道具的秒數
     public int leftOrRight; //判斷是左邊框還是右邊框，left:1、right:2
-    public int changeSpeedX = 2; //指定球的速度 
-    public int changeSpeedY = 2; //指定球的速度
+    public float changeSpeedX = 2; //指定球的速度 
+    public float changeSpeedY = 2; //指定球的速度
 
     // Use this for initialization
     void Start () {

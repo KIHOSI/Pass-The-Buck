@@ -1427,6 +1427,7 @@ MonoBehaviour:
   - {fileID: 1765187116463052, guid: 02c5e2657c01f7643bdb0fc2c71a054b, type: 2}
   - {fileID: 1231691690448264, guid: cf8b0c34b39e87e478325fdf05ecbc3f, type: 2}
   - {fileID: 1115240259332214, guid: 889be4d7bca68bf4984133ff0b13a520, type: 2}
+  generateBallSpeed: 2
 --- !u!1 &672076172
 GameObject:
   m_ObjectHideFlags: 0
@@ -2375,7 +2376,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -60.299988, y: 405.90002}
+  m_AnchoredPosition: {x: -60.299988, y: 405.90005}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1057849303
@@ -2483,7 +2484,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1094222557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2678,6 +2679,7 @@ MonoBehaviour:
   - {fileID: 1765187116463052, guid: 02c5e2657c01f7643bdb0fc2c71a054b, type: 2}
   - {fileID: 1231691690448264, guid: cf8b0c34b39e87e478325fdf05ecbc3f, type: 2}
   - {fileID: 1115240259332214, guid: 889be4d7bca68bf4984133ff0b13a520, type: 2}
+  generateBallSpeed: 2
 --- !u!1 &1143064470
 GameObject:
   m_ObjectHideFlags: 0
@@ -3093,6 +3095,7 @@ MonoBehaviour:
   - {fileID: 1765187116463052, guid: 02c5e2657c01f7643bdb0fc2c71a054b, type: 2}
   - {fileID: 1231691690448264, guid: cf8b0c34b39e87e478325fdf05ecbc3f, type: 2}
   - {fileID: 1115240259332214, guid: 889be4d7bca68bf4984133ff0b13a520, type: 2}
+  generateBallSpeed: 2
 --- !u!1 &1298528247
 GameObject:
   m_ObjectHideFlags: 0
@@ -5418,7 +5421,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1977004258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5430,7 +5433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02937f2dc9aee3444bb6301d91849a4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PortalBall: {fileID: 1803559224094270, guid: 6488f35e2e6995c4a91b64496e452d1d, type: 2}
+  PortalBall: {fileID: 1805923523202970, guid: 6e1eacc40c2fa12468688c1f8c96a400, type: 2}
 --- !u!68 &1977004259
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -5518,7 +5521,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &2007934109
 SpriteRenderer:
   m_ObjectHideFlags: 0

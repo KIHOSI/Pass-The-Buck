@@ -11,6 +11,7 @@ public class SendBall : MonoBehaviour {
     string triggerName; //將要傳送的物件名稱
     bool reliable = true;
     int portalIndex; //判斷現在是左、上、右Portal，以便指定產生的球的位置；0:左、1:上、2:右
+    public float generateBallSpeed = 2; //產生球的速度，預設為2 
 
     // setup our OnEvent as callback:
     void Awake()
@@ -36,15 +37,15 @@ public class SendBall : MonoBehaviour {
                         {
                             case 0: //左
                                 allGameObject = Instantiate(allArray[i], transform.position + new Vector3(1, 0, 0), new Quaternion(0, 0, 0, 0)); //產生球，並對球指定速度；position+x橫向位置，是為了讓球傳送完不馬上觸發onTriggerEnter2D
-                                allGameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(2, -2);
+                                allGameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(generateBallSpeed, -generateBallSpeed);
                                 break;
                             case 1: //上
                                 allGameObject = Instantiate(allArray[i], transform.position + new Vector3(0, -1, 0), new Quaternion(0, 0, 0, 0)); //產生球，並對球指定速度；position+x橫向位置，是為了讓球傳送完不馬上觸發onTriggerEnter2D
-                                allGameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -2);
+                                allGameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -generateBallSpeed);
                                 break;
                             case 2: //右
                                 allGameObject = Instantiate(allArray[i], transform.position + new Vector3(-1, 0, 0), new Quaternion(0, 0, 0, 0)); //產生球，並對球指定速度；position+x橫向位置，是為了讓球傳送完不馬上觸發onTriggerEnter2D
-                                allGameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(-2, -2);
+                                allGameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(-generateBallSpeed, -generateBallSpeed);
                                 break;
                         }
                     }

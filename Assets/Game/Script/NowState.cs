@@ -78,7 +78,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     string[] goldMessage = { "支持年金改革","支持同婚","反對一例一休","反對美牛進口","支持加入TPP","支持空服員罷工","支持調漲最低薪資","反對建造核四","反對進口核災食品"};
     //string bombMessage = "與企業董事秘密餐會!";
     //string paperMessage = "酒後失態，服務員控訴性騷擾!";
-    string microphoneMessage = "發表直播演說，\n獲得民眾支持";
+    //string microphoneMessage = "發表直播演說，\n獲得民眾支持";
     string badMessage; //黑訊息
     string goodMessage; //金訊息
     string paperMessage;//報紙訊息
@@ -93,7 +93,13 @@ public class NowState : MonoBehaviour { //控制連線及背景component
 
     // Use this for initialization
     void Start() {
+
+        //獲得所有的球+道具
+        allArray = GameObject.Find("左Portal(真)").GetComponent<SendBall>().allArray;
         
+        //UI
+        moneyText.text = "金錢\n x" + money + "(百萬)";
+
         //取得玩家list(同樣順序)
         PlayerList = new List<PhotonPlayer>();
         PlayerList.Add(PhotonNetwork.masterClient); //1
@@ -117,9 +123,6 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         //根據角色換角色圖片
         setRoleImg(PlayerCharacterImg,role);
 
-        //獲得所有的球+道具
-        allArray = GameObject.Find("左Portal(真)").GetComponent<SendBall>().allArray;
-
         //根據政黨顏色換配置(Edge)
         if (partyColor == "green") //綠黨
         {
@@ -131,9 +134,6 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             edge1_green.SetActive(false);
             edge2_green.SetActive(false);
         }
-
-        //UI
-        moneyText.text = "金錢\n x" + money + "(百萬)";
 
         //判斷是哪個player
         if (player == PlayerList[0]) //Player1
@@ -183,7 +183,6 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         {
             paperPersonImage[i] = paperPersonMenu[i].GetComponent<Image>();
         }
-        
 
         //根據政黨顏色換配置(Edge)
         //左
@@ -218,15 +217,26 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         //if (PhotonNetwork.isMasterClient) //若是Master Client，遊戲開始
         //{
           InvokeRepeating("timeCountDown", 1, 1); //每一秒執行一次，時間減一
-            //photonView.RPC("sendTime", PhotonTargets.All);
-            //Debug.Log("time:"+PhotonNetwork.time);
-        //}
- 
-                                  
+                                                  //photonView.RPC("sendTime", PhotonTargets.All);
+                                                  //Debug.Log("time:"+PhotonNetwork.time);
+                                                  //}
+        
+        //photonView.RPC("sendToPortalBall", PhotonTargets.All); //第三個參數:傳送要顯示的話
+
     }
 
+    /*[PunRPC]
+    void sendToPortalBall()//trytry
+    {
+        Debug.Log("GameObjectName:"+this.gameObject.name);
+        if(this.gameObject.name == "PortalBall")
+        {
+            Debug.Log("送給portalball1");
+        }
+    }*/
+
     // Update is called once per frame
-    void Update () {   
+    void Update () {
     }
 
     void OnTriggerEnter2D(Collider2D collision) //進洞
@@ -256,14 +266,23 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(goldBallMusic);
             identificatePlayerMoney(); //判斷是哪個player
 
+            int ballIndex = 0; //儲存球的位置
+
             for (int i = 0; i < allArray.Length; i++) //判斷是哪個球，給予對應的話
             {
                 if (allArray[i].name + "(Clone)" == collision.name)
                 {
+                    ballIndex = i;
                     goodMessage = role + goldMessage[i]; //要記得照順序排
                     break;
                 }
             }
+            Destroy(collision.gameObject); //把金球刪掉
+            //int newBallIndex = ballIndex - (allArray.Length/2); //此金球的黑球相應位置，要記得排好
+            int newBallIndex = 1;
+            Debug.Log("allArray.Length:" + allArray.Length);
+            GameObject newBlackBall = Instantiate(allArray[newBallIndex], transform.position + new Vector3(0, 1, 0), new Quaternion(0, 0, 0, 0));
+            newBlackBall.GetComponent<Rigidbody2D>().velocity = new Vector2(0,2); //新產生一顆黑球，彈出去
             photonView.RPC("sendGoodMessage", PhotonTargets.All, goodMessage); //第三個參數:傳送要顯示的話
         }
         else if (collision.gameObject.CompareTag("炸彈"))
@@ -290,6 +309,9 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         else if (collision.gameObject.CompareTag("麥克風"))
         {
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(itemMusic);
+            microphoneEffect();
+            goodMessage = role + "發表直播演說，\n獲得民眾支持";
+            photonView.RPC("sendGoodMessage", PhotonTargets.All, goodMessage); //第三個參數:傳送要顯示的話
             //showMessage = role + microphoneMessage;
             //photonView.RPC("sendMessage", PhotonTargets.All, showMessage); //第三個參數:傳送要顯示的話
         }
@@ -354,6 +376,11 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         {
             playerMoney[3] = money;
         }
+    }
+
+    void changeToBlackBall() //金球吃完後會產生黑球彈出去，意味著拿完好處就丟掉
+    {
+
     }
 
     #region 黑訊息
@@ -593,6 +620,42 @@ public class NowState : MonoBehaviour { //控制連線及背景component
 
     #endregion
 
+    #region 麥克風
+    void microphoneEffect() //麥克風效果，把該player場上的黑球變金球
+    {
+        foreach (GameObject obj in Object.FindObjectsOfType(typeof(GameObject))) //得到所有hierarchy的物件
+        {
+            Debug.Log(obj.name);
+            if (obj.CompareTag("黑球")) //如果該物件是黑球，轉成金球
+            {
+                Debug.Log("我進來啦");
+                int ballIndex = 0; //存取該黑球的index
+                Vector3 ballPosition = obj.transform.position; //存取該黑球的位置
+                for (int i = 0; i < allArray.Length; i++) //記得排好順序
+                {
+                    Debug.Log("obj.name:"+obj.name);
+                    Debug.Log("allArray[" + i + "].name(Clone):" + allArray[i] + "(Clone)");
+                    if (obj.name == allArray[i].name + "(Clone)")
+                    {
+                        Debug.Log("成功進入");
+                        ballIndex = i; //存取黑球在此陣列的index
+                        break;
+                    }
+                }
+                Destroy(obj); //刪除此黑球
+                Debug.Log("ballIndex:"+ballIndex);
+                //int newBallIndex = ballIndex + (allArray.Length/2) ; //index + array全部/2 會得到其相應的金球位置
+                int newBallIndex = 0; //先預設為TPP-金
+                Debug.Log("newBallIndex:" + newBallIndex);
+                GameObject goldBall = Instantiate(allArray[newBallIndex], ballPosition, new Quaternion(0, 0, 0, 0)); //建立相對應的金球
+                Debug.Log("建立成功");
+                goldBall.GetComponent<Rigidbody2D>().velocity = new Vector2(0,-1); //不知道速度要指派怎樣，都往下好ㄌ
+            }
+        }
+        
+    }
+    #endregion
+
     #region 政黨執政
 
     void identificateWinPlayer() //判斷誰是執政黨，把錢加總
@@ -642,6 +705,12 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         //綠黨執政效果:道具改為每15秒產生一次
         GameObject.Find("左邊框").GetComponent<GenerateBall>().generateItemseconds = 15;
         GameObject.Find("右邊框").GetComponent<GenerateBall>().generateItemseconds = 15;
+        //藍黨執政的效果要改回來
+        GameObject.Find("左邊框").GetComponent<GenerateBall>().changeSpeedX = 2;
+        GameObject.Find("右邊框").GetComponent<GenerateBall>().changeSpeedY = 2;
+        GameObject.Find("左Portal(真)").GetComponent<SendBall>().generateBallSpeed = 2;
+        GameObject.Find("右Portal(真)").GetComponent<SendBall>().generateBallSpeed = 2;
+        GameObject.Find("上Portal(真)").GetComponent<SendBall>().generateBallSpeed = 2;
     }
 
     [PunRPC] //傳送藍黨執政消息
@@ -655,7 +724,12 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         //藍黨執政效果:所有東西速度變慢(新產生的物體，速度變為1)
         GameObject.Find("左邊框").GetComponent<GenerateBall>().changeSpeedX = 1;
         GameObject.Find("右邊框").GetComponent<GenerateBall>().changeSpeedY = 1;
-
+        GameObject.Find("左Portal(真)").GetComponent<SendBall>().generateBallSpeed = 1;
+        GameObject.Find("右Portal(真)").GetComponent<SendBall>().generateBallSpeed = 1;
+        GameObject.Find("上Portal(真)").GetComponent<SendBall>().generateBallSpeed = 1;
+        //綠黨執政的效果要改回來
+        GameObject.Find("左邊框").GetComponent<GenerateBall>().generateItemseconds = 20;
+        GameObject.Find("右邊框").GetComponent<GenerateBall>().generateItemseconds = 20;
     }
 
     void showWinPartyMessage() //僅顯示3秒
