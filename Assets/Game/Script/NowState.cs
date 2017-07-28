@@ -50,6 +50,10 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     public Sprite role2;
     public Sprite role3;
     public Sprite role4;
+    
+    public Sprite[] SneerPersonImg; //人物奸笑
+    public Sprite[] AngryPersonImg; //人物憤怒
+    public Sprite[] cryPersonImg; //人物哭泣
 
     //Edge、Portal
     public GameObject edge1_blue;
@@ -86,13 +90,26 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     public GameObject itemMusic; //道具音樂
     public GameObject bombMusic; //炸彈音樂
 
+    //麥克風功能，儲存目的地位置
+    Vector3 leftPortalPos;
+    Vector3 upPortalPos;
+    Vector3 rightPortalPos;
+    //GameObject targetBall; //要傳去目的地的金球
+    //Vector3 targetPos; //目的地位置
+    //bool microphoneTrue = false;//是否開啟麥克風功能 ，true:yes、false:no
+
 
     // Use this for initialization
     void Start() {
 
         //獲得所有的球+道具
         allArray = GameObject.Find("左Portal(真)").GetComponent<SendBall>().allArray;
-        
+
+        //麥克風功能，儲存目的地位置
+        leftPortalPos = GameObject.Find("左Portal(真)").transform.position; //左邊portal位置
+        upPortalPos = GameObject.Find("上Portal(真)").transform.position; //上邊portal位置
+        rightPortalPos = GameObject.Find("右Portal(真)").transform.position; //右邊portal位置
+
         //UI
         moneyText.text = money + "(百萬)";
 
@@ -233,15 +250,21 @@ public class NowState : MonoBehaviour { //控制連線及背景component
 
     // Update is called once per frame
     void Update () {
+        /*if(microphoneTrue == true) //麥克風功能，往目標一直邁進
+        {
+            TowardTarget(targetBall, targetPos);
+        }*/
     }
 
     void OnTriggerEnter2D(Collider2D collision) //進洞
     {
         if (collision.gameObject.CompareTag("黑球"))
         { //黑球
+            Debug.Log("collisionName:" + collision.gameObject.name);
             money -= 10;
-            moneyText.text = "金錢\n x" + money + "(百萬)";
-            GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(blackBallMusic); 
+            moneyText.text = money + "(百萬)";
+            GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(blackBallMusic);
+            setFaceImg(cryPersonImg); //把圖片換成奸笑的表情
             identificatePlayerMoney(); //判斷是哪個player
             
             for(int i =0; i < allArray.Length; i++) //判斷是哪個球，給予對應的話
@@ -258,9 +281,12 @@ public class NowState : MonoBehaviour { //控制連線及背景component
 
         else if (collision.gameObject.CompareTag("金球"))
         { //金球 
+            Debug.Log("collisionName:" + collision.gameObject.name);
             money += 10;
-            moneyText.text = "金錢\n x" + money + "(百萬)";
+            moneyText.text = money + "(百萬)";
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(goldBallMusic);
+            setFaceImg(SneerPersonImg); //把圖片換成奸笑的表情
+            //Invoke("setRoleImg(PlayerCharacterImg,role)",3);
             identificatePlayerMoney(); //判斷是哪個player
 
             int ballIndex = 0; //儲存球的位置
@@ -270,7 +296,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
                 if (allArray[i].name + "(Clone)" == collision.name)
                 {
                     ballIndex = i;
-                    goodMessage = role + goldMessage[i]; //要記得照順序排
+                    goodMessage = role + goldMessage[i/2]; //要記得照順序排
                     break;
                 }
             }
@@ -285,14 +311,16 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         }
         else if (collision.gameObject.CompareTag("炸彈"))
         { //炸彈，扣50%的錢
+            Debug.Log("collisionName:" + collision.gameObject.name);
             if (money > 0)
             {
                 money = money / 2;
-                moneyText.text = "金錢\n x" + money + "(百萬)";
+                moneyText.text = money + "(百萬)";
             }
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(bombMusic);
             identificatePlayerMoney(); //判斷是哪個player
             bombMessage = role + "與企業董事秘密餐會!";
+            setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
             //Destroy(collision.gameObject); //把炸彈刪掉
             photonView.RPC("sendBombMessage", PhotonTargets.All, bombMessage); //第三個參數:傳送要顯示的話
             //showMessage = role + bombMessage;  //炸彈訊息
@@ -301,6 +329,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         else if (collision.gameObject.CompareTag("報紙")) //報紙效果:出現選單可以陷害人，指定敵對黨某人有誹聞(意涵:爆料)，被指定者扣錢20%
         {
             //先顯示報紙選單
+            Debug.Log("collisionName:" + collision.gameObject.name);
             paperMenu.SetActive(true);
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(itemMusic);
             //Destroy(collision.gameObject); //把報紙刪掉
@@ -308,24 +337,26 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         }
         else if (collision.gameObject.CompareTag("麥克風"))
         {
+            Debug.Log("collisionName:" + collision.gameObject.name);
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(itemMusic);
-            microphoneEffect();
+           // microphoneEffect(); //麥克風效果1
             goodMessage = role + "發表直播演說，\n獲得民眾支持";
             //Destroy(collision.gameObject); //把麥克風刪掉
             photonView.RPC("sendGoodMessage", PhotonTargets.All, goodMessage); //第三個參數:傳送要顯示的話
+            photonView.RPC("sendFaceImg", PhotonTargets.Others); //改變表情
+            photonView.RPC("microphoneEffect2", PhotonTargets.Others,player); //麥克風效果2，參數為使用麥克風的player
             //showMessage = role + microphoneMessage;
             //photonView.RPC("sendMessage", PhotonTargets.All, showMessage); //第三個參數:傳送要顯示的話
         }
         
         //每次金錢變動時，來檢查金錢總額
         identificateWinPlayer();
-
         Destroy(collision.gameObject); //把碰觸到的球刪掉
     }
 
     void timeCountDown() //時間倒數，每次減一秒
     {
-        timeText.text = "" + time;
+        timeText.text = time + " sec";
         time--;
         if (time == 0) //如果時間歸零，就停止減少
         {
@@ -340,6 +371,8 @@ public class NowState : MonoBehaviour { //控制連線及背景component
 
         }
     }
+
+    #region 人物表情
 
     void setRoleImg(Image personImg, string person) //根據player選的人物，給予相應的照片
     {
@@ -360,6 +393,48 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             personImg.sprite = role4;
         }
     }
+    
+    void setFaceImg(Sprite[] img) //根據吃到的道具，將Player設誠相關的照片
+    {
+        if (role == "吳指癢")
+        {
+            PlayerCharacterImg.sprite = img[0];
+        }
+        else if (role == "洪咻柱")
+        {
+            PlayerCharacterImg.sprite = img[1];
+        }
+        else if (role == "蔡中聞")
+        {
+            PlayerCharacterImg.sprite = img[2];
+        }
+        else if (role == "蘇嘎拳")
+        {
+            PlayerCharacterImg.sprite = img[3];
+        }
+        Invoke("changeToOriginalImg", 3); //顯示3秒換回來
+    }
+
+    void changeToOriginalImg() //把圖片換回來
+    {
+        if (role == "吳指癢")
+        {
+            PlayerCharacterImg.sprite = role1;
+        }
+        else if (role == "洪咻柱")
+        {
+            PlayerCharacterImg.sprite = role2;
+        }
+        else if (role == "蔡中聞")
+        {
+            PlayerCharacterImg.sprite = role3;
+        }
+        else if (role == "蘇嘎拳")
+        {
+            PlayerCharacterImg.sprite = role4;
+        }
+    }
+    #endregion
 
     void identificatePlayerMoney()     //判斷是哪個Player,加到對應的錢
     {
@@ -528,6 +603,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     {
         paper.SetActive(true); //開啟報紙
         GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg>().ChangeImg1();
+        Invoke("paperTimeCountDown", 3);
     }
 
     [PunRPC]
@@ -535,6 +611,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     {
         paper.SetActive(true); //開啟報紙
         GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg>().ChangeImg2();
+        Invoke("paperTimeCountDown", 3);
     }
 
     [PunRPC]
@@ -542,6 +619,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     {
         paper.SetActive(true); //開啟報紙
         GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg>().ChangeImg3();
+        Invoke("paperTimeCountDown", 3);
     }
 
     [PunRPC]
@@ -549,6 +627,12 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     {
         paper.SetActive(true); //開啟報紙
         GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg>().ChangeImg4();
+        Invoke("paperTimeCountDown", 3);
+    }
+
+    void paperTimeCountDown() //過3秒報紙自動關閉
+    {
+        paper.SetActive(false);
     }
 
     //報紙效果:指定人並扣錢
@@ -561,8 +645,9 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             if(money > 0)
             {
                 money = (int)(money * 0.8);
-                moneyText.text = "金錢\n x" + money + "(百萬)";
+                moneyText.text = money + "(百萬)";
             }
+            setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
             identificatePlayerMoney();
             identificateWinPlayer();
         }
@@ -577,8 +662,9 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             if(money > 0)
             {
                 money = (int)(money * 0.8);
-                moneyText.text = "金錢\n x" + money + "(百萬)";
+                moneyText.text = money + "(百萬)";
             }
+            setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
             identificatePlayerMoney();
             identificateWinPlayer();
         }
@@ -593,8 +679,9 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             if(money > 0)
             {
                 money = (int)(money * 0.8);
-                moneyText.text = "金錢\n x" + money + "(百萬)";
+                moneyText.text = money + "(百萬)";
             }
+            setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
             identificatePlayerMoney();
             identificateWinPlayer();
         }
@@ -609,8 +696,9 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             if(money > 0)
             {
                 money = (int)(money * 0.8);
-                moneyText.text = "金錢\n x" + money + "(百萬)";
+                moneyText.text = money + "(百萬)";
             }
+            setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
             identificatePlayerMoney();
             identificateWinPlayer();
         }
@@ -649,8 +737,111 @@ public class NowState : MonoBehaviour { //控制連線及背景component
                 Debug.Log("建立成功");
                 goldBall.GetComponent<Rigidbody2D>().velocity = new Vector2(0,-1); //不知道速度要指派怎樣，都往下好ㄌ
             }
+        }        
+    }
+
+    [PunRPC]
+    void microphoneEffect2(PhotonPlayer useItPlayer) //麥克風效果2:把其他人的球吸過來
+    {
+        foreach (GameObject obj in Object.FindObjectsOfType(typeof(GameObject))) //得到所有hierarchy的物件
+        {
+            if (obj.CompareTag("金球"))
+            {
+                //取得玩家list(同樣順序)
+                PlayerList = new List<PhotonPlayer>();
+                PlayerList.Add(PhotonNetwork.masterClient); //1
+                PlayerList.Add(PhotonNetwork.masterClient.GetNext()); //2
+                PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext()); //3
+                PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext().GetNext()); //4
+
+                //Vector3 position = new Vector3(0, 0, 0);
+                //targetBall = obj; //儲存目標球
+                //microphoneTrue = true;
+
+                if (player == PlayerList[0]) //player1
+                {
+                    if (useItPlayer == PlayerList[1]) //左
+                    {
+                        obj.GetComponent<BallMove>().microphoneEffect(leftPortalPos); //指定位置
+                        //TowardTarget(obj, leftPortalPos);
+                    }
+                    else if (useItPlayer == PlayerList[2]) //上
+                    {
+                        //TowardTarget(obj, upPortalPos);
+                        obj.GetComponent<BallMove>().microphoneEffect(upPortalPos); //指定位置
+                    }
+                    else if (useItPlayer == PlayerList[3]) //右
+                    {
+                        obj.GetComponent<BallMove>().microphoneEffect(rightPortalPos); //指定位置
+                                                                                    // TowardTarget(obj, rightPortalPos);
+                    }
+                }
+                else if (player == PlayerList[1]) // player2
+                {
+                    if (useItPlayer == PlayerList[2]) //左
+                    {
+                        obj.GetComponent<BallMove>().microphoneEffect(leftPortalPos); //指定位置
+                    }
+                    else if (useItPlayer == PlayerList[3]) //上
+                    {
+                        obj.GetComponent<BallMove>().microphoneEffect(upPortalPos); //指定位置
+                    }
+                    else if (useItPlayer == PlayerList[0]) //右
+                    {
+                        obj.GetComponent<BallMove>().microphoneEffect(rightPortalPos); //指定位置
+                    }
+                }
+                else if (player == PlayerList[2]) // player3
+                {
+                    if (useItPlayer == PlayerList[3]) //左
+                    {
+                        obj.GetComponent<BallMove>().microphoneEffect(leftPortalPos); //指定位置
+                    }
+                    else if (useItPlayer == PlayerList[0]) //上
+                    {
+                        obj.GetComponent<BallMove>().microphoneEffect(upPortalPos); //指定位置
+                    }
+                    else if (useItPlayer == PlayerList[1]) //右
+                    {
+                        obj.GetComponent<BallMove>().microphoneEffect(rightPortalPos); //指定位置
+                    }
+                }
+                else if (player == PlayerList[3]) //player4
+                {
+                    if (useItPlayer == PlayerList[0]) //左
+                    {
+                        obj.GetComponent<BallMove>().microphoneEffect(leftPortalPos); //指定位置
+                    }
+                    else if (useItPlayer == PlayerList[1]) //上
+                    {
+                        obj.GetComponent<BallMove>().microphoneEffect(upPortalPos); //指定位置
+                    }
+                    else if (useItPlayer == PlayerList[2]) //右
+                    {
+                        obj.GetComponent<BallMove>().microphoneEffect(rightPortalPos); //指定位置
+                    }
+                }
+            }
         }
-        
+    }
+
+   
+
+   /* //朝著滑鼠的方式移動
+    Vector3 v;
+    public float maxSpeed = 5.0f;
+    public float speedDelta = 1.0f;
+    void TowardTarget(GameObject targetObj,Vector3 pos)
+    {
+        Vector3 targetPos = Camera.main.ScreenToWorldPoint(new Vector3(pos.x, pos.y, 10f)); //Assume your camera's z is -10 and cube's z is 0
+        targetObj.transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref v, speedDelta, maxSpeed);
+    }
+    */
+
+    [PunRPC]
+    void sendFaceImg() //傳送給其他人，生氣
+    {
+        setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
     }
     #endregion
 
@@ -709,6 +900,16 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         GameObject.Find("左Portal(真)").GetComponent<SendBall>().generateBallSpeed = 2;
         GameObject.Find("右Portal(真)").GetComponent<SendBall>().generateBallSpeed = 2;
         GameObject.Find("上Portal(真)").GetComponent<SendBall>().generateBallSpeed = 2;
+            //場上的球速度也要變1
+        foreach (GameObject obj in Object.FindObjectsOfType(typeof(GameObject))) //得到所有hierarchy的物件
+        {
+            if (obj.CompareTag("黑球") || obj.CompareTag("金球") || obj.CompareTag("麥克風") || obj.CompareTag("報紙") || obj.CompareTag("炸彈"))
+            {
+                //obj.GetComponent<Rigidbody2D>().velocity = new Vector2(2, 2);
+                checkOriginalSpeed(obj, 2); //改變速度
+                obj.GetComponent<BallMove>().blueEffectButton(); //將鎖住速度功能關閉
+            }
+        }
     }
 
     [PunRPC] //傳送藍黨執政消息
@@ -725,9 +926,47 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         GameObject.Find("左Portal(真)").GetComponent<SendBall>().generateBallSpeed = 1;
         GameObject.Find("右Portal(真)").GetComponent<SendBall>().generateBallSpeed = 1;
         GameObject.Find("上Portal(真)").GetComponent<SendBall>().generateBallSpeed = 1;
+            //場上的球速度也要變1
+        foreach (GameObject obj in Object.FindObjectsOfType(typeof(GameObject))) //得到所有hierarchy的物件
+        {
+            if(obj.CompareTag("黑球") || obj.CompareTag("金球") || obj.CompareTag("麥克風") || obj.CompareTag("報紙") || obj.CompareTag("炸彈"))
+            {
+                // obj.GetComponent<Rigidbody2D>().velocity = new Vector2(1,1);
+                checkOriginalSpeed(obj, 1); //改變速度
+                obj.GetComponent<BallMove>().blueEffectButton(); //將鎖住速度功能開啟
+            }
+        }
+        
         //綠黨執政的效果要改回來
         GameObject.Find("左邊框").GetComponent<GenerateBall>().generateItemseconds = 20;
         GameObject.Find("右邊框").GetComponent<GenerateBall>().generateItemseconds = 20;
+    }
+
+    void checkOriginalSpeed(GameObject gObj, float speed) //判斷原本速度為何
+    {
+        float originSpeedX = gObj.GetComponent<Rigidbody2D>().velocity.x; //原本X速度
+        float originSpeedY = gObj.GetComponent<Rigidbody2D>().velocity.y; //原本Y速度
+        float changedSpeedX = speed; //更改後X速度
+        float changedSpeedY = speed; //更改後Y速度
+
+        if(originSpeedX > 0)
+        {
+            changedSpeedX = speed;
+        }
+        else if(originSpeedX < 0)
+        {
+            changedSpeedX = -speed;
+        }
+
+        if(originSpeedY > 0)
+        {
+            changedSpeedY = speed;
+        }
+        else if(originSpeedY < 0)
+        {
+            changedSpeedY = -speed;
+        }
+        gObj.GetComponent<Rigidbody2D>().velocity = new Vector2(changedSpeedX, changedSpeedY);
     }
 
     void showWinPartyMessage() //僅顯示3秒

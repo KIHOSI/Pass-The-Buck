@@ -58,6 +58,7 @@ public class SendBall : MonoBehaviour {
 		triggerName = collision.name;
         PhotonNetwork.RaiseEvent(targetCode, triggerName, reliable, null); //使用RaiseEvent傳送，不需要PhotonView
         Destroy(collision.gameObject); //把觸發物件刪掉
+        
     }
 
     public void setTarget(PhotonPlayer player,int index,byte pCode,int pIndex) //設定目標玩家和其陣列位置，以判斷傳送；第三為設定此玩家的playerCode，用以判斷是不是回傳給自己；最後告訴這個portal為左、上、右

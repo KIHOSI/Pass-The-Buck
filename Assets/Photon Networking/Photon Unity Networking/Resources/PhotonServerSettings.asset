@@ -63,4 +63,6 @@ MonoBehaviour:
   - sendGoodMessage
   - sendToPortalBall1
   - sendToPortalBall
+  - sendFaceImg
+  - microphoneEffect2
   DisableAutoOpenWizard: 1
