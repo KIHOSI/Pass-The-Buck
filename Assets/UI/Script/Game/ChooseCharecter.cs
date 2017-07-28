@@ -16,8 +16,11 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public Sprite GreenRole2;
 		public Sprite BlueBackground;
 		public Sprite GreenBackground;
+		public Sprite BlueBack;
+		public Sprite GreenBack;
 		public Image CharecterImg;
 		public Image IntroBackImg;
+		public Image BackGroundImg;
 		public Text CharecterNameTx;
 		public Text CharecterInfoTx;
 		public Button LeftArrowBt;
@@ -38,6 +41,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 			CharecterNameTx = GameObject.Find ("CharecterNameTx").GetComponent<Text> ();
 			CharecterInfoTx = GameObject.Find ("CharecterInfoTx").GetComponent<Text> ();
 			IntroBackImg = GameObject.Find ("IntroBackImg").GetComponent<Image> ();
+			BackGroundImg = GameObject.Find ("Background Panel").GetComponent<Image> ();
 
 			if (CharecterImg.sprite == BlueRole1) 
 			{
@@ -45,6 +49,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 				CharecterNameTx.text = "吳指癢";
 				CharecterInfoTx.text = BlueRole2Intro;
 				IntroBackImg.sprite = BlueBackground;
+				BackGroundImg.sprite = BlueBack;
 			}
 			else if (CharecterImg.sprite == BlueRole2) 
 			{
@@ -52,6 +57,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 				CharecterNameTx.text = "蔡中聞";
 				CharecterInfoTx.text = GreenRole1Intro;
 				IntroBackImg.sprite = GreenBackground;
+				BackGroundImg.sprite = GreenBack;
 			}
 			else if (CharecterImg.sprite == GreenRole1) 
 			{
@@ -59,6 +65,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 				CharecterNameTx.text = "蘇嘎拳";
 				CharecterInfoTx.text = GreenRole2Intro;
 				IntroBackImg.sprite = GreenBackground;
+				BackGroundImg.sprite = GreenBack;
 			}
 			else if (CharecterImg.sprite == GreenRole2) 
 			{
@@ -66,6 +73,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 				CharecterNameTx.text = "洪咻柱";
 				CharecterInfoTx.text = BlueRole1Intro;
 				IntroBackImg.sprite = BlueBackground;
+				BackGroundImg.sprite = BlueBack;
 			}
 
 		}
@@ -77,6 +85,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 			CharecterNameTx = GameObject.Find ("CharecterNameTx").GetComponent<Text> ();
 			CharecterInfoTx = GameObject.Find ("CharecterInfoTx").GetComponent<Text> ();
 			IntroBackImg = GameObject.Find ("IntroBackImg").GetComponent<Image> ();
+			BackGroundImg = GameObject.Find ("Background Panel").GetComponent<Image> ();
 
 			if (CharecterImg.sprite == BlueRole1) 
 			{
@@ -84,6 +93,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 				CharecterNameTx.text = "蘇嘎拳";
 				CharecterInfoTx.text = GreenRole2Intro;
 				IntroBackImg.sprite = GreenBackground;
+				BackGroundImg.sprite = GreenBack;
 			}
 			else if (CharecterImg.sprite == BlueRole2) 
 			{
@@ -91,6 +101,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 				CharecterNameTx.text = "洪咻柱";
 				CharecterInfoTx.text = BlueRole1Intro;
 				IntroBackImg.sprite = BlueBackground;
+				BackGroundImg.sprite = BlueBack;
 			}
 			else if (CharecterImg.sprite == GreenRole1) 
 			{
@@ -98,6 +109,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 				CharecterNameTx.text = "吳指癢";
 				CharecterInfoTx.text = BlueRole2Intro;
 				IntroBackImg.sprite = BlueBackground;
+				BackGroundImg.sprite = BlueBack;
 			}
 			else if (CharecterImg.sprite == GreenRole2) 
 			{
@@ -105,6 +117,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 				CharecterNameTx.text = "蔡中聞";
 				CharecterInfoTx.text = GreenRole1Intro;
 				IntroBackImg.sprite = GreenBackground;
+				BackGroundImg.sprite = GreenBack;
 			}
 
 

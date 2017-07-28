@@ -108,7 +108,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 		}
 
 
-		void Update () 
+		void FixedUpdate () 
 		{
 
 			//第二個玩家

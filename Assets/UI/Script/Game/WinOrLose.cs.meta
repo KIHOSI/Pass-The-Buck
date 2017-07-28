@@ -1,0 +1,35 @@
+fileFormatVersion: 2
+guid: f135399ec9e2fac4abdebf03e226edf9
+timeCreated: 1501231661
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - WinBackground: {fileID: 21300000, guid: 66e82cb6e3069c2478c69bf75f922f89, type: 3}
+  - LoseBackground: {fileID: 21300000, guid: 0d22db1d2bb7ac949b94d453aaa322df, type: 3}
+  - TieBackground: {fileID: 21300000, guid: b6c751462c8c4774996bd486126aaa18, type: 3}
+  - LoseTx: {fileID: 21300000, guid: e32b74a26f854224e8dfc62171205b02, type: 3}
+  - TieTx: {fileID: 21300000, guid: 3b57d6d77b9db3b4eb95af2966ea6ed7, type: 3}
+  - SmileBlueRole1: {fileID: 21300000, guid: 7d91d1d76b6ec6b45be3628d8d07d342, type: 3}
+  - SmileBlueRole2: {fileID: 21300000, guid: bb636337265e8a6488690c270b9664de, type: 3}
+  - SmileGreenRole1: {fileID: 21300000, guid: 317bf83b41dd72c4f9340ab38f9d240d, type: 3}
+  - SmileGreenRole2: {fileID: 21300000, guid: b406cfe39728c3c4aac420c16be657fa, type: 3}
+  - CryBlueRole1: {fileID: 21300000, guid: 13cd6a6f1cffc2d47a14a975cec20bfc, type: 3}
+  - CryBlueRole2: {fileID: 21300000, guid: 10840a3514defcc49902bcb5e28ed497, type: 3}
+  - CryGreenRole1: {fileID: 21300000, guid: 1ee05634aa25aba45825bfb007312250, type: 3}
+  - CryGreenRole2: {fileID: 21300000, guid: e981f3c061453894ebbf4efef0e29e58, type: 3}
+  - LoseStatusBack: {fileID: 21300000, guid: af9bf35dd5fbee14d9b49657fabba851, type: 3}
+  - CrownImg: {instanceID: 0}
+  - WinOrLoseImg: {instanceID: 0}
+  - RoleImg: {instanceID: 0}
+  - BackImg: {instanceID: 0}
+  - DialogImg: {instanceID: 0}
+  - RoleTalkTx: {instanceID: 0}
+  - MoneyPlusTx: {instanceID: 0}
+  - LevelPlusTx: {instanceID: 0}
+  - GetMoneyTx: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

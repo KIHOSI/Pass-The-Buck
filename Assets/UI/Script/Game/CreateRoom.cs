@@ -73,6 +73,10 @@ namespace Com.MyProject.MyPassTheBuckGame
 			{
 				onTips ("請設定房間人數!");
 			}
+			else if (MaxPlayersPerRoom == 2)
+			{
+				onTips ("兩人模式尚未開啟，請選擇四人模式!");
+			}
 			else 
 			{
 				PhotonNetwork.CreateRoom(GameRoomName,options,null);

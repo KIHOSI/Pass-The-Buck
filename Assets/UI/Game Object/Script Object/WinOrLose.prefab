@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1872465732297976}
+  m_IsPrefabParent: 1
+--- !u!1 &1872465732297976
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4568381496609412}
+  - component: {fileID: 114546443491529906}
+  m_Layer: 0
+  m_Name: WinOrLose
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4568381496609412
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1872465732297976}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 286.9752, y: 85.01086, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114546443491529906
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1872465732297976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f135399ec9e2fac4abdebf03e226edf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WinBackground: {fileID: 21300000, guid: 66e82cb6e3069c2478c69bf75f922f89, type: 3}
+  LoseBackground: {fileID: 21300000, guid: 0d22db1d2bb7ac949b94d453aaa322df, type: 3}
+  TieBackground: {fileID: 21300000, guid: b6c751462c8c4774996bd486126aaa18, type: 3}
+  LoseTx: {fileID: 21300000, guid: e32b74a26f854224e8dfc62171205b02, type: 3}
+  TieTx: {fileID: 21300000, guid: 3b57d6d77b9db3b4eb95af2966ea6ed7, type: 3}
+  SmileBlueRole1: {fileID: 21300000, guid: 7d91d1d76b6ec6b45be3628d8d07d342, type: 3}
+  SmileBlueRole2: {fileID: 21300000, guid: bb636337265e8a6488690c270b9664de, type: 3}
+  SmileGreenRole1: {fileID: 21300000, guid: 317bf83b41dd72c4f9340ab38f9d240d, type: 3}
+  SmileGreenRole2: {fileID: 21300000, guid: b406cfe39728c3c4aac420c16be657fa, type: 3}
+  CryBlueRole1: {fileID: 21300000, guid: 13cd6a6f1cffc2d47a14a975cec20bfc, type: 3}
+  CryBlueRole2: {fileID: 21300000, guid: 10840a3514defcc49902bcb5e28ed497, type: 3}
+  CryGreenRole1: {fileID: 21300000, guid: 1ee05634aa25aba45825bfb007312250, type: 3}
+  CryGreenRole2: {fileID: 21300000, guid: e981f3c061453894ebbf4efef0e29e58, type: 3}
+  LoseStatusBack: {fileID: 21300000, guid: af9bf35dd5fbee14d9b49657fabba851, type: 3}
+  CrownImg: {fileID: 0}
+  WinOrLoseImg: {fileID: 0}
+  RoleImg: {fileID: 0}
+  BackImg: {fileID: 0}
+  DialogImg: {fileID: 0}
+  RoleTalkTx: {fileID: 0}
+  MoneyPlusTx: {fileID: 0}
+  LevelPlusTx: {fileID: 0}
+  GetMoneyTx: {fileID: 0}
+  count: 0
+  money: 0
+  exp: 0
+  maxExp: 0
