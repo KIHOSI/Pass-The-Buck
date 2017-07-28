@@ -11,6 +11,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 	 float x;
 	 float y;
 	 public Text marqueeTx;
+	 int count=0;
 
 
 	 // Use this for initialization
@@ -26,13 +27,34 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 	 void Update()
 	 {
+        
 		float step = scrollSpeed * Time.deltaTime;
 		Vector3 temp = new Vector3(step,0.0f,0.0f);
-		Vector3 forReset = new Vector3 (-327, 0.0F, 0.0f);
+		Vector3 forReset = new Vector3 (-517, 0.0F, 0.0f);
 
 		if (Vector3.Distance(marqueeTx.transform.localPosition, forReset) < 1.0f) 
 		{
+
 			marqueeTx.transform.localPosition = new Vector3 (x, y, 0.0f);
+
+				if (count == 1) 
+				{
+					setText ("第一次遊玩可先觀看遊戲說明唷!");
+				} 
+				else if (count == 2)
+				{
+					setText ("遊玩前最好先確認連線是否穩定，才不會影響遊玩品質喔!");
+				}
+				else if (count == 3)
+				{
+					setText ("記得球球要按壓後拖動一段距離放開球才會自己跑喔");
+				}
+				else if (count == 4)
+				{
+					setText ("祝大家玩得開心!");
+					count = 0;
+				}
+			count += 1;
 		} 
 		else 
 		{
@@ -52,31 +74,6 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 
 	 #endregion
-
-	
-	 
-	 /*void OnGUI ()
-	 {
-		MText = MarqueeTx.GetComponent<Text> ();
-		// Set up message's rect if we haven't already.
-		if (messageRect.width == 0) {
-
-			// Start message past the left side of the screen.
-				messageRect.x = -19;
-				messageRect.width = 19;
-				messageRect.height = 0;
-		}
-
-		messageRect.x += Time.deltaTime * scrollSpeed;
-
-		// If message has moved past the right side, move it back to the left.
-		if (messageRect.x > Screen.width) {
-			messageRect.x = -messageRect.width;
-		}
-
-		GUI.Label(messageRect, message);
-
-	 } */
 	 
    }
 }

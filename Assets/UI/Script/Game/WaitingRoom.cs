@@ -57,22 +57,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 			UpdatePlayerList (PlayerTextList,FrameImgList);
 
 		}
-
-		public void Update()
-		{
-			if (PhotonNetwork.masterClient.CustomProperties ["ClickStart"] =="true")
-			{
-				if (PhotonNetwork.room.MaxPlayers == 2)
-				{
-					SceneManager.LoadScene("Role Choose for 2");
-				}
-				else if (PhotonNetwork.room.MaxPlayers == 4)
-				{
-					SceneManager.LoadScene("Role Choosing for 4");
-				}
-			}
-
-		}
+			
 			
 
 		#region Public Methods
@@ -135,11 +120,11 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 			if (PhotonNetwork.room.MaxPlayers == 2)
 			{
-				SceneManager.LoadScene("Role Choose for 2");
+				PhotonNetwork.LoadLevel ("Role Choose for 2");
 			}
 			else if (PhotonNetwork.room.MaxPlayers == 4)
 			{
-				SceneManager.LoadScene("Role Choosing for 4");
+				PhotonNetwork.LoadLevel ("Role Choosing for 4");
 			}
 		}
 

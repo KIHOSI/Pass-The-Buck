@@ -309,6 +309,12 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114813473518648416, guid: 9a6f60e1a475f444d8515ffe278bc043,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 873d9315e06f01c4384f90298c46381a,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9a6f60e1a475f444d8515ffe278bc043, type: 2}
   m_IsPrefabParent: 0
@@ -546,6 +552,26 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ClickLeftArrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 114085270580759270, guid: 3435d6924aa7e834b8cbfb3dc3e657b8,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114085270580759270, guid: 3435d6924aa7e834b8cbfb3dc3e657b8,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114085270580759270, guid: 3435d6924aa7e834b8cbfb3dc3e657b8,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114085270580759270, guid: 3435d6924aa7e834b8cbfb3dc3e657b8,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3435d6924aa7e834b8cbfb3dc3e657b8, type: 2}
@@ -908,6 +934,21 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050007036624580, guid: acb01f217c899b54ea74570922681396,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050007036624580, guid: acb01f217c899b54ea74570922681396,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050007036624580, guid: acb01f217c899b54ea74570922681396,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: acb01f217c899b54ea74570922681396, type: 2}
@@ -1611,6 +1652,12 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114943005005070550, guid: db93316e89c554e47abec3feecb304d2,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c74a74ba1fdc14f4da4f2465b25e5233,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db93316e89c554e47abec3feecb304d2, type: 2}
   m_IsPrefabParent: 0
@@ -1716,6 +1763,12 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114940508676571196, guid: fed9ab39cb25a6a44a14bafe32cd2914,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 33f357186a2c68648b21a908263f8794,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fed9ab39cb25a6a44a14bafe32cd2914, type: 2}
   m_IsPrefabParent: 0

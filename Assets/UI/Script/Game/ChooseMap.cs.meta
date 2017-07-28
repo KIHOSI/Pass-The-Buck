@@ -1,24 +1,33 @@
 fileFormatVersion: 2
 guid: b30712d511ff10c4cae86acc59279718
-timeCreated: 1500872408
+timeCreated: 1501147590
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
-  - Pisland: {fileID: 21300000, guid: 34fec6fea74710043b4cec7d080f26bf, type: 3}
-  - PislandWithLock: {fileID: 21300000, guid: a7e323b6c1b8fcf4fb4371018e197d3a, type: 3}
-  - Gisland: {fileID: 21300000, guid: fd4e2a51c18be294382589fe784d50a7, type: 3}
-  - GislandWithLock: {fileID: 21300000, guid: ca78bac52619881419c89df15070f344, type: 3}
-  - Lisland: {fileID: 21300000, guid: 6264a2a6e9870d947b74fed9db22db3e, type: 3}
-  - LislandWithLock: {instanceID: 0}
-  - level2WithLock: {fileID: 21300000, guid: a103397ded646b8458fd0585c2c49e95, type: 3}
-  - level3WithLock: {fileID: 21300000, guid: 720baa00a27b43546b0984d48636aba0, type: 3}
-  - Island1Bt: {fileID: 114928031843334446, guid: dbac558221b74b54ebef85cc16151b75,
-      type: 2}
-  - Island2Bt: {fileID: 114194196689059126, guid: 392ec7e8ca86c954989b47ad81b17f88,
-      type: 2}
-  - Island3Bt: {fileID: 114662550905849000, guid: ad1a847a1fd125145bb5c3500324a508,
-      type: 2}
+  - Building1: {fileID: 21300000, guid: ce99bae7394ff614d8368e0024cd2581, type: 3}
+  - Building1WithLock: {fileID: 21300000, guid: 50d227ad6ba61a94a8c5b780157eeb41,
+      type: 3}
+  - Building2: {fileID: 21300000, guid: 0652b025dc608bc498013bdc93ad0993, type: 3}
+  - Building2WithLock: {fileID: 21300000, guid: 858ce1e8ec56888488e7c467d36dfdcb,
+      type: 3}
+  - Building3: {fileID: 21300000, guid: a4a5a50742f380a4a8ef2244b67887bb, type: 3}
+  - Building3WithLock: {instanceID: 0}
+  - Building4: {fileID: 21300000, guid: 86e6215f21e2a8844b883614ba5763e1, type: 3}
+  - Building4WithLock: {fileID: 21300000, guid: 12cac43feed533e4d840f11f8c8dee55,
+      type: 3}
+  - Building5: {fileID: 21300000, guid: 4df399d5259752149a18a09a3265b241, type: 3}
+  - Building5WithLock: {fileID: 21300000, guid: 29f29cdf56e5ea24389599a45c47a3a8,
+      type: 3}
+  - level1WithLock: {fileID: 21300000, guid: 2bdce4296761da046acef0166bf12683, type: 3}
+  - level2WithLock: {fileID: 21300000, guid: 3eda52a54da4ce14382566408922d721, type: 3}
+  - level3WithLock: {fileID: 21300000, guid: 19fbfe77ee867334fa94b102186b5f24, type: 3}
+  - Building1Bt: {instanceID: 0}
+  - Building2Bt: {instanceID: 0}
+  - Building3Bt: {instanceID: 0}
+  - Building4Bt: {instanceID: 0}
+  - Building5Bt: {instanceID: 0}
+  - Level1Bt: {instanceID: 0}
   - Level2Bt: {fileID: 114587545298471400, guid: 488644181013f4c45a0676ca153d48df,
       type: 2}
   - Level3Bt: {fileID: 114319387130617144, guid: b3b024e186636de4bb0d03a4d15610ef,

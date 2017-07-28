@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: c1182368f1e82414faacdaef4ccd7e04
-timeCreated: 1500963354
+timeCreated: 1501051644
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
@@ -9,10 +9,13 @@ MonoImporter:
   - BlueRole2: {fileID: 21300000, guid: 122f5d5257731974c8d241e07244f0e0, type: 3}
   - GreenRole1: {fileID: 21300000, guid: b38a20254e0f1f64789b90f7f91ed2a1, type: 3}
   - GreenRole2: {fileID: 21300000, guid: 6ca654ab91e5fa04ca9cc51f52347150, type: 3}
-  - BlueBackground: {fileID: 21300000, guid: e2a8b24a6e4810a4bb82575288d718c0, type: 3}
-  - GreenBackground: {fileID: 21300000, guid: 4b804ec356f021f448d77ee0f788a3b6, type: 3}
+  - BlueBackground: {fileID: 21300000, guid: 0c645469668c0364e985500011ff7b61, type: 3}
+  - GreenBackground: {fileID: 21300000, guid: 33f357186a2c68648b21a908263f8794, type: 3}
+  - BlueBack: {fileID: 21300000, guid: 02439fd53a9b0c048b231d964de788fa, type: 3}
+  - GreenBack: {fileID: 21300000, guid: c74a74ba1fdc14f4da4f2465b25e5233, type: 3}
   - CharecterImg: {instanceID: 0}
   - IntroBackImg: {instanceID: 0}
+  - BackGroundImg: {instanceID: 0}
   - CharecterNameTx: {instanceID: 0}
   - CharecterInfoTx: {instanceID: 0}
   - LeftArrowBt: {instanceID: 0}
