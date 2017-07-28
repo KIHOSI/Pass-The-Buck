@@ -93,9 +93,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed1e875a2e2f6364caf22d4cf321c75f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 70
-  marqueeTx: {fileID: 114101981854326768, guid: e589c91a946588144b3a7c86bb9280da,
-    type: 2}
+  scrollSpeed: 100
+  marqueeTx: {fileID: 114586622458315596}
 --- !u!114 &114095487607727010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -330,6 +329,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 341, y: 0.0000052451996}
-  m_SizeDelta: {x: 256, y: 38}
+  m_AnchoredPosition: {x: 616, y: 0.0000052451996}
+  m_SizeDelta: {x: 646, y: 38}
   m_Pivot: {x: 0.5, y: 0.5}

@@ -31,7 +31,6 @@ namespace Com.MyProject.MyPassTheBuckGame
 		void Start()
 		{
 			DontDestroyOnLoad(audio);
-			//Debug.Log (GameObject.Find ("Toast").transform.localPosition);
 		}
 			
 
@@ -61,10 +60,25 @@ namespace Com.MyProject.MyPassTheBuckGame
 			}
 		}
 
+		//載入開場故事
+		public void LoadOpeningStoryScene()
+		{
+		     SceneManager.LoadScene ("Opening Story");
+		}
+
 		//載入主頁
 		public void LoadJMainPageScene()
 		{
-			SceneManager.LoadScene("Main");
+			if (!PlayerPrefs.HasKey ("HasPlayed"))
+			{
+				PlayerPrefs.SetInt ("HasPlayed", 1);
+				SceneManager.LoadScene ("Opening Story");
+			} 
+			else 
+			{
+				SceneManager.LoadScene("Main");
+			}
+	
 		}
 
 		//載入加入、創建房間頁面
