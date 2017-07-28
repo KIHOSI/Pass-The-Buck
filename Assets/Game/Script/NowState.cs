@@ -296,7 +296,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
                 if (allArray[i].name + "(Clone)" == collision.name)
                 {
                     ballIndex = i;
-                    goodMessage = role + goldMessage[i/2]; //要記得照順序排
+                    goodMessage = role + goldMessage[i - allArray.Length/2]; //要記得照順序排
                     break;
                 }
             }
