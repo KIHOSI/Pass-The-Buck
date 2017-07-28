@@ -46,8 +46,8 @@ namespace Com.MyProject.MyPassTheBuckGame
 		void Start () 
 		{
 
-			maxExp = GameObject.Find ("LevelBarTopImg").GetComponent<LevelBar> ().MaxExp;
-			
+			maxExp = GameObject.Find ("LevelBarTopImg").GetComponent<LevelBarForWl> ().MaxExp;
+            Debug.Log("wincolor:"+ GetWinColor()+"、money:"+ PhotonNetwork.player.CustomProperties["Money"].ToString());
 			//玩家的黨派贏了
 			if (GetWinColor ().Equals ((string)PhotonNetwork.player.CustomProperties ["PartyColor"]))
 			{

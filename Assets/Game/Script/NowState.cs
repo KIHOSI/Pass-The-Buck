@@ -368,7 +368,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             CancelInvoke("timeCountDown");
             timeText.text = "Game Over";
             Time.timeScale = 0f; //時間暫停
-
+            PhotonNetwork.LoadLevel("WinOrLose");
         }
     }
 
