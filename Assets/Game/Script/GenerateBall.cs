@@ -12,6 +12,7 @@ public class GenerateBall : MonoBehaviour {
     public int generateBallseconds; //產生球的秒數
     public int generateItemseconds; //產生道具的秒數
     public int leftOrRight; //判斷是左邊框還是右邊框，left:1、right:2
+    public bool showLeftOrRight; //判斷是左邊產生或右邊產生
     public float changeSpeedX = 2; //指定球的速度 
     public float changeSpeedY = 2; //指定球的速度
 
@@ -20,8 +21,8 @@ public class GenerateBall : MonoBehaviour {
         
         //if (PhotonNetwork.isMasterClient) //若是Master Client，遊戲開始
         //{
-        InvokeRepeating("generateBall", 5, generateBallseconds); //第一個為方法名、第二個為「第一次調用」要隔幾秒、第三個則是「每隔幾秒調用一次」
-        InvokeRepeating("generateItem", 20, generateItemseconds);
+        InvokeRepeating("generateBall", 10, generateBallseconds); //第一個為方法名、第二個為「第一次調用」要隔幾秒、第三個則是「每隔幾秒調用一次」
+        InvokeRepeating("generateItem", 25, generateItemseconds);
         //}
     }
 	
@@ -47,18 +48,26 @@ public class GenerateBall : MonoBehaviour {
     void generateItem() //產生道具
     {
         showItem = (Random.value > 0.5f); //true or false
-        if (showItem)
+        showLeftOrRight = (Random.value > 0.5f); //判斷要左or右邊框產生
+        if (showItem) //產生道具
         {
             GameObject item;
             itemIndex = Random.Range(0,ItemArray.Length); //隨機產生一個在0到最大值間的數(含0)
-            item = Instantiate(ItemArray[itemIndex], transform.position, new Quaternion(0, 0, 0, 0));
-            if (leftOrRight == 1) //左邊產生
+            if(showLeftOrRight == true) //左邊產生
             {
-                item.GetComponent<Rigidbody2D>().velocity = new Vector2(changeSpeedX, changeSpeedY);
+                if(leftOrRight == 1) //左邊
+                {
+                    item = Instantiate(ItemArray[itemIndex], transform.position, new Quaternion(0, 0, 0, 0));
+                    item.GetComponent<Rigidbody2D>().velocity = new Vector2(changeSpeedX, changeSpeedY);
+                }
             }
-            else if (leftOrRight == 2) //右邊產生
+            else if(showLeftOrRight == false) //右邊產生
             {
-                item.GetComponent<Rigidbody2D>().velocity = new Vector2(-changeSpeedX, changeSpeedY);
+                if(leftOrRight == 2) //右邊
+                {
+                    item = Instantiate(ItemArray[itemIndex], transform.position, new Quaternion(0, 0, 0, 0));
+                    item.GetComponent<Rigidbody2D>().velocity = new Vector2(-changeSpeedX, changeSpeedY);
+                }
             }
         }
     }

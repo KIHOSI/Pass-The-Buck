@@ -30,8 +30,21 @@ public class BallMove : MonoBehaviour
     {
         if(microphoneTrue == true) //開啟麥克風效果
         {
-            TowardTarget(targetPos);
+            //TowardTarget(targetPos);
+            ForceCalculate(targetPos);
         }
+
+
+        //判斷現在速度是否為0，讓他可以移動
+        float nowSpeedX = ballRigidbody2D.velocity.x;
+        float nowSpeedY = ballRigidbody2D.velocity.y;
+        if(nowSpeedX == 0 && nowSpeedY == 0)
+        {
+            //Debug.Log("我有跑進來");
+            ballRigidbody2D.AddForce(new Vector2(2,2));
+            //ballRigidbody2D.velocity = new Vector2(1, 1);
+        }
+
         /*if (transform.position.x > 3 || transform.position.x < -3.1 || transform.position.y > 5 || transform.position.y < -5)
         {
             //如果物件的X值大於或小於3，物件的Y值大於5或小於5就將物件刪除(差不多離開手機範圍)
@@ -110,4 +123,18 @@ public class BallMove : MonoBehaviour
         Vector3 targetPos = pos;
         transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref v, speedDelta, maxSpeed);
     }
+
+    //麥克風效果2，給他個力
+    void ForceCalculate(Vector3 pos)
+    {
+        //Vector3 curPos = Input.mousePosition;
+        Vector3 curPos = transform.position;
+        Vector3 dir = pos - curPos;
+        float dist = dir.magnitude;
+        float v = dist / Time.deltaTime;
+
+        ballRigidbody2D.AddForce(dir.normalized * v * Time.deltaTime * speedDelta);
+        //pos = curPos;
+    }
+
 }

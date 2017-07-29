@@ -6,6 +6,12 @@ using UnityEngine.UI;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class NowState : MonoBehaviour { //控制連線及背景component
+    //ReadyGo
+    public GameObject ReadyGoPanel;
+    //public Text ready;
+    public GameObject ready;
+    public GameObject go;
+
     //計算錢
     public int money = 100; //錢
     public int time = 120; //時間(秒)
@@ -18,7 +24,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
 
     //執政
     public GameObject winLogo; //中選logo
-    public int winColor = 0 ; //判斷現在是誰執政，0:預設、1:綠、2:藍
+    public int winColor = 0; //判斷現在是誰執政，0:預設、1:綠、2:藍
     public GameObject[] allArray; //全部球+道具
     public Hashtable hash; //宣告HashTable變數:
 
@@ -44,16 +50,21 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     string partyColor = "green"; //玩家政黨顏色(預設:綠)
     string role; //玩家選擇角色
     public Image PlayerCharacterImg; //角色圖片
-    
+
     //人物圖片
     public Sprite role1;
     public Sprite role2;
     public Sprite role3;
     public Sprite role4;
-    
+
     public Sprite[] SneerPersonImg; //人物奸笑
     public Sprite[] AngryPersonImg; //人物憤怒
     public Sprite[] cryPersonImg; //人物哭泣
+
+    public Sprite[] leftPersonImg; //左邊位置顯示人物圖
+    public Sprite[] upPersonImg; //上面位置顯示人物圖
+    public Sprite[] rightPersonImg; //右邊位置顯示人物圖
+
 
     //Edge、Portal
     public GameObject edge1_blue;
@@ -70,6 +81,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     //佈告欄
     public GameObject greenNoticeBoard; //顯示綠黨執政
     public GameObject blueNoticeBoard; //顯示藍黨執政
+    public GameObject noColorNoticeBoard; //顯示無黨執政
     public GameObject badNoticeBoard; //顯示黑訊息
     public GameObject goodNoticeBoard; //顯示金訊息
     public GameObject bombNoticeBoard; //顯示炸彈訊息
@@ -77,18 +89,21 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     public Text goodNoticeBoardText; //金訊息文字
     public Text paperNoticeBoardText; //報紙訊息文字
     public Text bombNoticeBoardText; //炸彈訊息文字
-    string[] blackMessage = { "反對年金改革", "反對同婚","支持一例一休","支持美牛進口","反對加入TPP","反對空服員罷工","反對調漲最低薪資","支持建造四","支持進口核災食品" };
-    string[] goldMessage = { "支持年金改革","支持同婚","反對一例一休","反對美牛進口","支持加入TPP","支持空服員罷工","支持調漲最低薪資","反對建造核四","反對進口核災食品"};
+    string[] blackMessage = { "反對年金改革", "反對同婚", "支持一例一休", "支持美牛進口", "反對加入TPP", "反對空服員罷工", "反對調漲最低薪資", "支持建造四", "支持進口核災食品" };
+    string[] goldMessage = { "支持年金改革", "支持同婚", "反對一例一休", "反對美牛進口", "支持加入TPP", "支持空服員罷工", "支持調漲最低薪資", "反對建造核四", "反對進口核災食品" };
     string badMessage; //黑訊息
     string goodMessage; //金訊息
     string paperMessage;//報紙訊息
     string bombMessage; //炸彈訊息(毀謗)
 
     //音樂
+    public GameObject bgm; //遊戲bgm
     public GameObject goldBallMusic; //金球音樂
     public GameObject blackBallMusic; //黑球音樂
     public GameObject itemMusic; //道具音樂
     public GameObject bombMusic; //炸彈音樂
+    public GameObject readyMusic; //ready音樂
+    public GameObject goMusic; //go音樂
 
     //麥克風功能，儲存目的地位置
     Vector3 leftPortalPos;
@@ -119,11 +134,11 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         PlayerList.Add(PhotonNetwork.masterClient.GetNext()); //2
         PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext()); //3
         PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext().GetNext()); //4
-        
+
         photonView = PhotonView.Get(this);
 
         //錢初始化
-        for(int i = 0; i < playerMoney.Length; i++)
+        for (int i = 0; i < playerMoney.Length; i++)
         {
             playerMoney[i] = money;
         }
@@ -134,7 +149,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         role = (string)PhotonNetwork.player.CustomProperties["Role"]; //政黨角色
 
         //根據角色換角色圖片
-        setRoleImg(PlayerCharacterImg,role);
+        setRoleImg(PlayerCharacterImg, role);
 
         //根據政黨顏色換配置(Edge)
         if (partyColor == "green") //綠黨
@@ -148,6 +163,8 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             edge2_green.SetActive(false);
         }
 
+       
+
         //判斷是哪個player
         if (player == PlayerList[0]) //Player1
         {
@@ -158,7 +175,9 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             setRoleImg(paperPersonMenu[0].GetComponent<Image>(), (string)PlayerList[1].CustomProperties["Role"]); //Paper第一個人物圖片
             setRoleImg(paperPersonMenu[1].GetComponent<Image>(), (string)PlayerList[2].CustomProperties["Role"]); //Paper第二個人物圖片
             setRoleImg(paperPersonMenu[2].GetComponent<Image>(), (string)PlayerList[3].CustomProperties["Role"]); //Paper第三個人物圖片
-
+            decideWhichPortal(PlayerList[1], 0); //顯示portal人物圖片
+            decideWhichPortal(PlayerList[2], 1); //顯示portal人物圖片
+            decideWhichPortal(PlayerList[3], 2); //顯示portal人物圖片
         }
         else if (player == PlayerList[1]) //Player2
         {
@@ -169,6 +188,9 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             setRoleImg(paperPersonMenu[0].GetComponent<Image>(), (string)PlayerList[2].CustomProperties["Role"]); //Paper第一個人物圖片
             setRoleImg(paperPersonMenu[1].GetComponent<Image>(), (string)PlayerList[3].CustomProperties["Role"]); //Paper第二個人物圖片
             setRoleImg(paperPersonMenu[2].GetComponent<Image>(), (string)PlayerList[0].CustomProperties["Role"]); //Paper第三個人物圖片
+            decideWhichPortal(PlayerList[2], 0); //顯示portal人物圖片
+            decideWhichPortal(PlayerList[3], 1); //顯示portal人物圖片
+            decideWhichPortal(PlayerList[0], 2); //顯示portal人物圖片
         }
         else if (player == PlayerList[2]) //Player3
         {
@@ -179,6 +201,9 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             setRoleImg(paperPersonMenu[0].GetComponent<Image>(), (string)PlayerList[3].CustomProperties["Role"]); //Paper第一個人物圖片
             setRoleImg(paperPersonMenu[1].GetComponent<Image>(), (string)PlayerList[0].CustomProperties["Role"]); //Paper第二個人物圖片
             setRoleImg(paperPersonMenu[2].GetComponent<Image>(), (string)PlayerList[1].CustomProperties["Role"]); //Paper第三個人物圖片
+            decideWhichPortal(PlayerList[3], 0); //顯示portal人物圖片
+            decideWhichPortal(PlayerList[0], 1); //顯示portal人物圖片
+            decideWhichPortal(PlayerList[1], 2); //顯示portal人物圖片
         }
         else if (player == PlayerList[3]) //Player4
         {
@@ -189,12 +214,9 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             setRoleImg(paperPersonMenu[0].GetComponent<Image>(), (string)PlayerList[0].CustomProperties["Role"]); //Paper第一個人物圖片
             setRoleImg(paperPersonMenu[1].GetComponent<Image>(), (string)PlayerList[1].CustomProperties["Role"]); //Paper第二個人物圖片
             setRoleImg(paperPersonMenu[2].GetComponent<Image>(), (string)PlayerList[2].CustomProperties["Role"]); //Paper第三個人物圖片
-        }
-
-        //把paper人物圖片儲存
-        for(int i = 0; i < paperPersonMenu.Length; i++)
-        {
-            paperPersonImage[i] = paperPersonMenu[i].GetComponent<Image>();
+            decideWhichPortal(PlayerList[0], 0); //顯示portal人物圖片
+            decideWhichPortal(PlayerList[1], 1); //顯示portal人物圖片
+            decideWhichPortal(PlayerList[2], 2); //顯示portal人物圖片
         }
 
         //根據政黨顏色換配置(Edge)
@@ -226,16 +248,50 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             portalRight_green.SetActive(false);
         }
 
+        //設定portal顯示人物圖
+        if (player == PlayerList[0]) //Player1
+        {
+            decideWhichPortal(PlayerList[1], 0); //顯示portal人物圖片
+            decideWhichPortal(PlayerList[2], 1); //顯示portal人物圖片
+            decideWhichPortal(PlayerList[3], 2); //顯示portal人物圖片
+        }
+        else if (player == PlayerList[1]) //Player2
+        {
+            decideWhichPortal(PlayerList[2], 0); //顯示portal人物圖片
+            decideWhichPortal(PlayerList[3], 1); //顯示portal人物圖片
+            decideWhichPortal(PlayerList[0], 2); //顯示portal人物圖片
+        }
+        else if (player == PlayerList[2]) //Player3
+        {
+            decideWhichPortal(PlayerList[3], 0); //顯示portal人物圖片
+            decideWhichPortal(PlayerList[0], 1); //顯示portal人物圖片
+            decideWhichPortal(PlayerList[1], 2); //顯示portal人物圖片
+        }
+        else if (player == PlayerList[3]) //Player4
+        {
+            decideWhichPortal(PlayerList[0], 0); //顯示portal人物圖片
+            decideWhichPortal(PlayerList[1], 1); //顯示portal人物圖片
+            decideWhichPortal(PlayerList[2], 2); //顯示portal人物圖片
+        }
+
+        //把paper人物圖片儲存
+        for (int i = 0; i < paperPersonMenu.Length; i++)
+        {
+            paperPersonImage[i] = paperPersonMenu[i].GetComponent<Image>();
+        }
+
+
+
         //讓遊戲時間一致
         //if (PhotonNetwork.isMasterClient) //若是Master Client，遊戲開始
         //{
-          InvokeRepeating("timeCountDown", 1, 1); //每一秒執行一次，時間減一
-                                                  //photonView.RPC("sendTime", PhotonTargets.All);
-                                                  //Debug.Log("time:"+PhotonNetwork.time);
-                                                  //}
-        
-        //photonView.RPC("sendToPortalBall", PhotonTargets.All); //第三個參數:傳送要顯示的話
 
+        //photonView.RPC("sendTime", PhotonTargets.All);
+        //Debug.Log("time:"+PhotonNetwork.time);
+        //}
+
+        //photonView.RPC("sendToPortalBall", PhotonTargets.All); //第三個參數:傳送要顯示的話
+        Invoke("openReady", 2);
     }
 
     /*[PunRPC]
@@ -249,11 +305,102 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     }*/
 
     // Update is called once per frame
-    void Update () {
+    void Update() {
         /*if(microphoneTrue == true) //麥克風功能，往目標一直邁進
         {
             TowardTarget(targetBall, targetPos);
         }*/
+    }
+
+    void decideWhichPortal(PhotonPlayer decidePlayer,int portalPos) //要顯示的圖片，哪個Portal
+    {
+        Debug.Log("PlayerName:"+decidePlayer.NickName);
+        if(portalPos == 0)
+        {
+            //左邊
+            if (portalLeft_blue.activeSelf == true) //藍色
+            {
+                portalLeft_blue.GetComponent<showPortalPersonImg>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
+            }
+            else if (portalLeft_blue.activeSelf == false) //綠色
+            {
+                portalLeft_green.GetComponent<showPortalPersonImg>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
+            }
+        }
+        else if(portalPos == 1)
+        {
+            //上面
+            if (portalUp_blue.activeSelf == true) //藍色
+            {
+                portalUp_blue.GetComponent<showPortalPersonImg>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
+            }
+            else if (portalUp_blue.activeSelf == false) //綠色
+            {
+                portalUp_green.GetComponent<showPortalPersonImg>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
+            }
+        }
+        else if(portalPos == 2)
+        {
+            //右邊
+            if (portalRight_blue.activeSelf == true) //藍色
+            {
+                portalRight_blue.GetComponent<showPortalPersonImg>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
+            }
+            else if (portalRight_blue.activeSelf == false) //綠色
+            {
+                portalRight_green.GetComponent<showPortalPersonImg>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
+            }
+        }
+    }
+
+    #region ReadyAndGO
+
+    void openReady() //先跑ready
+    {
+        ready.SetActive(true);
+        GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(readyMusic);
+        Invoke("openGo",2);
+    }
+
+    void openGo() //再跑go
+    {
+        ready.SetActive(false);
+        go.SetActive(true);
+        GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(goMusic);
+        Invoke("closeReadyGo",1);
+    }
+
+    void closeReadyGo() //關掉readyGo
+    {
+        go.SetActive(false);
+        ReadyGoPanel.SetActive(false);
+        setTimeCountDown();
+    }
+
+    #endregion
+
+    void setTimeCountDown() //啟動時間倒數
+    {
+        GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(bgm);
+        InvokeRepeating("timeCountDown", 1, 1); //每一秒執行一次，時間減一
+    }
+
+    void timeCountDown() //時間倒數，每次減一秒
+    {
+        timeText.text = time + " sec";
+        time--;
+        if (time == 0) //如果時間歸零，就停止減少
+        {
+            hash = new Hashtable();
+            hash.Add("Money", money); //把錢加進hash
+            hash.Add("WinColor", winColor); //把執政黨判斷加進hash
+            PhotonNetwork.player.SetCustomProperties(hash);
+
+            CancelInvoke("timeCountDown");
+            timeText.text = "Game Over";
+            Time.timeScale = 0f; //時間暫停
+            PhotonNetwork.LoadLevel("WinOrLose");
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision) //進洞
@@ -296,14 +443,14 @@ public class NowState : MonoBehaviour { //控制連線及背景component
                 if (allArray[i].name + "(Clone)" == collision.name)
                 {
                     ballIndex = i;
-                    goodMessage = role + goldMessage[i - allArray.Length/2]; //要記得照順序排
+                    goodMessage = role + goldMessage[i - (allArray.Length-3)/2]; //要記得照順序排
                     break;
                 }
             }
             Destroy(collision.gameObject); //把金球刪掉
             //金球吃完後會產生黑球彈出去，意味著拿完好處就丟掉
-            //int newBallIndex = ballIndex - (allArray.Length/2); //此金球的黑球相應位置，要記得排好
-            int newBallIndex = 1;
+            int newBallIndex = ballIndex - (allArray.Length - 3) / 2; //此金球的黑球相應位置，要記得排好
+            //int newBallIndex = 1;
             Debug.Log("allArray.Length:" + allArray.Length);
             GameObject newBlackBall = Instantiate(allArray[newBallIndex], transform.position + new Vector3(0, 1, 0), new Quaternion(0, 0, 0, 0));
             newBlackBall.GetComponent<Rigidbody2D>().velocity = new Vector2(0,2); //新產生一顆黑球，彈出去
@@ -354,21 +501,23 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         Destroy(collision.gameObject); //把碰觸到的球刪掉
     }
 
-    void timeCountDown() //時間倒數，每次減一秒
+    void identificatePlayerMoney()     //判斷是哪個Player,加到對應的錢
     {
-        timeText.text = time + " sec";
-        time--;
-        if (time == 0) //如果時間歸零，就停止減少
+        if (player == PhotonNetwork.masterClient)  //player1
         {
-            hash = new Hashtable();
-            hash.Add("Money", money); //把錢加進hash
-            hash.Add("WinColor", winColor); //把執政黨判斷加進hash
-            PhotonNetwork.player.SetCustomProperties(hash);
-
-            CancelInvoke("timeCountDown");
-            timeText.text = "Game Over";
-            Time.timeScale = 0f; //時間暫停
-            PhotonNetwork.LoadLevel("WinOrLose");
+            playerMoney[0] = money;
+        }
+        else if (player == PhotonNetwork.masterClient.GetNext()) //player2
+        {
+            playerMoney[1] = money;
+        }
+        else if (player == PhotonNetwork.masterClient.GetNext().GetNext()) //player3
+        {
+            playerMoney[2] = money;
+        }
+        else if (player == PhotonNetwork.masterClient.GetNext().GetNext().GetNext()) //player4
+        {
+            playerMoney[3] = money;
         }
     }
 
@@ -435,26 +584,6 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         }
     }
     #endregion
-
-    void identificatePlayerMoney()     //判斷是哪個Player,加到對應的錢
-    {
-        if (player == PhotonNetwork.masterClient)  //player1
-        {
-            playerMoney[0] = money;
-        }
-        else if (player == PhotonNetwork.masterClient.GetNext()) //player2
-        {
-            playerMoney[1] = money;
-        }
-        else if (player == PhotonNetwork.masterClient.GetNext().GetNext()) //player3
-        {
-            playerMoney[2] = money;
-        }
-        else if (player == PhotonNetwork.masterClient.GetNext().GetNext().GetNext()) //player4
-        {
-            playerMoney[3] = money;
-        }
-    }
 
     #region 黑訊息
     [PunRPC]
@@ -870,23 +999,31 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         {
             if (winColor != 1) //現在不是綠色執政的話，才改
             {
-                photonView.RPC("showGreenNoticeBroad", PhotonTargets.All); //傳送給大家顯示
+                photonView.RPC("showGreenNoticeBoard", PhotonTargets.All); //傳送給大家顯示
             }
         }
         else if (blueMoney - greenMoney >= 30) //藍黨執政
         {
             if (winColor != 2) //如果現在不是藍色執政，才變換
             {
-                photonView.RPC("showBlueNoticeBroad", PhotonTargets.All); //傳送給大家顯示
+                photonView.RPC("showBlueNoticeBoard", PhotonTargets.All); //傳送給大家顯示
 
+            }
+        }
+        else //沒有黨超過對方30，無黨執政
+        {
+            if(winColor != 0)
+            {
+                photonView.RPC("showNoColorNoticeBoard", PhotonTargets.All); //傳送給大家顯示
             }
         }
     }
 
     [PunRPC] //傳送綠黨執政消息
-    void showGreenNoticeBroad()
+    void showGreenNoticeBoard()
     {
         blueNoticeBoard.SetActive(false); //佈告欄-藍關掉
+        noColorNoticeBoard.SetActive(false); //佈告欄-無黨執政關閉
         greenNoticeBoard.SetActive(true);  //佈告欄-綠
         winColor = 1;
         showWinPartyMessage(); //三秒後結束畫面
@@ -900,7 +1037,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         GameObject.Find("左Portal(真)").GetComponent<SendBall>().generateBallSpeed = 2;
         GameObject.Find("右Portal(真)").GetComponent<SendBall>().generateBallSpeed = 2;
         GameObject.Find("上Portal(真)").GetComponent<SendBall>().generateBallSpeed = 2;
-            //場上的球速度也要變1
+            //場上的球速度也要變2
         foreach (GameObject obj in Object.FindObjectsOfType(typeof(GameObject))) //得到所有hierarchy的物件
         {
             if (obj.CompareTag("黑球") || obj.CompareTag("金球") || obj.CompareTag("麥克風") || obj.CompareTag("報紙") || obj.CompareTag("炸彈"))
@@ -908,14 +1045,15 @@ public class NowState : MonoBehaviour { //控制連線及背景component
                 //obj.GetComponent<Rigidbody2D>().velocity = new Vector2(2, 2);
                 checkOriginalSpeed(obj, 2); //改變速度
                 obj.GetComponent<BallMove>().blueEffectButton(); //將鎖住速度功能關閉
-            }
+           }
         }
     }
 
     [PunRPC] //傳送藍黨執政消息
-    void showBlueNoticeBroad()
+    void showBlueNoticeBoard()
     {
         greenNoticeBoard.SetActive(false); //佈告欄-綠關掉
+        noColorNoticeBoard.SetActive(false); //佈告欄-無黨執政關閉
         blueNoticeBoard.SetActive(true); //佈告欄 - 藍
         winColor = 2;
         showWinPartyMessage(); //三秒後結束畫面
@@ -940,6 +1078,38 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         //綠黨執政的效果要改回來
         GameObject.Find("左邊框").GetComponent<GenerateBall>().generateItemseconds = 20;
         GameObject.Find("右邊框").GetComponent<GenerateBall>().generateItemseconds = 20;
+    }
+
+    [PunRPC] //傳送無黨執政消息
+    void showNoColorNoticeBoard()
+    {
+        blueNoticeBoard.SetActive(false); //佈告欄-藍關掉
+        greenNoticeBoard.SetActive(false); //佈告欄-綠關掉
+        noColorNoticeBoard.SetActive(true); //佈告欄-無黨執政
+        winColor = 0;
+        showWinPartyMessage(); //三秒後結束畫面
+        setWinPlayer(); //判斷執政黨
+
+        //無黨執政，效果要改回來
+        //綠黨
+        GameObject.Find("左邊框").GetComponent<GenerateBall>().generateItemseconds = 20;
+        GameObject.Find("右邊框").GetComponent<GenerateBall>().generateItemseconds = 20;
+        //藍黨
+        GameObject.Find("左邊框").GetComponent<GenerateBall>().changeSpeedX = 2;
+        GameObject.Find("右邊框").GetComponent<GenerateBall>().changeSpeedY = 2;
+        GameObject.Find("左Portal(真)").GetComponent<SendBall>().generateBallSpeed = 2;
+        GameObject.Find("右Portal(真)").GetComponent<SendBall>().generateBallSpeed = 2;
+        GameObject.Find("上Portal(真)").GetComponent<SendBall>().generateBallSpeed = 2;
+            //場上的球速度要變2
+        foreach (GameObject obj in Object.FindObjectsOfType(typeof(GameObject))) //得到所有hierarchy的物件
+        {
+            if (obj.CompareTag("黑球") || obj.CompareTag("金球") || obj.CompareTag("麥克風") || obj.CompareTag("報紙") || obj.CompareTag("炸彈"))
+            {
+                //obj.GetComponent<Rigidbody2D>().velocity = new Vector2(2, 2);
+                checkOriginalSpeed(obj, 2); //改變速度
+                obj.GetComponent<BallMove>().blueEffectButton(); //將鎖住速度功能關閉
+            }
+        }
     }
 
     void checkOriginalSpeed(GameObject gObj, float speed) //判斷原本速度為何
@@ -979,7 +1149,10 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         {
             Invoke("blueTimeCountDown", 3);
         }
-
+        else if (winColor == 0) //無黨
+        {
+            Invoke("noColorTimeCountDown", 3);
+        }
     }
 
     void greenTimeCountDown() //顯示三秒便結束(綠)
@@ -990,6 +1163,11 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     void blueTimeCountDown() //顯示三秒便結束(藍)
     {
         blueNoticeBoard.SetActive(false);
+    }
+
+    void noColorTimeCountDown() //顯示三秒便結束(無黨)
+    {
+        noColorNoticeBoard.SetActive(false);
     }
 
     void setWinPlayer() //設定執政黨
@@ -1019,6 +1197,11 @@ public class NowState : MonoBehaviour { //控制連線及背景component
                 bombObj.SetActive(true); //可使用炸彈
                 winLogo.SetActive(true); //有中選標誌
             }
+        }
+        else if(winColor == 0) //無黨執政
+        {
+            bombObj.SetActive(false);
+            winLogo.SetActive(false);
         }
     }
     #endregion

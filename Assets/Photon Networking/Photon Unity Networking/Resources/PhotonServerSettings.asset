@@ -65,4 +65,7 @@ MonoBehaviour:
   - sendToPortalBall
   - sendFaceImg
   - microphoneEffect2
+  - showBlueNoticeBoard
+  - showGreenNoticeBoard
+  - showNoColorNoticeBoard
   DisableAutoOpenWizard: 1
