@@ -120,11 +120,15 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 			if (PhotonNetwork.room.MaxPlayers == 2)
 			{
-				PhotonNetwork.LoadLevel ("Role Choose for 2");
+				if (PhotonNetwork.isMasterClient) {
+					PhotonNetwork.LoadLevel ("Role Choose for 2");
+				}
 			}
 			else if (PhotonNetwork.room.MaxPlayers == 4)
 			{
-				PhotonNetwork.LoadLevel ("Role Choosing for 4");
+				if (PhotonNetwork.isMasterClient) {
+					PhotonNetwork.LoadLevel ("Role Choosing for 4");
+				}
 			}
 		}
 

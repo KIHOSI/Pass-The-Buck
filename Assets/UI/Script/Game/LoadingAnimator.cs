@@ -48,7 +48,9 @@ namespace Com.MyProject.MyPassTheBuckGame
 
                 if (index == 8)
                 {  
-                   PhotonNetwork.LoadLevel("4PlayerGame");
+					if (PhotonNetwork.isMasterClient) {
+						PhotonNetwork.LoadLevel ("4PlayerGame");
+					}
                 }
 			}
 
