@@ -35,7 +35,9 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public Text MoneyPlusTx;
 		public Text LevelPlusTx;
 		public Text GetMoneyTx;
+		AudioSource audiosre;
 		public int count=0;
+		public Hashtable hash;
 
 		public int money;
 		public float exp;
@@ -47,7 +49,8 @@ namespace Com.MyProject.MyPassTheBuckGame
 		{
 
 			maxExp = GameObject.Find ("LevelBarTopImg").GetComponent<LevelBarForWl> ().MaxExp;
-            Debug.Log("wincolor:"+ GetWinColor()+"、money:"+ PhotonNetwork.player.CustomProperties["Money"].ToString());
+
+
 			//玩家的黨派贏了
 			if (GetWinColor ().Equals ((string)PhotonNetwork.player.CustomProperties ["PartyColor"]))
 			{
@@ -131,7 +134,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 			count++;
 			Sprite s = GameObject.Find ("Background Panel1").GetComponent<Image> ().sprite;
 
-			if (count == 200)
+			if (count == 250)
 			{
 				if (s.Equals(WinBackground)) 
 				{
@@ -230,7 +233,22 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 		public void ExitGame()
 		{
+			hash = new Hashtable();
+			hash.Add("PartyColor", null);
+			hash.Add ("Role",null);
+			hash.Add ("WinColor",null);
+			hash.Add ("Money",null);
+
+			if (PhotonNetwork.isMasterClient) 
+			{
+				hash.Add("ClickStart", null);
+			}
+
+			PhotonNetwork.player.SetCustomProperties(hash);
+
 			PhotonNetwork.LeaveRoom ();
+			audiosre = GameObject.Find ("BackGroundMusic").GetComponent<AudioSource> ();
+			audiosre.Play ();
 			SceneManager.LoadScene ("Main");
 		}
 	}

@@ -43,7 +43,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 				} 
 				else if (count == 2)
 				{
-					setText ("遊玩前最好先確認連線是否穩定，才不會影響遊玩品質喔!");
+					setText ("遊玩前最好先確認連線是否穩定，才不會影響遊玩品質!");
 				}
 				else if (count == 3)
 				{
@@ -51,7 +51,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 				}
 				else if (count == 4)
 				{
-					setText ("祝大家玩得開心!");
+					setText ("祝大家玩得開心ㄟ(￣▽￣ㄟ)");
 					count = 0;
 				}
 			count += 1;

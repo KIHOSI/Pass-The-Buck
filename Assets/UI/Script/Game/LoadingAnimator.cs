@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Com.MyProject.MyPassTheBuckGame
 {
-	public class LoadingAnimator : MonoBehaviour
+	public class LoadingAnimator :Photon.PunBehaviour 
 	{
 		public Sprite[] loadingImgArray;
 		public Sprite loadingImg1;
@@ -28,7 +28,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 		void Start () 
 		{
 			audiosre = GameObject.Find ("BackGroundMusic").GetComponent<AudioSource> ();
-			audiosre.Stop ();
+			audiosre.Pause ();
 			loadingImgArray = new Sprite[] {loadingImg1,loadingImg2,loadingImg3,
 				                            loadingImg4,loadingImg5,loadingImg6,loadingImg7,loadingImg8,loadingImg9};
 			index = 1;
@@ -47,14 +47,22 @@ namespace Com.MyProject.MyPassTheBuckGame
 				count = 0;
 
                 if (index == 8)
-                {
-                    if (PhotonNetwork.isMasterClient)
-                    {
-                        PhotonNetwork.LoadLevel("4PlayerGame");
-                    }
+                {  
+                   PhotonNetwork.LoadLevel("4PlayerGame");
                 }
 			}
 
+		}
+
+		public override void OnDisconnectedFromPhoton()
+		{
+			SceneManager.LoadScene("Main");
+		}
+
+		public override void OnPhotonPlayerDisconnected(PhotonPlayer otherPlayer)
+		{
+			SceneManager.LoadScene("Main");
+			PhotonNetwork.LeaveRoom ();
 		}
 			
 

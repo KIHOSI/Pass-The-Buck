@@ -310,6 +310,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public override void OnPhotonPlayerDisconnected(PhotonPlayer otherPlayer)
 		{
 			SceneManager.LoadScene("Main");
+			PhotonNetwork.LeaveRoom ();
 		}
 
 

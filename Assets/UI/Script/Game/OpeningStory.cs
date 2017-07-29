@@ -28,9 +28,14 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public string Dialog5 = "「想知道嗎? 想知道就跟我走吧!」";
 		public string Dialog6 = "「讓我們一起踏上偉大的政道!」";
 		public int stage = 0;
+		AudioSource audiosre;
 
 	   void Start () 
 	   {
+			audiosre = GameObject.Find ("BackGroundMusic").GetComponent<AudioSource> ();
+			audiosre.Pause ();
+			audiosre = GameObject.Find ("open story music").GetComponent<AudioSource> ();
+			audiosre.Play ();
 			count = 0;
 	   }
 
@@ -76,6 +81,10 @@ namespace Com.MyProject.MyPassTheBuckGame
 				count++;
 				if (count == 150)
 				{
+					audiosre = GameObject.Find ("open story music").GetComponent<AudioSource> ();
+					audiosre.volume = 0.5f;
+					audiosre = GameObject.Find ("open door").GetComponent<AudioSource> ();
+					audiosre.Play ();
 					DialogTx.text = "";
 					BackGroundImg.sprite = BackImg2;
 				} 
@@ -103,6 +112,8 @@ namespace Com.MyProject.MyPassTheBuckGame
 				count++;
 				if (count == 20) 
 				{
+					audiosre = GameObject.Find ("BackGroundMusic").GetComponent<AudioSource> ();
+					audiosre.Play ();
 					SceneManager.LoadScene("Main");
 				}
 			}
