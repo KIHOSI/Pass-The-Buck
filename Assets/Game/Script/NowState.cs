@@ -8,7 +8,6 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 public class NowState : MonoBehaviour { //控制連線及背景component
     //ReadyGo
     public GameObject ReadyGoPanel;
-    //public Text ready;
     public GameObject ready;
     public GameObject go;
 
@@ -16,6 +15,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     public int money = 100; //錢
     public int time = 120; //時間(秒)
     public Text moneyText; //顯示錢的資訊
+    public int okCount = 0;
     public Text timeText; //顯示時間
     int blueMoney; //藍黨總錢
     int greenMoney; //綠黨總錢
@@ -311,6 +311,12 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             TowardTarget(targetBall, targetPos);
         }*/
     }
+
+    /*[PunRPC]
+    void sendOk()
+    {
+        
+    }*/
 
     void decideWhichPortal(PhotonPlayer decidePlayer,int portalPos) //要顯示的圖片，哪個Portal
     {
