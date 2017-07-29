@@ -289,7 +289,9 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 			if (PlayerList [1].CustomProperties ["PartyColor"] != null && PlayerList [3].CustomProperties ["PartyColor"] != null) 
 			{
-				PhotonNetwork.LoadLevel ("Loading Animator");
+				if (PhotonNetwork.isMasterClient) {
+					PhotonNetwork.LoadLevel ("Loading Animator");
+				}
 			}
 
 		}
