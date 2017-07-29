@@ -121,6 +121,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 					ChooseBt2.GetComponent< Button> ().interactable = false;
 					LeftArrowBt2.GetComponent< Button> ().interactable = false;
 					RightArrowBt2.GetComponent< Button> ().interactable = false;
+					Debug.Log ("第二個玩家已經有值了，值是:" + PlayerList [1].CustomProperties ["PartyColor"]);
 
 					//顯示"等待綠隊選擇"
 					if (PlayerList [3].CustomProperties ["PartyColor"] == null)
@@ -143,6 +144,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 				} //第一位玩家已選擇，輪到第二位玩家
 				else if (PlayerList [0].CustomProperties ["PartyColor"] != null && PlayerList [1].CustomProperties ["PartyColor"] == null)
 				{
+					Debug.Log ("第二個玩家還沒有值了");
 					//設定按鈕
 					ChooseBt2.GetComponent< Button> ().interactable = true;
 					LeftArrowBt2.GetComponent< Button> ().interactable = true;
@@ -287,10 +289,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 			if (PlayerList [1].CustomProperties ["PartyColor"] != null && PlayerList [3].CustomProperties ["PartyColor"] != null) 
 			{
-				if (PhotonNetwork.isMasterClient) 
-				{
-					PhotonNetwork.LoadLevel ("Loading Animator");
-				}
+				PhotonNetwork.LoadLevel ("Loading Animator");
 			}
 
 		}
@@ -631,6 +630,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public override void OnPhotonPlayerDisconnected(PhotonPlayer otherPlayer)
 		{
 			SceneManager.LoadScene("Main");
+			PhotonNetwork.LeaveRoom ();
 		}
 
 
