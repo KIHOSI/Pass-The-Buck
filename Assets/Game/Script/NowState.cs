@@ -11,11 +11,14 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     public GameObject ready;
     public GameObject go;
 
+    //同步
+    int okCount = 0;
+    int okLevel = 1; //1:一開始，2:結束
+
     //計算錢
     public int money = 100; //錢
     public int time = 120; //時間(秒)
     public Text moneyText; //顯示錢的資訊
-    public int okCount = 0;
     public Text timeText; //顯示時間
     int blueMoney; //藍黨總錢
     int greenMoney; //綠黨總錢
@@ -280,7 +283,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             paperPersonImage[i] = paperPersonMenu[i].GetComponent<Image>();
         }
 
-
+        photonView.RPC("sendOk",PhotonTargets.MasterClient); //只傳給masterClient
 
         //讓遊戲時間一致
         //if (PhotonNetwork.isMasterClient) //若是Master Client，遊戲開始
@@ -291,7 +294,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         //}
 
         //photonView.RPC("sendToPortalBall", PhotonTargets.All); //第三個參數:傳送要顯示的話
-        Invoke("openReady", 2);
+       
     }
 
     /*[PunRPC]
@@ -306,17 +309,45 @@ public class NowState : MonoBehaviour { //控制連線及背景component
 
     // Update is called once per frame
     void Update() {
+        if (PhotonNetwork.isMasterClient) //masterClient才可以
+        {
+            Debug.Log("okCount:"+okCount);
+            if(okCount == 4) //如果大家都準好就可以一起開始
+            {
+                if(okLevel == 1) //一開始畫面
+                {
+                    photonView.RPC("sendReady", PhotonTargets.All);
+                }
+                else if(okLevel == 2) //結束畫面
+                {
+                    PhotonNetwork.LoadLevel("WinOrLose"); //load到結束畫面
+                }
+                okCount = 0;
+            }
+        }
         /*if(microphoneTrue == true) //麥克風功能，往目標一直邁進
         {
             TowardTarget(targetBall, targetPos);
         }*/
+        /*if(okCount == 4)
+        {
+            Invoke("openReady", 2);
+            okCount = 0;
+        }*/
     }
 
-    /*[PunRPC]
-    void sendOk()
+    [PunRPC]
+    void sendOk(int level) //已ok
     {
-        
-    }*/
+        okCount++;
+        okLevel = level;
+    }
+
+    [PunRPC]
+    void sendReady() //可以開始了
+    {
+        Invoke("openReady", 2);
+    }
 
     void decideWhichPortal(PhotonPlayer decidePlayer,int portalPos) //要顯示的圖片，哪個Portal
     {
@@ -401,11 +432,14 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             hash.Add("Money", money); //把錢加進hash
             hash.Add("WinColor", winColor); //把執政黨判斷加進hash
             PhotonNetwork.player.SetCustomProperties(hash);
-
             CancelInvoke("timeCountDown");
             timeText.text = "Game Over";
             Time.timeScale = 0f; //時間暫停
-            PhotonNetwork.LoadLevel("WinOrLose");
+
+            photonView.RPC("sendOk",PhotonTargets.MasterClient);
+
+           
+           
         }
     }
 

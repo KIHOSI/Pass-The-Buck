@@ -68,4 +68,6 @@ MonoBehaviour:
   - showBlueNoticeBoard
   - showGreenNoticeBoard
   - showNoColorNoticeBoard
+  - sendOk
+  - sendReady
   DisableAutoOpenWizard: 1
