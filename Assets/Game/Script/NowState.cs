@@ -756,6 +756,7 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
     void paperTimeCountDown() //過3秒報紙自動關閉
     {
         paper.SetActive(false);
+        paperMenu.SetActive(false);
     }
 
     //報紙效果:指定人並扣錢
