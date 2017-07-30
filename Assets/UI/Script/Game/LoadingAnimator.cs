@@ -9,7 +9,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 {
 	public class LoadingAnimator :Photon.PunBehaviour 
 	{
-		public Sprite[] loadingImgArray;
+		//public Sprite[] loadingImgArray;
 		public Sprite loadingImg1;
 		public Sprite loadingImg2;
 		public Sprite loadingImg3;
@@ -29,9 +29,10 @@ namespace Com.MyProject.MyPassTheBuckGame
 		{
 			audiosre = GameObject.Find ("BackGroundMusic").GetComponent<AudioSource> ();
 			audiosre.Pause ();
+			/*
 			loadingImgArray = new Sprite[] {loadingImg1,loadingImg2,loadingImg3,
-				                            loadingImg4,loadingImg5,loadingImg6,loadingImg7,loadingImg8,loadingImg9};
-			index = 1;
+				                            loadingImg4,loadingImg5,loadingImg6,loadingImg7,loadingImg8,loadingImg9}; */
+			//index = 1;
 			count = 0;
 		}
 
@@ -42,17 +43,42 @@ namespace Com.MyProject.MyPassTheBuckGame
 			if (count == 40)
 			{
 				
-				loadingBackground.GetComponent<Image> ().sprite = loadingImgArray [index];
-				index++;
-				count = 0;
+				loadingBackground.GetComponent<Image> ().sprite = loadingImg2;
+				//index++;
 
-                if (index == 8)
-                {  
-					if (PhotonNetwork.isMasterClient) {
-						PhotonNetwork.LoadLevel ("4PlayerGame");
-					}
-                }
+			} 
+			else if (count == 80) 
+			{
+				loadingBackground.GetComponent<Image> ().sprite = loadingImg3;
+			} 
+			else if (count == 120)
+			{
+				loadingBackground.GetComponent<Image> ().sprite = loadingImg4;
 			}
+			else if (count == 160) 
+			{
+				loadingBackground.GetComponent<Image> ().sprite = loadingImg5;
+			}
+			else if (count == 200)
+			{
+				loadingBackground.GetComponent<Image> ().sprite = loadingImg6;
+			}
+			else if (count == 240)
+			{
+				loadingBackground.GetComponent<Image> ().sprite = loadingImg7;
+			}
+			else if (count == 280)
+			{
+				loadingBackground.GetComponent<Image> ().sprite = loadingImg8;
+			}
+			else if (count == 320)
+			{
+				loadingBackground.GetComponent<Image> ().sprite = loadingImg9;
+				PhotonNetwork.LoadLevel ("4PlayerGame");
+
+			}
+
+
 
 		}
 

@@ -6,9 +6,8 @@ using UnityEngine.UI;
 
 namespace Com.MyProject.MyPassTheBuckGame
 {
-   public class OpeningStory : MonoBehaviour
-   {
-
+    public class OpeningStoryForRepeat : MonoBehaviour
+	{
 		public Sprite BackImg1;
 		public Sprite BackImg2;
 		public Sprite BackImg3;
@@ -30,16 +29,17 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public int stage = 0;
 		AudioSource audiosre;
 
-	   void Start () 
-	   {
-			
+		void Start () 
+		{
+				audiosre = GameObject.Find ("BackGroundMusic").GetComponent<AudioSource> ();
+				audiosre.Pause ();
 				audiosre = GameObject.Find ("open story music").GetComponent<AudioSource> ();
 				audiosre.Play ();
 
-	   }
+		}
 
-	   void FixedUpdate () 
-	   {
+		void FixedUpdate () 
+		{
 
 			if (stage == 0) 
 			{
@@ -72,11 +72,11 @@ namespace Com.MyProject.MyPassTheBuckGame
 					count = 0;
 					stage = 2;
 				} 
-			
+
 			}
 			else if (stage== 2) 
 			{
-				
+
 				count++;
 				if (count == 150)
 				{
@@ -111,11 +111,15 @@ namespace Com.MyProject.MyPassTheBuckGame
 				count++;
 				if (count == 20) 
 				{
-				   SceneManager.LoadScene("Launcher");
+
+						audiosre = GameObject.Find ("BackGroundMusic").GetComponent<AudioSource> ();
+						audiosre.Play ();
+						SceneManager.LoadScene("Main");
+				
 				}
 			}
-		
-	   }
+
+		}
 
 		public void ChooseOption()
 		{
@@ -152,6 +156,5 @@ namespace Com.MyProject.MyPassTheBuckGame
 		}
 
 
-
-   }
+	}
 }
