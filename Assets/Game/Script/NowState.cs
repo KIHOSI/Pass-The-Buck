@@ -33,6 +33,7 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
 
     //炸彈
     public GameObject bombObj;
+    public GameObject forbiddenObj; //禁止的logo
 
     //報紙
     public GameObject paperMenu; //報紙選單
@@ -112,10 +113,6 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
     Vector3 leftPortalPos;
     Vector3 upPortalPos;
     Vector3 rightPortalPos;
-    //GameObject targetBall; //要傳去目的地的金球
-    //Vector3 targetPos; //目的地位置
-    //bool microphoneTrue = false;//是否開啟麥克風功能 ，true:yes、false:no
-
 
     // Use this for initialization
     void Start() {
@@ -283,29 +280,10 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
             paperPersonImage[i] = paperPersonMenu[i].GetComponent<Image>();
         }
 
-        photonView.RPC("sendOk", PhotonTargets.MasterClient,1); //只傳給masterClient
-
         //讓遊戲時間一致
-        //if (PhotonNetwork.isMasterClient) //若是Master Client，遊戲開始
-        //{
-
-        //photonView.RPC("sendTime", PhotonTargets.All);
-        //Debug.Log("time:"+PhotonNetwork.time);
-        //}
-
-        //photonView.RPC("sendToPortalBall", PhotonTargets.All); //第三個參數:傳送要顯示的話
+        photonView.RPC("sendOk", PhotonTargets.MasterClient,1); //只傳給masterClient
        
     }
-
-    /*[PunRPC]
-    void sendToPortalBall()//trytry
-    {
-        Debug.Log("GameObjectName:"+this.gameObject.name);
-        if(this.gameObject.name == "PortalBall")
-        {
-            Debug.Log("送給portalball1");
-        }
-    }*/
 
     // Update is called once per frame
     void Update() {
@@ -328,17 +306,9 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
                 okCount = 0;
             }
         }
-        /*if(microphoneTrue == true) //麥克風功能，往目標一直邁進
-        {
-            TowardTarget(targetBall, targetPos);
-        }*/
-        /*if(okCount == 4)
-        {
-            Invoke("openReady", 2);
-            okCount = 0;
-        }*/
     }
 
+    #region 同步
     [PunRPC]
     void sendOk(int level) //已ok
     {
@@ -351,6 +321,8 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
     {
         Invoke("openReady", 2);
     }
+
+    #endregion
 
     void decideWhichPortal(PhotonPlayer decidePlayer,int portalPos) //要顯示的圖片，哪個Portal
     {
@@ -415,6 +387,9 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
         go.SetActive(false);
         ReadyGoPanel.SetActive(false);
         setTimeCountDown();
+        //開始建立球
+        GameObject.Find("左邊框").GetComponent<GenerateBall>().startGenerateBall();
+        GameObject.Find("右邊框").GetComponent<GenerateBall>().startGenerateBall();
     }
 
     #endregion
@@ -1038,14 +1013,14 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
         }
 
         //判斷是誰執政
-        if (greenMoney - blueMoney >= 30) //綠黨執政
+        if (greenMoney - blueMoney >= 100) //綠黨執政
         {
             if (winColor != 1) //現在不是綠色執政的話，才改
             {
                 photonView.RPC("showGreenNoticeBoard", PhotonTargets.All); //傳送給大家顯示
             }
         }
-        else if (blueMoney - greenMoney >= 30) //藍黨執政
+        else if (blueMoney - greenMoney >= 100) //藍黨執政
         {
             if (winColor != 2) //如果現在不是藍色執政，才變換
             {
@@ -1225,6 +1200,7 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
             else if (partyColor == "blue") //藍的，關閉能力
             {
                 bombObj.SetActive(false);
+                forbiddenObj.SetActive(false);
                 winLogo.SetActive(false);
             }
         }
@@ -1234,6 +1210,7 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
             {
                 bombObj.SetActive(false);
                 winLogo.SetActive(false);
+                forbiddenObj.SetActive(false);
             }
             else if (partyColor == "blue") //藍的，可使用執政黨能力
             {

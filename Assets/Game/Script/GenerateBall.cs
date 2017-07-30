@@ -16,18 +16,10 @@ public class GenerateBall : MonoBehaviour {
     public float changeSpeedX = 2; //指定球的速度 
     public float changeSpeedY = 2; //指定球的速度
 
-    // Use this for initialization
-    void Start () {
-        
-        //if (PhotonNetwork.isMasterClient) //若是Master Client，遊戲開始
-        //{
-        InvokeRepeating("generateBall", 10, generateBallseconds); //第一個為方法名、第二個為「第一次調用」要隔幾秒、第三個則是「每隔幾秒調用一次」
-        InvokeRepeating("generateItem", 25, generateItemseconds);
-        //}
-    }
-	
-	// Update is called once per frame
-	void Update () {
+    public void startGenerateBall()
+    {
+        InvokeRepeating("generateBall", 5, generateBallseconds); //第一個為方法名、第二個為「第一次調用」要隔幾秒、第三個則是「每隔幾秒調用一次」
+        InvokeRepeating("generateItem", 20, generateItemseconds);
     }
 
     void generateBall() //產生球

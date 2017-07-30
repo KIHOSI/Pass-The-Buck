@@ -71,27 +71,28 @@ public class showPortalPersonImg : MonoBehaviour {
             }
         }
         //portalPersonImg.sprite = sprite; //設定該Portal要顯示的圖片
+
+        portalPersonImg.enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision) //如果求滑動到這個區域，顯示該區域的player
     {
-        showPersonImg();
+        showPersonImg(0);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        showPersonImg();
+        showPersonImg(1);
     }
 
-    void showPersonImg() //顯示圖片
+    void showPersonImg(int enterOrExit) //顯示圖片
     {
-        if(portalPersonImg.enabled == true)
+        if(enterOrExit == 0) { 
+            portalPersonImg.enabled = true; //顯示
+        }
+        else if(enterOrExit == 1)
         {
             portalPersonImg.enabled = false; //隱藏
-        }
-        else if(portalPersonImg.enabled == false)
-        {
-            portalPersonImg.enabled = true; //顯示
         }
     }
 }
