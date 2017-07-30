@@ -10,9 +10,9 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: Unity
-  productName: PassTheBuck
-  defaultCursor: {fileID: 2800000, guid: fc07c1b9860ac1241b78826ddd51234e, type: 3}
+  companyName: TT
+  productName: "\u653F\u5BA2T\u76AE\u7403"
+  defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13333334, g: 0.17254902, b: 0.21176471, a: 1}
   m_ShowUnitySplashScreen: 1
@@ -218,8 +218,8 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: 
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: "C:/Users/cathy/Desktop/\u5C08\u984C\u8CC7\u6599/TT.keystore"
+  AndroidKeyaliasName: passthebuck
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
   androidEnableBanner: 1
