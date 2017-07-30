@@ -66,19 +66,16 @@ namespace Com.MyProject.MyPassTheBuckGame
 		     SceneManager.LoadScene ("Opening Story");
 		}
 
+		//載入開場故事
+		public void LoadOpeningStoryForRepeatScene()
+		{
+			SceneManager.LoadScene ("OpeningStoryForRepeat");
+		}
+
 		//載入主頁
 		public void LoadJMainPageScene()
 		{
-			if (!PlayerPrefs.HasKey ("HasPlayed"))
-			{
-				PlayerPrefs.SetInt ("HasPlayed", 1);
-				SceneManager.LoadScene ("Opening Story");
-			} 
-			else 
-			{
-				SceneManager.LoadScene("Main");
-			}
-	
+		   SceneManager.LoadScene("Main");
 		}
 
 		//載入加入、創建房間頁面
