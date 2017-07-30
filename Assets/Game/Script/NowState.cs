@@ -452,11 +452,11 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
                     break;
                 }
             }
-            Destroy(collision.gameObject); //把金球刪掉
+            /*Destroy(collision.gameObject); //把金球刪掉
             //金球吃完後會產生黑球彈出去，意味著拿完好處就丟掉
             int newBallIndex = ballIndex - (allArray.Length - 3) / 2; //此金球的黑球相應位置，要記得排好
             GameObject newBlackBall = Instantiate(allArray[newBallIndex], transform.position + new Vector3(0, 1, 0), new Quaternion(0, 0, 0, 0));
-            newBlackBall.GetComponent<Rigidbody2D>().velocity = new Vector2(0,2); //新產生一顆黑球，彈出去
+            newBlackBall.GetComponent<Rigidbody2D>().velocity = new Vector2(0,2); //新產生一顆黑球，彈出去*/
             photonView.RPC("sendGoodMessage", PhotonTargets.All, goodMessage); //第三個參數:傳送要顯示的話
         }
         else if (collision.gameObject.CompareTag("炸彈"))
@@ -961,14 +961,14 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
         }
 
         //判斷是誰執政
-        if (greenMoney - blueMoney >= 100) //綠黨執政
+        if (greenMoney - blueMoney >= 50) //綠黨執政
         {
             if (winColor != 1) //現在不是綠色執政的話，才改
             {
                 photonView.RPC("showGreenNoticeBoard", PhotonTargets.All); //傳送給大家顯示
             }
         }
-        else if (blueMoney - greenMoney >= 100) //藍黨執政
+        else if (blueMoney - greenMoney >= 50) //藍黨執政
         {
             if (winColor != 2) //如果現在不是藍色執政，才變換
             {
@@ -1139,6 +1139,7 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
 
     void setWinPlayer() //設定執政黨
     {
+        forbiddenObj.SetActive(false);
         if (winColor == 1) //綠色執政
         {
             if (partyColor == "green") //如果是綠的，可使用執政黨能力
@@ -1149,7 +1150,6 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
             else if (partyColor == "blue") //藍的，關閉能力
             {
                 bombObj.SetActive(false);
-                forbiddenObj.SetActive(false);
                 winLogo.SetActive(false);
             }
         }
@@ -1159,7 +1159,6 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
             {
                 bombObj.SetActive(false);
                 winLogo.SetActive(false);
-                forbiddenObj.SetActive(false);
             }
             else if (partyColor == "blue") //藍的，可使用執政黨能力
             {
