@@ -247,10 +247,10 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 			PhotonNetwork.player.SetCustomProperties(hash);
 
-			PhotonNetwork.LeaveRoom ();
 			audiosre = GameObject.Find ("BackGroundMusic").GetComponent<AudioSource> ();
 			audiosre.Play ();
 			SceneManager.LoadScene ("Main");
+			PhotonNetwork.LeaveRoom ();
 		}
 	}
 
