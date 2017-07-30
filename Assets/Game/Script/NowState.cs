@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
-public class NowState : MonoBehaviour { //控制連線及背景component
+public class NowState : Photon.PunBehaviour { //控制連線及背景component
     //ReadyGo
     public GameObject ReadyGoPanel;
     public GameObject ready;
@@ -1245,5 +1245,17 @@ public class NowState : MonoBehaviour { //控制連線及背景component
         }
     }
     #endregion
+
+	public override void OnDisconnectedFromPhoton()
+	{
+		SceneManager.LoadScene("Main");
+	}
+
+	public override void OnPhotonPlayerDisconnected(PhotonPlayer otherPlayer)
+	{
+		SceneManager.LoadScene("Main");
+		PhotonNetwork.LeaveRoom ();
+	}
+
 
 }
