@@ -283,7 +283,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             paperPersonImage[i] = paperPersonMenu[i].GetComponent<Image>();
         }
 
-        photonView.RPC("sendOk",PhotonTargets.MasterClient); //只傳給masterClient
+        photonView.RPC("sendOk", PhotonTargets.MasterClient,1); //只傳給masterClient
 
         //讓遊戲時間一致
         //if (PhotonNetwork.isMasterClient) //若是Master Client，遊戲開始
@@ -311,15 +311,18 @@ public class NowState : MonoBehaviour { //控制連線及背景component
     void Update() {
         if (PhotonNetwork.isMasterClient) //masterClient才可以
         {
+            Debug.Log("playerName:" + playerName);
             Debug.Log("okCount:"+okCount);
             if(okCount == 4) //如果大家都準好就可以一起開始
             {
                 if(okLevel == 1) //一開始畫面
                 {
+                    Debug.Log("Level1");
                     photonView.RPC("sendReady", PhotonTargets.All);
                 }
                 else if(okLevel == 2) //結束畫面
                 {
+                    Debug.Log("Level1");
                     PhotonNetwork.LoadLevel("WinOrLose"); //load到結束畫面
                 }
                 okCount = 0;
@@ -436,7 +439,7 @@ public class NowState : MonoBehaviour { //控制連線及背景component
             timeText.text = "Game Over";
             Time.timeScale = 0f; //時間暫停
 
-            photonView.RPC("sendOk",PhotonTargets.MasterClient);
+            photonView.RPC("sendOk",PhotonTargets.MasterClient,2);
 
            
            
