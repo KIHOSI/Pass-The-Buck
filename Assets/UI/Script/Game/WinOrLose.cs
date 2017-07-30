@@ -95,6 +95,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 					LevelPlusTx.text = "+0";
 
 				}
+				//玩家的黨派輸了
 				else 
 				{
 					//改變外觀
