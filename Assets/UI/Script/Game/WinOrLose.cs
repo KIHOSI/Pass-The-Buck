@@ -134,7 +134,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 			count++;
 			Sprite s = GameObject.Find ("Background Panel1").GetComponent<Image> ().sprite;
 
-			if (count == 250)
+			if (count == 400)
 			{
 				if (s.Equals(WinBackground)) 
 				{
