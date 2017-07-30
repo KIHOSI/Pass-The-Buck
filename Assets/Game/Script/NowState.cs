@@ -23,7 +23,6 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
     int blueMoney; //藍黨總錢
     int greenMoney; //綠黨總錢
     int[] playerMoney = new int[4]; //player的錢
-    //bool isFirst = true;
 
     //執政
     public GameObject winLogo; //中選logo
@@ -163,8 +162,6 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
             edge2_green.SetActive(false);
         }
 
-       
-
         //判斷是哪個player
         if (player == PlayerList[0]) //Player1
         {
@@ -289,18 +286,14 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
     void Update() {
         if (PhotonNetwork.isMasterClient) //masterClient才可以
         {
-            Debug.Log("playerName:" + playerName);
-            Debug.Log("okCount:"+okCount);
             if(okCount == 4) //如果大家都準好就可以一起開始
             {
                 if(okLevel == 1) //一開始畫面
                 {
-                    Debug.Log("Level1");
                     photonView.RPC("sendReady", PhotonTargets.All);
                 }
                 else if(okLevel == 2) //結束畫面
                 {
-                    Debug.Log("Level1");
                     PhotonNetwork.LoadLevel("WinOrLose"); //load到結束畫面
                 }
                 okCount = 0;
@@ -326,7 +319,6 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
 
     void decideWhichPortal(PhotonPlayer decidePlayer,int portalPos) //要顯示的圖片，哪個Portal
     {
-        Debug.Log("PlayerName:"+decidePlayer.NickName);
         if(portalPos == 0)
         {
             //左邊
@@ -425,7 +417,6 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
     {
         if (collision.gameObject.CompareTag("黑球"))
         { //黑球
-            Debug.Log("collisionName:" + collision.gameObject.name);
             money -= 10;
             moneyText.text = money + "(百萬)";
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(blackBallMusic);
@@ -440,22 +431,18 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
                     break;
                 }
             }
-            //Destroy(collision.gameObject); //把黑球刪掉
             photonView.RPC("sendBadMessage", PhotonTargets.All, badMessage); //第三個參數:傳送要顯示的話
         }
 
         else if (collision.gameObject.CompareTag("金球"))
         { //金球 
-            Debug.Log("collisionName:" + collision.gameObject.name);
             money += 10;
             moneyText.text = money + "(百萬)";
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(goldBallMusic);
             setFaceImg(SneerPersonImg); //把圖片換成奸笑的表情
-            //Invoke("setRoleImg(PlayerCharacterImg,role)",3);
             identificatePlayerMoney(); //判斷是哪個player
 
             int ballIndex = 0; //儲存球的位置
-
             for (int i = 0; i < allArray.Length; i++) //判斷是哪個球，給予對應的話
             {
                 if (allArray[i].name + "(Clone)" == collision.name)
@@ -468,15 +455,12 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
             Destroy(collision.gameObject); //把金球刪掉
             //金球吃完後會產生黑球彈出去，意味著拿完好處就丟掉
             int newBallIndex = ballIndex - (allArray.Length - 3) / 2; //此金球的黑球相應位置，要記得排好
-            //int newBallIndex = 1;
-            Debug.Log("allArray.Length:" + allArray.Length);
             GameObject newBlackBall = Instantiate(allArray[newBallIndex], transform.position + new Vector3(0, 1, 0), new Quaternion(0, 0, 0, 0));
             newBlackBall.GetComponent<Rigidbody2D>().velocity = new Vector2(0,2); //新產生一顆黑球，彈出去
             photonView.RPC("sendGoodMessage", PhotonTargets.All, goodMessage); //第三個參數:傳送要顯示的話
         }
         else if (collision.gameObject.CompareTag("炸彈"))
         { //炸彈，扣50%的錢
-            Debug.Log("collisionName:" + collision.gameObject.name);
             if (money > 0)
             {
                 money = money / 2;
@@ -486,32 +470,24 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
             identificatePlayerMoney(); //判斷是哪個player
             bombMessage = role + "與企業董事秘密餐會!";
             setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
-            //Destroy(collision.gameObject); //把炸彈刪掉
             photonView.RPC("sendBombMessage", PhotonTargets.All, bombMessage); //第三個參數:傳送要顯示的話
-            //showMessage = role + bombMessage;  //炸彈訊息
-            //photonView.RPC("sendMessage", PhotonTargets.All, showMessage); //第三個參數:傳送要顯示的話
         }
         else if (collision.gameObject.CompareTag("報紙")) //報紙效果:出現選單可以陷害人，指定敵對黨某人有誹聞(意涵:爆料)，被指定者扣錢20%
         {
             //先顯示報紙選單
-            Debug.Log("collisionName:" + collision.gameObject.name);
             paperMenu.SetActive(true);
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(itemMusic);
-            //Destroy(collision.gameObject); //把報紙刪掉
-            //paperMessage = "知名政治人物"+ role + "酒後失態，服務員控訴性騷擾!";
+            //自己金額增加20%
+            money += (int)(money * 0.2);
+            moneyText.text = money + "(百萬)";
         }
         else if (collision.gameObject.CompareTag("麥克風"))
         {
-            Debug.Log("collisionName:" + collision.gameObject.name);
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(itemMusic);
-           // microphoneEffect(); //麥克風效果1
             goodMessage = role + "發表直播演說，\n獲得民眾支持";
-            //Destroy(collision.gameObject); //把麥克風刪掉
             photonView.RPC("sendGoodMessage", PhotonTargets.All, goodMessage); //第三個參數:傳送要顯示的話
             photonView.RPC("sendFaceImg", PhotonTargets.Others); //改變表情
             photonView.RPC("microphoneEffect2", PhotonTargets.Others,player); //麥克風效果2，參數為使用麥克風的player
-            //showMessage = role + microphoneMessage;
-            //photonView.RPC("sendMessage", PhotonTargets.All, showMessage); //第三個參數:傳送要顯示的話
         }
         
         //每次金錢變動時，來檢查金錢總額
@@ -607,7 +583,8 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
     [PunRPC]
     void sendBadMessage(string text) //傳遞好訊息
     {
-        badNoticeBoard.SetActive(true); //開啟訊息顯示
+        goodNoticeBoard.SetActive(false);// 關閉好訊息顯示
+        badNoticeBoard.SetActive(true); //開啟壞訊息顯示
         badNoticeBoardText.text = text;
         Invoke("badTimeCountDown", 3); //三秒便會關閉訊息
     }
@@ -622,6 +599,7 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
     [PunRPC]
     void sendGoodMessage(string text) //傳遞好訊息
     {
+        badNoticeBoard.SetActive(false); //關閉壞訊息顯示
         goodNoticeBoard.SetActive(true);// 開啟訊息顯示
         goodNoticeBoardText.text = text;
         Invoke("goodTimeCountDown",3);//三秒便會關閉訊息
@@ -663,7 +641,6 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
         switch (pIndex) //判斷是改哪個玩家的圖片
         {
             case 0: //第一個人
-                //photonView.RPC("SetPaperOn1", PhotonTargets.Others);
                 sendRoleImg(paperPersonImage[0]);
                 if (player == PlayerList[0]) //Player1
                 {
@@ -683,7 +660,6 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
                 }
                 break;
             case 1: //第二個人
-                    // photonView.RPC("SetPaperOn2", PhotonTargets.Others);
                 sendRoleImg(paperPersonImage[1]);
                 if (player == PlayerList[0]) //Player1
                 {
@@ -858,30 +834,21 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
     {
         foreach (GameObject obj in Object.FindObjectsOfType(typeof(GameObject))) //得到所有hierarchy的物件
         {
-            Debug.Log(obj.name);
             if (obj.CompareTag("黑球")) //如果該物件是黑球，轉成金球
             {
-                Debug.Log("我進來啦");
                 int ballIndex = 0; //存取該黑球的index
                 Vector3 ballPosition = obj.transform.position; //存取該黑球的位置
                 for (int i = 0; i < allArray.Length; i++) //記得排好順序
                 {
-                    Debug.Log("obj.name:"+obj.name);
-                    Debug.Log("allArray[" + i + "].name(Clone):" + allArray[i] + "(Clone)");
                     if (obj.name == allArray[i].name + "(Clone)")
                     {
-                        Debug.Log("成功進入");
                         ballIndex = i; //存取黑球在此陣列的index
                         break;
                     }
                 }
                 Destroy(obj); //刪除此黑球
-                Debug.Log("ballIndex:"+ballIndex);
-                //int newBallIndex = ballIndex + (allArray.Length/2) ; //index + array全部/2 會得到其相應的金球位置
                 int newBallIndex = 0; //先預設為TPP-金
-                Debug.Log("newBallIndex:" + newBallIndex);
                 GameObject goldBall = Instantiate(allArray[newBallIndex], ballPosition, new Quaternion(0, 0, 0, 0)); //建立相對應的金球
-                Debug.Log("建立成功");
                 goldBall.GetComponent<Rigidbody2D>().velocity = new Vector2(0,-1); //不知道速度要指派怎樣，都往下好ㄌ
             }
         }        
@@ -901,20 +868,14 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
                 PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext()); //3
                 PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext().GetNext()); //4
 
-                //Vector3 position = new Vector3(0, 0, 0);
-                //targetBall = obj; //儲存目標球
-                //microphoneTrue = true;
-
                 if (player == PlayerList[0]) //player1
                 {
                     if (useItPlayer == PlayerList[1]) //左
                     {
                         obj.GetComponent<BallMove>().microphoneEffect(leftPortalPos); //指定位置
-                        //TowardTarget(obj, leftPortalPos);
                     }
                     else if (useItPlayer == PlayerList[2]) //上
                     {
-                        //TowardTarget(obj, upPortalPos);
                         obj.GetComponent<BallMove>().microphoneEffect(upPortalPos); //指定位置
                     }
                     else if (useItPlayer == PlayerList[3]) //右
@@ -972,19 +933,6 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
         }
     }
 
-   
-
-   /* //朝著滑鼠的方式移動
-    Vector3 v;
-    public float maxSpeed = 5.0f;
-    public float speedDelta = 1.0f;
-    void TowardTarget(GameObject targetObj,Vector3 pos)
-    {
-        Vector3 targetPos = Camera.main.ScreenToWorldPoint(new Vector3(pos.x, pos.y, 10f)); //Assume your camera's z is -10 and cube's z is 0
-        targetObj.transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref v, speedDelta, maxSpeed);
-    }
-    */
-
     [PunRPC]
     void sendFaceImg() //傳送給其他人，生氣
     {
@@ -1040,6 +988,8 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
     [PunRPC] //傳送綠黨執政消息
     void showGreenNoticeBoard()
     {
+        badNoticeBoard.SetActive(false); //關閉壞訊息顯示
+        goodNoticeBoard.SetActive(false); //關閉好訊息顯示
         blueNoticeBoard.SetActive(false); //佈告欄-藍關掉
         noColorNoticeBoard.SetActive(false); //佈告欄-無黨執政關閉
         greenNoticeBoard.SetActive(true);  //佈告欄-綠
@@ -1087,7 +1037,6 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
         {
             if(obj.CompareTag("黑球") || obj.CompareTag("金球") || obj.CompareTag("麥克風") || obj.CompareTag("報紙") || obj.CompareTag("炸彈"))
             {
-                // obj.GetComponent<Rigidbody2D>().velocity = new Vector2(1,1);
                 checkOriginalSpeed(obj, 1); //改變速度
                 obj.GetComponent<BallMove>().blueEffectButton(); //將鎖住速度功能開啟
             }

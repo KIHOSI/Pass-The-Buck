@@ -70,9 +70,8 @@ public class showPortalPersonImg : MonoBehaviour {
                 portalPersonImg.sprite = rightPortalImg[3];
             }
         }
-        //portalPersonImg.sprite = sprite; //設定該Portal要顯示的圖片
 
-        portalPersonImg.enabled = false;
+        portalPersonImg.enabled = false; //預設圖片先不顯示
     }
 
     private void OnTriggerEnter2D(Collider2D collision) //如果求滑動到這個區域，顯示該區域的player

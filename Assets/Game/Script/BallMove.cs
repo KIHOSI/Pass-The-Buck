@@ -119,7 +119,6 @@ public class BallMove : MonoBehaviour
     public float speedDelta = 1.0f;
     void TowardTarget(Vector3 pos)
     {
-        //Vector3 targetPos = Camera.main.ScreenToWorldPoint(new Vector3(pos.x, pos.y, 10f)); //Assume your camera's z is -10 and cube's z is 0
         Vector3 targetPos = pos;
         transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref v, speedDelta, maxSpeed);
     }
