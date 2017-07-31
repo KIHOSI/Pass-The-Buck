@@ -27,7 +27,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 				Debug.Log(MaxExp);
 				Debug.Log(ExpPercent);
 				this.transform.localPosition = new Vector3((-167.0f + 167.0f * (CurrentExp/MaxExp)), 0.0f, 0.0f);
-				LevelBarTx.text = ExpPercent + "%";
+				LevelBarTx.text = CurrentExp + "/" + MaxExp;
 				Debug.Log("已經有key了");
 
 			} 
@@ -38,7 +38,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 				PlayerPrefs.SetFloat(playerExpPrefKey,CurrentExp);
 				ExpPercent = (CurrentExp / MaxExp)*100;
 				this.transform.localPosition = new Vector3((-167.0f + 167.0f * (CurrentExp/MaxExp)), 0.0f, 0.0f);
-				LevelBarTx.text = ExpPercent + "%";
+				LevelBarTx.text = CurrentExp + "/" + MaxExp;
 				Debug.Log("沒有key");
 			}
 	    }
