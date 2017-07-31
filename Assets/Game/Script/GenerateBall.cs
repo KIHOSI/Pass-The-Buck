@@ -19,7 +19,7 @@ public class GenerateBall : MonoBehaviour {
     public void startGenerateBall()
     {
         InvokeRepeating("generateBall", 5, generateBallseconds); //第一個為方法名、第二個為「第一次調用」要隔幾秒、第三個則是「每隔幾秒調用一次」
-        InvokeRepeating("generateItem", 20, generateItemseconds);
+        InvokeRepeating("generateItem", 15, generateItemseconds);
     }
 
     void generateBall() //產生球

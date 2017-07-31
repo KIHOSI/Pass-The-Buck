@@ -3469,8 +3469,8 @@ MonoBehaviour:
   ItemArray:
   - {fileID: 1765187116463052, guid: 02c5e2657c01f7643bdb0fc2c71a054b, type: 2}
   - {fileID: 1231691690448264, guid: cf8b0c34b39e87e478325fdf05ecbc3f, type: 2}
-  generateBallseconds: 10
-  generateItemseconds: 20
+  generateBallseconds: 5
+  generateItemseconds: 15
   leftOrRight: 2
   showLeftOrRight: 0
   changeSpeedX: 2
@@ -4984,7 +4984,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 164.02998, y: -5.696594}
+  m_AnchoredPosition: {x: 164.03, y: -5.696594}
   m_SizeDelta: {x: 189.4, y: 60.4}
   m_Pivot: {x: 1, y: 0}
 --- !u!1 &1391849397
@@ -6818,8 +6818,8 @@ MonoBehaviour:
   ItemArray:
   - {fileID: 1765187116463052, guid: 02c5e2657c01f7643bdb0fc2c71a054b, type: 2}
   - {fileID: 1231691690448264, guid: cf8b0c34b39e87e478325fdf05ecbc3f, type: 2}
-  generateBallseconds: 10
-  generateItemseconds: 20
+  generateBallseconds: 5
+  generateItemseconds: 15
   leftOrRight: 1
   showLeftOrRight: 0
   changeSpeedX: 2

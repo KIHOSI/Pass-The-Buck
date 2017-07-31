@@ -583,6 +583,7 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
     [PunRPC]
     void sendBadMessage(string text) //傳遞好訊息
     {
+        bombNoticeBoard.SetActive(false); //炸彈顯示關閉
         goodNoticeBoard.SetActive(false);// 關閉好訊息顯示
         badNoticeBoard.SetActive(true); //開啟壞訊息顯示
         badNoticeBoardText.text = text;
@@ -599,6 +600,7 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
     [PunRPC]
     void sendGoodMessage(string text) //傳遞好訊息
     {
+        bombNoticeBoard.SetActive(false); //炸彈顯示關閉
         badNoticeBoard.SetActive(false); //關閉壞訊息顯示
         goodNoticeBoard.SetActive(true);// 開啟訊息顯示
         goodNoticeBoardText.text = text;
@@ -616,6 +618,8 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
     [PunRPC]
     void sendBombMessage(string text) //傳遞毀謗訊息
     {
+        badNoticeBoard.SetActive(false); //關閉壞訊息顯示
+        goodNoticeBoard.SetActive(false);// 關閉好訊息顯示
         bombNoticeBoard.SetActive(true);
         bombNoticeBoardText.text = text;
         Invoke("bombTimeCountDown", 3); //三秒便會關閉訊息
@@ -989,6 +993,9 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
     [PunRPC] //傳送綠黨執政消息
     void showGreenNoticeBoard()
     {
+        bombNoticeBoard.SetActive(false); //炸彈顯示也要關掉
+        goodNoticeBoard.SetActive(false); //普通的布告欄顯示也要關掉
+        badNoticeBoard.SetActive(false); //普通的布告欄顯示也要關掉
         badNoticeBoard.SetActive(false); //關閉壞訊息顯示
         goodNoticeBoard.SetActive(false); //關閉好訊息顯示
         blueNoticeBoard.SetActive(false); //佈告欄-藍關掉
@@ -997,9 +1004,9 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
         winColor = 1;
         showWinPartyMessage(); //三秒後結束畫面
         setWinPlayer(); //判斷執政黨
-        //綠黨執政效果:道具改為每15秒產生一次
-        GameObject.Find("左邊框").GetComponent<GenerateBall>().generateItemseconds = 15;
-        GameObject.Find("右邊框").GetComponent<GenerateBall>().generateItemseconds = 15;
+        //綠黨執政效果:道具改為每10秒產生一次
+        GameObject.Find("左邊框").GetComponent<GenerateBall>().generateItemseconds = 10;
+        GameObject.Find("右邊框").GetComponent<GenerateBall>().generateItemseconds = 10;
         //藍黨執政的效果要改回來
         GameObject.Find("左邊框").GetComponent<GenerateBall>().changeSpeedX = 2;
         GameObject.Find("右邊框").GetComponent<GenerateBall>().changeSpeedY = 2;
@@ -1021,6 +1028,9 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
     [PunRPC] //傳送藍黨執政消息
     void showBlueNoticeBoard()
     {
+        bombNoticeBoard.SetActive(false); //炸彈顯示也要關掉
+        goodNoticeBoard.SetActive(false); //普通的布告欄顯示也要關掉
+        badNoticeBoard.SetActive(false); //普通的布告欄顯示也要關掉
         greenNoticeBoard.SetActive(false); //佈告欄-綠關掉
         noColorNoticeBoard.SetActive(false); //佈告欄-無黨執政關閉
         blueNoticeBoard.SetActive(true); //佈告欄 - 藍
@@ -1044,15 +1054,18 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
         }
         
         //綠黨執政的效果要改回來
-        GameObject.Find("左邊框").GetComponent<GenerateBall>().generateItemseconds = 20;
-        GameObject.Find("右邊框").GetComponent<GenerateBall>().generateItemseconds = 20;
+        GameObject.Find("左邊框").GetComponent<GenerateBall>().generateItemseconds = 15;
+        GameObject.Find("右邊框").GetComponent<GenerateBall>().generateItemseconds = 15;
     }
 
     [PunRPC] //傳送無黨執政消息
     void showNoColorNoticeBoard()
     {
+        bombNoticeBoard.SetActive(false); //炸彈顯示也要關掉
         blueNoticeBoard.SetActive(false); //佈告欄-藍關掉
         greenNoticeBoard.SetActive(false); //佈告欄-綠關掉
+        goodNoticeBoard.SetActive(false); //普通的布告欄顯示也要關掉
+        badNoticeBoard.SetActive(false); //普通的布告欄顯示也要關掉
         noColorNoticeBoard.SetActive(true); //佈告欄-無黨執政
         winColor = 0;
         showWinPartyMessage(); //三秒後結束畫面
