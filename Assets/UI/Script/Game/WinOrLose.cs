@@ -35,6 +35,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public Text MoneyPlusTx;
 		public Text LevelPlusTx;
 		public Text GetMoneyTx;
+		public Button ExitGameBt;
 		AudioSource audiosre;
 		public int count=0;
 		public Hashtable hash;
@@ -126,6 +127,8 @@ namespace Com.MyProject.MyPassTheBuckGame
 					}
 
 				}
+
+				ExitGameBt.onClick.AddListener (ExitGame);
 
 			}
 		}
@@ -232,7 +235,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 		}
 
 
-		public void ExitGame()
+		void ExitGame()
 		{
 			hash = new Hashtable();
 			hash.Add("PartyColor", null);
