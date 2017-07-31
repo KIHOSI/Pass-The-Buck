@@ -730,7 +730,7 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
     {
         paper.SetActive(true); //開啟報紙
         GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg>().ChangeImg1();
-        Invoke("paperTimeCountDown", 3);
+        Invoke("paperTimeCountDown", 2);
     }
 
     [PunRPC]
@@ -738,7 +738,7 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
     {
         paper.SetActive(true); //開啟報紙
         GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg>().ChangeImg2();
-        Invoke("paperTimeCountDown", 3);
+        Invoke("paperTimeCountDown", 2);
     }
 
     [PunRPC]
@@ -746,7 +746,7 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
     {
         paper.SetActive(true); //開啟報紙
         GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg>().ChangeImg3();
-        Invoke("paperTimeCountDown", 3);
+        Invoke("paperTimeCountDown", 2);
     }
 
     [PunRPC]
@@ -754,7 +754,7 @@ public class NowState : Photon.PunBehaviour { //控制連線及背景component
     {
         paper.SetActive(true); //開啟報紙
         GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg>().ChangeImg4();
-        Invoke("paperTimeCountDown", 3);
+        Invoke("paperTimeCountDown", 2);
     }
 
     void paperTimeCountDown() //過3秒報紙自動關閉
