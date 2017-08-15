@@ -1444,12 +1444,12 @@ Prefab:
     - target: {fileID: 114773083177384772, guid: 3dd7f0b3dc7833241830fc2bf61f86e1,
         type: 2}
       propertyPath: m_Options.m_Options.Array.data[2].m_Text
-      value: 
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114773083177384772, guid: 3dd7f0b3dc7833241830fc2bf61f86e1,
         type: 2}
       propertyPath: m_Options.m_Options.Array.data[1].m_Text
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114773083177384772, guid: 3dd7f0b3dc7833241830fc2bf61f86e1,
         type: 2}
