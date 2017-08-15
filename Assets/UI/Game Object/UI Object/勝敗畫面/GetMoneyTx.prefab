@@ -9,31 +9,31 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1813924498943564}
+  m_RootGameObject: {fileID: 1046702976536540}
   m_IsPrefabParent: 1
---- !u!1 &1813924498943564
+--- !u!1 &1046702976536540
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 224054353102256972}
-  - component: {fileID: 222713535053259858}
-  - component: {fileID: 114376913483371904}
+  - component: {fileID: 224080402002798660}
+  - component: {fileID: 222222870515230314}
+  - component: {fileID: 114528422517826552}
   m_Layer: 5
-  m_Name: RoleTalkTx
+  m_Name: GetMoneyTx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114376913483371904
+--- !u!114 &114528422517826552
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1813924498943564}
+  m_GameObject: {fileID: 1046702976536540}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -49,30 +49,30 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 25
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u8B19\u5351\u8B19\u5351\u518D\u8B19\u5351"
---- !u!222 &222713535053259858
+  m_Text: 
+--- !u!222 &222222870515230314
 CanvasRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1813924498943564}
---- !u!224 &224054353102256972
+  m_GameObject: {fileID: 1046702976536540}
+--- !u!224 &224080402002798660
 RectTransform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1813924498943564}
+  m_GameObject: {fileID: 1046702976536540}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -82,6 +82,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -96.5, y: 111.99997}
-  m_SizeDelta: {x: 193, y: 115}
+  m_AnchoredPosition: {x: -96, y: 103}
+  m_SizeDelta: {x: 192, y: 126.5}
   m_Pivot: {x: 0.5, y: 0.5}
