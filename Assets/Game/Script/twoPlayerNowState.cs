@@ -286,7 +286,7 @@ public class twoPlayerNowState : Photon.PunBehaviour { //控制連線及背景co
     void Update() {
         if (PhotonNetwork.isMasterClient) //masterClient才可以
         {
-            if(okCount == 4) //如果大家都準好就可以一起開始
+            if(okCount == 2) //如果大家都準好就可以一起開始
             {
                 if(okLevel == 1) //一開始畫面
                 {

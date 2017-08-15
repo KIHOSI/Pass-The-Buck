@@ -183,7 +183,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 279579283}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -192,17 +192,6 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 973616878}
-        m_MethodName: sendPaperMessage
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 2
           m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -658,7 +647,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 279579283}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -667,17 +656,6 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 973616878}
-        m_MethodName: sendPaperMessage
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 0
           m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -2673,9 +2651,8 @@ GameObject:
   - component: {fileID: 973616877}
   - component: {fileID: 973616876}
   - component: {fileID: 973616875}
-  - component: {fileID: 973616878}
-  - component: {fileID: 973616879}
   - component: {fileID: 973616880}
+  - component: {fileID: 973616878}
   m_Layer: 0
   m_Name: "\u6D1E\u53E3"
   m_TagString: "\u6D1E\u53E3"
@@ -2755,89 +2732,6 @@ Transform:
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &973616878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 973616874}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1ac7bc229e134c4f869da21775639f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ReadyGoPanel: {fileID: 1339415449}
-  ready: {fileID: 289156553}
-  go: {fileID: 1027582004}
-  money: 100
-  time: 120
-  moneyText: {fileID: 1183681563}
-  timeText: {fileID: 1204798638}
-  winLogo: {fileID: 1586034487}
-  winColor: 0
-  allArray: []
-  bombObj: {fileID: 1057849301}
-  forbiddenObj: {fileID: 2147248378}
-  paperMenu: {fileID: 838894730}
-  paper: {fileID: 279579283}
-  paperPersonImage:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  paperPersonMenu:
-  - {fileID: 164559137}
-  - {fileID: 282149278}
-  - {fileID: 9567117}
-  portalLeft: {fileID: 1112582727}
-  portalUp: {fileID: 1284004400}
-  portalRight: {fileID: 644994499}
-  PlayerCharacterImg: {fileID: 1855596363}
-  role1: {fileID: 21300000, guid: b2cf9d74fb79d3244b605f12ce0c1596, type: 3}
-  role2: {fileID: 21300000, guid: 7576d9cf669d5ce478e27acdb1271d76, type: 3}
-  role3: {fileID: 21300000, guid: 77871f56aea2e9540bc84a3669c8b3d4, type: 3}
-  role4: {fileID: 21300000, guid: 8572d488d6aa1854a8fda7a119812ecc, type: 3}
-  SneerPersonImg:
-  - {fileID: 21300000, guid: bb636337265e8a6488690c270b9664de, type: 3}
-  - {fileID: 21300000, guid: 7d91d1d76b6ec6b45be3628d8d07d342, type: 3}
-  - {fileID: 21300000, guid: 317bf83b41dd72c4f9340ab38f9d240d, type: 3}
-  - {fileID: 21300000, guid: b406cfe39728c3c4aac420c16be657fa, type: 3}
-  AngryPersonImg:
-  - {fileID: 21300000, guid: 79ffe82a25a6d7d40af8c32bc17b3729, type: 3}
-  - {fileID: 21300000, guid: 16d82dd5e0966e14b8e7e709e73767ba, type: 3}
-  - {fileID: 21300000, guid: 05931b9239bd495499eb9cb2c605e7ef, type: 3}
-  - {fileID: 21300000, guid: cdf4b5457cc60964889c464a7df7f1c0, type: 3}
-  cryPersonImg:
-  - {fileID: 21300000, guid: 10840a3514defcc49902bcb5e28ed497, type: 3}
-  - {fileID: 21300000, guid: 13cd6a6f1cffc2d47a14a975cec20bfc, type: 3}
-  - {fileID: 21300000, guid: 1ee05634aa25aba45825bfb007312250, type: 3}
-  - {fileID: 21300000, guid: e981f3c061453894ebbf4efef0e29e58, type: 3}
-  edge1_blue: {fileID: 1605024733}
-  edge2_blue: {fileID: 332333811}
-  edge1_green: {fileID: 401758184}
-  edge2_green: {fileID: 914750803}
-  portalLeft_blue: {fileID: 1060398120}
-  portalUp_blue: {fileID: 1668385590}
-  portalRight_blue: {fileID: 146987079}
-  portalLeft_green: {fileID: 1325574632}
-  portalUp_green: {fileID: 1071708090}
-  portalRight_green: {fileID: 1139874616}
-  greenNoticeBoard: {fileID: 1188184849}
-  blueNoticeBoard: {fileID: 101301389}
-  noColorNoticeBoard: {fileID: 745112446}
-  badNoticeBoard: {fileID: 1643762572}
-  goodNoticeBoard: {fileID: 1299872268}
-  bombNoticeBoard: {fileID: 1335597171}
-  badNoticeBoardText: {fileID: 2026069933}
-  goodNoticeBoardText: {fileID: 1143064472}
-  paperNoticeBoardText: {fileID: 1523242902}
-  bombNoticeBoardText: {fileID: 1899799214}
-  bgm: {fileID: 410533132}
-  goldBallMusic: {fileID: 1467519820}
-  blackBallMusic: {fileID: 1391849397}
-  itemMusic: {fileID: 2111971509}
-  bombMusic: {fileID: 1300648697}
-  readyMusic: {fileID: 599850715}
-  goMusic: {fileID: 2057495419}
---- !u!114 &973616879
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -4258,7 +4152,6 @@ GameObject:
   - component: {fileID: 1284004401}
   - component: {fileID: 1284004403}
   - component: {fileID: 1284004402}
-  - component: {fileID: 1284004404}
   m_Layer: 0
   m_Name: "\u4E0APortal(\u771F)"
   m_TagString: Untagged
@@ -4288,7 +4181,7 @@ EdgeCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -4337,40 +4230,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
---- !u!114 &1284004404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1284004400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70f6609e04f2fdd4d864ff8a081e7acd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allArray:
-  - {fileID: 1135349447412612, guid: 676e9f8a046a39e4da2dad8502f18d3e, type: 2}
-  - {fileID: 1062045054329312, guid: 8f1f7cd4bc4c00446937ca5f526b44a3, type: 2}
-  - {fileID: 1021903840438762, guid: 7dd2b03dfabf48a40b7c41bdb1b0ec02, type: 2}
-  - {fileID: 1717387367315148, guid: 991e4b7d8659e6a42b8a66a1fb04e3a5, type: 2}
-  - {fileID: 1151099234503616, guid: aca142e80ccda704dae00912c1dfe02a, type: 2}
-  - {fileID: 1418422642788632, guid: 5698945cf2911dc4ea560307c6091272, type: 2}
-  - {fileID: 1638853389424876, guid: 9a57fbe4c168c7c448385277ba0a2573, type: 2}
-  - {fileID: 1533408535216362, guid: daea24cba2f158149ba2e89c7f16df56, type: 2}
-  - {fileID: 1618913545538688, guid: 55c64eb26f953604d8d8c401777ff3c2, type: 2}
-  - {fileID: 1922235246816190, guid: eb9b613e690bfd74fa3e988e987497c7, type: 2}
-  - {fileID: 1579959524106808, guid: a28c99d69da9ed24a9638702c982a774, type: 2}
-  - {fileID: 1163348963186256, guid: c8bb0ad909426fd4f9efb989da10b18b, type: 2}
-  - {fileID: 1300580352881238, guid: 8050920dfc5de474f9bdc27dde546abf, type: 2}
-  - {fileID: 1752367255269726, guid: 023993b5ecce605439eccd1e1f8126f6, type: 2}
-  - {fileID: 1287679322979192, guid: 6b3a0e198e5e06941b13866dd8cc7e71, type: 2}
-  - {fileID: 1662509812336596, guid: 2c9b5e809efa4524cbb307cc166fd1ea, type: 2}
-  - {fileID: 1871115237400372, guid: 133e02693e7758e468d86763ca9766d7, type: 2}
-  - {fileID: 1043377856907114, guid: 0cb03ba570d8ffe43812d87f5244efb8, type: 2}
-  - {fileID: 1731267888413754, guid: 889be4d7bca68bf4984133ff0b13a520, type: 2}
-  - {fileID: 1765187116463052, guid: 02c5e2657c01f7643bdb0fc2c71a054b, type: 2}
-  - {fileID: 1231691690448264, guid: cf8b0c34b39e87e478325fdf05ecbc3f, type: 2}
-  generateBallSpeed: 2
 --- !u!1 &1298528247
 GameObject:
   m_ObjectHideFlags: 0
@@ -4466,7 +4325,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000015258789, y: 347.20007}
+  m_AnchoredPosition: {x: 0.000015258789, y: 347.2001}
   m_SizeDelta: {x: -218.38, y: -1196.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1299872270
@@ -4826,7 +4685,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000015258789, y: 350.05005}
+  m_AnchoredPosition: {x: 0.000015258789, y: 350.05008}
   m_SizeDelta: {x: -217, y: -1191}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1335597173
@@ -5036,7 +4895,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 164.03, y: -5.696594}
+  m_AnchoredPosition: {x: 164.02998, y: -5.696594}
   m_SizeDelta: {x: 189.4, y: 60.4}
   m_Pivot: {x: 1, y: 0}
 --- !u!1 &1391849397
@@ -5857,7 +5716,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 349.75}
+  m_AnchoredPosition: {x: 0, y: 349.75003}
   m_SizeDelta: {x: -217, y: -1192}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1643762574
