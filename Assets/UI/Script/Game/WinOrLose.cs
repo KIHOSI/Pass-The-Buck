@@ -9,7 +9,7 @@ using UnityEngine.UI;
 namespace Com.MyProject.MyPassTheBuckGame
 {
 
-	public class WinOrLose : Photon.PunBehaviour 
+	public class WinOrLose : MonoBehaviour
 	{
 
 		public Sprite WinBackground;
@@ -35,7 +35,6 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public Text MoneyPlusTx;
 		public Text LevelPlusTx;
 		public Text GetMoneyTx;
-		public Button ExitGameBt;
 		AudioSource audiosre;
 		public int count=0;
 		public Hashtable hash;
@@ -48,7 +47,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 		void Start () 
 		{
-
+			Debug.Log ("我進來了start");			
 			maxExp = GameObject.Find ("LevelBarTopImg").GetComponent<LevelBarForWl> ().MaxExp;
 
 
@@ -78,6 +77,8 @@ namespace Com.MyProject.MyPassTheBuckGame
 					PlayerPrefs.SetFloat("PlayerExp",exp-maxExp);
 
 				}
+
+				PhotonNetwork.LeaveRoom ();
 			
 			}
 			else if (!GetWinColor ().Equals ((string)PhotonNetwork.player.CustomProperties ["PartyColor"])) 
@@ -94,6 +95,8 @@ namespace Com.MyProject.MyPassTheBuckGame
 					RoleTalkTx.text = "下次一定要拚回來><!";
 					MoneyPlusTx.text = "+0(百萬)";
 					LevelPlusTx.text = "+0";
+
+					PhotonNetwork.LeaveRoom ();
 
 				}
 				//玩家的黨派輸了
@@ -126,9 +129,9 @@ namespace Com.MyProject.MyPassTheBuckGame
 						PlayerPrefs.SetFloat("PlayerExp",exp-maxExp);
 					}
 
-				}
+					PhotonNetwork.LeaveRoom ();
 
-				ExitGameBt.onClick.AddListener (ExitGame);
+				}
 
 			}
 		}
@@ -235,8 +238,9 @@ namespace Com.MyProject.MyPassTheBuckGame
 		}
 
 
-		void ExitGame()
+		public void ExitGame()
 		{
+			
 			hash = new Hashtable();
 			hash.Add("PartyColor", null);
 			hash.Add ("Role",null);
@@ -247,13 +251,12 @@ namespace Com.MyProject.MyPassTheBuckGame
 			{
 				hash.Add("ClickStart", null);
 			}
-
-			PhotonNetwork.player.SetCustomProperties(hash);
+				
+			PhotonNetwork.player.SetCustomProperties(hash); 
 
 			audiosre = GameObject.Find ("BackGroundMusic").GetComponent<AudioSource> ();
 			audiosre.Play ();
 			SceneManager.LoadScene ("Main");
-			PhotonNetwork.LeaveRoom ();
 		}
 	}
 

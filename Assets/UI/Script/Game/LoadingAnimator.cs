@@ -67,7 +67,20 @@ namespace Com.MyProject.MyPassTheBuckGame
 			else if (count == 320)
 			{
 				loadingBackground.GetComponent<Image> ().sprite = loadingImg9;
-				PhotonNetwork.LoadLevel ("4PlayerGame");
+
+				if (PhotonNetwork.room.MaxPlayers == 2)
+				{
+					PhotonNetwork.LoadLevel ("2PlayerGame");
+				} 
+				else if (PhotonNetwork.room.MaxPlayers == 3)
+				{
+					PhotonNetwork.LoadLevel ("3PlayerGame");
+				} 
+				else if (PhotonNetwork.room.MaxPlayers == 4)
+				{
+					PhotonNetwork.LoadLevel ("4PlayerGame");
+				}
+
 
 			}
 

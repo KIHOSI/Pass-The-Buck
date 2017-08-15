@@ -7,7 +7,7 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/UI/Scene/FirstInGame.unity
-    guid: 00000000000000000000000000000000
+    guid: 7b00e6d994e8a8347bc70800f2e79e96
   - enabled: 1
     path: Assets/UI/Scene/Opening Story.unity
     guid: b1f4431697a2af54d9c21b4a74965d46
@@ -66,8 +66,8 @@ EditorBuildSettings:
     path: Assets/UI/Scene/Loading Animator.unity
     guid: 35efb4f1122b7e54ab6d848236c33e0e
   - enabled: 1
-    path: Assets/UI/Scene/WinOrLose.unity
-    guid: 764531e3ff51509449526f0ffdc74e59
-  - enabled: 1
     path: Assets/UI/Scene/OpeningStoryForRepeat.unity
     guid: 108f9f1f8ff49b240844306cad0d7ff9
+  - enabled: 1
+    path: Assets/UI/Scene/WinOrLose.unity
+    guid: 00000000000000000000000000000000
