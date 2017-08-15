@@ -54,9 +54,9 @@ namespace Com.MyProject.MyPassTheBuckGame
 			{
 				MaxPlayersPerRoom = 4;
 			}
-			else if (MaxPlayerChoosed=="")
+			else if (MaxPlayerChoosed=="3")
 			{
-				MaxPlayersPerRoom = 0;
+				MaxPlayersPerRoom = 3;
 			}
 
 			Debug.Log(MaxPlayersPerRoom);
@@ -68,14 +68,6 @@ namespace Com.MyProject.MyPassTheBuckGame
 			if (GameRoomName == "") 
 			{
 				onTips ("房名不可空白!");
-			}
-			else if (MaxPlayersPerRoom == 0)
-			{
-				onTips ("請設定房間人數!");
-			}
-			else if (MaxPlayersPerRoom == 2)
-			{
-				onTips ("兩人模式尚未開啟，請選擇四人模式!");
 			}
 			else 
 			{
