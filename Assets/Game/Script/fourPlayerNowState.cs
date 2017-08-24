@@ -324,11 +324,11 @@ public class fourPlayerNowState : Photon.PunBehaviour { //控制連線及背景c
             //左邊
             if (portalLeft_blue.activeSelf == true) //藍色
             {
-                portalLeft_blue.GetComponent<showPortalPersonImg>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
+                portalLeft_blue.GetComponent<showPortalPersonImg_Classic>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
             }
             else if (portalLeft_blue.activeSelf == false) //綠色
             {
-                portalLeft_green.GetComponent<showPortalPersonImg>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
+                portalLeft_green.GetComponent<showPortalPersonImg_Classic>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
             }
         }
         else if(portalPos == 1)
@@ -336,11 +336,11 @@ public class fourPlayerNowState : Photon.PunBehaviour { //控制連線及背景c
             //上面
             if (portalUp_blue.activeSelf == true) //藍色
             {
-                portalUp_blue.GetComponent<showPortalPersonImg>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
+                portalUp_blue.GetComponent<showPortalPersonImg_Classic>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
             }
             else if (portalUp_blue.activeSelf == false) //綠色
             {
-                portalUp_green.GetComponent<showPortalPersonImg>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
+                portalUp_green.GetComponent<showPortalPersonImg_Classic>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
             }
         }
         else if(portalPos == 2)
@@ -348,11 +348,11 @@ public class fourPlayerNowState : Photon.PunBehaviour { //控制連線及背景c
             //右邊
             if (portalRight_blue.activeSelf == true) //藍色
             {
-                portalRight_blue.GetComponent<showPortalPersonImg>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
+                portalRight_blue.GetComponent<showPortalPersonImg_Classic>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
             }
             else if (portalRight_blue.activeSelf == false) //綠色
             {
-                portalRight_green.GetComponent<showPortalPersonImg>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
+                portalRight_green.GetComponent<showPortalPersonImg_Classic>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
             }
         }
     }
@@ -415,6 +415,10 @@ public class fourPlayerNowState : Photon.PunBehaviour { //控制連線及背景c
 
     void OnTriggerEnter2D(Collider2D collision) //進洞
     {
+        //根據故事，判斷是有幾種顏色的球(金、藍、綠)
+
+
+
         if (collision.gameObject.CompareTag("黑球"))
         { //黑球
             money -= 10;

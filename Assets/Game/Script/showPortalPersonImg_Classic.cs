@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class showPortalPersonImg : MonoBehaviour {
+public class showPortalPersonImg_Classic : MonoBehaviour {
     //public showImg
     public int portalPosition; //判斷是左上右portal，0:左、1:上、2:右
     public Image portalPersonImg; //要放的人物

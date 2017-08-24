@@ -336,11 +336,11 @@ public class twoPlayerNowState : Photon.PunBehaviour { //控制連線及背景co
             //上面
             if (portalUp_blue.activeSelf == true) //藍色
             {
-                portalUp_blue.GetComponent<showPortalPersonImg>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
+                portalUp_blue.GetComponent<showPortalPersonImg_Classic>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
             }
             else if (portalUp_blue.activeSelf == false) //綠色
             {
-                portalUp_green.GetComponent<showPortalPersonImg>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
+                portalUp_green.GetComponent<showPortalPersonImg_Classic>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
             }
         //}
         /*else if(portalPos == 2)

@@ -79,7 +79,8 @@ namespace Com.MyProject.MyPassTheBuckGame
 				else if (PhotonNetwork.room.MaxPlayers == 4)
 				{
 					PhotonNetwork.LoadLevel ("4PlayerGame");
-				}
+                    //PhotonNetwork.LoadLevel("PowerCutGame");
+                }
 
 
 			}

@@ -77,3 +77,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Game/Scene/2PlayerGame.unity
     guid: 394a7f153edd6cb4db30f3707139ca22
+  - enabled: 1
+    path: Assets/Game/Scene/PowerCutGame.unity
+    guid: 7f6392e0d4975464e86079b3b1145d37

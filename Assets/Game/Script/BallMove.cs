@@ -24,7 +24,14 @@ public class BallMove : MonoBehaviour
     }
     void Start()//初始化函数，在所有Awake函数运行完之后（一般是这样，但不一定），在所有Update函数前系统自动条用。一般用来给变量赋值。 
     {
-        
+        if (gameObject.CompareTag("黑球"))
+        {
+            /* int i = 1;
+             Debug.Log("black"+i);
+             i++;*/
+            Debug.Log("black");
+            Invoke("destroyBlackBall",10); //10秒刪除黑球
+        }
     }
     void Update()
     {
@@ -136,4 +143,9 @@ public class BallMove : MonoBehaviour
         //pos = curPos;
     }
 
+    void destroyBlackBall() //刪除此球
+    {
+        Debug.Log("destroyBlack");
+        Destroy(gameObject);
+    }
 }

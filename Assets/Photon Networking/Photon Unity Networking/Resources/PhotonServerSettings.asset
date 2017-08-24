@@ -70,4 +70,10 @@ MonoBehaviour:
   - showNoColorNoticeBoard
   - sendOk
   - sendReady
+  - sendPowerCutEffect
+  - sendpartyBadMessage
+  - sendpartyGoodMessage
+  - sendPartyBadMessage
+  - sendPartyGoodMessage
+  - sendMicrophoneMessage
   DisableAutoOpenWizard: 1

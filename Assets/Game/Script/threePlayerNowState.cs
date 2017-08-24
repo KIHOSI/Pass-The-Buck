@@ -324,11 +324,11 @@ public class threePlayerNowState : Photon.PunBehaviour { //控制連線及背景
             //左邊
             if (portalLeft_blue.activeSelf == true) //藍色
             {
-                portalLeft_blue.GetComponent<showPortalPersonImg>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
+                portalLeft_blue.GetComponent<showPortalPersonImg_Classic>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
             }
             else if (portalLeft_blue.activeSelf == false) //綠色
             {
-                portalLeft_green.GetComponent<showPortalPersonImg>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
+                portalLeft_green.GetComponent<showPortalPersonImg_Classic>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
             }
         }
         /*else if(portalPos == 1)
@@ -348,11 +348,11 @@ public class threePlayerNowState : Photon.PunBehaviour { //控制連線及背景
             //右邊
             if (portalRight_blue.activeSelf == true) //藍色
             {
-                portalRight_blue.GetComponent<showPortalPersonImg>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
+                portalRight_blue.GetComponent<showPortalPersonImg_Classic>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
             }
             else if (portalRight_blue.activeSelf == false) //綠色
             {
-                portalRight_green.GetComponent<showPortalPersonImg>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
+                portalRight_green.GetComponent<showPortalPersonImg_Classic>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
             }
         }
     }
