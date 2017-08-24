@@ -105,7 +105,7 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
     public GameObject[] partyColorBadText; //存取各政黨壞的布告欄文字(綠、紫、紅、黃)
 
     public GameObject badNoticeBoard; //顯示黑訊息
-    public GameObject bombNoticeBoard; //顯示炸彈訊息
+    //public GameObject bombNoticeBoard; //顯示炸彈訊息
     public GameObject microphoneNoticeBoard; //顯示麥克風訊息
                                        //public GameObject blueNoticeBoard; //顯示藍黨執政
                                        //public GameObject noColorNoticeBoard; //顯示無黨執政
@@ -125,14 +125,14 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
   
     //public Text goodNoticeBoardText; //金訊息文字
     public Text paperNoticeBoardText; //報紙訊息文字
-    public Text bombNoticeBoardText; //炸彈訊息文字
+    //public Text bombNoticeBoardText; //炸彈訊息文字
     //string[] blackMessage = { "反對年金改革", "反對同婚", "支持一例一休", "支持美牛進口", "反對加入TPP", "反對空服員罷工", "反對調漲最低薪資", "支持建造四", "支持進口核災食品" };
     //string[] goldMessage = { "支持年金改革", "支持同婚", "反對一例一休", "反對美牛進口", "支持加入TPP", "支持空服員罷工", "支持調漲最低薪資", "反對建造核四", "反對進口核災食品" };
     string badMessage; //黑訊息
     string[] microphoneMessage = { "政府發布最新能源政策，獲民眾支持", "中油公布最新調查進度", "台電宣布全台恢復供電", "巨路發布聲明: 公司照常營運" }; //麥克風訊息
     //string goodMessage; //金訊息
     string paperMessage;//報紙訊息
-    string bombMessage; //炸彈訊息(毀謗)
+    //string bombMessage; //炸彈訊息(毀謗)
 
     //音樂
     public GameObject bgm; //遊戲bgm
@@ -583,7 +583,7 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
             
             photonView.RPC("sendGoodMessage", PhotonTargets.All, goodMessage); //第三個參數:傳送要顯示的話
         }*/
-        else if (collision.gameObject.CompareTag("炸彈"))
+        /*else if (collision.gameObject.CompareTag("炸彈"))
         { //炸彈，扣50%的錢
             if (money > 0)
             {
@@ -594,8 +594,8 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
             identificatePlayerMoney(); //判斷是哪個player
             bombMessage = role + "與企業董事秘密餐會!";
             setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
-            photonView.RPC("sendBombMessage", PhotonTargets.All, bombMessage); //第三個參數:傳送要顯示的話
-        }
+           // photonView.RPC("sendBombMessage", PhotonTargets.All, bombMessage); //第三個參數:傳送要顯示的話
+        }*/
         else if (collision.gameObject.CompareTag("報紙")) //報紙效果:出現選單可以陷害人，指定敵對黨某人有誹聞(意涵:爆料)，被指定者扣錢20%
         {
             //先顯示報紙選單
@@ -733,7 +733,7 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
     [PunRPC]
     void sendBadMessage(string text) //傳遞好訊息
     {
-        bombNoticeBoard.SetActive(false); //炸彈顯示關閉
+       // bombNoticeBoard.SetActive(false); //炸彈顯示關閉
         //goodNoticeBoard.SetActive(false);// 關閉好訊息顯示
         badNoticeBoard.SetActive(true); //開啟壞訊息顯示
         badNoticeBoardText.text = text;
@@ -751,7 +751,7 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
     void sendPartyGoodMessage(int nowPartyColorNum) //傳遞好訊息
     {
 
-        bombNoticeBoard.SetActive(false); //炸彈顯示關閉
+        //bombNoticeBoard.SetActive(false); //炸彈顯示關閉
         badNoticeBoard.SetActive(false); //關閉壞訊息顯示
         for(int i = 0; i < partyColorNoticeBoard.Length; i++) //把政黨相關訊息關閉
         {
@@ -770,7 +770,7 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
     void sendPartyBadMessage(int nowPartyColorNum) //傳遞好訊息
     {
 
-        bombNoticeBoard.SetActive(false); //炸彈顯示關閉
+        //bombNoticeBoard.SetActive(false); //炸彈顯示關閉
         badNoticeBoard.SetActive(false); //關閉壞訊息顯示
         for (int i = 0; i < partyColorNoticeBoard.Length; i++) //把政黨相關訊息關閉
         {
@@ -812,20 +812,20 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
 
     #region 毀謗
 
-    [PunRPC]
-    void sendBombMessage(string text) //傳遞毀謗訊息
+    /*[PunRPC]
+    void sendBombMessage() //傳遞毀謗訊息
     {
         badNoticeBoard.SetActive(false); //關閉壞訊息顯示
         //goodNoticeBoard.SetActive(false);// 關閉好訊息顯示
-        bombNoticeBoard.SetActive(true);
-        bombNoticeBoardText.text = text;
-        Invoke("bombTimeCountDown", 3); //三秒便會關閉訊息
-    }
+        //bombNoticeBoard.SetActive(true);
+        //bombNoticeBoardText.text = text;
+        //Invoke("bombTimeCountDown", 3); //三秒便會關閉訊息
+    }*/
 
-    void bombTimeCountDown()
+    /*void bombTimeCountDown()
     {
         bombNoticeBoard.SetActive(false);
-    }
+    }*/
 
     #endregion
 
@@ -903,19 +903,19 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
 
     void sendRoleImg(Image img) //判斷是哪張圖片，傳送該圖片
     {
-        if (img.sprite.name == "吳指癢-半身")
+        if (img.sprite.name == "蔡中聞-半身")
         {
             photonView.RPC("SetPaperOn1", PhotonTargets.All);
         }
-        else if (img.sprite.name == "洪咻柱-半身")
+        else if (img.sprite.name == "承包商-半身")
         {
             photonView.RPC("SetPaperOn2", PhotonTargets.All);
         }
-        else if (img.sprite.name == "蔡中聞-半身")
+        else if (img.sprite.name == "陳金德-半身")
         {
             photonView.RPC("SetPaperOn3", PhotonTargets.All);
         }
-        else if (img.sprite.name == "蘇嘎拳-半身")
+        else if (img.sprite.name == "朱文成-半身")
         {
             photonView.RPC("SetPaperOn4", PhotonTargets.All);
         }

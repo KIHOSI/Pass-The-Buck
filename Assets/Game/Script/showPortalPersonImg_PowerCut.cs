@@ -15,57 +15,57 @@ public class showPortalPersonImg_PowerCut : MonoBehaviour {
     {
         if(portalPosition == 0) //左
         {
-            if (playerChooseRole == "吳指癢")
+            if (playerChooseRole == "蔡中聞")
             {
                 portalPersonImg.sprite = leftPortalImg[0];
             }
-            else if (playerChooseRole == "洪咻柱")
+            else if (playerChooseRole == "承包商")
             {
                 portalPersonImg.sprite = leftPortalImg[1];
             }
-            else if (playerChooseRole == "蔡中聞")
+            else if (playerChooseRole == "陳金德")
             {
                 portalPersonImg.sprite = leftPortalImg[2];
             }
-            else if (playerChooseRole == "蘇嘎拳")
+            else if (playerChooseRole == "朱文成")
             {
                 portalPersonImg.sprite = leftPortalImg[3];
             }
         }
         else if(portalPosition == 1) //上
         {
-            if (playerChooseRole == "吳指癢")
+            if (playerChooseRole == "蔡中聞")
             {
                 portalPersonImg.sprite = upPortalImg[0];
             }
-            else if (playerChooseRole == "洪咻柱")
+            else if (playerChooseRole == "承包商")
             {
                 portalPersonImg.sprite = upPortalImg[1];
             }
-            else if (playerChooseRole == "蔡中聞")
+            else if (playerChooseRole == "陳金德")
             {
                 portalPersonImg.sprite = upPortalImg[2];
             }
-            else if (playerChooseRole == "蘇嘎拳")
+            else if (playerChooseRole == "朱文成")
             {
                 portalPersonImg.sprite = upPortalImg[3];
             }
         }
         else if(portalPosition == 2) //右
         {
-            if (playerChooseRole == "吳指癢")
+            if (playerChooseRole == "蔡中聞")
             {
                 portalPersonImg.sprite = rightPortalImg[0];
             }
-            else if (playerChooseRole == "洪咻柱")
+            else if (playerChooseRole == "承包商")
             {
                 portalPersonImg.sprite = rightPortalImg[1];
             }
-            else if (playerChooseRole == "蔡中聞")
+            else if (playerChooseRole == "陳金德")
             {
                 portalPersonImg.sprite = rightPortalImg[2];
             }
-            else if (playerChooseRole == "蘇嘎拳")
+            else if (playerChooseRole == "朱文成")
             {
                 portalPersonImg.sprite = rightPortalImg[3];
             }

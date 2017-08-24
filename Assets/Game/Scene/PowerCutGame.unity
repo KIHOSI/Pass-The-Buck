@@ -718,20 +718,20 @@ MonoBehaviour:
   portalPosition: 2
   portalPersonImg: {fileID: 1810263185}
   leftPortalImg:
-  - {fileID: 21300000, guid: ae0b46ed9047cec43b5f8ea8cf63c433, type: 3}
-  - {fileID: 21300000, guid: c00fa35829c2de543b106a149d9c9178, type: 3}
   - {fileID: 21300000, guid: fe9b909dea1a33542bdb09266fc765d8, type: 3}
-  - {fileID: 21300000, guid: 4e6f9f23a9e314249bfc6074579f04c3, type: 3}
+  - {fileID: 21300000, guid: cc0622d859f52e342b3d40b4602dc9ca, type: 3}
+  - {fileID: 21300000, guid: 4b6f5b8da6336fb4cb278e40e14a651d, type: 3}
+  - {fileID: 21300000, guid: 0b77547779d1bf24ba081cacb18b0d6f, type: 3}
   upPortalImg:
-  - {fileID: 21300000, guid: 70f61f7ce745527479b3ada0065a3423, type: 3}
-  - {fileID: 21300000, guid: 627e6931706a912469dd36572ca6ec3c, type: 3}
   - {fileID: 21300000, guid: cef9f8313a290164b887cf3dcd23f10d, type: 3}
-  - {fileID: 21300000, guid: 17c69d1e6c969b34dace5d1ffe34109c, type: 3}
+  - {fileID: 21300000, guid: c801ce07b48e5b94eba6bc0fe738d7a4, type: 3}
+  - {fileID: 21300000, guid: b27bd4dbe1c08c64fb06cd4f4ce8db13, type: 3}
+  - {fileID: 21300000, guid: 3de74df4d840bad48b099a840642c852, type: 3}
   rightPortalImg:
-  - {fileID: 21300000, guid: 4751e6f34d8de1543a3fe5c7e63c446f, type: 3}
-  - {fileID: 21300000, guid: 2af2446e81f45214b97fcbb42407c43e, type: 3}
   - {fileID: 21300000, guid: cdb82dace911196459b6281b4e57ba96, type: 3}
-  - {fileID: 21300000, guid: d1d5f8059c6ad3a44a7b7fe0a7e4988a, type: 3}
+  - {fileID: 21300000, guid: 7518c306db0f72044a5e725fb7fd5add, type: 3}
+  - {fileID: 21300000, guid: 073d8b799c863d4418d4d94817ceeb1a, type: 3}
+  - {fileID: 21300000, guid: 1d8f0307dcfb5124c9077eda0ed050f6, type: 3}
 --- !u!1 &164559135
 GameObject:
   m_ObjectHideFlags: 0
@@ -1742,20 +1742,20 @@ MonoBehaviour:
   portalPosition: 0
   portalPersonImg: {fileID: 1725531463}
   leftPortalImg:
-  - {fileID: 21300000, guid: ae0b46ed9047cec43b5f8ea8cf63c433, type: 3}
-  - {fileID: 21300000, guid: c00fa35829c2de543b106a149d9c9178, type: 3}
   - {fileID: 21300000, guid: fe9b909dea1a33542bdb09266fc765d8, type: 3}
-  - {fileID: 21300000, guid: 4e6f9f23a9e314249bfc6074579f04c3, type: 3}
+  - {fileID: 21300000, guid: cc0622d859f52e342b3d40b4602dc9ca, type: 3}
+  - {fileID: 21300000, guid: 4b6f5b8da6336fb4cb278e40e14a651d, type: 3}
+  - {fileID: 21300000, guid: 0b77547779d1bf24ba081cacb18b0d6f, type: 3}
   upPortalImg:
-  - {fileID: 21300000, guid: 70f61f7ce745527479b3ada0065a3423, type: 3}
-  - {fileID: 21300000, guid: 627e6931706a912469dd36572ca6ec3c, type: 3}
   - {fileID: 21300000, guid: cef9f8313a290164b887cf3dcd23f10d, type: 3}
-  - {fileID: 21300000, guid: 17c69d1e6c969b34dace5d1ffe34109c, type: 3}
+  - {fileID: 21300000, guid: c801ce07b48e5b94eba6bc0fe738d7a4, type: 3}
+  - {fileID: 21300000, guid: b27bd4dbe1c08c64fb06cd4f4ce8db13, type: 3}
+  - {fileID: 21300000, guid: 3de74df4d840bad48b099a840642c852, type: 3}
   rightPortalImg:
-  - {fileID: 21300000, guid: 4751e6f34d8de1543a3fe5c7e63c446f, type: 3}
-  - {fileID: 21300000, guid: 2af2446e81f45214b97fcbb42407c43e, type: 3}
   - {fileID: 21300000, guid: cdb82dace911196459b6281b4e57ba96, type: 3}
-  - {fileID: 21300000, guid: d1d5f8059c6ad3a44a7b7fe0a7e4988a, type: 3}
+  - {fileID: 21300000, guid: 7518c306db0f72044a5e725fb7fd5add, type: 3}
+  - {fileID: 21300000, guid: 073d8b799c863d4418d4d94817ceeb1a, type: 3}
+  - {fileID: 21300000, guid: 1d8f0307dcfb5124c9077eda0ed050f6, type: 3}
 --- !u!60 &451862754
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1991,20 +1991,20 @@ MonoBehaviour:
   portalPosition: 0
   portalPersonImg: {fileID: 1725531463}
   leftPortalImg:
-  - {fileID: 21300000, guid: ae0b46ed9047cec43b5f8ea8cf63c433, type: 3}
-  - {fileID: 21300000, guid: c00fa35829c2de543b106a149d9c9178, type: 3}
   - {fileID: 21300000, guid: fe9b909dea1a33542bdb09266fc765d8, type: 3}
-  - {fileID: 21300000, guid: 4e6f9f23a9e314249bfc6074579f04c3, type: 3}
+  - {fileID: 21300000, guid: cc0622d859f52e342b3d40b4602dc9ca, type: 3}
+  - {fileID: 21300000, guid: 4b6f5b8da6336fb4cb278e40e14a651d, type: 3}
+  - {fileID: 21300000, guid: 0b77547779d1bf24ba081cacb18b0d6f, type: 3}
   upPortalImg:
-  - {fileID: 21300000, guid: 70f61f7ce745527479b3ada0065a3423, type: 3}
-  - {fileID: 21300000, guid: 627e6931706a912469dd36572ca6ec3c, type: 3}
   - {fileID: 21300000, guid: cef9f8313a290164b887cf3dcd23f10d, type: 3}
-  - {fileID: 21300000, guid: 17c69d1e6c969b34dace5d1ffe34109c, type: 3}
+  - {fileID: 21300000, guid: c801ce07b48e5b94eba6bc0fe738d7a4, type: 3}
+  - {fileID: 21300000, guid: b27bd4dbe1c08c64fb06cd4f4ce8db13, type: 3}
+  - {fileID: 21300000, guid: 3de74df4d840bad48b099a840642c852, type: 3}
   rightPortalImg:
-  - {fileID: 21300000, guid: 4751e6f34d8de1543a3fe5c7e63c446f, type: 3}
-  - {fileID: 21300000, guid: 2af2446e81f45214b97fcbb42407c43e, type: 3}
   - {fileID: 21300000, guid: cdb82dace911196459b6281b4e57ba96, type: 3}
-  - {fileID: 21300000, guid: d1d5f8059c6ad3a44a7b7fe0a7e4988a, type: 3}
+  - {fileID: 21300000, guid: 7518c306db0f72044a5e725fb7fd5add, type: 3}
+  - {fileID: 21300000, guid: 073d8b799c863d4418d4d94817ceeb1a, type: 3}
+  - {fileID: 21300000, guid: 1d8f0307dcfb5124c9077eda0ed050f6, type: 3}
 --- !u!60 &490566806
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2853,20 +2853,20 @@ MonoBehaviour:
   portalPosition: 2
   portalPersonImg: {fileID: 1810263185}
   leftPortalImg:
-  - {fileID: 21300000, guid: ae0b46ed9047cec43b5f8ea8cf63c433, type: 3}
-  - {fileID: 21300000, guid: c00fa35829c2de543b106a149d9c9178, type: 3}
   - {fileID: 21300000, guid: fe9b909dea1a33542bdb09266fc765d8, type: 3}
-  - {fileID: 21300000, guid: 4e6f9f23a9e314249bfc6074579f04c3, type: 3}
+  - {fileID: 21300000, guid: cc0622d859f52e342b3d40b4602dc9ca, type: 3}
+  - {fileID: 21300000, guid: 4b6f5b8da6336fb4cb278e40e14a651d, type: 3}
+  - {fileID: 21300000, guid: 0b77547779d1bf24ba081cacb18b0d6f, type: 3}
   upPortalImg:
-  - {fileID: 21300000, guid: 70f61f7ce745527479b3ada0065a3423, type: 3}
-  - {fileID: 21300000, guid: 627e6931706a912469dd36572ca6ec3c, type: 3}
   - {fileID: 21300000, guid: cef9f8313a290164b887cf3dcd23f10d, type: 3}
-  - {fileID: 21300000, guid: 17c69d1e6c969b34dace5d1ffe34109c, type: 3}
+  - {fileID: 21300000, guid: c801ce07b48e5b94eba6bc0fe738d7a4, type: 3}
+  - {fileID: 21300000, guid: b27bd4dbe1c08c64fb06cd4f4ce8db13, type: 3}
+  - {fileID: 21300000, guid: 3de74df4d840bad48b099a840642c852, type: 3}
   rightPortalImg:
-  - {fileID: 21300000, guid: 4751e6f34d8de1543a3fe5c7e63c446f, type: 3}
-  - {fileID: 21300000, guid: 2af2446e81f45214b97fcbb42407c43e, type: 3}
   - {fileID: 21300000, guid: cdb82dace911196459b6281b4e57ba96, type: 3}
-  - {fileID: 21300000, guid: d1d5f8059c6ad3a44a7b7fe0a7e4988a, type: 3}
+  - {fileID: 21300000, guid: 7518c306db0f72044a5e725fb7fd5add, type: 3}
+  - {fileID: 21300000, guid: 073d8b799c863d4418d4d94817ceeb1a, type: 3}
+  - {fileID: 21300000, guid: 1d8f0307dcfb5124c9077eda0ed050f6, type: 3}
 --- !u!60 &727832422
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -3571,20 +3571,20 @@ MonoBehaviour:
   portalPosition: 1
   portalPersonImg: {fileID: 2019947037}
   leftPortalImg:
-  - {fileID: 21300000, guid: ae0b46ed9047cec43b5f8ea8cf63c433, type: 3}
-  - {fileID: 21300000, guid: c00fa35829c2de543b106a149d9c9178, type: 3}
   - {fileID: 21300000, guid: fe9b909dea1a33542bdb09266fc765d8, type: 3}
-  - {fileID: 21300000, guid: 4e6f9f23a9e314249bfc6074579f04c3, type: 3}
+  - {fileID: 21300000, guid: cc0622d859f52e342b3d40b4602dc9ca, type: 3}
+  - {fileID: 21300000, guid: 4b6f5b8da6336fb4cb278e40e14a651d, type: 3}
+  - {fileID: 21300000, guid: 0b77547779d1bf24ba081cacb18b0d6f, type: 3}
   upPortalImg:
-  - {fileID: 21300000, guid: 70f61f7ce745527479b3ada0065a3423, type: 3}
-  - {fileID: 21300000, guid: 627e6931706a912469dd36572ca6ec3c, type: 3}
   - {fileID: 21300000, guid: cef9f8313a290164b887cf3dcd23f10d, type: 3}
-  - {fileID: 21300000, guid: 17c69d1e6c969b34dace5d1ffe34109c, type: 3}
+  - {fileID: 21300000, guid: c801ce07b48e5b94eba6bc0fe738d7a4, type: 3}
+  - {fileID: 21300000, guid: b27bd4dbe1c08c64fb06cd4f4ce8db13, type: 3}
+  - {fileID: 21300000, guid: 3de74df4d840bad48b099a840642c852, type: 3}
   rightPortalImg:
-  - {fileID: 21300000, guid: 4751e6f34d8de1543a3fe5c7e63c446f, type: 3}
-  - {fileID: 21300000, guid: 2af2446e81f45214b97fcbb42407c43e, type: 3}
   - {fileID: 21300000, guid: cdb82dace911196459b6281b4e57ba96, type: 3}
-  - {fileID: 21300000, guid: d1d5f8059c6ad3a44a7b7fe0a7e4988a, type: 3}
+  - {fileID: 21300000, guid: 7518c306db0f72044a5e725fb7fd5add, type: 3}
+  - {fileID: 21300000, guid: 073d8b799c863d4418d4d94817ceeb1a, type: 3}
+  - {fileID: 21300000, guid: 1d8f0307dcfb5124c9077eda0ed050f6, type: 3}
 --- !u!60 &961840331
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -4016,24 +4016,24 @@ MonoBehaviour:
   portalRight: {fileID: 644994499}
   PlayerCharacterImg: {fileID: 1855596363}
   role1: {fileID: 21300000, guid: 77871f56aea2e9540bc84a3669c8b3d4, type: 3}
-  role2: {fileID: 21300000, guid: c1736e662ce62964faad03795a25408e, type: 3}
-  role3: {fileID: 0}
-  role4: {fileID: 0}
+  role2: {fileID: 21300000, guid: 7c53beb06b1dbdc4eb7a8341b07783cd, type: 3}
+  role3: {fileID: 21300000, guid: c0482bc5b8f48684fa6c82a502aac58c, type: 3}
+  role4: {fileID: 21300000, guid: edb82d076eeefcd4085ece4e8d4b2da5, type: 3}
   SneerPersonImg:
   - {fileID: 21300000, guid: 317bf83b41dd72c4f9340ab38f9d240d, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 382b3ebe25342d2418eb6d77ebd433cc, type: 3}
+  - {fileID: 21300000, guid: 20ebce10336fc3042a3241803cd1184a, type: 3}
+  - {fileID: 21300000, guid: 370c6e9c21e95324f97ca65c9a604140, type: 3}
   AngryPersonImg:
   - {fileID: 21300000, guid: 05931b9239bd495499eb9cb2c605e7ef, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: feccd2316195e894d8bf09b473611e6f, type: 3}
+  - {fileID: 21300000, guid: 94b4d6d7027d4e9419afb9f67a3bcfa2, type: 3}
+  - {fileID: 21300000, guid: 032278fff428ae0498699bafd585aa1c, type: 3}
   cryPersonImg:
   - {fileID: 21300000, guid: 1ee05634aa25aba45825bfb007312250, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 0cb25fa77ca6a044c9ccae346e9e563b, type: 3}
+  - {fileID: 21300000, guid: 70f23e115a5a84b4babd02066dfc681a, type: 3}
+  - {fileID: 21300000, guid: 7d85dc7ff3316ac4785c77e371181316, type: 3}
   edge1_green: {fileID: 401758184}
   edge2_green: {fileID: 914750803}
   edge1_purple: {fileID: 1605024733}
@@ -4477,20 +4477,20 @@ MonoBehaviour:
   portalPosition: 0
   portalPersonImg: {fileID: 1725531463}
   leftPortalImg:
-  - {fileID: 21300000, guid: ae0b46ed9047cec43b5f8ea8cf63c433, type: 3}
-  - {fileID: 21300000, guid: c00fa35829c2de543b106a149d9c9178, type: 3}
   - {fileID: 21300000, guid: fe9b909dea1a33542bdb09266fc765d8, type: 3}
-  - {fileID: 21300000, guid: 4e6f9f23a9e314249bfc6074579f04c3, type: 3}
+  - {fileID: 21300000, guid: cc0622d859f52e342b3d40b4602dc9ca, type: 3}
+  - {fileID: 21300000, guid: 4b6f5b8da6336fb4cb278e40e14a651d, type: 3}
+  - {fileID: 21300000, guid: 0b77547779d1bf24ba081cacb18b0d6f, type: 3}
   upPortalImg:
-  - {fileID: 21300000, guid: 70f61f7ce745527479b3ada0065a3423, type: 3}
-  - {fileID: 21300000, guid: 627e6931706a912469dd36572ca6ec3c, type: 3}
   - {fileID: 21300000, guid: cef9f8313a290164b887cf3dcd23f10d, type: 3}
-  - {fileID: 21300000, guid: 17c69d1e6c969b34dace5d1ffe34109c, type: 3}
+  - {fileID: 21300000, guid: c801ce07b48e5b94eba6bc0fe738d7a4, type: 3}
+  - {fileID: 21300000, guid: b27bd4dbe1c08c64fb06cd4f4ce8db13, type: 3}
+  - {fileID: 21300000, guid: 3de74df4d840bad48b099a840642c852, type: 3}
   rightPortalImg:
-  - {fileID: 21300000, guid: 4751e6f34d8de1543a3fe5c7e63c446f, type: 3}
-  - {fileID: 21300000, guid: 2af2446e81f45214b97fcbb42407c43e, type: 3}
   - {fileID: 21300000, guid: cdb82dace911196459b6281b4e57ba96, type: 3}
-  - {fileID: 21300000, guid: d1d5f8059c6ad3a44a7b7fe0a7e4988a, type: 3}
+  - {fileID: 21300000, guid: 7518c306db0f72044a5e725fb7fd5add, type: 3}
+  - {fileID: 21300000, guid: 073d8b799c863d4418d4d94817ceeb1a, type: 3}
+  - {fileID: 21300000, guid: 1d8f0307dcfb5124c9077eda0ed050f6, type: 3}
 --- !u!1 &1071708090
 GameObject:
   m_ObjectHideFlags: 0
@@ -4627,20 +4627,20 @@ MonoBehaviour:
   portalPosition: 1
   portalPersonImg: {fileID: 2019947037}
   leftPortalImg:
-  - {fileID: 21300000, guid: ae0b46ed9047cec43b5f8ea8cf63c433, type: 3}
-  - {fileID: 21300000, guid: c00fa35829c2de543b106a149d9c9178, type: 3}
   - {fileID: 21300000, guid: fe9b909dea1a33542bdb09266fc765d8, type: 3}
-  - {fileID: 21300000, guid: 4e6f9f23a9e314249bfc6074579f04c3, type: 3}
+  - {fileID: 21300000, guid: cc0622d859f52e342b3d40b4602dc9ca, type: 3}
+  - {fileID: 21300000, guid: 4b6f5b8da6336fb4cb278e40e14a651d, type: 3}
+  - {fileID: 21300000, guid: 0b77547779d1bf24ba081cacb18b0d6f, type: 3}
   upPortalImg:
-  - {fileID: 21300000, guid: 70f61f7ce745527479b3ada0065a3423, type: 3}
-  - {fileID: 21300000, guid: 627e6931706a912469dd36572ca6ec3c, type: 3}
   - {fileID: 21300000, guid: cef9f8313a290164b887cf3dcd23f10d, type: 3}
-  - {fileID: 21300000, guid: 17c69d1e6c969b34dace5d1ffe34109c, type: 3}
+  - {fileID: 21300000, guid: c801ce07b48e5b94eba6bc0fe738d7a4, type: 3}
+  - {fileID: 21300000, guid: b27bd4dbe1c08c64fb06cd4f4ce8db13, type: 3}
+  - {fileID: 21300000, guid: 3de74df4d840bad48b099a840642c852, type: 3}
   rightPortalImg:
-  - {fileID: 21300000, guid: 4751e6f34d8de1543a3fe5c7e63c446f, type: 3}
-  - {fileID: 21300000, guid: 2af2446e81f45214b97fcbb42407c43e, type: 3}
   - {fileID: 21300000, guid: cdb82dace911196459b6281b4e57ba96, type: 3}
-  - {fileID: 21300000, guid: d1d5f8059c6ad3a44a7b7fe0a7e4988a, type: 3}
+  - {fileID: 21300000, guid: 7518c306db0f72044a5e725fb7fd5add, type: 3}
+  - {fileID: 21300000, guid: 073d8b799c863d4418d4d94817ceeb1a, type: 3}
+  - {fileID: 21300000, guid: 1d8f0307dcfb5124c9077eda0ed050f6, type: 3}
 --- !u!1 &1084903846
 GameObject:
   m_ObjectHideFlags: 0
@@ -4686,20 +4686,20 @@ MonoBehaviour:
   portalPosition: 2
   portalPersonImg: {fileID: 1810263185}
   leftPortalImg:
-  - {fileID: 21300000, guid: ae0b46ed9047cec43b5f8ea8cf63c433, type: 3}
-  - {fileID: 21300000, guid: c00fa35829c2de543b106a149d9c9178, type: 3}
   - {fileID: 21300000, guid: fe9b909dea1a33542bdb09266fc765d8, type: 3}
-  - {fileID: 21300000, guid: 4e6f9f23a9e314249bfc6074579f04c3, type: 3}
+  - {fileID: 21300000, guid: cc0622d859f52e342b3d40b4602dc9ca, type: 3}
+  - {fileID: 21300000, guid: 4b6f5b8da6336fb4cb278e40e14a651d, type: 3}
+  - {fileID: 21300000, guid: 0b77547779d1bf24ba081cacb18b0d6f, type: 3}
   upPortalImg:
-  - {fileID: 21300000, guid: 70f61f7ce745527479b3ada0065a3423, type: 3}
-  - {fileID: 21300000, guid: 627e6931706a912469dd36572ca6ec3c, type: 3}
   - {fileID: 21300000, guid: cef9f8313a290164b887cf3dcd23f10d, type: 3}
-  - {fileID: 21300000, guid: 17c69d1e6c969b34dace5d1ffe34109c, type: 3}
+  - {fileID: 21300000, guid: c801ce07b48e5b94eba6bc0fe738d7a4, type: 3}
+  - {fileID: 21300000, guid: b27bd4dbe1c08c64fb06cd4f4ce8db13, type: 3}
+  - {fileID: 21300000, guid: 3de74df4d840bad48b099a840642c852, type: 3}
   rightPortalImg:
-  - {fileID: 21300000, guid: 4751e6f34d8de1543a3fe5c7e63c446f, type: 3}
-  - {fileID: 21300000, guid: 2af2446e81f45214b97fcbb42407c43e, type: 3}
   - {fileID: 21300000, guid: cdb82dace911196459b6281b4e57ba96, type: 3}
-  - {fileID: 21300000, guid: d1d5f8059c6ad3a44a7b7fe0a7e4988a, type: 3}
+  - {fileID: 21300000, guid: 7518c306db0f72044a5e725fb7fd5add, type: 3}
+  - {fileID: 21300000, guid: 073d8b799c863d4418d4d94817ceeb1a, type: 3}
+  - {fileID: 21300000, guid: 1d8f0307dcfb5124c9077eda0ed050f6, type: 3}
 --- !u!60 &1084903849
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -5178,20 +5178,20 @@ MonoBehaviour:
   portalPosition: 2
   portalPersonImg: {fileID: 1810263185}
   leftPortalImg:
-  - {fileID: 21300000, guid: ae0b46ed9047cec43b5f8ea8cf63c433, type: 3}
-  - {fileID: 21300000, guid: c00fa35829c2de543b106a149d9c9178, type: 3}
   - {fileID: 21300000, guid: fe9b909dea1a33542bdb09266fc765d8, type: 3}
-  - {fileID: 21300000, guid: 4e6f9f23a9e314249bfc6074579f04c3, type: 3}
+  - {fileID: 21300000, guid: cc0622d859f52e342b3d40b4602dc9ca, type: 3}
+  - {fileID: 21300000, guid: 4b6f5b8da6336fb4cb278e40e14a651d, type: 3}
+  - {fileID: 21300000, guid: 0b77547779d1bf24ba081cacb18b0d6f, type: 3}
   upPortalImg:
-  - {fileID: 21300000, guid: 70f61f7ce745527479b3ada0065a3423, type: 3}
-  - {fileID: 21300000, guid: 627e6931706a912469dd36572ca6ec3c, type: 3}
   - {fileID: 21300000, guid: cef9f8313a290164b887cf3dcd23f10d, type: 3}
-  - {fileID: 21300000, guid: 17c69d1e6c969b34dace5d1ffe34109c, type: 3}
+  - {fileID: 21300000, guid: c801ce07b48e5b94eba6bc0fe738d7a4, type: 3}
+  - {fileID: 21300000, guid: b27bd4dbe1c08c64fb06cd4f4ce8db13, type: 3}
+  - {fileID: 21300000, guid: 3de74df4d840bad48b099a840642c852, type: 3}
   rightPortalImg:
-  - {fileID: 21300000, guid: 4751e6f34d8de1543a3fe5c7e63c446f, type: 3}
-  - {fileID: 21300000, guid: 2af2446e81f45214b97fcbb42407c43e, type: 3}
   - {fileID: 21300000, guid: cdb82dace911196459b6281b4e57ba96, type: 3}
-  - {fileID: 21300000, guid: d1d5f8059c6ad3a44a7b7fe0a7e4988a, type: 3}
+  - {fileID: 21300000, guid: 7518c306db0f72044a5e725fb7fd5add, type: 3}
+  - {fileID: 21300000, guid: 073d8b799c863d4418d4d94817ceeb1a, type: 3}
+  - {fileID: 21300000, guid: 1d8f0307dcfb5124c9077eda0ed050f6, type: 3}
 --- !u!1 &1143064470
 GameObject:
   m_ObjectHideFlags: 0
@@ -6101,20 +6101,20 @@ MonoBehaviour:
   portalPosition: 0
   portalPersonImg: {fileID: 1725531463}
   leftPortalImg:
-  - {fileID: 21300000, guid: ae0b46ed9047cec43b5f8ea8cf63c433, type: 3}
-  - {fileID: 21300000, guid: c00fa35829c2de543b106a149d9c9178, type: 3}
   - {fileID: 21300000, guid: fe9b909dea1a33542bdb09266fc765d8, type: 3}
-  - {fileID: 21300000, guid: 4e6f9f23a9e314249bfc6074579f04c3, type: 3}
+  - {fileID: 21300000, guid: cc0622d859f52e342b3d40b4602dc9ca, type: 3}
+  - {fileID: 21300000, guid: 4b6f5b8da6336fb4cb278e40e14a651d, type: 3}
+  - {fileID: 21300000, guid: 0b77547779d1bf24ba081cacb18b0d6f, type: 3}
   upPortalImg:
-  - {fileID: 21300000, guid: 70f61f7ce745527479b3ada0065a3423, type: 3}
-  - {fileID: 21300000, guid: 627e6931706a912469dd36572ca6ec3c, type: 3}
   - {fileID: 21300000, guid: cef9f8313a290164b887cf3dcd23f10d, type: 3}
-  - {fileID: 21300000, guid: 17c69d1e6c969b34dace5d1ffe34109c, type: 3}
+  - {fileID: 21300000, guid: c801ce07b48e5b94eba6bc0fe738d7a4, type: 3}
+  - {fileID: 21300000, guid: b27bd4dbe1c08c64fb06cd4f4ce8db13, type: 3}
+  - {fileID: 21300000, guid: 3de74df4d840bad48b099a840642c852, type: 3}
   rightPortalImg:
-  - {fileID: 21300000, guid: 4751e6f34d8de1543a3fe5c7e63c446f, type: 3}
-  - {fileID: 21300000, guid: 2af2446e81f45214b97fcbb42407c43e, type: 3}
   - {fileID: 21300000, guid: cdb82dace911196459b6281b4e57ba96, type: 3}
-  - {fileID: 21300000, guid: d1d5f8059c6ad3a44a7b7fe0a7e4988a, type: 3}
+  - {fileID: 21300000, guid: 7518c306db0f72044a5e725fb7fd5add, type: 3}
+  - {fileID: 21300000, guid: 073d8b799c863d4418d4d94817ceeb1a, type: 3}
+  - {fileID: 21300000, guid: 1d8f0307dcfb5124c9077eda0ed050f6, type: 3}
 --- !u!1 &1335597171
 GameObject:
   m_ObjectHideFlags: 0
@@ -6358,7 +6358,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 164.02998, y: -5.696594}
+  m_AnchoredPosition: {x: 164.03, y: -5.696594}
   m_SizeDelta: {x: 189.4, y: 60.4}
   m_Pivot: {x: 1, y: 0}
 --- !u!1 &1391849397
@@ -7383,20 +7383,20 @@ MonoBehaviour:
   portalPosition: 1
   portalPersonImg: {fileID: 2019947037}
   leftPortalImg:
-  - {fileID: 21300000, guid: ae0b46ed9047cec43b5f8ea8cf63c433, type: 3}
-  - {fileID: 21300000, guid: c00fa35829c2de543b106a149d9c9178, type: 3}
   - {fileID: 21300000, guid: fe9b909dea1a33542bdb09266fc765d8, type: 3}
-  - {fileID: 21300000, guid: 4e6f9f23a9e314249bfc6074579f04c3, type: 3}
+  - {fileID: 21300000, guid: cc0622d859f52e342b3d40b4602dc9ca, type: 3}
+  - {fileID: 21300000, guid: 4b6f5b8da6336fb4cb278e40e14a651d, type: 3}
+  - {fileID: 21300000, guid: 0b77547779d1bf24ba081cacb18b0d6f, type: 3}
   upPortalImg:
-  - {fileID: 21300000, guid: 70f61f7ce745527479b3ada0065a3423, type: 3}
-  - {fileID: 21300000, guid: 627e6931706a912469dd36572ca6ec3c, type: 3}
   - {fileID: 21300000, guid: cef9f8313a290164b887cf3dcd23f10d, type: 3}
-  - {fileID: 21300000, guid: 17c69d1e6c969b34dace5d1ffe34109c, type: 3}
+  - {fileID: 21300000, guid: c801ce07b48e5b94eba6bc0fe738d7a4, type: 3}
+  - {fileID: 21300000, guid: b27bd4dbe1c08c64fb06cd4f4ce8db13, type: 3}
+  - {fileID: 21300000, guid: 3de74df4d840bad48b099a840642c852, type: 3}
   rightPortalImg:
-  - {fileID: 21300000, guid: 4751e6f34d8de1543a3fe5c7e63c446f, type: 3}
-  - {fileID: 21300000, guid: 2af2446e81f45214b97fcbb42407c43e, type: 3}
   - {fileID: 21300000, guid: cdb82dace911196459b6281b4e57ba96, type: 3}
-  - {fileID: 21300000, guid: d1d5f8059c6ad3a44a7b7fe0a7e4988a, type: 3}
+  - {fileID: 21300000, guid: 7518c306db0f72044a5e725fb7fd5add, type: 3}
+  - {fileID: 21300000, guid: 073d8b799c863d4418d4d94817ceeb1a, type: 3}
+  - {fileID: 21300000, guid: 1d8f0307dcfb5124c9077eda0ed050f6, type: 3}
 --- !u!1 &1725531461
 GameObject:
   m_ObjectHideFlags: 0
@@ -9145,20 +9145,20 @@ MonoBehaviour:
   portalPosition: 1
   portalPersonImg: {fileID: 2019947037}
   leftPortalImg:
-  - {fileID: 21300000, guid: ae0b46ed9047cec43b5f8ea8cf63c433, type: 3}
-  - {fileID: 21300000, guid: c00fa35829c2de543b106a149d9c9178, type: 3}
   - {fileID: 21300000, guid: fe9b909dea1a33542bdb09266fc765d8, type: 3}
-  - {fileID: 21300000, guid: 4e6f9f23a9e314249bfc6074579f04c3, type: 3}
+  - {fileID: 21300000, guid: cc0622d859f52e342b3d40b4602dc9ca, type: 3}
+  - {fileID: 21300000, guid: 4b6f5b8da6336fb4cb278e40e14a651d, type: 3}
+  - {fileID: 21300000, guid: 0b77547779d1bf24ba081cacb18b0d6f, type: 3}
   upPortalImg:
-  - {fileID: 21300000, guid: 70f61f7ce745527479b3ada0065a3423, type: 3}
-  - {fileID: 21300000, guid: 627e6931706a912469dd36572ca6ec3c, type: 3}
   - {fileID: 21300000, guid: cef9f8313a290164b887cf3dcd23f10d, type: 3}
-  - {fileID: 21300000, guid: 17c69d1e6c969b34dace5d1ffe34109c, type: 3}
+  - {fileID: 21300000, guid: c801ce07b48e5b94eba6bc0fe738d7a4, type: 3}
+  - {fileID: 21300000, guid: b27bd4dbe1c08c64fb06cd4f4ce8db13, type: 3}
+  - {fileID: 21300000, guid: 3de74df4d840bad48b099a840642c852, type: 3}
   rightPortalImg:
-  - {fileID: 21300000, guid: 4751e6f34d8de1543a3fe5c7e63c446f, type: 3}
-  - {fileID: 21300000, guid: 2af2446e81f45214b97fcbb42407c43e, type: 3}
   - {fileID: 21300000, guid: cdb82dace911196459b6281b4e57ba96, type: 3}
-  - {fileID: 21300000, guid: d1d5f8059c6ad3a44a7b7fe0a7e4988a, type: 3}
+  - {fileID: 21300000, guid: 7518c306db0f72044a5e725fb7fd5add, type: 3}
+  - {fileID: 21300000, guid: 073d8b799c863d4418d4d94817ceeb1a, type: 3}
+  - {fileID: 21300000, guid: 1d8f0307dcfb5124c9077eda0ed050f6, type: 3}
 --- !u!60 &2145088222
 PolygonCollider2D:
   m_ObjectHideFlags: 0
