@@ -1,10 +1,13 @@
 fileFormatVersion: 2
 guid: b3d661b1f9dd4914eb73d042b8f07be6
-timeCreated: 1496732700
+timeCreated: 1503678045
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - EditImg: {fileID: 21300000, guid: b2999ec5d6681e042bd249f6b2d3f108, type: 3}
+  - SubmitImg: {fileID: 21300000, guid: f0aa74cbbba74d347a361d0b75ff661c, type: 3}
+  - inputField: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

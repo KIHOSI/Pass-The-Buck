@@ -25,7 +25,8 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public Button StartBt;
 		public Button LeaveBt;
 		public Hashtable hash;
-		public string ClickStart;
+		string ClickStart;
+		string map;
 
 		public string RoomName;
 		public List<Text> PlayerTextList;
@@ -33,6 +34,16 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 		public void Start () 
 		{
+			
+			if (PhotonNetwork.isMasterClient)
+			{
+				map = PlayerPrefs.GetString ("PlayerMap");
+		
+				hash = new Hashtable ();
+				hash.Add ("Map", map);
+				PhotonNetwork.room.SetCustomProperties (hash);
+			}
+
 
 			PlayerTextList = new List<Text>(){PlayerTx1,PlayerTx2,PlayerTx3,PlayerTx4};
 			FrameImgList = new List<Image>(){Frame1Img,Frame2Img,Frame3Img,Frame4Img};

@@ -33,9 +33,6 @@ EditorBuildSettings:
     path: "Assets/UI/Scene/\u9078\u64C7\u95DC\u5361/MapChooseFor4.unity"
     guid: 9059a201976dcec44b2b759374f4307f
   - enabled: 1
-    path: Assets/UI/Scene/Character Choosing.unity
-    guid: 0feed00024a547d4e995bdeeac8f53be
-  - enabled: 1
     path: "Assets/UI/Scene/\u52A0\u5165\u5C0D\u6230/Join Room.unity"
     guid: f85ffab8da1258940adf7b6260af98a0
   - enabled: 1

@@ -10,9 +10,11 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public float MaxExp;
 		public float CurrentExp;
 		public Text LevelBarTx;
+		string title;
 		public float ExpPercent;
 		public string currentLevel;
 		static string playerExpPrefKey = "PlayerExp";
+		static string playerTitlePrefKey = "PlayerTitle";
 
 	    void Start ()
 		{
@@ -52,14 +54,20 @@ namespace Com.MyProject.MyPassTheBuckGame
 			if (currentLevel == "1")
 			{
 				MaxExp = 15;
+				title = "新進議員";
+				PlayerPrefs.SetString(playerTitlePrefKey,title);
 			} 
 			else if (currentLevel == "2") 
 			{
 				MaxExp = 25;
+				title = "地方議員";
+				PlayerPrefs.SetString(playerTitlePrefKey,title);
 			}
 			else if (currentLevel == "3")
 			{
 				MaxExp = 40;
+				title = "立法委員";
+				PlayerPrefs.SetString(playerTitlePrefKey,title);
 			}
 		}
 

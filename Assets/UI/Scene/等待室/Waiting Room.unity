@@ -1152,7 +1152,6 @@ MonoBehaviour:
   Frame4Img: {fileID: 1267827079}
   StartBt: {fileID: 883116537}
   LeaveBt: {fileID: 2110349602}
-  ClickStart: 
   RoomName: 
   PlayerTextList: []
   FrameImgList: []
@@ -1184,7 +1183,7 @@ MonoBehaviour:
   ButtonText: 
   MainBt: {fileID: 192955668}
   RoleIntroBt: {fileID: 192955672}
-  SettingBt: {fileID: 192955669}
+  BagBt: {fileID: 192955669}
   StoryBt: {fileID: 192955670}
   GameIntroBt: {fileID: 192955671}
   windowWidth: 600

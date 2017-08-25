@@ -21,6 +21,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public Image loadingBackground;
 		public int index;
 		public int count;
+		string map;
 		AudioSource audiosre;
 
 
@@ -28,6 +29,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 		{
 			audiosre = GameObject.Find ("BackGroundMusic").GetComponent<AudioSource> ();
 			audiosre.Pause ();
+			map = (string)PhotonNetwork.room.CustomProperties ["Map"];
 
 			count = 0;
 		}
@@ -68,18 +70,22 @@ namespace Com.MyProject.MyPassTheBuckGame
 			{
 				loadingBackground.GetComponent<Image> ().sprite = loadingImg9;
 
-				if (PhotonNetwork.room.MaxPlayers == 2)
+				if (map.Equals ("Classic")) 
 				{
-					PhotonNetwork.LoadLevel ("2PlayerGame");
+					if (PhotonNetwork.room.MaxPlayers == 2)
+					{
+						PhotonNetwork.LoadLevel ("2PlayerGame");
+					} 
+					else if (PhotonNetwork.room.MaxPlayers == 4) 
+					{
+						PhotonNetwork.LoadLevel ("4PlayerGame");
+					}
 				} 
-				else if (PhotonNetwork.room.MaxPlayers == 3)
+				else if (map.Equals ("PowerCut"))
 				{
-					PhotonNetwork.LoadLevel ("3PlayerGame");
-				} 
-				else if (PhotonNetwork.room.MaxPlayers == 4)
-				{
-					PhotonNetwork.LoadLevel ("4PlayerGame");
+					PhotonNetwork.LoadLevel ("PowerCutGame");
 				}
+
 
 
 			}

@@ -13,39 +13,59 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 
 		public List<PhotonPlayer> PlayerList;
-		public Sprite BlueRole1;
-		public Sprite BlueRole2;
-		public Sprite GreenRole1;
-		public Sprite GreenRole2;
-		public Sprite BluePanel;
-		public Sprite GreenPanel;
-		public Sprite GrayPanel;
-		public Text Player1NameTx;
-		public Text Player2NameTx;
-		public Text Player1RoleInfoTx;
-		public Text Player2RoleInfoTx;
-		public Text Player1MessageTx;
-		public Text Player2MessageTx;
+
+		//經典關卡按鈕背景圖
+		public Sprite RoleBack1;
+		public Sprite RoleBack2;
+		public Sprite RoleBack3;
+		public Sprite RoleBack4;
+		//點按鈕後的背景圖
+		public Sprite BackWithFrame;
+		//815停電關卡按鈕背景圖
+		public Sprite RoleBack1ForPowerCut;
+		public Sprite RoleBack2ForPowerCut;
+		public Sprite RoleBack3ForPowerCut;
+		public Sprite RoleBack4ForPowerCut;
+
+		//815停電關卡的人物圖
+		public Sprite Role1ForPowerCut;
+		public Sprite Role2ForPowerCut;
+		public Sprite Role3ForPowerCut;
+		public Sprite Role4ForPowerCut;
+
+		public Text Role1NameTx;
+		public Text Role2NameTx;
+		public Text Role3NameTx;
+		public Text Role4NameTx;
+		public Text Role1InfoTx;
+		public Text Role2InfoTx;
+		public Text Role3InfoTx;
+		public Text Role4InfoTx;
 		public Text AfterChooseTx1;
 		public Text AfterChooseTx2;
-		public Image Player1RoleImg;
-		public Image Player2RoleImg;
-		public Image AfterChooseImg1;
-		public Image AfterChooseImg2;
-		public Button ChooseBt1;
-		public Button ChooseBt2;
-		public Button LeftArrowBt1;
-		public Button RightArrowBt1;
-		public Button LeftArrowBt2;
-		public Button RightArrowBt2;
+		public Text AfterChooseTx3;
+		public Text AfterChooseTx4;
+
+		public Image Role1Img;
+		public Image Role2Img;
+		public Image Role3Img;
+		public Image Role4Img;
+
+		public Button Role1Bt;
+		public Button Role2Bt;
+		public Button Role3Bt;
+		public Button Role4Bt;
+		public Button ChooseBt;
+
 		public string PartyColor;
+		string MapChoosed;
 		string RoleChoosed;
 		public Hashtable hash;
 
-		public string BlueRole1Intro = " 【洪咻柱】 "+"\n"+"\n"+"祝鑄炷佇駐助蛀柱。";
-		public string BlueRole2Intro = " 【吳指癢】 "+"\n"+"\n"+"曾為縣長的新科立委。";
-		public string GreenRole1Intro = " 【蔡中聞】 "+"\n"+"\n"+"天天怒的新上任總理。";
-		public string GreenRole2Intro = " 【蘇嘎拳】 "+"\n"+"\n"+"新流派權法的院長。";
+		public string Role1IntroForPowerCut = "中油董事長";
+		public string Role2IntroForPowerCut = "台電董事長";
+		public string Role3IntroForPowerCut = "天天怒的新上任總理";
+		public string Role4IntroForPowerCut = "巨路巨路巨路巨路";
 
 		void Start () 
 		{
@@ -57,573 +77,473 @@ namespace Com.MyProject.MyPassTheBuckGame
 			PlayerList.Add (PhotonNetwork.masterClient.GetNext().GetNext());
 			PlayerList.Add (PhotonNetwork.masterClient.GetNext().GetNext().GetNext());
 		
+			MapChoosed = (string)PhotonNetwork.room.CustomProperties ["Map"];
+
+			if (MapChoosed.Equals ("PowerCut")) 
+			{
+				Role1Bt.GetComponent<Image> ().sprite = RoleBack1ForPowerCut;
+				Role2Bt.GetComponent<Image> ().sprite = RoleBack2ForPowerCut;
+				Role3Bt.GetComponent<Image> ().sprite = RoleBack3ForPowerCut;
+				Role4Bt.GetComponent<Image> ().sprite = RoleBack4ForPowerCut;
+
+				Role1Img.GetComponent<Image> ().sprite = Role1ForPowerCut;
+				Role2Img.GetComponent<Image> ().sprite = Role2ForPowerCut;
+				Role3Img.GetComponent<Image> ().sprite = Role3ForPowerCut;
+				Role4Img.GetComponent<Image> ().sprite = Role4ForPowerCut;
+
+				Role1NameTx.text = "陳金德";
+				Role2NameTx.text = "朱文成";
+				Role4NameTx.text = "承包商";
+
+				Role1InfoTx.text = Role1IntroForPowerCut;
+				Role2InfoTx.text = Role2IntroForPowerCut;
+				Role4InfoTx.text = Role4IntroForPowerCut;
+			}
 		
-			//第一個玩家
-			if (PhotonNetwork.player.Equals (PlayerList [0]))
-			{
-				Player1NameTx.text = "Player1:" + PlayerList [0].NickName+"(you)" ;
-				Player2NameTx.text = "Player2:" + PlayerList [1].NickName;
-
-			} 
-			//第二個玩家
-			else if (PhotonNetwork.player.Equals (PlayerList [ 1]))
-			{
-				Player1NameTx.text = "Player1:" + PlayerList [0].NickName;
-				Player2NameTx.text = "Player2:" + PlayerList [1].NickName+"(you)" ;
-				Player1MessageTx.GetComponent<Text> ().text = "選擇中...";
-				Player2MessageTx.GetComponent<Text> ().text = "請等待對方選擇...";
-				LeftArrowBt1.GetComponent< Button> ().interactable = false;
-				RightArrowBt1.GetComponent< Button> ().interactable = false;
-				ChooseBt1.GetComponent< Button> ().interactable = false;
-			} 
-			//第三個玩家
-			else if (PhotonNetwork.player.Equals (PlayerList [ 2]))
-			{
-				Player1NameTx.text = "Player1:" + PlayerList [2].NickName+"(you)" ;
-				Player2NameTx.text = "Player2:" + PlayerList [3].NickName;
-				Player1RoleImg.sprite = GreenRole1;
-				Player1RoleInfoTx.text = GreenRole1Intro;
-				Player2RoleImg.sprite = GreenRole1;
-				Player2RoleInfoTx.text = GreenRole1Intro;
-				GameObject.Find ("RoleChoosePanel1-4" ).GetComponent<Image> ().sprite = GreenPanel;
-
-			}
-			//第四個玩家
-			else if (PhotonNetwork.player.Equals (PlayerList [ 3]))
-			{
-				Player1NameTx.text = "Player1:" + PlayerList [2].NickName;
-				Player2NameTx.text = "Player2:" + PlayerList [3].NickName+"(you)" ;
-				Player1MessageTx.GetComponent<Text> ().text = "選擇中...";
-				Player2MessageTx.GetComponent<Text> ().text = "請等待對方選擇...";
-				Player1RoleImg.sprite = GreenRole1;
-				Player1RoleInfoTx.text = GreenRole1Intro;
-				Player2RoleImg.sprite = GreenRole1;
-				Player2RoleInfoTx.text = GreenRole1Intro;
-				LeftArrowBt1.GetComponent< Button> ().interactable = false;
-				RightArrowBt1.GetComponent< Button> ().interactable = false;
-				ChooseBt1.GetComponent< Button> ().interactable = false;
-				GameObject.Find ("RoleChoosePanel1-4" ).GetComponent<Image> ().sprite = GreenPanel;
-			}
 
 		}
 
 
 		void Update () 
 		{
+			string Player1Choose = (string) PlayerList [0].CustomProperties ["Role"];
+			string Player2Choose = (string) PlayerList [1].CustomProperties ["Role"];
+			string Player3Choose = (string) PlayerList [2].CustomProperties ["Role"];
+			string Player4Choose = (string) PlayerList [3].CustomProperties ["Role"];
 
-			//第二個玩家
-			if (PhotonNetwork.player.Equals (PlayerList [1]))
+			//關卡選擇經典模式
+			if (MapChoosed.Equals("Classic"))
 			{
-				//第二位玩家已完成選擇
-				if (PlayerList [0].CustomProperties ["PartyColor"] != null && PlayerList [1].CustomProperties ["PartyColor"] != null) 
+				if (Player1Choose == "洪咻柱" || Player2Choose == "洪咻柱" || Player3Choose == "洪咻柱" || Player4Choose == "洪咻柱")
 				{
-					//設定按鈕
-					ChooseBt2.GetComponent< Button> ().interactable = false;
-					LeftArrowBt2.GetComponent< Button> ().interactable = false;
-					RightArrowBt2.GetComponent< Button> ().interactable = false;
-					Debug.Log ("第二個玩家已經有值了，值是:" + PlayerList [1].CustomProperties ["PartyColor"]);
-
-					//顯示"等待綠隊選擇"
-					if (PlayerList [3].CustomProperties ["PartyColor"] == null)
-					{
-						GameObject.Find ("AfterChoosePanel2-4" ).GetComponent<Image> ().color = new Color32(221,221,221,255);
-						AfterChooseImg2.GetComponent<Image> ().color = new Color32(255,255,255,255);
-						AfterChooseTx2.GetComponent<Text> ().text = "你選擇了"+"\n'"+PlayerList [1].CustomProperties ["Role"]+"'\n"+"請等待綠隊選擇";
-
-						if (PlayerList [1].CustomProperties ["Role"].Equals("洪咻柱")) 
-						{
-							AfterChooseImg2.sprite = BlueRole1;
-						} 
-						else if (PlayerList [1].CustomProperties ["Role"].Equals("吳指癢")) 
-						{
-							AfterChooseImg2.sprite = BlueRole2;
-						}
-					} 
-						
-				
-				} //第一位玩家已選擇，輪到第二位玩家
-				else if (PlayerList [0].CustomProperties ["PartyColor"] != null && PlayerList [1].CustomProperties ["PartyColor"] == null)
+					Role1Bt.interactable = false;
+				}
+				else if (Player1Choose == "吳指癢" || Player2Choose == "吳指癢" || Player3Choose == "吳指癢" || Player4Choose == "吳指癢")
 				{
-					Debug.Log ("第二個玩家還沒有值了");
-					//設定按鈕
-					ChooseBt2.GetComponent< Button> ().interactable = true;
-					LeftArrowBt2.GetComponent< Button> ().interactable = true;
-					RightArrowBt2.GetComponent< Button> ().interactable = true;
-					//更改panel顏色
-					GameObject.Find ("RoleChoosePanel1-4" ).GetComponent<Image> ().sprite = GrayPanel;
-					GameObject.Find ("RoleChoosePanel2-4" ).GetComponent<Image> ().sprite = BluePanel;
-					//更改玩家選角訊息顯示文字與顏色
-					Player2MessageTx.GetComponent<Text> ().text = "請選擇角色";
-					Player2MessageTx.GetComponent<Text> ().color = Color.white;
-
-					GameObject.Find ("AfterChoosePanel1-4" ).GetComponent<Image> ().color = new Color32(221,221,221,255);
-					AfterChooseImg1.GetComponent<Image> ().color = new Color32(255,255,255,255);
-					AfterChooseTx1.GetComponent<Text> ().text = "選擇了"+"\n'"+PlayerList [0].CustomProperties ["Role"]+"'";
-
-					if (PlayerList [0].CustomProperties ["Role"].Equals("洪咻柱")) 
-					{
-						AfterChooseImg1.sprite = BlueRole1;
-						Player2RoleImg.sprite = BlueRole2;
-						Player2RoleInfoTx.text = BlueRole2Intro;
-
-					} 
-					else if (PlayerList [0].CustomProperties ["Role"].Equals("吳指癢")) 
-					{
-						AfterChooseImg1.sprite = BlueRole2;
-						Player2RoleImg.sprite = BlueRole1;
-						Player2RoleInfoTx.text = BlueRole1Intro;
-					}
-
+					Role2Bt.interactable = false;
+				}
+				else if (Player1Choose == "蔡中聞" || Player2Choose == "蔡中聞" || Player3Choose == "蔡中聞" || Player4Choose == "蔡中聞")
+				{
+					Role3Bt.interactable = false;
+				}
+				else if (Player1Choose == "蘇嘎拳" || Player2Choose == "蘇嘎拳" || Player3Choose == "蘇嘎拳" || Player4Choose == "蘇嘎拳")
+				{
+					Role4Bt.interactable = false;
 				}
 			} 
-			//第四個玩家
-			else if (PhotonNetwork.player.Equals (PlayerList [3]))
+			//關卡選擇815大停電
+			else if (MapChoosed.Equals("PowerCut"))
 			{
-				//第四位玩家已完成選擇
-				if (PlayerList [2].CustomProperties ["PartyColor"] != null && PlayerList [3].CustomProperties ["PartyColor"] != null)
+				if (Player1Choose == "陳金德" || Player2Choose == "陳金德" || Player3Choose == "陳金德" || Player4Choose == "陳金德")
 				{
-					//設定按鈕
-					ChooseBt2.GetComponent< Button> ().interactable = false;
-					LeftArrowBt2.GetComponent< Button> ().interactable = false;
-					RightArrowBt2.GetComponent< Button> ().interactable = false;
-
-					//顯示"等待藍隊選擇"
-					if (PlayerList [1].CustomProperties ["PartyColor"] == null) 
-					{
-						GameObject.Find ("AfterChoosePanel2-4").GetComponent<Image> ().color = new Color32(221,221,221,255);
-						AfterChooseImg2.GetComponent<Image> ().color = new Color32(255,255,255,255);
-						AfterChooseTx2.GetComponent<Text> ().text = "你選擇了"+"\n'"+PlayerList [3].CustomProperties ["Role"]+"'\n"+"請等待藍隊選擇";
-
-						if (PlayerList [3].CustomProperties ["Role"].Equals("蔡中聞")) 
-						{
-							AfterChooseImg2.sprite = GreenRole1;
-						} 
-						else if (PlayerList [3].CustomProperties ["Role"].Equals("蘇嘎拳")) 
-						{
-							AfterChooseImg2.sprite = GreenRole2;
-						}
-					}
-				} //第三位玩家已完成選擇，輪到第四位
-				else if (PlayerList [2].CustomProperties ["PartyColor"] != null && PlayerList [3].CustomProperties ["PartyColor"] == null)
-				{
-					//設定按鈕
-					ChooseBt2.GetComponent< Button> ().interactable = true;
-					LeftArrowBt2.GetComponent< Button> ().interactable = true;
-					RightArrowBt2.GetComponent< Button> ().interactable = true;
-					//更改panel顏色
-					GameObject.Find ("RoleChoosePanel2-4").GetComponent<Image> ().sprite = GreenPanel;
-					GameObject.Find ("RoleChoosePanel1-4").GetComponent<Image> ().sprite = GrayPanel;
-					//更改玩家選角訊息與顏色
-					Player2MessageTx.GetComponent<Text> ().text = "請選擇角色";
-					Player2MessageTx.GetComponent<Text> ().color = Color.white;
-
-					GameObject.Find ("AfterChoosePanel1-4").GetComponent<Image> ().color = new Color32(221,221,221,255);
-					AfterChooseImg1.GetComponent<Image> ().color = new Color32(255,255,255,255);
-					AfterChooseTx1.GetComponent<Text> ().text = "選擇了"+"\n'"+PlayerList [2].CustomProperties ["Role"]+"'";
-
-					if (PlayerList [2].CustomProperties ["Role"].Equals("蔡中聞")) 
-					{
-						AfterChooseImg1.sprite = GreenRole1;
-						Player2RoleImg.sprite = GreenRole2;
-						Player2RoleInfoTx.text = GreenRole2Intro;
-					} 
-					else if (PlayerList [2].CustomProperties ["Role"].Equals("蘇嘎拳")) 
-					{
-						AfterChooseImg1.sprite = GreenRole2;
-						Player2RoleImg.sprite = GreenRole1;
-						Player2RoleInfoTx.text = GreenRole1Intro;
-					}
+					Role1Bt.interactable = false;
 				}
-
+				else if (Player1Choose == "朱文成" || Player2Choose == "朱文成" || Player3Choose == "朱文成" || Player4Choose == "朱文成")
+				{
+					Role2Bt.interactable = false;
+				}
+				else if (Player1Choose == "蔡中聞" || Player2Choose == "蔡中聞" || Player3Choose == "蔡中聞" || Player4Choose == "蔡中聞")
+				{
+					Role3Bt.interactable = false;
+				}
+				else if (Player1Choose == "承包商" || Player2Choose == "承包商" || Player3Choose == "承包商" || Player4Choose == "承包商")
+				{
+					Role4Bt.interactable = false;
+				}
 			} 
-			//第一位玩家
-			else if (PhotonNetwork.player.Equals (PlayerList [0]))
+
+
+			if (Player1Choose !=null && Player2Choose !=null && Player3Choose !=null && Player4Choose !=null) 
 			{
-				//第二位玩家已完成選擇
-				if (PlayerList [0].CustomProperties ["PartyColor"] != null && PlayerList [1].CustomProperties ["PartyColor"] != null)
+				if (PhotonNetwork.isMasterClient) 
 				{
-
-					//顯示"等待綠隊選擇"
-					if (PlayerList [3].CustomProperties ["PartyColor"] == null)
-					{
-						GameObject.Find ("AfterChoosePanel2-4").GetComponent<Image> ().color = new Color32(221,221,221,255);
-						AfterChooseImg2.GetComponent<Image> ().color = new Color32(255,255,255,255);
-						AfterChooseTx2.GetComponent<Text> ().text = "選擇了"+"\n'"+PlayerList [1].CustomProperties ["Role"]+"'\n"+"請等待綠隊選擇";
-
-						if (PlayerList [1].CustomProperties ["Role"].Equals("洪咻柱")) 
-						{
-							AfterChooseImg2.sprite = BlueRole1;
-						} 
-						else if (PlayerList [1].CustomProperties ["Role"].Equals("吳指癢")) 
-						{
-							AfterChooseImg2.sprite = BlueRole2;
-						}
-					} 
-				} 
-			}
-			//第三位玩家
-			else if (PhotonNetwork.player.Equals (PlayerList [2]))
-			{
-				//第四位玩家已完成選擇
-				if (PlayerList [2].CustomProperties ["PartyColor"] != null && PlayerList [3].CustomProperties ["PartyColor"] != null)
-				{
-					//顯示"等待藍隊選擇"
-					if (PlayerList [1].CustomProperties ["PartyColor"] == null) 
-					{
-						GameObject.Find ("AfterChoosePanel2-4").GetComponent<Image> ().color = new Color32(221,221,221,255);
-						AfterChooseImg2.GetComponent<Image> ().color = new Color32(255,255,255,255);
-						AfterChooseTx2.GetComponent<Text> ().text = "選擇了"+"\n'"+PlayerList [3].CustomProperties ["Role"]+"'\n"+"請等待藍隊選擇";
-
-						if (PlayerList [3].CustomProperties ["Role"].Equals("蔡中聞")) 
-						{
-							AfterChooseImg2.sprite = GreenRole1;
-						} 
-						else if (PlayerList [3].CustomProperties ["Role"].Equals("蘇嘎拳")) 
-						{
-							AfterChooseImg2.sprite = GreenRole2;
-						}
-					}
-				} 
-			}
-		 
-
-			if (PlayerList [1].CustomProperties ["PartyColor"] != null && PlayerList [3].CustomProperties ["PartyColor"] != null) 
-			{
-				if (PhotonNetwork.isMasterClient) {
 					PhotonNetwork.LoadLevel ("Loading Animator");
 				}
 			}
 
 		}
 
+		public void ClickButton(Button bt)
+		{
+			Role1Bt = GameObject.Find ("Role1Bt-4").GetComponent<Button> ();
+			Role2Bt = GameObject.Find ("Role2Bt-4").GetComponent<Button> ();
+			Role3Bt = GameObject.Find ("Role3Bt-4").GetComponent<Button> ();
+			Role4Bt = GameObject.Find ("Role4Bt-4").GetComponent<Button> ();
+			MapChoosed = (string)PhotonNetwork.room.CustomProperties ["Map"];
+
+			if (MapChoosed.Equals ("Classic")) 
+			{
+				if (bt.Equals (Role1Bt))
+				{
+					bt.GetComponent<Image> ().sprite = BackWithFrame;
+					Role2Bt.GetComponent<Image> ().sprite = RoleBack2;
+					Role3Bt.GetComponent<Image> ().sprite = RoleBack3;
+					Role4Bt.GetComponent<Image> ().sprite = RoleBack4;
+				}
+				else if (bt.Equals (Role2Bt))
+				{
+					bt.GetComponent<Image> ().sprite = BackWithFrame;
+					Role1Bt.GetComponent<Image> ().sprite = RoleBack1;
+					Role3Bt.GetComponent<Image> ().sprite = RoleBack3;
+					Role4Bt.GetComponent<Image> ().sprite = RoleBack4;
+				}
+				else if (bt.Equals (Role3Bt))
+				{
+					bt.GetComponent<Image> ().sprite = BackWithFrame;
+					Role1Bt.GetComponent<Image> ().sprite = RoleBack1;
+					Role2Bt.GetComponent<Image> ().sprite = RoleBack2;
+					Role4Bt.GetComponent<Image> ().sprite = RoleBack4;
+				}
+				else if (bt.Equals (Role4Bt))
+				{
+					bt.GetComponent<Image> ().sprite = BackWithFrame;
+					Role1Bt.GetComponent<Image> ().sprite = RoleBack1;
+					Role2Bt.GetComponent<Image> ().sprite = RoleBack2;
+					Role3Bt.GetComponent<Image> ().sprite = RoleBack3;
+				}
+			}
+			else if (MapChoosed.Equals ("PowerCut")) 
+			{
+				if (bt.Equals (Role1Bt))
+				{
+					bt.GetComponent<Image> ().sprite = BackWithFrame;
+					Role2Bt.GetComponent<Image> ().sprite = RoleBack2ForPowerCut;
+					Role3Bt.GetComponent<Image> ().sprite = RoleBack3ForPowerCut;
+					Role4Bt.GetComponent<Image> ().sprite = RoleBack4ForPowerCut;
+				}
+				else if (bt.Equals (Role2Bt))
+				{
+					bt.GetComponent<Image> ().sprite = BackWithFrame;
+					Role1Bt.GetComponent<Image> ().sprite = RoleBack1ForPowerCut;
+					Role3Bt.GetComponent<Image> ().sprite = RoleBack3ForPowerCut;
+					Role4Bt.GetComponent<Image> ().sprite = RoleBack4ForPowerCut;
+				}
+				else if (bt.Equals (Role3Bt))
+				{
+					bt.GetComponent<Image> ().sprite = BackWithFrame;
+					Role1Bt.GetComponent<Image> ().sprite = RoleBack1ForPowerCut;
+					Role2Bt.GetComponent<Image> ().sprite = RoleBack2ForPowerCut;
+					Role4Bt.GetComponent<Image> ().sprite = RoleBack4ForPowerCut;
+				}
+				else if (bt.Equals (Role4Bt))
+				{
+					bt.GetComponent<Image> ().sprite = BackWithFrame;
+					Role1Bt.GetComponent<Image> ().sprite = RoleBack1ForPowerCut;
+					Role2Bt.GetComponent<Image> ().sprite = RoleBack2ForPowerCut;
+					Role3Bt.GetComponent<Image> ().sprite = RoleBack3ForPowerCut;
+				}
+			}
+
+
+		}
+
 
 		public void ClickChoose()
 		{
-
 			PlayerList = new List<PhotonPlayer>();
 			PlayerList.Add (PhotonNetwork.masterClient);
 			PlayerList.Add (PhotonNetwork.masterClient.GetNext());
 			PlayerList.Add (PhotonNetwork.masterClient.GetNext().GetNext());
 			PlayerList.Add (PhotonNetwork.masterClient.GetNext().GetNext().GetNext());
+
+			string Player1Choose = (string) PlayerList [0].CustomProperties ["Role"];
+			string Player2Choose = (string) PlayerList [1].CustomProperties ["Role"];
+			string Player3Choose = (string) PlayerList [2].CustomProperties ["Role"];
+			string Player4Choose = (string) PlayerList [3].CustomProperties ["Role"];
+
+			MapChoosed = (string)PhotonNetwork.room.CustomProperties ["Map"];
 
 			//先取得UI元件
-			ChooseBt1 = GameObject.Find ("ChooseBt1-4").GetComponent<Button> ();
-			ChooseBt2 = GameObject.Find ("ChooseBt2-4").GetComponent<Button> ();
-			LeftArrowBt1 = GameObject.Find ("LeftArrowBt1-4").GetComponent< Button> ();
-			RightArrowBt1 = GameObject.Find ("RightArrowBt1-4").GetComponent< Button> ();
-			LeftArrowBt2 = GameObject.Find ("LeftArrowBt2-4").GetComponent< Button> ();
-			RightArrowBt2 = GameObject.Find ("RightArrowBt2-4").GetComponent< Button> ();
-			Player1NameTx = GameObject.Find ("Player1NameTx-4").GetComponent<Text> ();
-			Player2NameTx = GameObject.Find ("Player2NameTx-4").GetComponent<Text> ();
-			Player1MessageTx = GameObject.Find ("Player1MessageTx-4").GetComponent<Text> ();
-			Player2MessageTx = GameObject.Find ("Player2MessageTx-4").GetComponent<Text> ();
-			Player1RoleInfoTx = GameObject.Find ("CharecterInfoTx1-4").GetComponent<Text> ();
-			Player2RoleInfoTx = GameObject.Find ("CharecterInfoTx2-4").GetComponent<Text> ();
-			AfterChooseTx1= GameObject.Find ("AfterChooseTx1-4").GetComponent<Text> ();
-			AfterChooseTx2= GameObject.Find ("AfterChooseTx2-4").GetComponent<Text> ();
-			AfterChooseImg1= GameObject.Find ("AfterChooseImg1-4").GetComponent<Image> ();
-			AfterChooseImg2= GameObject.Find ("AfterChooseImg2-4").GetComponent<Image> ();
+			AfterChooseTx1 = GameObject.Find ("AfterChooseTx1-4").GetComponent<Text> ();
+			AfterChooseTx2 = GameObject.Find ("AfterChooseTx2-4").GetComponent<Text> ();
+			AfterChooseTx3 = GameObject.Find ("AfterChooseTx3-4").GetComponent<Text> ();
+			AfterChooseTx4 = GameObject.Find ("AfterChooseTx4-4").GetComponent<Text> ();
+			Role1Bt = GameObject.Find ("Role1Bt-4").GetComponent<Button> ();
+			Role2Bt = GameObject.Find ("Role2Bt-4").GetComponent<Button> ();
+			Role3Bt = GameObject.Find ("Role3Bt-4").GetComponent<Button> ();
+			Role4Bt = GameObject.Find ("Role4Bt-4").GetComponent<Button> ();
+			ChooseBt = GameObject.Find ("ChooseBt-4").GetComponent<Button> ();
 
-			//第一個玩家
-			if (PhotonNetwork.player.Equals (PlayerList [0]))
+
+			//關卡是經典模式
+			if (MapChoosed.Equals ("Classic")) 
 			{
-				//儲存黨派顏色和選擇的角色
-				hash = new Hashtable();
-				PartyColor = "blue";
-				RoleChoosed = GetPlayer1RoleChoosed ();
-				hash.Add("PartyColor", PartyColor);
-				hash.Add ("Role",RoleChoosed);
-				PlayerList [0].SetCustomProperties(hash);
-
-				//設定按鈕
-				ChooseBt1.GetComponent< Button> ().interactable = false;
-				LeftArrowBt1.GetComponent< Button> ().interactable = false;
-				RightArrowBt1.GetComponent< Button> ().interactable = false;
-				//更改panel顏色
-				GameObject.Find ("RoleChoosePanel2-4" ).GetComponent<Image> ().sprite = BluePanel;
-				GameObject.Find ("RoleChoosePanel1-4" ).GetComponent<Image> ().sprite = GrayPanel;
-				//更改玩家選角訊息與顏色
-				Player2MessageTx.text = "選擇中...";
-				Player2MessageTx.GetComponent<Text> ().color = Color.white;
-
-				GameObject.Find ("AfterChoosePanel1-4" ).GetComponent<Image> ().color = new Color32(221,221,221,255);
-				AfterChooseImg1.GetComponent<Image> ().color = new Color32(255,255,255,255);
-				AfterChooseTx1.GetComponent<Text> ().text = "你選擇了"+"\n'"+PlayerList [0].CustomProperties ["Role"]+"'";
-
-				if (PlayerList [0].CustomProperties ["Role"].Equals("洪咻柱")) 
+				//選擇第一個角色
+				if (Role1Bt.GetComponent<Image> ().sprite == BackWithFrame)
 				{
-					AfterChooseImg1.GetComponent<Image> ().sprite = BlueRole1;
+					
+					if (Player1Choose == "洪咻柱" || Player2Choose == "洪咻柱" || Player3Choose == "洪咻柱" || Player4Choose == "洪咻柱")
+					{
+						onTips ("此角色已被選擇");
+						Role1Bt.interactable = false;
+					}
+					else 
+					{
+						//儲存黨派顏色和選擇的角色
+						hash = new Hashtable();
+						PartyColor = "blue";
+						RoleChoosed = "洪咻柱";
+						hash.Add("PartyColor", PartyColor);
+						hash.Add ("Role",RoleChoosed);
+						PhotonNetwork.player.SetCustomProperties(hash);
+
+						//更改panel顏色和文字
+						GameObject.Find ("AfterChoosePanel1-4").GetComponent<Image> ().color = new Color32(255,255,255,255);
+						AfterChooseTx1.text = "你選擇了 '洪咻柱'";
+
+						Role1Bt.interactable = false;
+						Role2Bt.interactable = false;
+						Role3Bt.interactable = false;
+						Role4Bt.interactable = false;
+						ChooseBt.interactable = false;
+					}
+
+
 				} 
-				else if (PlayerList [0].CustomProperties ["Role"].Equals("吳指癢")) 
+				//選擇第二個角色
+				else if (Role2Bt.GetComponent<Image> ().sprite == BackWithFrame)
 				{
-					AfterChooseImg1.GetComponent<Image> ().sprite = BlueRole2;
-				}
+					
+					if (Player1Choose == "吳指癢" || Player2Choose == "吳指癢" || Player3Choose == "吳指癢" || Player4Choose == "吳指癢") 
+					{
+						onTips ("此角色已被選擇");
+						Role2Bt.interactable = false;
+					} 
+					else
+					{
+						//儲存黨派顏色和選擇的角色
+						hash = new Hashtable();
+						PartyColor = "blue";
+						RoleChoosed = "吳指癢";
+						hash.Add("PartyColor", PartyColor);
+						hash.Add ("Role",RoleChoosed);
+						PhotonNetwork.player.SetCustomProperties(hash);
 
-			} 
-			//第二個玩家
-			else if (PhotonNetwork.player.Equals (PlayerList [1]))
-			{
-				//儲存黨派顏色和選擇的角色
-				hash = new Hashtable();
-				PartyColor = "blue";
-				RoleChoosed = GetPlayer2RoleChoosed ();
-				hash.Add("PartyColor", PartyColor);
-				hash.Add ("Role",RoleChoosed);
-				PlayerList [1].SetCustomProperties(hash);
+						//更改panel顏色和文字
+						GameObject.Find ("AfterChoosePanel2-4").GetComponent<Image> ().color = new Color32(255,255,255,255);
+						AfterChooseTx2.text = "你選擇了 '吳指癢'";
 
-			} 
-			//第三個玩家
-			else if (PhotonNetwork.player.Equals (PlayerList [2]))
-			{
-				//儲存黨派顏色和選擇的角色
-				hash = new Hashtable();
-				PartyColor = "green";
-				RoleChoosed = GetPlayer1RoleChoosed ();
-				hash.Add("PartyColor", PartyColor);
-				hash.Add ("Role",RoleChoosed);
-				PlayerList [2].SetCustomProperties(hash);
+						Role1Bt.interactable = false;
+						Role2Bt.interactable = false;
+						Role3Bt.interactable = false;
+						Role4Bt.interactable = false;
+						ChooseBt.interactable = false;
 
-				//設定按鈕
-				ChooseBt1.GetComponent< Button> ().interactable = false;
-				LeftArrowBt1.GetComponent< Button> ().interactable = false;
-				RightArrowBt1.GetComponent< Button> ().interactable = false;
-				//更改panel顏色
-				GameObject.Find ("RoleChoosePanel2-4" ).GetComponent<Image> ().sprite = GreenPanel;
-				GameObject.Find ("RoleChoosePanel1-4" ).GetComponent<Image> ().sprite = GrayPanel;
-				//更改玩家選角訊息與顏色
-				Player2MessageTx.text = "選擇中...";
-				Player2MessageTx.GetComponent<Text> ().color = Color.white;
+					}
 
-				GameObject.Find ("AfterChoosePanel1-4" ).GetComponent<Image> ().color = new Color32(221,221,221,255);
-				AfterChooseImg1.GetComponent<Image> ().color = new Color32(255,255,255,255);
-				AfterChooseTx1.GetComponent<Text> ().text = "你選擇了"+"\n'"+PlayerList [2].CustomProperties ["Role"]+"'";
-
-				if (PlayerList [2].CustomProperties ["Role"].Equals("蔡中聞")) 
-				{
-					AfterChooseImg1.GetComponent<Image> ().sprite = GreenRole1;
 				} 
-				else if (PlayerList [2].CustomProperties ["Role"].Equals("蘇嘎拳")) 
+				//選擇第三個角色
+				else if (Role3Bt.GetComponent<Image> ().sprite == BackWithFrame)
 				{
-					AfterChooseImg1.GetComponent<Image> ().sprite = GreenRole2;
-				}
 
-			}
-			//第四個玩家
-			else if (PhotonNetwork.player.Equals (PlayerList [ 3]))
-			{
-				//儲存黨派顏色和選擇的角色
-				hash = new Hashtable();
-				PartyColor = "green";
-				RoleChoosed = GetPlayer2RoleChoosed ();
-				hash.Add("PartyColor", PartyColor);
-				hash.Add ("Role",RoleChoosed);
-				PlayerList [3].SetCustomProperties(hash);
+					if (Player1Choose == "蔡中聞" || Player2Choose == "蔡中聞" || Player3Choose == "蔡中聞" || Player4Choose == "蔡中聞")
+					{
+						onTips ("此角色已被選擇");
+						Role3Bt.interactable = false;
+					} 
+					else 
+					{
+						//儲存黨派顏色和選擇的角色
+						hash = new Hashtable ();
+						PartyColor = "green";
+						RoleChoosed = "蔡中聞";
+						hash.Add ("PartyColor", PartyColor);
+						hash.Add ("Role", RoleChoosed);
+						PhotonNetwork.player.SetCustomProperties (hash);
 
+						//更改panel顏色和文字
+						GameObject.Find ("AfterChoosePanel3-4").GetComponent<Image> ().color = new Color32 (255, 255, 255, 255);
+						AfterChooseTx3.text = "你選擇了 '蔡中聞'";
 
-			}
+						Role1Bt.interactable = false;
+						Role2Bt.interactable = false;
+						Role3Bt.interactable = false;
+						Role4Bt.interactable = false;
+						ChooseBt.interactable = false;
+					}
 
-		}
-
-		public string GetPlayer1RoleChoosed()
-		{
-			Sprite P1RIMG = GameObject.Find ("RoleImg1-4").GetComponent<Image> ().sprite;
-
-			if (P1RIMG == BlueRole1)
-			{
-				return "洪咻柱";
-			} 
-			else if (P1RIMG == BlueRole2) 
-			{
-				return "吳指癢";
-			} 
-			else if (P1RIMG == GreenRole1)
-			{
-				return "蔡中聞";
-			} 
-			else if (P1RIMG == GreenRole2)
-			{
-				return "蘇嘎拳";
-			} 
-			else 
-			{
-				return "null";
-			}
-
-		}
-
-		public string GetPlayer2RoleChoosed()
-		{
-			Sprite P2RIMG = GameObject.Find ("RoleImg2-4").GetComponent<Image> ().sprite;
-
-			if (P2RIMG == GreenRole1)
-			{
-				return "蔡中聞";
-			} 
-			else if (P2RIMG == GreenRole2)
-			{
-				return "蘇嘎拳";
-			} 
-			else if (P2RIMG == BlueRole1)
-			{
-				return "洪咻柱";
-			} 
-			else if (P2RIMG == BlueRole2) 
-			{
-				return "吳指癢";
-			} 
-			else 
-			{
-				return "null";
-			}
-
-		}
-
-		//按右箭頭
-		public void ClickRightArrow1()
-		{
-			Player1RoleImg = GameObject.Find ("RoleImg1-4").GetComponent<Image> ();
-			Player1RoleInfoTx = GameObject.Find ("CharecterInfoTx1-4").GetComponent<Text> ();
-
-
-			if (Player1RoleImg.sprite == BlueRole1) 
-			{
-				Player1RoleImg.sprite = BlueRole2;
-				Player1RoleInfoTx.text =BlueRole2Intro;
-			} 
-			else if (Player1RoleImg.sprite == BlueRole2)
-			{
-				Player1RoleImg.sprite = BlueRole1;
-				Player1RoleInfoTx.text =BlueRole1Intro ;
-			}
-			else if (Player1RoleImg.sprite == GreenRole1)
-			{
-				Player1RoleImg.sprite = GreenRole2;
-				Player1RoleInfoTx.text =GreenRole2Intro;
-			}
-			else if (Player1RoleImg.sprite == GreenRole2)
-			{
-				Player1RoleImg.sprite = GreenRole1;
-				Player1RoleInfoTx.text =GreenRole1Intro;
-			}
-
-		}
-
-		//按左箭頭
-		public void ClickLeftArrow1()
-		{
-
-			Player1RoleImg = GameObject.Find ("RoleImg1-4").GetComponent<Image> ();
-			Player1RoleInfoTx = GameObject.Find ("CharecterInfoTx1-4").GetComponent<Text> ();
-
-
-			if (Player1RoleImg.sprite == BlueRole1) 
-			{
-				Player1RoleImg.sprite = BlueRole2;
-				Player1RoleInfoTx.text =BlueRole2Intro;
-			} 
-			else if (Player1RoleImg.sprite == BlueRole2)
-			{
-				Player1RoleImg.sprite = BlueRole1;
-				Player1RoleInfoTx.text =BlueRole1Intro ;
-			}
-			else if (Player1RoleImg.sprite == GreenRole1)
-			{
-				Player1RoleImg.sprite = GreenRole2;
-				Player1RoleInfoTx.text =GreenRole2Intro;
-			}
-			else if (Player1RoleImg.sprite == GreenRole2)
-			{
-				Player1RoleImg.sprite = GreenRole1;
-				Player1RoleInfoTx.text =GreenRole1Intro;
-			}
-
-		}
-
-		//按右箭頭
-		public void ClickRightArrow2()
-		{
-			PlayerList = new List<PhotonPlayer>();
-			PlayerList.Add (PhotonNetwork.masterClient);
-			PlayerList.Add (PhotonNetwork.masterClient.GetNext());
-			PlayerList.Add (PhotonNetwork.masterClient.GetNext().GetNext());
-			PlayerList.Add (PhotonNetwork.masterClient.GetNext().GetNext().GetNext());
-
-			Player2RoleImg = GameObject.Find ("RoleImg2-4").GetComponent<Image> ();
-			Player2RoleInfoTx = GameObject.Find ("CharecterInfoTx2-4").GetComponent<Text> ();
-
-			if (PhotonNetwork.player.Equals (PlayerList [1]))
-			{
-				if(PlayerList [0].CustomProperties ["Role"].Equals("洪咻柱"))
+				} 
+				//選擇第四個角色
+				else if (Role4Bt.GetComponent<Image> ().sprite == BackWithFrame)
 				{
-						Player2RoleImg.sprite = BlueRole2;
-						Player2RoleInfoTx.text = BlueRole2Intro;
-				}
-				else if(PlayerList [0].CustomProperties ["Role"].Equals("吳指癢"))
-				{
-					Player2RoleImg.sprite = BlueRole1;
-					Player2RoleInfoTx.text = BlueRole1Intro;
-				}
-			} 
 
-			if (PhotonNetwork.player.Equals (PlayerList [3]))
+					if (Player1Choose == "蘇嘎拳" || Player2Choose == "蘇嘎拳" || Player3Choose == "蘇嘎拳" || Player4Choose == "蘇嘎拳")
+					{
+						onTips ("此角色已被選擇");
+						Role4Bt.interactable = false;
+					} 
+					else
+					{
+						//儲存黨派顏色和選擇的角色
+						hash = new Hashtable ();
+						PartyColor = "green";
+						RoleChoosed = "蘇嘎拳";
+						hash.Add ("PartyColor", PartyColor);
+						hash.Add ("Role", RoleChoosed);
+						PhotonNetwork.player.SetCustomProperties (hash);
+
+						//更改panel顏色和文字
+						GameObject.Find ("AfterChoosePanel4-4").GetComponent<Image> ().color = new Color32 (255, 255, 255, 255);
+						AfterChooseTx4.text = "你選擇了 '蘇嘎拳'";
+
+						Role1Bt.interactable = false;
+						Role2Bt.interactable = false;
+						Role3Bt.interactable = false;
+						Role4Bt.interactable = false;
+						ChooseBt.interactable = false;
+					}
+
+				} 
+			}
+			//關卡是815大停電
+			else if (MapChoosed.Equals ("PowerCut")) 
 			{
-				if(PlayerList [2].CustomProperties ["Role"].Equals("蔡中聞"))
-				{
-					Player2RoleImg.sprite = GreenRole2;
-					Player2RoleInfoTx.text = GreenRole2Intro;
-				}
-				else if(PlayerList [2].CustomProperties ["Role"].Equals("蘇嘎拳"))
-				{
-					Player2RoleImg.sprite = GreenRole1;
-					Player2RoleInfoTx.text = GreenRole1Intro;
-				}
-			} 
-
-		}
-
-		//按左箭頭
-		public void ClickLeftArrow2()
-		{
-			PlayerList = new List<PhotonPlayer>();
-			PlayerList.Add (PhotonNetwork.masterClient);
-			PlayerList.Add (PhotonNetwork.masterClient.GetNext());
-			PlayerList.Add (PhotonNetwork.masterClient.GetNext().GetNext());
-			PlayerList.Add (PhotonNetwork.masterClient.GetNext().GetNext().GetNext());
-
-			Player2RoleImg = GameObject.Find ("RoleImg2-4").GetComponent<Image> ();
-			Player2RoleInfoTx = GameObject.Find ("CharecterInfoTx2-4").GetComponent<Text> ();
-
-			if (PhotonNetwork.player.Equals (PlayerList [1]))
-			{
-				if(PlayerList [0].CustomProperties ["Role"].Equals("洪咻柱"))
-				{
-					Player2RoleImg.sprite = BlueRole2;
-					Player2RoleInfoTx.text = BlueRole2Intro;
-				}
-				else if(PlayerList [0].CustomProperties ["Role"].Equals("吳指癢"))
-				{
-					Player2RoleImg.sprite = BlueRole1;
-					Player2RoleInfoTx.text = BlueRole1Intro;
-				}
-			} 
-
-			if (PhotonNetwork.player.Equals (PlayerList [3]))
-			{
-				if(PlayerList [2].CustomProperties ["Role"].Equals("蔡中聞"))
-				{
-					Player2RoleImg.sprite = GreenRole2;
-					Player2RoleInfoTx.text = GreenRole2Intro;
-				}
-				else if(PlayerList [2].CustomProperties ["Role"].Equals("蘇嘎拳"))
-				{
-					Player2RoleImg.sprite = GreenRole1;
-					Player2RoleInfoTx.text = GreenRole1Intro;
-				}
-			} 
 				
+				//選擇第一個角色
+				if (Role1Bt.GetComponent<Image> ().sprite == BackWithFrame)
+				{
+					
+					if (Player1Choose == "陳金德" || Player2Choose == "陳金德" || Player3Choose == "陳金德" || Player4Choose == "陳金德") 
+					{
+						onTips ("此角色已被選擇");
+						Role1Bt.interactable = false;
+					} 
+					else 
+					{
+						//儲存黨派顏色和選擇的角色
+						hash = new Hashtable ();
+						PartyColor = "red";
+						RoleChoosed = "陳金德";
+						hash.Add ("PartyColor", PartyColor);
+						hash.Add ("Role", RoleChoosed);
+						PhotonNetwork.player.SetCustomProperties (hash);
+
+						//更改panel顏色和文字
+						GameObject.Find ("AfterChoosePanel1-4").GetComponent<Image> ().color = new Color32 (255, 255, 255, 255);
+						AfterChooseTx1.text = "你選擇了 '中油董事長'";
+
+						Role1Bt.interactable = false;
+						Role2Bt.interactable = false;
+						Role3Bt.interactable = false;
+						Role4Bt.interactable = false;
+						ChooseBt.interactable = false;
+					}
+
+				} 
+				//選擇第二個角色
+				else if (Role2Bt.GetComponent<Image> ().sprite == BackWithFrame)
+				{
+					
+					if (Player1Choose == "朱文成" || Player2Choose == "朱文成" || Player3Choose == "朱文成" || Player4Choose == "朱文成") 
+					{
+						onTips ("此角色已被選擇");
+						Role2Bt.interactable = false;
+					} 
+					else 
+					{
+						//儲存黨派顏色和選擇的角色
+						hash = new Hashtable ();
+						PartyColor = "yellow";
+						RoleChoosed = "朱文成";
+						hash.Add ("PartyColor", PartyColor);
+						hash.Add ("Role", RoleChoosed);
+						PhotonNetwork.player.SetCustomProperties (hash);
+
+						//更改panel顏色和文字
+						GameObject.Find ("AfterChoosePanel2-4").GetComponent<Image> ().color = new Color32 (255, 255, 255, 255);
+						AfterChooseTx2.text = "你選擇了 '台電董事長'";
+
+						Role1Bt.interactable = false;
+						Role2Bt.interactable = false;
+						Role3Bt.interactable = false;
+						Role4Bt.interactable = false;
+						ChooseBt.interactable = false;
+					}
+
+				} 
+				//選擇第三個角色
+				else if (Role3Bt.GetComponent<Image> ().sprite == BackWithFrame)
+				{
+					
+					if (Player1Choose == "蔡中聞" || Player2Choose == "蔡中聞" || Player3Choose == "蔡中聞" || Player4Choose == "蔡中聞")
+					{
+						onTips ("此角色已被選擇");
+						Role3Bt.interactable = false;
+					} 
+					else 
+					{
+						//儲存黨派顏色和選擇的角色
+						hash = new Hashtable ();
+						PartyColor = "green";
+						RoleChoosed = "蔡中聞";
+						hash.Add ("PartyColor", PartyColor);
+						hash.Add ("Role", RoleChoosed);
+						PhotonNetwork.player.SetCustomProperties (hash);
+
+						//更改panel顏色和文字
+						GameObject.Find ("AfterChoosePanel3-4").GetComponent<Image> ().color = new Color32 (255, 255, 255, 255);
+						AfterChooseTx3.text = "你選擇了 '蔡中聞'";
+
+						Role1Bt.interactable = false;
+						Role2Bt.interactable = false;
+						Role3Bt.interactable = false;
+						Role4Bt.interactable = false;
+						ChooseBt.interactable = false;
+					}
+
+				} 
+				//選擇第四個角色
+				else if (Role4Bt.GetComponent<Image> ().sprite == BackWithFrame)
+				{
+
+					if (Player1Choose == "承包商" || Player2Choose == "承包商" || Player3Choose == "承包商" || Player4Choose == "承包商")
+					{
+						onTips ("此角色已被選擇");
+						Role4Bt.interactable = false;
+					} 
+					else
+					{
+						//儲存黨派顏色和選擇的角色
+						hash = new Hashtable ();
+						PartyColor = "purple";
+						RoleChoosed = "承包商";
+						hash.Add ("PartyColor", PartyColor);
+						hash.Add ("Role", RoleChoosed);
+						PhotonNetwork.player.SetCustomProperties (hash);
+
+						//更改panel顏色和文字
+						GameObject.Find ("AfterChoosePanel4-4").GetComponent<Image> ().color = new Color32 (255, 255, 255, 255);
+						AfterChooseTx4.text = "你選擇了 '巨路承包商'";
+
+						Role1Bt.interactable = false;
+						Role2Bt.interactable = false;
+						Role3Bt.interactable = false;
+						Role4Bt.interactable = false;
+						ChooseBt.interactable = false;
+
+					}
+				} 
+			}
+
 
 		}
 
+		public void onTips(string tips_str)
+		{
+			GameObject parent = GameObject.Find ("Canvas");
+			GameObject toast = GameObject.Find ("Toast"); // 加载预制体
+			GameObject m_toast = GameObject.Instantiate(toast, parent.transform, false);  // 对象初始化
+			//m_toast.transform.parent = parent.transform;            //　附加到父节点（需要显示的UI下）
+			m_toast.transform.localScale = Vector3.one;
+			m_toast.transform.localPosition = new Vector3 (144.0f, -260.0f, 0.0f);
+			Text tips = m_toast.GetComponent<Text>();
+			tips.text = tips_str;
+			Destroy(m_toast, 2); // 2秒后 销毁
+		}
+
+			
+			
+			
 		public override void OnDisconnectedFromPhoton()
 		{
 			SceneManager.LoadScene("Main");

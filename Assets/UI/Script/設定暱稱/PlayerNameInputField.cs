@@ -11,16 +11,17 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 		static string playerNamePrefKey = "PlayerName";
 
-		InputField inputField;
+		public Sprite EditImg;
+		public Sprite SubmitImg;
+		public InputField inputField;
+		Button EditBt;
 
 
 		void Start () 
 		{
-
+			inputField.text = PlayerPrefs.GetString (playerNamePrefKey);
 
 		}
-
-
 
 
 		public void SetPlayerName()
@@ -38,6 +39,33 @@ namespace Com.MyProject.MyPassTheBuckGame
 				PhotonNetwork.playerName = value; 
 				PlayerPrefs.SetString(playerNamePrefKey,value);
 			}
+
+		}
+
+		public void SetPlayerNameInBag()
+		{
+			EditBt = GameObject.Find ("EditBt").GetComponent<Button>(); 
+			Sprite BtSp = EditBt.GetComponent<Image> ().sprite;
+
+			inputField = GameObject.Find ("NameIpFd").GetComponent<InputField>(); 
+
+			if (BtSp == EditImg)
+			{
+				inputField.interactable = true;
+				EditBt.GetComponent<Image> ().sprite = SubmitImg;
+			} 
+			else if (BtSp == SubmitImg) 
+			{
+				string value = inputField.text;
+				PhotonNetwork.playerName = value; 
+				PlayerPrefs.SetString(playerNamePrefKey,value);
+
+				inputField.interactable = false;
+				EditBt.GetComponent<Image> ().sprite = EditImg;
+			}
+
+
+
 
 		}
 

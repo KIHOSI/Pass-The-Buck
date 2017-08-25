@@ -1,35 +1,48 @@
 fileFormatVersion: 2
 guid: fabf96788a88c3442a6e83de8b478635
-timeCreated: 1500803014
+timeCreated: 1503674660
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
-  - BlueRole1: {fileID: 21300000, guid: 7576d9cf669d5ce478e27acdb1271d76, type: 3}
-  - BlueRole2: {fileID: 21300000, guid: b2cf9d74fb79d3244b605f12ce0c1596, type: 3}
-  - GreenRole1: {fileID: 21300000, guid: 77871f56aea2e9540bc84a3669c8b3d4, type: 3}
-  - GreenRole2: {fileID: 21300000, guid: 8572d488d6aa1854a8fda7a119812ecc, type: 3}
-  - BluePanel: {fileID: 21300000, guid: 220a0cb960d3ad940beac30f7209b143, type: 3}
-  - GreenPanel: {fileID: 21300000, guid: 3d31427b5f068784881ece6800a40dc2, type: 3}
-  - GrayPanel: {fileID: 21300000, guid: 6c89924923359fe4b8d9277a783be37a, type: 3}
-  - Player1NameTx: {instanceID: 0}
-  - Player2NameTx: {instanceID: 0}
-  - Player1RoleInfoTx: {instanceID: 0}
-  - Player2RoleInfoTx: {instanceID: 0}
-  - Player1MessageTx: {instanceID: 0}
-  - Player2MessageTx: {instanceID: 0}
+  - RoleBack1: {fileID: 21300000, guid: 3b94735bab1c2ba4ba324d379365ac83, type: 3}
+  - RoleBack2: {fileID: 21300000, guid: 3b94735bab1c2ba4ba324d379365ac83, type: 3}
+  - RoleBack3: {fileID: 21300000, guid: bdfd706996283e840a4183aa0ca6bfb7, type: 3}
+  - RoleBack4: {fileID: 21300000, guid: bdfd706996283e840a4183aa0ca6bfb7, type: 3}
+  - BackWithFrame: {fileID: 21300000, guid: fb86538106f2ceb488f2c18d609b1798, type: 3}
+  - RoleBack1ForPowerCut: {fileID: 21300000, guid: 95dca970176c2bf4387bc05d10032de9,
+      type: 3}
+  - RoleBack2ForPowerCut: {fileID: 21300000, guid: c9ed96bb18265d24cb5bf61eb5fbe6fd,
+      type: 3}
+  - RoleBack3ForPowerCut: {fileID: 21300000, guid: bdfd706996283e840a4183aa0ca6bfb7,
+      type: 3}
+  - RoleBack4ForPowerCut: {fileID: 21300000, guid: eef8e534c0b43274b9a540a93da0ebe2,
+      type: 3}
+  - Role1ForPowerCut: {fileID: 21300000, guid: 8572d488d6aa1854a8fda7a119812ecc, type: 3}
+  - Role2ForPowerCut: {fileID: 21300000, guid: 8572d488d6aa1854a8fda7a119812ecc, type: 3}
+  - Role3ForPowerCut: {fileID: 21300000, guid: 8572d488d6aa1854a8fda7a119812ecc, type: 3}
+  - Role4ForPowerCut: {fileID: 21300000, guid: 8572d488d6aa1854a8fda7a119812ecc, type: 3}
+  - Role1NameTx: {instanceID: 0}
+  - Role2NameTx: {instanceID: 0}
+  - Role3NameTx: {instanceID: 0}
+  - Role4NameTx: {instanceID: 0}
+  - Role1InfoTx: {instanceID: 0}
+  - Role2InfoTx: {instanceID: 0}
+  - Role3InfoTx: {instanceID: 0}
+  - Role4InfoTx: {instanceID: 0}
   - AfterChooseTx1: {instanceID: 0}
   - AfterChooseTx2: {instanceID: 0}
-  - Player1RoleImg: {instanceID: 0}
-  - Player2RoleImg: {instanceID: 0}
-  - AfterChooseImg1: {instanceID: 0}
-  - AfterChooseImg2: {instanceID: 0}
-  - ChooseBt1: {instanceID: 0}
-  - ChooseBt2: {instanceID: 0}
-  - LeftArrowBt1: {instanceID: 0}
-  - RightArrowBt1: {instanceID: 0}
-  - LeftArrowBt2: {instanceID: 0}
-  - RightArrowBt2: {instanceID: 0}
+  - AfterChooseTx3: {instanceID: 0}
+  - AfterChooseTx4: {instanceID: 0}
+  - Role1Img: {instanceID: 0}
+  - Role2Img: {instanceID: 0}
+  - Role3Img: {instanceID: 0}
+  - Role4Img: {instanceID: 0}
+  - Role1Bt: {instanceID: 0}
+  - Role2Bt: {instanceID: 0}
+  - Role3Bt: {instanceID: 0}
+  - Role4Bt: {instanceID: 0}
+  - ChooseBt: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
