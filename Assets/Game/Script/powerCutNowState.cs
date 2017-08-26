@@ -129,7 +129,7 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
     //string[] blackMessage = { "反對年金改革", "反對同婚", "支持一例一休", "支持美牛進口", "反對加入TPP", "反對空服員罷工", "反對調漲最低薪資", "支持建造四", "支持進口核災食品" };
     //string[] goldMessage = { "支持年金改革", "支持同婚", "反對一例一休", "反對美牛進口", "支持加入TPP", "支持空服員罷工", "支持調漲最低薪資", "反對建造核四", "反對進口核災食品" };
     string badMessage; //黑訊息
-    string[] microphoneMessage = { "政府發布最新能源政策，獲民眾支持", "中油公布最新調查進度", "台電宣布全台恢復供電", "巨路發布聲明: 公司照常營運" }; //麥克風訊息
+    string[] microphoneMessage = { "政府發布最新能源政策，\n獲民眾支持", "中油公布最新調查進度", "台電宣布全台恢復供電", "巨路發表照常營運聲明" }; //麥克風訊息
     //string goodMessage; //金訊息
     string paperMessage;//報紙訊息
     //string bombMessage; //炸彈訊息(毀謗)
@@ -355,6 +355,9 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
         //讓遊戲時間一致
         photonView.RPC("sendOk", PhotonTargets.MasterClient,1); //只傳給masterClient
        
+
+        //onClikc
+        //GameObject.Find("Player1").GetComponent<Button>().onClick.AddListener(sendPaperMessage,0); //點選按鈕，啟動動作
     }
 
     // Update is called once per frame
@@ -517,7 +520,7 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
         if (time == 0) //如果時間歸零，就停止減少
         {
             hash = new Hashtable();
-            //hash.Add("Money", money); //把錢加進hash
+            hash.Add("Money", money); //把錢加進hash
             //hash.Add("WinColor", winColor); //把執政黨判斷加進hash
             hash.Add("WinPlayer", winPlayerIndex);
             PhotonNetwork.player.SetCustomProperties(hash);
@@ -843,6 +846,7 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
     #region 報紙
     public void sendPaperMessage(int pIndex) //點選按鈕才可以傳送開啟報紙的資訊
     {
+        Debug.Log("sendPaperMessage:"+pIndex);
         //playerIndex = pIndex; //設定圖片為誰，0:player1、1:player2、2:player3
         PlayerList = new List<PhotonPlayer>();
         PlayerList.Add(PhotonNetwork.masterClient); //1

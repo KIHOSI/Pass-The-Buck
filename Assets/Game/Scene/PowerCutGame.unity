@@ -141,8 +141,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 189, y: -2}
-  m_SizeDelta: {x: 134, y: 142}
+  m_AnchoredPosition: {x: 176.8, y: -1}
+  m_SizeDelta: {x: 109.6, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9567117
 MonoBehaviour:
@@ -194,11 +194,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 973616874}
+      - m_Target: {fileID: 973616880}
         m_MethodName: sendPaperMessage
         m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 973616874}
+          m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 2
           m_FloatArgument: 0
@@ -226,7 +226,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 7c53beb06b1dbdc4eb7a8341b07783cd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fd12df7c788a89048832ebec4544e689, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -399,7 +399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6901961, g: 0, b: 0.03137255, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -543,7 +543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6911765, g: 0, b: 0.033229765, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -765,8 +765,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -183, y: -0.000019072999}
-  m_SizeDelta: {x: 155, y: 138}
+  m_AnchoredPosition: {x: -179, y: -1}
+  m_SizeDelta: {x: 126, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &164559137
 MonoBehaviour:
@@ -818,16 +818,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 973616874}
+      - m_Target: {fileID: 973616880}
         m_MethodName: sendPaperMessage
         m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 973616874}
+          m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 0
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -850,7 +850,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: c0482bc5b8f48684fa6c82a502aac58c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 90b5f1f86631e8140949a7d06819b47d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -911,7 +911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.07396195, g: 0.5294118, b: 0.26556495, a: 1}
+  m_Color: {r: 0.6102941, g: 0.29168466, b: 0.16, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1131,11 +1131,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 973616874}
+      - m_Target: {fileID: 973616880}
         m_MethodName: sendPaperMessage
         m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 973616874}
+          m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
@@ -3080,7 +3080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.49019608, g: 0.050980393, b: 0.6745098, a: 1}
+  m_Color: {r: 0.61960787, g: 0.1254902, b: 0.28627452, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3415,8 +3415,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paperPersonAllImage:
   - {fileID: 21300000, guid: 317bf83b41dd72c4f9340ab38f9d240d, type: 3}
-  - {fileID: 21300000, guid: 382b3ebe25342d2418eb6d77ebd433cc, type: 3}
-  - {fileID: 21300000, guid: 20ebce10336fc3042a3241803cd1184a, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 21300000, guid: 370c6e9c21e95324f97ca65c9a604140, type: 3}
 --- !u!1 &914750803
 GameObject:
@@ -3924,23 +3924,23 @@ MonoBehaviour:
   portalRight: {fileID: 644994499}
   PlayerCharacterImg: {fileID: 1855596363}
   role1: {fileID: 21300000, guid: 77871f56aea2e9540bc84a3669c8b3d4, type: 3}
-  role2: {fileID: 21300000, guid: 7c53beb06b1dbdc4eb7a8341b07783cd, type: 3}
-  role3: {fileID: 21300000, guid: c0482bc5b8f48684fa6c82a502aac58c, type: 3}
+  role2: {fileID: 21300000, guid: 90b5f1f86631e8140949a7d06819b47d, type: 3}
+  role3: {fileID: 21300000, guid: fd12df7c788a89048832ebec4544e689, type: 3}
   role4: {fileID: 21300000, guid: edb82d076eeefcd4085ece4e8d4b2da5, type: 3}
   SneerPersonImg:
   - {fileID: 21300000, guid: 317bf83b41dd72c4f9340ab38f9d240d, type: 3}
-  - {fileID: 21300000, guid: 382b3ebe25342d2418eb6d77ebd433cc, type: 3}
-  - {fileID: 21300000, guid: 20ebce10336fc3042a3241803cd1184a, type: 3}
+  - {fileID: 21300000, guid: c490695d1cdec8e49ad7a51b640cf8a5, type: 3}
+  - {fileID: 21300000, guid: 54b42c9ea6bbf3441b8d2f7e99918716, type: 3}
   - {fileID: 21300000, guid: 370c6e9c21e95324f97ca65c9a604140, type: 3}
   AngryPersonImg:
   - {fileID: 21300000, guid: 05931b9239bd495499eb9cb2c605e7ef, type: 3}
-  - {fileID: 21300000, guid: feccd2316195e894d8bf09b473611e6f, type: 3}
-  - {fileID: 21300000, guid: 94b4d6d7027d4e9419afb9f67a3bcfa2, type: 3}
+  - {fileID: 21300000, guid: cf7500f203f4e9b49b788d4302c0a42e, type: 3}
+  - {fileID: 21300000, guid: 7162b607b1c06ed4caf5b268f9d7ad83, type: 3}
   - {fileID: 21300000, guid: 032278fff428ae0498699bafd585aa1c, type: 3}
   cryPersonImg:
   - {fileID: 21300000, guid: 1ee05634aa25aba45825bfb007312250, type: 3}
-  - {fileID: 21300000, guid: 0cb25fa77ca6a044c9ccae346e9e563b, type: 3}
-  - {fileID: 21300000, guid: 70f23e115a5a84b4babd02066dfc681a, type: 3}
+  - {fileID: 21300000, guid: e141bb199301833428744c76b319dde2, type: 3}
+  - {fileID: 21300000, guid: e463f32e617de214e8a0623ac71ed1c5, type: 3}
   - {fileID: 21300000, guid: 7d85dc7ff3316ac4785c77e371181316, type: 3}
   edge1_green: {fileID: 401758184}
   edge2_green: {fileID: 914750803}
@@ -5163,7 +5163,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u8521\u4E2D\u805E\u540C\u610F\u7A7A\u670D\u54E1\u7F77\u5DE5"
+  m_Text: "\u653F\u5E9C\u767C\u5E03\u6700\u65B0\u80FD\u6E90\u653F\u7B56\uFF0C\n\u7372\u6C11\u773E\u652F\u6301"
 --- !u!222 &1143064473
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6255,7 +6255,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 164.02998, y: -5.696594}
+  m_AnchoredPosition: {x: 164.03, y: -5.696594}
   m_SizeDelta: {x: 189.4, y: 60.4}
   m_Pivot: {x: 1, y: 0}
 --- !u!1 &1391849397
@@ -7348,7 +7348,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 4e6f9f23a9e314249bfc6074579f04c3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cc0622d859f52e342b3d40b4602dc9ca, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7409,7 +7409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.48909754, g: 0.04974049, b: 0.6764706, a: 1}
+  m_Color: {r: 0.61764705, g: 0.12716264, b: 0.286, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -7483,7 +7483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.07396195, g: 0.5294118, b: 0.26556495, a: 1}
+  m_Color: {r: 0.6117647, g: 0.2901961, b: 0.16078432, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -7683,7 +7683,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 2af2446e81f45214b97fcbb42407c43e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1d8f0307dcfb5124c9077eda0ed050f6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8440,7 +8440,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20, y: 526}
+  m_AnchoredPosition: {x: 20, y: 584}
   m_SizeDelta: {x: 98.6, y: 124.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2019947037
@@ -8462,7 +8462,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: cef9f8313a290164b887cf3dcd23f10d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b27bd4dbe1c08c64fb06cd4f4ce8db13, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
