@@ -85,9 +85,6 @@ namespace Com.MyProject.MyPassTheBuckGame
 				{
 					PhotonNetwork.LoadLevel ("PowerCutGame");
 				}
-
-
-
 			}
 
 
