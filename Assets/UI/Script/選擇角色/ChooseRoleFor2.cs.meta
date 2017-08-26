@@ -1,0 +1,38 @@
+fileFormatVersion: 2
+guid: b61fbc93826c4e247a7360653795854e
+timeCreated: 1503674492
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - RoleBack1: {fileID: 21300000, guid: 3b94735bab1c2ba4ba324d379365ac83, type: 3}
+  - RoleBack2: {fileID: 21300000, guid: 3b94735bab1c2ba4ba324d379365ac83, type: 3}
+  - RoleBack3: {fileID: 21300000, guid: bdfd706996283e840a4183aa0ca6bfb7, type: 3}
+  - RoleBack4: {fileID: 21300000, guid: bdfd706996283e840a4183aa0ca6bfb7, type: 3}
+  - BackWithFrame: {fileID: 21300000, guid: fb86538106f2ceb488f2c18d609b1798, type: 3}
+  - Role1NameTx: {instanceID: 0}
+  - Role2NameTx: {instanceID: 0}
+  - Role3NameTx: {instanceID: 0}
+  - Role4NameTx: {instanceID: 0}
+  - Role1InfoTx: {instanceID: 0}
+  - Role2InfoTx: {instanceID: 0}
+  - Role3InfoTx: {instanceID: 0}
+  - Role4InfoTx: {instanceID: 0}
+  - AfterChooseTx1: {instanceID: 0}
+  - AfterChooseTx2: {instanceID: 0}
+  - AfterChooseTx3: {instanceID: 0}
+  - AfterChooseTx4: {instanceID: 0}
+  - Role1Img: {instanceID: 0}
+  - Role2Img: {instanceID: 0}
+  - Role3Img: {instanceID: 0}
+  - Role4Img: {instanceID: 0}
+  - Role1Bt: {instanceID: 0}
+  - Role2Bt: {instanceID: 0}
+  - Role3Bt: {instanceID: 0}
+  - Role4Bt: {instanceID: 0}
+  - ChooseBt: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

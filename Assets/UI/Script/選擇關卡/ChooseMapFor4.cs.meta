@@ -1,0 +1,32 @@
+fileFormatVersion: 2
+guid: 63115064fd57e774e928dfd0684b4e39
+timeCreated: 1503593174
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - Building1: {instanceID: 0}
+  - Building1WithLock: {fileID: 21300000, guid: e0a4393e134546048b0923c624c3ab15,
+      type: 3}
+  - Building2: {fileID: 21300000, guid: 2223067c64fa23b4390dac9dac60215d, type: 3}
+  - Building2WithLock: {instanceID: 0}
+  - Building3: {fileID: 21300000, guid: 2b9107a1de453fa42b8b5668214177d3, type: 3}
+  - Building3WithLock: {instanceID: 0}
+  - Building4: {instanceID: 0}
+  - Building4WithLock: {fileID: 21300000, guid: d2f5c5b46d086464291044b36c277b82,
+      type: 3}
+  - Building5: {instanceID: 0}
+  - Building5WithLock: {fileID: 21300000, guid: 8fd329a35b8ba1544804808167c44f69,
+      type: 3}
+  - Building1Bt: {instanceID: 0}
+  - Building2Bt: {instanceID: 0}
+  - Building3Bt: {instanceID: 0}
+  - Building4Bt: {instanceID: 0}
+  - Building5Bt: {instanceID: 0}
+  - ChooseBt: {instanceID: 0}
+  - BuildingDescriptTx: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
