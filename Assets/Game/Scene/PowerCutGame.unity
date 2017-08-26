@@ -134,15 +134,15 @@ RectTransform:
   m_GameObject: {fileID: 9567115}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9999998, y: 0.9999998, z: 0.9999998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 838894731}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 185, y: 2}
-  m_SizeDelta: {x: 119, y: 142}
+  m_AnchoredPosition: {x: 189, y: -2}
+  m_SizeDelta: {x: 134, y: 142}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9567117
 MonoBehaviour:
@@ -194,7 +194,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 973616878}
+      - m_Target: {fileID: 0}
         m_MethodName: sendPaperMessage
         m_Mode: 3
         m_Arguments:
@@ -226,7 +226,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 77871f56aea2e9540bc84a3669c8b3d4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7c53beb06b1dbdc4eb7a8341b07783cd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -712,7 +712,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 146987079}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 529f067cf76f5594f96cfda1285ad760, type: 3}
+  m_Script: {fileID: 11500000, guid: 57a13bda368febf478698ab68ab56cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   portalPosition: 2
@@ -765,8 +765,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -202, y: -0.000019072999}
-  m_SizeDelta: {x: 117, y: 138}
+  m_AnchoredPosition: {x: -183, y: -0.000019072999}
+  m_SizeDelta: {x: 155, y: 138}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &164559137
 MonoBehaviour:
@@ -818,7 +818,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 973616878}
+      - m_Target: {fileID: 0}
         m_MethodName: sendPaperMessage
         m_Mode: 3
         m_Arguments:
@@ -850,7 +850,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b2cf9d74fb79d3244b605f12ce0c1596, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c0482bc5b8f48684fa6c82a502aac58c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1071,15 +1071,15 @@ RectTransform:
   m_GameObject: {fileID: 282149276}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9999998, y: 0.9999998, z: 0.9999998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 838894731}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -10, y: 2}
-  m_SizeDelta: {x: 119, y: 142}
+  m_AnchoredPosition: {x: 0.0000066757, y: 0.000039935}
+  m_SizeDelta: {x: 103, y: 142}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &282149278
 MonoBehaviour:
@@ -1131,7 +1131,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 973616878}
+      - m_Target: {fileID: 0}
         m_MethodName: sendPaperMessage
         m_Mode: 3
         m_Arguments:
@@ -1163,7 +1163,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 7576d9cf669d5ce478e27acdb1271d76, type: 3}
+  m_Sprite: {fileID: 21300000, guid: edb82d076eeefcd4085ece4e8d4b2da5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1736,7 +1736,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 451862751}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 529f067cf76f5594f96cfda1285ad760, type: 3}
+  m_Script: {fileID: 11500000, guid: 57a13bda368febf478698ab68ab56cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   portalPosition: 0
@@ -1985,7 +1985,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 490566803}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 529f067cf76f5594f96cfda1285ad760, type: 3}
+  m_Script: {fileID: 11500000, guid: 57a13bda368febf478698ab68ab56cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   portalPosition: 0
@@ -2476,27 +2476,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allArray:
-  - {fileID: 1135349447412612, guid: 676e9f8a046a39e4da2dad8502f18d3e, type: 2}
-  - {fileID: 1062045054329312, guid: 8f1f7cd4bc4c00446937ca5f526b44a3, type: 2}
-  - {fileID: 1021903840438762, guid: 7dd2b03dfabf48a40b7c41bdb1b0ec02, type: 2}
-  - {fileID: 1717387367315148, guid: 991e4b7d8659e6a42b8a66a1fb04e3a5, type: 2}
-  - {fileID: 1151099234503616, guid: aca142e80ccda704dae00912c1dfe02a, type: 2}
-  - {fileID: 1418422642788632, guid: 5698945cf2911dc4ea560307c6091272, type: 2}
-  - {fileID: 1638853389424876, guid: 9a57fbe4c168c7c448385277ba0a2573, type: 2}
-  - {fileID: 1533408535216362, guid: daea24cba2f158149ba2e89c7f16df56, type: 2}
-  - {fileID: 1618913545538688, guid: 55c64eb26f953604d8d8c401777ff3c2, type: 2}
-  - {fileID: 1922235246816190, guid: eb9b613e690bfd74fa3e988e987497c7, type: 2}
-  - {fileID: 1579959524106808, guid: a28c99d69da9ed24a9638702c982a774, type: 2}
-  - {fileID: 1163348963186256, guid: c8bb0ad909426fd4f9efb989da10b18b, type: 2}
-  - {fileID: 1300580352881238, guid: 8050920dfc5de474f9bdc27dde546abf, type: 2}
-  - {fileID: 1752367255269726, guid: 023993b5ecce605439eccd1e1f8126f6, type: 2}
-  - {fileID: 1287679322979192, guid: 6b3a0e198e5e06941b13866dd8cc7e71, type: 2}
-  - {fileID: 1662509812336596, guid: 2c9b5e809efa4524cbb307cc166fd1ea, type: 2}
-  - {fileID: 1871115237400372, guid: 133e02693e7758e468d86763ca9766d7, type: 2}
-  - {fileID: 1043377856907114, guid: 0cb03ba570d8ffe43812d87f5244efb8, type: 2}
-  - {fileID: 1731267888413754, guid: 889be4d7bca68bf4984133ff0b13a520, type: 2}
-  - {fileID: 1765187116463052, guid: 02c5e2657c01f7643bdb0fc2c71a054b, type: 2}
+  - {fileID: 1449190601431260, guid: 0aba14571ff971448b2cf7f0c15378a0, type: 2}
+  - {fileID: 1811854209913998, guid: db2aa9e8a78e46a4e8b7fde580359710, type: 2}
+  - {fileID: 1641207730783838, guid: 9cad63c1d05f39e4baf6148aa9c50844, type: 2}
+  - {fileID: 1090606416288446, guid: 8aef441e88e097441a8d148c88712fe7, type: 2}
+  - {fileID: 1924459575750228, guid: a364cac24bc7d3b47965d02baf5a3db5, type: 2}
+  - {fileID: 1586336016671788, guid: 1ab0e46818c9bec4a8b7a92d79bbace1, type: 2}
+  - {fileID: 1133136984909300, guid: 2461159d4a8e240498e203a8603e2224, type: 2}
+  - {fileID: 1953757247498702, guid: 3ea0a2af6ba35644ca6d8a93669ac338, type: 2}
+  - {fileID: 1991020509780886, guid: 8721db912e1a7544f8d60b21f039ce4e, type: 2}
+  - {fileID: 1877777162918786, guid: 1cdd031383d4a4d408442fb1e154d165, type: 2}
+  - {fileID: 1093680401166490, guid: cf35b68fecbfbd54b8dad851ca77823d, type: 2}
+  - {fileID: 1741328084329754, guid: dfbf7979f4d6470498a3af93ff316404, type: 2}
   - {fileID: 1231691690448264, guid: cf8b0c34b39e87e478325fdf05ecbc3f, type: 2}
+  - {fileID: 1765187116463052, guid: 02c5e2657c01f7643bdb0fc2c71a054b, type: 2}
   generateBallSpeed: 2
 --- !u!1 &656052571
 GameObject:
@@ -2847,7 +2840,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 727832419}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 529f067cf76f5594f96cfda1285ad760, type: 3}
+  m_Script: {fileID: 11500000, guid: 57a13bda368febf478698ab68ab56cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   portalPosition: 2
@@ -3130,7 +3123,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &838894731
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3565,7 +3558,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 961840328}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 529f067cf76f5594f96cfda1285ad760, type: 3}
+  m_Script: {fileID: 11500000, guid: 57a13bda368febf478698ab68ab56cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   portalPosition: 1
@@ -3788,9 +3781,8 @@ GameObject:
   - component: {fileID: 973616877}
   - component: {fileID: 973616876}
   - component: {fileID: 973616875}
-  - component: {fileID: 973616878}
   - component: {fileID: 973616880}
-  - component: {fileID: 973616879}
+  - component: {fileID: 973616878}
   m_Layer: 0
   m_Name: "\u6D1E\u53E3"
   m_TagString: "\u6D1E\u53E3"
@@ -3875,89 +3867,6 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 973616874}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1ac7bc229e134c4f869da21775639f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ReadyGoPanel: {fileID: 1339415449}
-  ready: {fileID: 289156553}
-  go: {fileID: 1027582004}
-  money: 100
-  time: 120
-  moneyText: {fileID: 1183681563}
-  timeText: {fileID: 1204798638}
-  winLogo: {fileID: 1586034487}
-  winColor: 0
-  allArray: []
-  bombObj: {fileID: 1057849301}
-  forbiddenObj: {fileID: 2147248378}
-  paperMenu: {fileID: 838894730}
-  paper: {fileID: 279579283}
-  paperPersonImage:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  paperPersonMenu:
-  - {fileID: 164559137}
-  - {fileID: 282149278}
-  - {fileID: 9567117}
-  portalLeft: {fileID: 1112582727}
-  portalUp: {fileID: 1284004400}
-  portalRight: {fileID: 644994499}
-  PlayerCharacterImg: {fileID: 1855596363}
-  role1: {fileID: 21300000, guid: b2cf9d74fb79d3244b605f12ce0c1596, type: 3}
-  role2: {fileID: 21300000, guid: 7576d9cf669d5ce478e27acdb1271d76, type: 3}
-  role3: {fileID: 21300000, guid: 77871f56aea2e9540bc84a3669c8b3d4, type: 3}
-  role4: {fileID: 21300000, guid: 8572d488d6aa1854a8fda7a119812ecc, type: 3}
-  SneerPersonImg:
-  - {fileID: 21300000, guid: bb636337265e8a6488690c270b9664de, type: 3}
-  - {fileID: 21300000, guid: 7d91d1d76b6ec6b45be3628d8d07d342, type: 3}
-  - {fileID: 21300000, guid: 317bf83b41dd72c4f9340ab38f9d240d, type: 3}
-  - {fileID: 21300000, guid: b406cfe39728c3c4aac420c16be657fa, type: 3}
-  AngryPersonImg:
-  - {fileID: 21300000, guid: 79ffe82a25a6d7d40af8c32bc17b3729, type: 3}
-  - {fileID: 21300000, guid: 16d82dd5e0966e14b8e7e709e73767ba, type: 3}
-  - {fileID: 21300000, guid: 05931b9239bd495499eb9cb2c605e7ef, type: 3}
-  - {fileID: 21300000, guid: cdf4b5457cc60964889c464a7df7f1c0, type: 3}
-  cryPersonImg:
-  - {fileID: 21300000, guid: 10840a3514defcc49902bcb5e28ed497, type: 3}
-  - {fileID: 21300000, guid: 13cd6a6f1cffc2d47a14a975cec20bfc, type: 3}
-  - {fileID: 21300000, guid: 1ee05634aa25aba45825bfb007312250, type: 3}
-  - {fileID: 21300000, guid: e981f3c061453894ebbf4efef0e29e58, type: 3}
-  edge1_blue: {fileID: 1605024733}
-  edge2_blue: {fileID: 332333811}
-  edge1_green: {fileID: 401758184}
-  edge2_green: {fileID: 914750803}
-  portalLeft_blue: {fileID: 1060398120}
-  portalUp_blue: {fileID: 1668385590}
-  portalRight_blue: {fileID: 146987079}
-  portalLeft_green: {fileID: 1325574632}
-  portalUp_green: {fileID: 1071708090}
-  portalRight_green: {fileID: 1139874616}
-  greenNoticeBoard: {fileID: 1188184849}
-  blueNoticeBoard: {fileID: 101301389}
-  noColorNoticeBoard: {fileID: 0}
-  badNoticeBoard: {fileID: 1643762572}
-  goodNoticeBoard: {fileID: 1299872268}
-  bombNoticeBoard: {fileID: 1335597171}
-  badNoticeBoardText: {fileID: 2026069933}
-  goodNoticeBoardText: {fileID: 1143064472}
-  paperNoticeBoardText: {fileID: 1523242902}
-  bombNoticeBoardText: {fileID: 1899799214}
-  bgm: {fileID: 410533132}
-  goldBallMusic: {fileID: 1467519820}
-  blackBallMusic: {fileID: 1391849397}
-  itemMusic: {fileID: 2111971509}
-  bombMusic: {fileID: 1300648697}
-  readyMusic: {fileID: 599850715}
-  goMusic: {fileID: 2057495419}
---- !u!114 &973616879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 973616874}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
@@ -3971,8 +3880,7 @@ MonoBehaviour:
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 0}
+  ObservedComponents: []
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 1
   instantiationId: 1
@@ -4070,12 +3978,10 @@ MonoBehaviour:
   - {fileID: 78375478}
   - {fileID: 1998490444}
   badNoticeBoard: {fileID: 1643762572}
-  bombNoticeBoard: {fileID: 1335597171}
   microphoneNoticeBoard: {fileID: 1299872268}
   badNoticeBoardText: {fileID: 2026069933}
   microphoneNoticeBoardText: {fileID: 1143064472}
   paperNoticeBoardText: {fileID: 1523242902}
-  bombNoticeBoardText: {fileID: 1899799214}
   bgm: {fileID: 410533132}
   goldBallMusic: {fileID: 1467519820}
   blackBallMusic: {fileID: 1391849397}
@@ -4471,7 +4377,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1060398120}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 529f067cf76f5594f96cfda1285ad760, type: 3}
+  m_Script: {fileID: 11500000, guid: 57a13bda368febf478698ab68ab56cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   portalPosition: 0
@@ -4621,7 +4527,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1071708090}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 529f067cf76f5594f96cfda1285ad760, type: 3}
+  m_Script: {fileID: 11500000, guid: 57a13bda368febf478698ab68ab56cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   portalPosition: 1
@@ -4680,7 +4586,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1084903846}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 529f067cf76f5594f96cfda1285ad760, type: 3}
+  m_Script: {fileID: 11500000, guid: 57a13bda368febf478698ab68ab56cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   portalPosition: 2
@@ -5019,16 +4925,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allArray:
-  - {fileID: 1135349447412612, guid: 676e9f8a046a39e4da2dad8502f18d3e, type: 2}
-  - {fileID: 1062045054329312, guid: 8f1f7cd4bc4c00446937ca5f526b44a3, type: 2}
-  - {fileID: 1021903840438762, guid: 7dd2b03dfabf48a40b7c41bdb1b0ec02, type: 2}
-  - {fileID: 1717387367315148, guid: 991e4b7d8659e6a42b8a66a1fb04e3a5, type: 2}
-  - {fileID: 1151099234503616, guid: aca142e80ccda704dae00912c1dfe02a, type: 2}
-  - {fileID: 1418422642788632, guid: 5698945cf2911dc4ea560307c6091272, type: 2}
-  - {fileID: 1638853389424876, guid: 9a57fbe4c168c7c448385277ba0a2573, type: 2}
-  - {fileID: 1533408535216362, guid: daea24cba2f158149ba2e89c7f16df56, type: 2}
-  - {fileID: 1618913545538688, guid: 55c64eb26f953604d8d8c401777ff3c2, type: 2}
-  - {fileID: 1922235246816190, guid: eb9b613e690bfd74fa3e988e987497c7, type: 2}
+  - {fileID: 1449190601431260, guid: 0aba14571ff971448b2cf7f0c15378a0, type: 2}
+  - {fileID: 1811854209913998, guid: db2aa9e8a78e46a4e8b7fde580359710, type: 2}
+  - {fileID: 1641207730783838, guid: 9cad63c1d05f39e4baf6148aa9c50844, type: 2}
+  - {fileID: 1090606416288446, guid: 8aef441e88e097441a8d148c88712fe7, type: 2}
+  - {fileID: 1924459575750228, guid: a364cac24bc7d3b47965d02baf5a3db5, type: 2}
+  - {fileID: 1586336016671788, guid: 1ab0e46818c9bec4a8b7a92d79bbace1, type: 2}
+  - {fileID: 1133136984909300, guid: 2461159d4a8e240498e203a8603e2224, type: 2}
+  - {fileID: 1953757247498702, guid: 3ea0a2af6ba35644ca6d8a93669ac338, type: 2}
+  - {fileID: 1991020509780886, guid: 8721db912e1a7544f8d60b21f039ce4e, type: 2}
+  - {fileID: 1877777162918786, guid: 1cdd031383d4a4d408442fb1e154d165, type: 2}
+  - {fileID: 1093680401166490, guid: cf35b68fecbfbd54b8dad851ca77823d, type: 2}
+  - {fileID: 1741328084329754, guid: dfbf7979f4d6470498a3af93ff316404, type: 2}
+  - {fileID: 1231691690448264, guid: cf8b0c34b39e87e478325fdf05ecbc3f, type: 2}
+  - {fileID: 1765187116463052, guid: 02c5e2657c01f7643bdb0fc2c71a054b, type: 2}
   generateBallSpeed: 2
 --- !u!1 &1139874616
 GameObject:
@@ -5172,7 +5082,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1139874616}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 529f067cf76f5594f96cfda1285ad760, type: 3}
+  m_Script: {fileID: 11500000, guid: 57a13bda368febf478698ab68ab56cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   portalPosition: 2
@@ -5671,27 +5581,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allArray:
-  - {fileID: 1135349447412612, guid: 676e9f8a046a39e4da2dad8502f18d3e, type: 2}
-  - {fileID: 1062045054329312, guid: 8f1f7cd4bc4c00446937ca5f526b44a3, type: 2}
-  - {fileID: 1021903840438762, guid: 7dd2b03dfabf48a40b7c41bdb1b0ec02, type: 2}
-  - {fileID: 1717387367315148, guid: 991e4b7d8659e6a42b8a66a1fb04e3a5, type: 2}
-  - {fileID: 1151099234503616, guid: aca142e80ccda704dae00912c1dfe02a, type: 2}
-  - {fileID: 1418422642788632, guid: 5698945cf2911dc4ea560307c6091272, type: 2}
-  - {fileID: 1638853389424876, guid: 9a57fbe4c168c7c448385277ba0a2573, type: 2}
-  - {fileID: 1533408535216362, guid: daea24cba2f158149ba2e89c7f16df56, type: 2}
-  - {fileID: 1618913545538688, guid: 55c64eb26f953604d8d8c401777ff3c2, type: 2}
-  - {fileID: 1922235246816190, guid: eb9b613e690bfd74fa3e988e987497c7, type: 2}
-  - {fileID: 1579959524106808, guid: a28c99d69da9ed24a9638702c982a774, type: 2}
-  - {fileID: 1163348963186256, guid: c8bb0ad909426fd4f9efb989da10b18b, type: 2}
-  - {fileID: 1300580352881238, guid: 8050920dfc5de474f9bdc27dde546abf, type: 2}
-  - {fileID: 1752367255269726, guid: 023993b5ecce605439eccd1e1f8126f6, type: 2}
-  - {fileID: 1287679322979192, guid: 6b3a0e198e5e06941b13866dd8cc7e71, type: 2}
-  - {fileID: 1662509812336596, guid: 2c9b5e809efa4524cbb307cc166fd1ea, type: 2}
-  - {fileID: 1871115237400372, guid: 133e02693e7758e468d86763ca9766d7, type: 2}
-  - {fileID: 1043377856907114, guid: 0cb03ba570d8ffe43812d87f5244efb8, type: 2}
-  - {fileID: 1731267888413754, guid: 889be4d7bca68bf4984133ff0b13a520, type: 2}
-  - {fileID: 1765187116463052, guid: 02c5e2657c01f7643bdb0fc2c71a054b, type: 2}
+  - {fileID: 1449190601431260, guid: 0aba14571ff971448b2cf7f0c15378a0, type: 2}
+  - {fileID: 1811854209913998, guid: db2aa9e8a78e46a4e8b7fde580359710, type: 2}
+  - {fileID: 1641207730783838, guid: 9cad63c1d05f39e4baf6148aa9c50844, type: 2}
+  - {fileID: 1090606416288446, guid: 8aef441e88e097441a8d148c88712fe7, type: 2}
+  - {fileID: 1924459575750228, guid: a364cac24bc7d3b47965d02baf5a3db5, type: 2}
+  - {fileID: 1586336016671788, guid: 1ab0e46818c9bec4a8b7a92d79bbace1, type: 2}
+  - {fileID: 1133136984909300, guid: 2461159d4a8e240498e203a8603e2224, type: 2}
+  - {fileID: 1953757247498702, guid: 3ea0a2af6ba35644ca6d8a93669ac338, type: 2}
+  - {fileID: 1991020509780886, guid: 8721db912e1a7544f8d60b21f039ce4e, type: 2}
+  - {fileID: 1877777162918786, guid: 1cdd031383d4a4d408442fb1e154d165, type: 2}
+  - {fileID: 1093680401166490, guid: cf35b68fecbfbd54b8dad851ca77823d, type: 2}
+  - {fileID: 1741328084329754, guid: dfbf7979f4d6470498a3af93ff316404, type: 2}
   - {fileID: 1231691690448264, guid: cf8b0c34b39e87e478325fdf05ecbc3f, type: 2}
+  - {fileID: 1765187116463052, guid: 02c5e2657c01f7643bdb0fc2c71a054b, type: 2}
   generateBallSpeed: 2
 --- !u!1 &1298528247
 GameObject:
@@ -6095,7 +5998,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1325574632}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 529f067cf76f5594f96cfda1285ad760, type: 3}
+  m_Script: {fileID: 11500000, guid: 57a13bda368febf478698ab68ab56cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   portalPosition: 0
@@ -6200,7 +6103,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1339415450
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7377,7 +7280,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1668385590}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 529f067cf76f5594f96cfda1285ad760, type: 3}
+  m_Script: {fileID: 11500000, guid: 57a13bda368febf478698ab68ab56cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   portalPosition: 1
@@ -8490,24 +8393,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BallArray:
-  - {fileID: 1135349447412612, guid: 676e9f8a046a39e4da2dad8502f18d3e, type: 2}
-  - {fileID: 1062045054329312, guid: 8f1f7cd4bc4c00446937ca5f526b44a3, type: 2}
-  - {fileID: 1021903840438762, guid: 7dd2b03dfabf48a40b7c41bdb1b0ec02, type: 2}
-  - {fileID: 1300580352881238, guid: 8050920dfc5de474f9bdc27dde546abf, type: 2}
-  - {fileID: 1151099234503616, guid: aca142e80ccda704dae00912c1dfe02a, type: 2}
-  - {fileID: 1418422642788632, guid: 5698945cf2911dc4ea560307c6091272, type: 2}
-  - {fileID: 1638853389424876, guid: 9a57fbe4c168c7c448385277ba0a2573, type: 2}
-  - {fileID: 1533408535216362, guid: daea24cba2f158149ba2e89c7f16df56, type: 2}
-  - {fileID: 1618913545538688, guid: 55c64eb26f953604d8d8c401777ff3c2, type: 2}
-  - {fileID: 1922235246816190, guid: eb9b613e690bfd74fa3e988e987497c7, type: 2}
-  - {fileID: 1579959524106808, guid: a28c99d69da9ed24a9638702c982a774, type: 2}
-  - {fileID: 1163348963186256, guid: c8bb0ad909426fd4f9efb989da10b18b, type: 2}
-  - {fileID: 1300580352881238, guid: 8050920dfc5de474f9bdc27dde546abf, type: 2}
-  - {fileID: 1752367255269726, guid: 023993b5ecce605439eccd1e1f8126f6, type: 2}
-  - {fileID: 1287679322979192, guid: 6b3a0e198e5e06941b13866dd8cc7e71, type: 2}
-  - {fileID: 1662509812336596, guid: 2c9b5e809efa4524cbb307cc166fd1ea, type: 2}
-  - {fileID: 1871115237400372, guid: 133e02693e7758e468d86763ca9766d7, type: 2}
-  - {fileID: 1043377856907114, guid: 0cb03ba570d8ffe43812d87f5244efb8, type: 2}
+  - {fileID: 1449190601431260, guid: 0aba14571ff971448b2cf7f0c15378a0, type: 2}
+  - {fileID: 1811854209913998, guid: db2aa9e8a78e46a4e8b7fde580359710, type: 2}
+  - {fileID: 1641207730783838, guid: 9cad63c1d05f39e4baf6148aa9c50844, type: 2}
+  - {fileID: 1090606416288446, guid: 8aef441e88e097441a8d148c88712fe7, type: 2}
+  - {fileID: 1924459575750228, guid: a364cac24bc7d3b47965d02baf5a3db5, type: 2}
+  - {fileID: 1586336016671788, guid: 1ab0e46818c9bec4a8b7a92d79bbace1, type: 2}
+  - {fileID: 1133136984909300, guid: 2461159d4a8e240498e203a8603e2224, type: 2}
+  - {fileID: 1953757247498702, guid: 3ea0a2af6ba35644ca6d8a93669ac338, type: 2}
+  - {fileID: 1991020509780886, guid: 8721db912e1a7544f8d60b21f039ce4e, type: 2}
+  - {fileID: 1877777162918786, guid: 1cdd031383d4a4d408442fb1e154d165, type: 2}
+  - {fileID: 1093680401166490, guid: cf35b68fecbfbd54b8dad851ca77823d, type: 2}
+  - {fileID: 1741328084329754, guid: dfbf7979f4d6470498a3af93ff316404, type: 2}
   ItemArray:
   - {fileID: 1765187116463052, guid: 02c5e2657c01f7643bdb0fc2c71a054b, type: 2}
   - {fileID: 1231691690448264, guid: cf8b0c34b39e87e478325fdf05ecbc3f, type: 2}
@@ -9139,7 +9036,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2145088219}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 529f067cf76f5594f96cfda1285ad760, type: 3}
+  m_Script: {fileID: 11500000, guid: 57a13bda368febf478698ab68ab56cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   portalPosition: 1

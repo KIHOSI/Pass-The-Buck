@@ -188,6 +188,9 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
         //判斷是哪個政黨，以利之後判斷是否為同顏色的球
         decideWhichBallColor();
 
+        //Debug.Log(""+PhotonNetwork.player.name);
+        //Debug.Log("" + PhotonNetwork.player.CustomProperties["PartyColor"]);
+
         //根據政黨顏色換配置(Edge)
         if (partyColor == "green") //綠黨
         {
@@ -283,36 +286,36 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
             portalLeft_yellow.SetActive(true);
         }
         //上
-        if ((string)portalLeft.GetComponent<SendBall>().targetPlayer.CustomProperties["PartyColor"] == "green")
+        if ((string)portalUp.GetComponent<SendBall>().targetPlayer.CustomProperties["PartyColor"] == "green")
         {
             portalUp_green.SetActive(true);
         }
-        else if ((string)portalLeft.GetComponent<SendBall>().targetPlayer.CustomProperties["PartyColor"] == "purple")
+        else if ((string)portalUp.GetComponent<SendBall>().targetPlayer.CustomProperties["PartyColor"] == "purple")
         {
             portalUp_purple.SetActive(true);
         }
-        else if ((string)portalLeft.GetComponent<SendBall>().targetPlayer.CustomProperties["PartyColor"] == "red")
+        else if ((string)portalUp.GetComponent<SendBall>().targetPlayer.CustomProperties["PartyColor"] == "red")
         {
             portalUp_red.SetActive(true);
         }
-        else if ((string)portalLeft.GetComponent<SendBall>().targetPlayer.CustomProperties["PartyColor"] == "yellow")
+        else if ((string)portalUp.GetComponent<SendBall>().targetPlayer.CustomProperties["PartyColor"] == "yellow")
         {
             portalUp_yellow.SetActive(true);
         }
         //右
-        if ((string)portalLeft.GetComponent<SendBall>().targetPlayer.CustomProperties["PartyColor"] == "green")
+        if ((string)portalRight.GetComponent<SendBall>().targetPlayer.CustomProperties["PartyColor"] == "green")
         {
             portalRight_green.SetActive(true);
         }
-        else if ((string)portalLeft.GetComponent<SendBall>().targetPlayer.CustomProperties["PartyColor"] == "purple")
+        else if ((string)portalRight.GetComponent<SendBall>().targetPlayer.CustomProperties["PartyColor"] == "purple")
         {
             portalRight_purple.SetActive(true);
         }
-        else if ((string)portalLeft.GetComponent<SendBall>().targetPlayer.CustomProperties["PartyColor"] == "red")
+        else if ((string)portalRight.GetComponent<SendBall>().targetPlayer.CustomProperties["PartyColor"] == "red")
         {
             portalRight_red.SetActive(true);
         }
-        else if ((string)portalLeft.GetComponent<SendBall>().targetPlayer.CustomProperties["PartyColor"] == "yellow")
+        else if ((string)portalRight.GetComponent<SendBall>().targetPlayer.CustomProperties["PartyColor"] == "yellow")
         {
             portalRight_yellow.SetActive(true);
         }
