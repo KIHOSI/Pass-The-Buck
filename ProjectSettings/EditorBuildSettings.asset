@@ -6,70 +6,67 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/UI/Scene/FirstInGame.unity
+    path: "Assets/UI/Scene/\u9996\u9801&\u8D77\u59CB\u756B\u9762/FirstInGame.unity"
     guid: 7b00e6d994e8a8347bc70800f2e79e96
   - enabled: 1
-    path: Assets/UI/Scene/Opening Story.unity
+    path: "Assets/UI/Scene/\u958B\u5834\u52D5\u756B/Opening Story.unity"
     guid: b1f4431697a2af54d9c21b4a74965d46
   - enabled: 1
-    path: Assets/UI/Scene/Launcher.unity
+    path: "Assets/UI/Scene/\u8A2D\u5B9A\u66B1\u7A31/SetPlayerName.unity"
+    guid: 0d82d40a81afd14468c91fe72680dda3
+  - enabled: 1
+    path: "Assets/UI/Scene/\u9996\u9801&\u8D77\u59CB\u756B\u9762/Launcher.unity"
     guid: eb5dafe92c1d76a4dbf73ffb466a821d
   - enabled: 1
-    path: Assets/UI/Scene/Main.unity
+    path: "Assets/UI/Scene/\u9996\u9801&\u8D77\u59CB\u756B\u9762/Main.unity"
     guid: ac3543cc0621a8944a0b0d784d149696
   - enabled: 1
-    path: Assets/UI/Scene/Create&Join Room.unity
+    path: "Assets/UI/Scene/\u52A0\u5165&\u767C\u8D77\u5C0D\u6230/Create&Join Room.unity"
     guid: 768046c80dc97404fb53d5ecb2868979
   - enabled: 1
-    path: Assets/UI/Scene/Map Choosing.unity
-    guid: 34bc970320d5b8d458e5a59e0f8368e0
+    path: "Assets/UI/Scene/\u9078\u64C7\u6A21\u5F0F/SetMode.unity"
+    guid: e27a9e6c4f95e7d4b832182802c54092
   - enabled: 1
-    path: Assets/UI/Scene/LiverBuilding.unity
-    guid: b4b03e8f5523c1643ada7af6ce56110e
+    path: "Assets/UI/Scene/\u9078\u64C7\u95DC\u5361/MapChooseFor2.unity"
+    guid: 8052f1e12e5d02e419fcd1f7800554e7
   - enabled: 1
-    path: Assets/UI/Scene/Character Choosing.unity
-    guid: 0feed00024a547d4e995bdeeac8f53be
+    path: "Assets/UI/Scene/\u9078\u64C7\u95DC\u5361/MapChooseFor4.unity"
+    guid: 9059a201976dcec44b2b759374f4307f
   - enabled: 1
-    path: Assets/UI/Scene/Create Room.unity
-    guid: c0e20f655e78c784c88cd897c6c636e2
-  - enabled: 1
-    path: Assets/UI/Scene/ChracterChoosingForJoin.unity
-    guid: 57d6ee9c13a021a4b98c3f55b4ed6c6c
-  - enabled: 1
-    path: Assets/UI/Scene/Join Room.unity
+    path: "Assets/UI/Scene/\u52A0\u5165\u5C0D\u6230/Join Room.unity"
     guid: f85ffab8da1258940adf7b6260af98a0
   - enabled: 1
-    path: Assets/UI/Scene/Waiting Room.unity
+    path: "Assets/UI/Scene/\u7B49\u5F85\u5BA4/Waiting Room.unity"
     guid: 185430e37910a8349a67275e9297a24b
   - enabled: 1
-    path: Assets/UI/Scene/RoleIntro.unity
+    path: "Assets/UI/Scene/\u89D2\u8272\u4ECB\u7D39/RoleIntro.unity"
     guid: e6b0627ca79b7824db69deb645226148
   - enabled: 1
-    path: Assets/UI/Scene/GameIntro.unity
+    path: "Assets/UI/Scene/\u904A\u6232\u4ECB\u7D39/GameIntro.unity"
     guid: 7f41a58a2e34efc448fd51b20e253c50
   - enabled: 1
-    path: Assets/UI/Scene/Story.unity
+    path: "Assets/UI/Scene/\u6545\u4E8B/Story.unity"
     guid: 5be3ff0ba9c42404bb952675682619a1
   - enabled: 1
-    path: Assets/UI/Scene/Setting.unity
+    path: "Assets/UI/Scene/\u500B\u4EBA\u80CC\u5305/Bag.unity"
     guid: 0398f86f83952f645a3ba08a59e1784a
   - enabled: 1
     path: Assets/Game/Scene/4PlayerGame.unity
     guid: c68cbaf4b57ad6047ba64c82819e6393
   - enabled: 1
-    path: Assets/UI/Scene/Role Choose for 2.unity
+    path: "Assets/UI/Scene/\u9078\u64C7\u89D2\u8272/Role Choose for 2.unity"
     guid: b99a48bc68049824fb3fcb1d3ae78fd9
   - enabled: 1
-    path: Assets/UI/Scene/Role Choosing for 4.unity
+    path: "Assets/UI/Scene/\u9078\u64C7\u89D2\u8272/Role Choosing for 4.unity"
     guid: df2afa094a632c0479ca17a40412964e
   - enabled: 1
-    path: Assets/UI/Scene/Loading Animator.unity
+    path: "Assets/UI/Scene/\u904E\u5834\u52D5\u756B/Loading Animator.unity"
     guid: 35efb4f1122b7e54ab6d848236c33e0e
   - enabled: 1
-    path: Assets/UI/Scene/OpeningStoryForRepeat.unity
+    path: "Assets/UI/Scene/\u958B\u5834\u52D5\u756B/OpeningStoryForRepeat.unity"
     guid: 108f9f1f8ff49b240844306cad0d7ff9
   - enabled: 1
-    path: Assets/UI/Scene/WinOrLose.unity
+    path: "Assets/UI/Scene/\u8F38\u8D0F\u756B\u9762/WinOrLose.unity"
     guid: 826a6f1daf7343248b3439137581d553
   - enabled: 1
     path: Assets/Game/Scene/3PlayerGame.unity

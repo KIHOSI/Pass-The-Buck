@@ -51,3 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3d661b1f9dd4914eb73d042b8f07be6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EditImg: {fileID: 21300000, guid: b2999ec5d6681e042bd249f6b2d3f108, type: 3}
+  SubmitImg: {fileID: 21300000, guid: f0aa74cbbba74d347a361d0b75ff661c, type: 3}
+  inputField: {fileID: 0}
