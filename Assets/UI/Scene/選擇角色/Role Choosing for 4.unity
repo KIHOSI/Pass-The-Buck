@@ -388,7 +388,7 @@ Prefab:
     - target: {fileID: 114581455711232118, guid: 4afe38df5741cb54c9882a5972bee2a0,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114581455711232118, guid: 4afe38df5741cb54c9882a5972bee2a0,
         type: 2}
@@ -404,12 +404,12 @@ Prefab:
     - target: {fileID: 114581455711232118, guid: 4afe38df5741cb54c9882a5972bee2a0,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ClickButton
+      value: ClickChoose
       objectReference: {fileID: 0}
     - target: {fileID: 114581455711232118, guid: 4afe38df5741cb54c9882a5972bee2a0,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.UI.Button, UnityEngine.UI
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4afe38df5741cb54c9882a5972bee2a0, type: 2}
