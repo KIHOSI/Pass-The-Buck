@@ -982,10 +982,10 @@ MonoBehaviour:
     type: 3}
   RoleBack4ForPowerCut: {fileID: 21300000, guid: eef8e534c0b43274b9a540a93da0ebe2,
     type: 3}
-  Role1ForPowerCut: {fileID: 21300000, guid: 8572d488d6aa1854a8fda7a119812ecc, type: 3}
-  Role2ForPowerCut: {fileID: 21300000, guid: 8572d488d6aa1854a8fda7a119812ecc, type: 3}
-  Role3ForPowerCut: {fileID: 21300000, guid: 8572d488d6aa1854a8fda7a119812ecc, type: 3}
-  Role4ForPowerCut: {fileID: 21300000, guid: 8572d488d6aa1854a8fda7a119812ecc, type: 3}
+  Role1ForPowerCut: {fileID: 21300000, guid: c0482bc5b8f48684fa6c82a502aac58c, type: 3}
+  Role2ForPowerCut: {fileID: 21300000, guid: edb82d076eeefcd4085ece4e8d4b2da5, type: 3}
+  Role3ForPowerCut: {fileID: 21300000, guid: 77871f56aea2e9540bc84a3669c8b3d4, type: 3}
+  Role4ForPowerCut: {fileID: 21300000, guid: 7c53beb06b1dbdc4eb7a8341b07783cd, type: 3}
   Role1NameTx: {fileID: 1756101276}
   Role2NameTx: {fileID: 2142514888}
   Role3NameTx: {fileID: 1707530826}
@@ -1281,6 +1281,17 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114262572237623918, guid: 050b8d6e77d5f2a45a26abbc4b329b0e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 114236452533873858, guid: fe5e11d580984b84d95f575e382ca9f5,
+        type: 2}
+    - target: {fileID: 114262572237623918, guid: 050b8d6e77d5f2a45a26abbc4b329b0e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClickButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 050b8d6e77d5f2a45a26abbc4b329b0e, type: 2}

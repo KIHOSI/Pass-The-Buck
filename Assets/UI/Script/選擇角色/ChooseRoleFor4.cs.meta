@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: fabf96788a88c3442a6e83de8b478635
-timeCreated: 1503674660
+timeCreated: 1503715563
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
@@ -18,10 +18,10 @@ MonoImporter:
       type: 3}
   - RoleBack4ForPowerCut: {fileID: 21300000, guid: eef8e534c0b43274b9a540a93da0ebe2,
       type: 3}
-  - Role1ForPowerCut: {fileID: 21300000, guid: 8572d488d6aa1854a8fda7a119812ecc, type: 3}
-  - Role2ForPowerCut: {fileID: 21300000, guid: 8572d488d6aa1854a8fda7a119812ecc, type: 3}
-  - Role3ForPowerCut: {fileID: 21300000, guid: 8572d488d6aa1854a8fda7a119812ecc, type: 3}
-  - Role4ForPowerCut: {fileID: 21300000, guid: 8572d488d6aa1854a8fda7a119812ecc, type: 3}
+  - Role1ForPowerCut: {fileID: 21300000, guid: c0482bc5b8f48684fa6c82a502aac58c, type: 3}
+  - Role2ForPowerCut: {fileID: 21300000, guid: edb82d076eeefcd4085ece4e8d4b2da5, type: 3}
+  - Role3ForPowerCut: {fileID: 21300000, guid: 77871f56aea2e9540bc84a3669c8b3d4, type: 3}
+  - Role4ForPowerCut: {fileID: 21300000, guid: 7c53beb06b1dbdc4eb7a8341b07783cd, type: 3}
   - Role1NameTx: {instanceID: 0}
   - Role2NameTx: {instanceID: 0}
   - Role3NameTx: {instanceID: 0}
