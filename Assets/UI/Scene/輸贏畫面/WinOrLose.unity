@@ -624,6 +624,14 @@ MonoBehaviour:
   CryBlueRole2: {fileID: 21300000, guid: 10840a3514defcc49902bcb5e28ed497, type: 3}
   CryGreenRole1: {fileID: 21300000, guid: 1ee05634aa25aba45825bfb007312250, type: 3}
   CryGreenRole2: {fileID: 21300000, guid: e981f3c061453894ebbf4efef0e29e58, type: 3}
+  SmileRedRole: {fileID: 21300000, guid: 54b42c9ea6bbf3441b8d2f7e99918716, type: 3}
+  SmileYellowRole: {fileID: 21300000, guid: 032278fff428ae0498699bafd585aa1c, type: 3}
+  SmileGreenRole: {fileID: 21300000, guid: 317bf83b41dd72c4f9340ab38f9d240d, type: 3}
+  SmilePurpleRole: {fileID: 21300000, guid: c490695d1cdec8e49ad7a51b640cf8a5, type: 3}
+  CryRedRole: {fileID: 21300000, guid: e463f32e617de214e8a0623ac71ed1c5, type: 3}
+  CryYellowRole: {fileID: 21300000, guid: 7d85dc7ff3316ac4785c77e371181316, type: 3}
+  CryGreenRole: {fileID: 21300000, guid: 1ee05634aa25aba45825bfb007312250, type: 3}
+  CryPurpleRole: {fileID: 21300000, guid: e141bb199301833428744c76b319dde2, type: 3}
   LoseStatusBack: {fileID: 21300000, guid: af9bf35dd5fbee14d9b49657fabba851, type: 3}
   CrownImg: {fileID: 1152665939}
   WinOrLoseImg: {fileID: 489661548}
@@ -638,6 +646,7 @@ MonoBehaviour:
   money: 0
   exp: 0
   maxExp: 0
+  map: 
 --- !u!81 &1084933031
 AudioListener:
   m_ObjectHideFlags: 0

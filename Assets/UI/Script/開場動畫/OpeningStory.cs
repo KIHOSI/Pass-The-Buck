@@ -111,7 +111,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 				count++;
 				if (count == 20) 
 				{
-				   SceneManager.LoadScene("Launcher");
+				   SceneManager.LoadScene("SetPlayerName");
 				}
 			}
 		
