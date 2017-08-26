@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement; 
 
 
 namespace Com.MyProject.MyPassTheBuckGame
@@ -38,6 +39,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 			{
 				PhotonNetwork.playerName = value; 
 				PlayerPrefs.SetString(playerNamePrefKey,value);
+				SceneManager.LoadScene("Launcher");
 			}
 
 		}

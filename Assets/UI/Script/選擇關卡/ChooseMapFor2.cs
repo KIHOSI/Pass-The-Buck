@@ -39,7 +39,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 	  
 	  string Building1Tx = "第一個關卡尚未解鎖\n敬請期待!";
 	  string Building2Tx = "第二個關卡尚未解鎖\n敬請期待!";
-	  string Building3Tx = "經典中的經典\n一起體會平時開議會時的氛圍!";
+	  string Building3Tx = "經典中的經典\n一起體會平時開議會的氛圍!";
       string Building4Tx = "第四個關卡尚未解鎖\n敬請期待!";
 	  string Building5Tx = "第五個關卡尚未解鎖\n敬請期待!";
 
