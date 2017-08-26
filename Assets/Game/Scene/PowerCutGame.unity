@@ -194,11 +194,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 973616874}
         m_MethodName: sendPaperMessage
         m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 973616874}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 2
           m_FloatArgument: 0
@@ -818,11 +818,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 973616874}
         m_MethodName: sendPaperMessage
         m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 973616874}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1131,11 +1131,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 973616874}
         m_MethodName: sendPaperMessage
         m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 973616874}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
@@ -3410,14 +3410,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 910524963}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9873a537075f72d428c4d809a7cbd1f8, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f6f97438cfb0204c8ac31a8e219fd84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   paperPersonAllImage:
-  - {fileID: 21300000, guid: bb636337265e8a6488690c270b9664de, type: 3}
-  - {fileID: 21300000, guid: 7d91d1d76b6ec6b45be3628d8d07d342, type: 3}
   - {fileID: 21300000, guid: 317bf83b41dd72c4f9340ab38f9d240d, type: 3}
-  - {fileID: 21300000, guid: b406cfe39728c3c4aac420c16be657fa, type: 3}
+  - {fileID: 21300000, guid: 382b3ebe25342d2418eb6d77ebd433cc, type: 3}
+  - {fileID: 21300000, guid: 20ebce10336fc3042a3241803cd1184a, type: 3}
+  - {fileID: 21300000, guid: 370c6e9c21e95324f97ca65c9a604140, type: 3}
 --- !u!1 &914750803
 GameObject:
   m_ObjectHideFlags: 0
@@ -4738,24 +4738,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BallArray:
-  - {fileID: 1135349447412612, guid: 676e9f8a046a39e4da2dad8502f18d3e, type: 2}
-  - {fileID: 1062045054329312, guid: 8f1f7cd4bc4c00446937ca5f526b44a3, type: 2}
-  - {fileID: 1021903840438762, guid: 7dd2b03dfabf48a40b7c41bdb1b0ec02, type: 2}
-  - {fileID: 1300580352881238, guid: 8050920dfc5de474f9bdc27dde546abf, type: 2}
-  - {fileID: 1151099234503616, guid: aca142e80ccda704dae00912c1dfe02a, type: 2}
-  - {fileID: 1418422642788632, guid: 5698945cf2911dc4ea560307c6091272, type: 2}
-  - {fileID: 1638853389424876, guid: 9a57fbe4c168c7c448385277ba0a2573, type: 2}
-  - {fileID: 1533408535216362, guid: daea24cba2f158149ba2e89c7f16df56, type: 2}
-  - {fileID: 1618913545538688, guid: 55c64eb26f953604d8d8c401777ff3c2, type: 2}
-  - {fileID: 1922235246816190, guid: eb9b613e690bfd74fa3e988e987497c7, type: 2}
-  - {fileID: 1579959524106808, guid: a28c99d69da9ed24a9638702c982a774, type: 2}
-  - {fileID: 1163348963186256, guid: c8bb0ad909426fd4f9efb989da10b18b, type: 2}
-  - {fileID: 1300580352881238, guid: 8050920dfc5de474f9bdc27dde546abf, type: 2}
-  - {fileID: 1752367255269726, guid: 023993b5ecce605439eccd1e1f8126f6, type: 2}
-  - {fileID: 1287679322979192, guid: 6b3a0e198e5e06941b13866dd8cc7e71, type: 2}
-  - {fileID: 1662509812336596, guid: 2c9b5e809efa4524cbb307cc166fd1ea, type: 2}
-  - {fileID: 1871115237400372, guid: 133e02693e7758e468d86763ca9766d7, type: 2}
-  - {fileID: 1043377856907114, guid: 0cb03ba570d8ffe43812d87f5244efb8, type: 2}
+  - {fileID: 1449190601431260, guid: 0aba14571ff971448b2cf7f0c15378a0, type: 2}
+  - {fileID: 1811854209913998, guid: db2aa9e8a78e46a4e8b7fde580359710, type: 2}
+  - {fileID: 1641207730783838, guid: 9cad63c1d05f39e4baf6148aa9c50844, type: 2}
+  - {fileID: 1090606416288446, guid: 8aef441e88e097441a8d148c88712fe7, type: 2}
+  - {fileID: 1924459575750228, guid: a364cac24bc7d3b47965d02baf5a3db5, type: 2}
+  - {fileID: 1586336016671788, guid: 1ab0e46818c9bec4a8b7a92d79bbace1, type: 2}
+  - {fileID: 1133136984909300, guid: 2461159d4a8e240498e203a8603e2224, type: 2}
+  - {fileID: 1953757247498702, guid: 3ea0a2af6ba35644ca6d8a93669ac338, type: 2}
+  - {fileID: 1991020509780886, guid: 8721db912e1a7544f8d60b21f039ce4e, type: 2}
+  - {fileID: 1877777162918786, guid: 1cdd031383d4a4d408442fb1e154d165, type: 2}
+  - {fileID: 1093680401166490, guid: cf35b68fecbfbd54b8dad851ca77823d, type: 2}
+  - {fileID: 1741328084329754, guid: dfbf7979f4d6470498a3af93ff316404, type: 2}
   ItemArray:
   - {fileID: 1765187116463052, guid: 02c5e2657c01f7643bdb0fc2c71a054b, type: 2}
   - {fileID: 1231691690448264, guid: cf8b0c34b39e87e478325fdf05ecbc3f, type: 2}
@@ -6103,7 +6097,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1339415450
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6261,7 +6255,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 164.03, y: -5.696594}
+  m_AnchoredPosition: {x: 164.02998, y: -5.696594}
   m_SizeDelta: {x: 189.4, y: 60.4}
   m_Pivot: {x: 1, y: 0}
 --- !u!1 &1391849397
@@ -7735,8 +7729,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 58.399994, y: 38}
-  m_SizeDelta: {x: 131, y: 159}
+  m_AnchoredPosition: {x: 58.399994, y: 43.599976}
+  m_SizeDelta: {x: 124.4, y: 153.4}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1855596363
 MonoBehaviour:
@@ -7757,7 +7751,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b2cf9d74fb79d3244b605f12ce0c1596, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 77871f56aea2e9540bc84a3669c8b3d4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

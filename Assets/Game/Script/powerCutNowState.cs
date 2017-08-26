@@ -611,7 +611,7 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
         else if (collision.gameObject.CompareTag("麥克風"))
         {
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(itemMusic);
-            photonView.RPC("sendMicrophonMessage", PhotonTargets.All, (int)playerCode); //傳送此玩家吃到麥克風的訊息
+            photonView.RPC("sendMicrophoneMessage", PhotonTargets.All, (int)playerCode); //傳送此玩家吃到麥克風的訊息
             //goodMessage = role + "發表直播演說，\n獲得民眾支持";
             //photonView.RPC("sendGoodMessage", PhotonTargets.All, goodMessage); //第三個參數:傳送要顯示的話
 
@@ -736,8 +736,15 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
     [PunRPC]
     void sendBadMessage(string text) //傳遞好訊息
     {
-       // bombNoticeBoard.SetActive(false); //炸彈顯示關閉
+        // bombNoticeBoard.SetActive(false); //炸彈顯示關閉
         //goodNoticeBoard.SetActive(false);// 關閉好訊息顯示
+        microphoneNoticeBoard.SetActive(false); //關閉麥克風顯示
+        for (int i = 0; i < partyColorNoticeBoard.Length; i++) //把政黨相關訊息關閉
+        {
+            partyColorNoticeBoard[i].SetActive(false);
+            partyColorGoodText[i].SetActive(false);
+            partyColorBadText[i].SetActive(false);
+        }
         badNoticeBoard.SetActive(true); //開啟壞訊息顯示
         badNoticeBoardText.text = text;
         Invoke("badTimeCountDown", 3); //三秒便會關閉訊息
@@ -755,6 +762,7 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
     {
 
         //bombNoticeBoard.SetActive(false); //炸彈顯示關閉
+        microphoneNoticeBoard.SetActive(false); //麥克風訊息關閉
         badNoticeBoard.SetActive(false); //關閉壞訊息顯示
         for(int i = 0; i < partyColorNoticeBoard.Length; i++) //把政黨相關訊息關閉
         {
@@ -772,8 +780,8 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
     [PunRPC]
     void sendPartyBadMessage(int nowPartyColorNum) //傳遞好訊息
     {
-
         //bombNoticeBoard.SetActive(false); //炸彈顯示關閉
+        microphoneNoticeBoard.SetActive(false); //麥克風訊息關閉
         badNoticeBoard.SetActive(false); //關閉壞訊息顯示
         for (int i = 0; i < partyColorNoticeBoard.Length; i++) //把政黨相關訊息關閉
         {
@@ -929,7 +937,7 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
     void SetPaperOn1() //Player1
     {
         paper.SetActive(true); //開啟報紙
-        GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg>().ChangeImg1();
+        GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg_PowerCut>().ChangeImg1();
         Invoke("paperTimeCountDown", 2);
     }
 
@@ -937,7 +945,7 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
     void SetPaperOn2() //Player2
     {
         paper.SetActive(true); //開啟報紙
-        GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg>().ChangeImg2();
+        GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg_PowerCut>().ChangeImg2();
         Invoke("paperTimeCountDown", 2);
     }
 
@@ -945,7 +953,7 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
     void SetPaperOn3() //Player3
     {
         paper.SetActive(true); //開啟報紙
-        GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg>().ChangeImg3();
+        GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg_PowerCut>().ChangeImg3();
         Invoke("paperTimeCountDown", 2);
     }
 
@@ -953,7 +961,7 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
     void SetPaperOn4() //Player4
     {
         paper.SetActive(true); //開啟報紙
-        GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg>().ChangeImg4();
+        GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg_PowerCut>().ChangeImg4();
         Invoke("paperTimeCountDown", 2);
     }
 
@@ -1038,6 +1046,13 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
     [PunRPC]
     void sendMicrophoneMessage(int whichPlayer) //根據哪個player，顯示麥克風的訊息
     {
+        badNoticeBoard.SetActive(false); //關閉壞訊息顯示
+        for (int i = 0; i < partyColorNoticeBoard.Length; i++) //把政黨相關訊息關閉
+        {
+            partyColorNoticeBoard[i].SetActive(false);
+            partyColorGoodText[i].SetActive(false);
+            partyColorBadText[i].SetActive(false);
+        }
         microphoneNoticeBoard.SetActive(true);
         microphoneNoticeBoardText.text = microphoneMessage[whichPlayer];
         Invoke("microphoneTimeCountDown", 3);//三秒便會關閉訊息

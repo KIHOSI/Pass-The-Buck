@@ -727,7 +727,7 @@ public class twoPlayerNowState : Photon.PunBehaviour { //控制連線及背景co
     void SetPaperOn1() //Player1
     {
         paper.SetActive(true); //開啟報紙
-        GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg>().ChangeImg1();
+        GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg_Classic>().ChangeImg1();
         Invoke("paperTimeCountDown", 2);
     }
 
@@ -735,7 +735,7 @@ public class twoPlayerNowState : Photon.PunBehaviour { //控制連線及背景co
     void SetPaperOn2() //Player2
     {
         paper.SetActive(true); //開啟報紙
-        GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg>().ChangeImg2();
+        GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg_Classic>().ChangeImg2();
         Invoke("paperTimeCountDown", 2);
     }
 
@@ -743,7 +743,7 @@ public class twoPlayerNowState : Photon.PunBehaviour { //控制連線及背景co
     void SetPaperOn3() //Player3
     {
         paper.SetActive(true); //開啟報紙
-        GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg>().ChangeImg3();
+        GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg_Classic>().ChangeImg3();
         Invoke("paperTimeCountDown", 2);
     }
 
@@ -751,7 +751,7 @@ public class twoPlayerNowState : Photon.PunBehaviour { //控制連線及背景co
     void SetPaperOn4() //Player4
     {
         paper.SetActive(true); //開啟報紙
-        GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg>().ChangeImg4();
+        GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg_Classic>().ChangeImg4();
         Invoke("paperTimeCountDown", 2);
     }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ChangePaperPersonImg : MonoBehaviour {
+public class ChangePaperPersonImg_Classic: MonoBehaviour {
     Image paperPerson; //人物圖片
     //public Image[] paperPersonImage; //該Player的報紙按鈕圖片
     public Sprite[] paperPersonAllImage; //全部圖片
