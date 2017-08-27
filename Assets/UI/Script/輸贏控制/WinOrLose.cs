@@ -56,13 +56,14 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public float exp;
 		public float maxExp;
 		public string map;
+		public string currentlevel;
 
 
 
 		void Start () 
 		{
 
-			maxExp = GameObject.Find ("LevelBarTopImg").GetComponent<LevelBarForWl> ().MaxExp;
+			GetMaxExp ();
 			map = (string)PhotonNetwork.room.CustomProperties ["Map"];
 
 			if (map.Equals ("Classic"))
@@ -70,26 +71,110 @@ namespace Com.MyProject.MyPassTheBuckGame
 				//玩家的黨派贏了
 				if (GetWinColor ().Equals ((string)PhotonNetwork.player.CustomProperties ["PartyColor"]))
 				{
-					//改變外觀
-					RoleImg.sprite = GetWinPlayerRole ();
-					GetMoneyTx.text = "你在遊戲中獲得了" + PhotonNetwork.player.CustomProperties ["Money"].ToString () + "百萬";
-					MoneyPlusTx.text = "+20(百萬)";
-					LevelPlusTx.text = "+3";
+					
+					audiosre = GameObject.Find ("GameWin").GetComponent<AudioSource> ();
+					audiosre.Play ();
 
-					//設定錢錢
-					money = PlayerPrefs.GetInt ("PlayerMoney") + 20;
-					PlayerPrefs.SetInt ("PlayerMoney", money);
+					currentlevel = PlayerPrefs.GetString ("PlayerLevel");
 
-					//設定經驗值
-					exp = PlayerPrefs.GetFloat ("PlayerExp") + 3;
-					PlayerPrefs.SetFloat ("PlayerExp", exp);
+					//稱號是新進議員
+					if (currentlevel.Equals("1") || currentlevel.Equals("2"))
+					{
+						Debug.Log ("我有進來!");
+						//改變外觀
+						RoleImg.sprite = GetWinPlayerRole ();
+						GetMoneyTx.text = "你在遊戲中獲得了" + PhotonNetwork.player.CustomProperties ["Money"].ToString () + "百萬";
+						MoneyPlusTx.text = "+20(百萬)";
+						LevelPlusTx.text = "+3";
+
+						//設定錢錢
+						money = PlayerPrefs.GetInt ("PlayerMoney") + 20;
+						PlayerPrefs.SetInt ("PlayerMoney", money);
+
+						//設定經驗值
+						exp = PlayerPrefs.GetFloat ("PlayerExp") + 3;
+						PlayerPrefs.SetFloat ("PlayerExp", exp);
+					}
+					//稱號是地方議員，每場錢錢額外加5百萬
+					else if (currentlevel.Equals("3") || currentlevel.Equals("4") || currentlevel.Equals("5"))
+					{
+						//改變外觀
+						RoleImg.sprite = GetWinPlayerRole ();
+						GetMoneyTx.text = "你在遊戲中獲得了" + PhotonNetwork.player.CustomProperties ["Money"].ToString () + "百萬";
+						MoneyPlusTx.text = "+25(百萬)";
+						LevelPlusTx.text = "+3";
+
+						//設定錢錢
+						money = PlayerPrefs.GetInt ("PlayerMoney") + 25;
+						PlayerPrefs.SetInt ("PlayerMoney", money);
+
+						//設定經驗值
+						exp = PlayerPrefs.GetFloat ("PlayerExp") + 3;
+						PlayerPrefs.SetFloat ("PlayerExp", exp);
+					}
+					//稱號是立法委員，每場錢錢額外加15百萬
+					else if (currentlevel.Equals("6") || currentlevel.Equals("7") || currentlevel.Equals("8"))
+					{
+						//改變外觀
+						RoleImg.sprite = GetWinPlayerRole ();
+						GetMoneyTx.text = "你在遊戲中獲得了" + PhotonNetwork.player.CustomProperties ["Money"].ToString () + "百萬";
+						MoneyPlusTx.text = "+35(百萬)";
+						LevelPlusTx.text = "+3";
+
+						//設定錢錢
+						money = PlayerPrefs.GetInt ("PlayerMoney") + 35;
+						PlayerPrefs.SetInt ("PlayerMoney", money);
+
+						//設定經驗值
+						exp = PlayerPrefs.GetFloat ("PlayerExp") + 3;
+						PlayerPrefs.SetFloat ("PlayerExp", exp);
+					}
+					//稱號是立法院長，每場錢錢額外加25百萬
+					else if (currentlevel.Equals("9") || currentlevel.Equals("10") || currentlevel.Equals("11"))
+					{
+						//改變外觀
+						RoleImg.sprite = GetWinPlayerRole ();
+						GetMoneyTx.text = "你在遊戲中獲得了" + PhotonNetwork.player.CustomProperties ["Money"].ToString () + "百萬";
+						MoneyPlusTx.text = "+45(百萬)";
+						LevelPlusTx.text = "+3";
+
+						//設定錢錢
+						money = PlayerPrefs.GetInt ("PlayerMoney") + 45;
+						PlayerPrefs.SetInt ("PlayerMoney", money);
+
+						//設定經驗值
+						exp = PlayerPrefs.GetFloat ("PlayerExp") + 3;
+						PlayerPrefs.SetFloat ("PlayerExp", exp);
+					}
+					//稱號是總統，每場錢錢額外加50百萬
+					else if (currentlevel.Equals("12"))
+					{
+						//改變外觀
+						RoleImg.sprite = GetWinPlayerRole ();
+						GetMoneyTx.text = "你在遊戲中獲得了" + PhotonNetwork.player.CustomProperties ["Money"].ToString () + "百萬";
+						MoneyPlusTx.text = "+70(百萬)";
+						LevelPlusTx.text = "+3";
+
+						//設定錢錢
+						money = PlayerPrefs.GetInt ("PlayerMoney") + 70;
+						PlayerPrefs.SetInt ("PlayerMoney", money);
+
+						//設定經驗值
+						exp = PlayerPrefs.GetFloat ("PlayerExp") + 3;
+						PlayerPrefs.SetFloat ("PlayerExp", exp);
+					}
+
 
 					//加完後的經驗值已滿
-					if (exp >= maxExp) {
-						//重設level
-						PlayerPrefs.SetString ("PlayerLevel", (int.Parse (PlayerPrefs.GetString ("PlayerLevel")) + 1).ToString ());
-						//重設經驗值
-						PlayerPrefs.SetFloat ("PlayerExp", exp - maxExp);
+				    if (exp >= maxExp) 
+					{
+						int level = int.Parse (PlayerPrefs.GetString ("PlayerLevel"));
+
+						if ( level < 12)
+						{
+							//重設level
+							PlayerPrefs.SetString ("PlayerLevel", (int.Parse (PlayerPrefs.GetString ("PlayerLevel")) + 1).ToString ());
+						}
 
 					}
 
@@ -99,7 +184,12 @@ namespace Com.MyProject.MyPassTheBuckGame
 				else if (!GetWinColor ().Equals ((string)PhotonNetwork.player.CustomProperties ["PartyColor"]))
 				{
 					//雙方平手
-					if (GetWinColor ().Equals ("same")) {
+					if (GetWinColor ().Equals ("same")) 
+					{
+
+						audiosre = GameObject.Find ("GameLose").GetComponent<AudioSource> ();
+						audiosre.Play ();
+
 						RoleImg.sprite = GetWinPlayerRole ();
 						CrownImg.color = new Color32 (255, 255, 255, 0);
 						GetMoneyTx.text = "";
@@ -116,6 +206,9 @@ namespace Com.MyProject.MyPassTheBuckGame
 					//玩家的黨派輸了
 					else 
 					{
+						audiosre = GameObject.Find ("GameLose").GetComponent<AudioSource> ();
+						audiosre.Play ();
+
 						//改變外觀
 						RoleImg.sprite = GetLosePlayerRole ();
 						GetMoneyTx.text = "你在遊戲中獲得了" + PhotonNetwork.player.CustomProperties ["Money"].ToString () + "百萬";
@@ -135,11 +228,16 @@ namespace Com.MyProject.MyPassTheBuckGame
 						PlayerPrefs.SetFloat ("PlayerExp", exp);
 
 						//加完後的經驗值已滿
-						if (exp >= maxExp) {
-							//重設level
-							PlayerPrefs.SetString ("PlayerLevel", (int.Parse (PlayerPrefs.GetString ("PlayerLevel")) + 1).ToString ());
-							//重設經驗值
-							PlayerPrefs.SetFloat ("PlayerExp", exp - maxExp);
+						if (exp >= maxExp) 
+						{
+							
+							int level = int.Parse (PlayerPrefs.GetString ("PlayerLevel"));
+
+							if ( level < 12)
+							{
+								//重設level
+								PlayerPrefs.SetString ("PlayerLevel", (int.Parse (PlayerPrefs.GetString ("PlayerLevel")) + 1).ToString ());
+							}
 						}
 
 						PhotonNetwork.LeaveRoom ();
@@ -153,28 +251,106 @@ namespace Com.MyProject.MyPassTheBuckGame
 				//玩家贏了
 				if (GetWinPlayerForPowerCut ().Equals (PhotonNetwork.player)) 
 				{
-					//改變外觀
-					RoleImg.sprite = GetWinPlayerRoleForPowerCut ();
-					GetMoneyTx.text = "你在遊戲中獲得了" + PhotonNetwork.player.CustomProperties ["Money"].ToString () + "百萬";
-					MoneyPlusTx.text = "+20(百萬)";
-					LevelPlusTx.text = "+3";
+					audiosre = GameObject.Find ("GameWin").GetComponent<AudioSource> ();
+					audiosre.Play ();
 
-					//設定錢錢
-					money = PlayerPrefs.GetInt ("PlayerMoney") + 20;
-					PlayerPrefs.SetInt ("PlayerMoney", money);
+					currentlevel = (string)PlayerPrefs.GetString ("PlayerLevel");
 
-					//設定經驗值
-					exp = PlayerPrefs.GetFloat ("PlayerExp") + 3;
-					PlayerPrefs.SetFloat ("PlayerExp", exp);
+					if (currentlevel.Equals("1") || currentlevel.Equals("2"))
+					{
+						//改變外觀
+						RoleImg.sprite = GetWinPlayerRoleForPowerCut ();
+						GetMoneyTx.text = "你在遊戲中獲得了" + PhotonNetwork.player.CustomProperties ["Money"].ToString () + "百萬";
+						MoneyPlusTx.text = "+20(百萬)";
+						LevelPlusTx.text = "+3";
+
+						//設定錢錢
+						money = PlayerPrefs.GetInt ("PlayerMoney") + 20;
+						PlayerPrefs.SetInt ("PlayerMoney", money);
+
+						//設定經驗值
+						exp = PlayerPrefs.GetFloat ("PlayerExp") + 3;
+						PlayerPrefs.SetFloat ("PlayerExp", exp);
+					}
+					else if (currentlevel.Equals("3") || currentlevel.Equals("4") || currentlevel.Equals("5"))
+					{
+						//改變外觀
+						RoleImg.sprite = GetWinPlayerRoleForPowerCut ();
+						GetMoneyTx.text = "你在遊戲中獲得了" + PhotonNetwork.player.CustomProperties ["Money"].ToString () + "百萬";
+						MoneyPlusTx.text = "+25(百萬)";
+						LevelPlusTx.text = "+3";
+
+						//設定錢錢
+						money = PlayerPrefs.GetInt ("PlayerMoney") + 25;
+						PlayerPrefs.SetInt ("PlayerMoney", money);
+
+						//設定經驗值
+						exp = PlayerPrefs.GetFloat ("PlayerExp") + 3;
+						PlayerPrefs.SetFloat ("PlayerExp", exp);
+
+					}
+					else if (currentlevel.Equals("6") || currentlevel.Equals("7") || currentlevel.Equals("8"))
+					{
+						//改變外觀
+						RoleImg.sprite = GetWinPlayerRoleForPowerCut ();
+						GetMoneyTx.text = "你在遊戲中獲得了" + PhotonNetwork.player.CustomProperties ["Money"].ToString () + "百萬";
+						MoneyPlusTx.text = "+35(百萬)";
+						LevelPlusTx.text = "+3";
+
+						//設定錢錢
+						money = PlayerPrefs.GetInt ("PlayerMoney") + 35;
+						PlayerPrefs.SetInt ("PlayerMoney", money);
+
+						//設定經驗值
+						exp = PlayerPrefs.GetFloat ("PlayerExp") + 3;
+						PlayerPrefs.SetFloat ("PlayerExp", exp);
+
+					}
+					else if (currentlevel.Equals("9") || currentlevel.Equals("10") || currentlevel.Equals("11"))
+					{
+						//改變外觀
+						RoleImg.sprite = GetWinPlayerRoleForPowerCut ();
+						GetMoneyTx.text = "你在遊戲中獲得了" + PhotonNetwork.player.CustomProperties ["Money"].ToString () + "百萬";
+						MoneyPlusTx.text = "+45(百萬)";
+						LevelPlusTx.text = "+3";
+
+						//設定錢錢
+						money = PlayerPrefs.GetInt ("PlayerMoney") + 45;
+						PlayerPrefs.SetInt ("PlayerMoney", money);
+
+						//設定經驗值
+						exp = PlayerPrefs.GetFloat ("PlayerExp") + 3;
+						PlayerPrefs.SetFloat ("PlayerExp", exp);
+
+					}
+					else if (currentlevel.Equals("12"))
+					{
+						//改變外觀
+						RoleImg.sprite = GetWinPlayerRoleForPowerCut ();
+						GetMoneyTx.text = "你在遊戲中獲得了" + PhotonNetwork.player.CustomProperties ["Money"].ToString () + "百萬";
+						MoneyPlusTx.text = "+70(百萬)";
+						LevelPlusTx.text = "+3";
+
+						//設定錢錢
+						money = PlayerPrefs.GetInt ("PlayerMoney") + 70;
+						PlayerPrefs.SetInt ("PlayerMoney", money);
+
+						//設定經驗值
+						exp = PlayerPrefs.GetFloat ("PlayerExp") + 3;
+						PlayerPrefs.SetFloat ("PlayerExp", exp);
+					}
+
 
 					//加完後的經驗值已滿
 					if (exp >= maxExp)
 					{
-						//重設level
-						PlayerPrefs.SetString ("PlayerLevel", (int.Parse (PlayerPrefs.GetString ("PlayerLevel")) + 1).ToString ());
-						//重設經驗值
-						PlayerPrefs.SetFloat ("PlayerExp", exp - maxExp);
+						int level = int.Parse (PlayerPrefs.GetString ("PlayerLevel"));
 
+						if ( level < 12)
+						{
+							//重設level
+							PlayerPrefs.SetString ("PlayerLevel", (int.Parse (PlayerPrefs.GetString ("PlayerLevel")) + 1).ToString ());
+						}
 					}
 
 					PhotonNetwork.LeaveRoom ();
@@ -182,6 +358,9 @@ namespace Com.MyProject.MyPassTheBuckGame
 				} 
 				else if (!GetWinPlayerForPowerCut ().Equals (PhotonNetwork.player))
 				{
+					
+					    audiosre = GameObject.Find ("GameLose").GetComponent<AudioSource> ();
+					    audiosre.Play ();
 				
 						//改變外觀
 					    RoleImg.sprite = GetLosePlayerRoleForPowerCut ();
@@ -204,10 +383,13 @@ namespace Com.MyProject.MyPassTheBuckGame
 						//加完後的經驗值已滿
 						if (exp >= maxExp)
 					    {
-							//重設level
-							PlayerPrefs.SetString ("PlayerLevel", (int.Parse (PlayerPrefs.GetString ("PlayerLevel")) + 1).ToString ());
-							//重設經驗值
-							PlayerPrefs.SetFloat ("PlayerExp", exp - maxExp);
+						   int level = int.Parse (PlayerPrefs.GetString ("PlayerLevel"));
+
+						   if ( level < 12)
+						  {
+							 //重設level
+							 PlayerPrefs.SetString ("PlayerLevel", (int.Parse (PlayerPrefs.GetString ("PlayerLevel")) + 1).ToString ());
+						  }
 						}
 
 						PhotonNetwork.LeaveRoom ();
@@ -238,6 +420,61 @@ namespace Com.MyProject.MyPassTheBuckGame
 					RoleTalkTx.text = "下次繼續努力!";
 				}
 
+			}
+		}
+
+
+		public void GetMaxExp()
+		{
+			string currentLevel = PlayerPrefs.GetString ("PlayerLevel");
+
+			if (currentLevel == "1")
+			{
+				maxExp = 15;
+			} 
+			else if (currentLevel == "2") 
+			{
+				maxExp = 25;
+			}
+			else if (currentLevel == "3")
+			{
+				maxExp = 40;
+			}
+			else if (currentLevel == "4")
+			{
+				maxExp = 50;
+			}
+			else if (currentLevel == "5")
+			{
+				maxExp = 60;
+			}
+			else if (currentLevel == "6")
+			{
+				maxExp = 75;
+			}
+			else if (currentLevel == "7")
+			{
+				maxExp = 85;
+			}
+			else if (currentLevel == "8")
+			{
+				maxExp = 95;
+			}
+			else if (currentLevel == "9")
+			{
+				maxExp = 110;
+			}
+			else if (currentLevel == "10")
+			{
+				maxExp = 120;
+			}
+			else if (currentLevel == "11")
+			{
+				maxExp = 130;
+			}
+			else if (currentLevel == "12")
+			{
+				maxExp = 145;
 			}
 		}
 			
@@ -418,12 +655,14 @@ namespace Com.MyProject.MyPassTheBuckGame
 			if (PhotonNetwork.isMasterClient) 
 			{
 				hash.Add("ClickStart", null);
+				hash.Add("Map", null);
 			}
 				
 			PhotonNetwork.player.SetCustomProperties(hash); 
 
 			audiosre = GameObject.Find ("BackGroundMusic").GetComponent<AudioSource> ();
 			audiosre.Play ();
+			PhotonNetwork.LeaveRoom ();
 			SceneManager.LoadScene ("Main");
 		}
 	}

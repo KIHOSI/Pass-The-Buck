@@ -48,6 +48,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public void SetMaxExp()
 		{
 			currentLevel = PlayerPrefs.GetString ("PlayerLevel");
+			int level = int.Parse (PlayerPrefs.GetString ("PlayerLevel"));
 
 			if (currentLevel == "1")
 			{
@@ -60,6 +61,42 @@ namespace Com.MyProject.MyPassTheBuckGame
 			else if (currentLevel == "3")
 			{
 				MaxExp = 40;
+			}
+			else if (currentLevel == "4")
+			{
+				MaxExp = 50;
+			}
+			else if (currentLevel == "5")
+			{
+				MaxExp = 60;
+			}
+			else if (currentLevel == "6")
+			{
+				MaxExp = 75;
+			}
+			else if (currentLevel == "7")
+			{
+				MaxExp = 85;
+			}
+			else if (currentLevel == "8")
+			{
+				MaxExp = 95;
+			}
+			else if (currentLevel == "9")
+			{
+				MaxExp = 110;
+			}
+			else if (currentLevel == "10")
+			{
+				MaxExp = 120;
+			}
+			else if (currentLevel == "11")
+			{
+				MaxExp = 130;
+			}
+			else if ( level >= 12 )
+			{
+				MaxExp = 145;
 			}
 		}
 

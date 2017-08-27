@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement; 
 using UnityEngine.UI;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 
 namespace Com.MyProject.MyPassTheBuckGame
@@ -12,6 +13,8 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 		public PhotonLogLevel Loglevel = PhotonLogLevel.Informational;
 		public GameObject audio;
+		public Text WelcomeTx;
+		public Hashtable hash;
 
 		//設定遊戲版本
 		string _gameVersion = "1";
@@ -30,6 +33,13 @@ namespace Com.MyProject.MyPassTheBuckGame
 			
 		void Start()
 		{
+			PhotonNetwork.player.NickName = PlayerPrefs.GetString ("PlayerName");
+
+			hash = new Hashtable();
+			hash.Add("PartyColor", null);
+			hash.Add ("Role",null);
+			PhotonNetwork.player.SetCustomProperties(hash); 
+
 			DontDestroyOnLoad(audio);
 		}
 			
@@ -154,7 +164,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 			GameObject.Find ("PlayBt").GetComponent<Image> ().color = Color.white;
 			GameObject.Find ("PlayBt").GetComponentInChildren<Text>().text = "開始遊戲";
 			GameObject.Find ("PlayBt").GetComponentInChildren<Text> ().fontSize = 20;
-			onTips("無法與伺服器連線"+"\n"+"請確認是否已開啟連線");
+			GameObject.Find ("WelcomeTx").GetComponentInChildren<Text> ().text = "請確認是否連線喔!";
 		}
 
 

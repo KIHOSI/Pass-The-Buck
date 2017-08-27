@@ -50,6 +50,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public void SetMaxExp()
 		{
 			currentLevel = PlayerPrefs.GetString ("PlayerLevel");
+			int level = int.Parse (PlayerPrefs.GetString ("PlayerLevel"));
 
 			if (currentLevel == "1")
 			{
@@ -60,15 +61,70 @@ namespace Com.MyProject.MyPassTheBuckGame
 			else if (currentLevel == "2") 
 			{
 				MaxExp = 25;
-				title = "地方議員";
+				title = "新進議員";
 				PlayerPrefs.SetString(playerTitlePrefKey,title);
 			}
 			else if (currentLevel == "3")
 			{
 				MaxExp = 40;
+				title = "地方議員";
+				PlayerPrefs.SetString(playerTitlePrefKey,title);
+			}
+			else if (currentLevel == "4")
+			{
+				MaxExp = 50;
+				title = "地方議員";
+				PlayerPrefs.SetString(playerTitlePrefKey,title);
+			}
+			else if (currentLevel == "5")
+			{
+				MaxExp = 60;
+				title = "地方議員";
+				PlayerPrefs.SetString(playerTitlePrefKey,title);
+			}
+			else if (currentLevel == "6")
+			{
+				MaxExp = 75;
 				title = "立法委員";
 				PlayerPrefs.SetString(playerTitlePrefKey,title);
 			}
+			else if (currentLevel == "7")
+			{
+				MaxExp = 85;
+				title = "立法委員";
+				PlayerPrefs.SetString(playerTitlePrefKey,title);
+			}
+			else if (currentLevel == "8")
+			{
+				MaxExp = 95;
+				title = "立法委員";
+				PlayerPrefs.SetString(playerTitlePrefKey,title);
+			}
+			else if (currentLevel == "9")
+			{
+				MaxExp = 110;
+				title = "立法院長";
+				PlayerPrefs.SetString(playerTitlePrefKey,title);
+			}
+			else if (currentLevel == "10")
+			{
+				MaxExp = 120;
+				title = "立法院長";
+				PlayerPrefs.SetString(playerTitlePrefKey,title);
+			}
+			else if (currentLevel == "11")
+			{
+				MaxExp = 130;
+				title = "立法院長";
+				PlayerPrefs.SetString(playerTitlePrefKey,title);
+			}
+			else if ( level >= 12 )
+			{
+				MaxExp = 145;
+				title = "總統";
+				PlayerPrefs.SetString(playerTitlePrefKey,title);
+			}
+
 		}
 
 	}
