@@ -1075,20 +1075,29 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
             {
                 if (!obj.CompareTag("" + ballColor[partyColorNum])) //如果不是跟同政黨色，則轉色
                 {
-                    int ballIndex = 0; //存取該黑球的index
+                    //int ballIndex = 0; //存取該黑球的index
                     Vector3 ballPosition = obj.transform.position; //存取該黑球的位置
-                    for (int i = 0; i < allArray.Length; i++) //記得排好順序
+                    int newBallIndex = 0; //先預設為紅1
+                    //先判斷要轉成哪種顏色的球
+                    if (partyColorNum == 0) //綠
                     {
-                        if (obj.name == allArray[i].name + "(Clone)")
-                        {
-                            ballIndex = i; //存取黑球在此陣列的index
-                            break;
-                        }
+                        newBallIndex = Random.Range(0, 3); //隨機產生0到2的數字
+                    }
+                    else if(partyColorNum == 1) //紫
+                    {
+                        newBallIndex = Random.Range(3, 6); //隨機產生3到5的數字
+                    }
+                    else if(partyColorNum == 2) //紅
+                    {
+                        newBallIndex = Random.Range(6, 9); //隨機產生6到8的數字
+                    }
+                    else if(partyColorNum == 3) //黃
+                    {
+                        newBallIndex = Random.Range(9, 12); //隨機產生9到11的數字
                     }
                     Destroy(obj); //刪除此黑球
-                    int newBallIndex = 0; //先預設為TPP-金
-                    GameObject goldBall = Instantiate(allArray[newBallIndex], ballPosition, new Quaternion(0, 0, 0, 0)); //建立相對應的金球
-                    goldBall.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -1); //不知道速度要指派怎樣，都往下好ㄌ
+                    GameObject newBall = Instantiate(allArray[newBallIndex], ballPosition, new Quaternion(0, 0, 0, 0)); //建立相對應的金球
+                    newBall.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -1); //不知道速度要指派怎樣，都往下好ㄌ
                 }
             }
         }        
