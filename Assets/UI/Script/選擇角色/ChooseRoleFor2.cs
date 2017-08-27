@@ -329,13 +329,14 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 		public override void OnDisconnectedFromPhoton()
 		{
+			PhotonNetwork.LeaveRoom ();
 			SceneManager.LoadScene("Main");
 		}
 
 		public override void OnPhotonPlayerDisconnected(PhotonPlayer otherPlayer)
 		{
-			SceneManager.LoadScene("Main");
 			PhotonNetwork.LeaveRoom ();
+			SceneManager.LoadScene("Main");
 		}
 
 

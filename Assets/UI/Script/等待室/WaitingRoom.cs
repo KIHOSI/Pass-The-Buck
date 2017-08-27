@@ -34,7 +34,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 		public void Start () 
 		{
-			
+
 			if (PhotonNetwork.isMasterClient)
 			{
 				map = PlayerPrefs.GetString ("PlayerMap");
@@ -191,6 +191,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 		public override void OnDisconnectedFromPhoton()
 		{
+			PhotonNetwork.LeaveRoom ();
 			Debug.LogWarning("DemoAnimator/Launcher: OnDisconnectedFromPhoton() was called by PUN");
 			SceneManager.LoadScene("Main");
 		}
