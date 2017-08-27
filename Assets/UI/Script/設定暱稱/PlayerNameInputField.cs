@@ -37,7 +37,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 			}
 			else 
 			{
-				PhotonNetwork.playerName = value; 
+				PhotonNetwork.player.NickName = value; 
 				PlayerPrefs.SetString(playerNamePrefKey,value);
 				SceneManager.LoadScene("Launcher");
 			}
@@ -59,7 +59,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 			else if (BtSp == SubmitImg) 
 			{
 				string value = inputField.text;
-				PhotonNetwork.playerName = value; 
+				PhotonNetwork.player.NickName = value; 
 				PlayerPrefs.SetString(playerNamePrefKey,value);
 
 				inputField.interactable = false;

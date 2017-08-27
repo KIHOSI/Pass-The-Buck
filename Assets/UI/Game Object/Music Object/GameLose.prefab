@@ -9,51 +9,51 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1776445796906920}
+  m_RootGameObject: {fileID: 1447965799618150}
   m_IsPrefabParent: 1
---- !u!1 &1776445796906920
+--- !u!1 &1447965799618150
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4224275982904818}
-  - component: {fileID: 82254782691680476}
+  - component: {fileID: 4591564105383126}
+  - component: {fileID: 82861800886768290}
   m_Layer: 0
-  m_Name: BackGroundMusic
+  m_Name: GameLose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4224275982904818
+--- !u!4 &4591564105383126
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1776445796906920}
+  m_GameObject: {fileID: 1447965799618150}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 290.65402, y: 98.86286, z: 0}
+  m_LocalPosition: {x: 446.5479, y: 434.14236, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &82254782691680476
+--- !u!82 &82861800886768290
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1776445796906920}
+  m_GameObject: {fileID: 1447965799618150}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0a0cafed1a95d4b4b91ef08ce9e9b4e2, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: e7a830d8e2373ce48a2a02ca82ae3618, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
