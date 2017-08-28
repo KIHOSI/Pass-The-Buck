@@ -43,7 +43,22 @@ EditorBuildSettings:
     guid: e6b0627ca79b7824db69deb645226148
   - enabled: 1
     path: "Assets/UI/Scene/\u904A\u6232\u4ECB\u7D39/GameIntro.unity"
+    guid: 26e7bef5e9d8b234d90cfa1f8b885ed7
+  - enabled: 1
+    path: "Assets/UI/Scene/\u904A\u6232\u4ECB\u7D39/Map Intro.unity"
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: "Assets/UI/Scene/\u904A\u6232\u4ECB\u7D39/Classic Intro.unity"
     guid: 7f41a58a2e34efc448fd51b20e253c50
+  - enabled: 1
+    path: "Assets/UI/Scene/\u904A\u6232\u4ECB\u7D39/PowerCut Intro.unity"
+    guid: fe2408d9b494c1e4299e54bb451b5ec5
+  - enabled: 1
+    path: "Assets/UI/Scene/\u904A\u6232\u4ECB\u7D39/Layout Intro.unity"
+    guid: d290649c8e48b6d4e98bf0b6cf303b69
+  - enabled: 1
+    path: "Assets/UI/Scene/\u904A\u6232\u4ECB\u7D39/Level Intro.unity"
+    guid: e2be6fc173f30cc4e83bed21c63466a4
   - enabled: 1
     path: "Assets/UI/Scene/\u6545\u4E8B/Story.unity"
     guid: 5be3ff0ba9c42404bb952675682619a1
