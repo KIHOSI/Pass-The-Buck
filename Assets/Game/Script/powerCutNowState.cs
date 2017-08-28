@@ -634,7 +634,7 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
         }
         
         //每次金錢變動時，來檢查金錢總額
-        //identificateWinPlayer();
+        identificateWinPlayer();
         Destroy(collision.gameObject); //把碰觸到的球刪掉
     }
 
@@ -660,6 +660,12 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
 
     void identificateWinPlayer() //判斷哪個玩家是最多錢
     {
+        PlayerList = new List<PhotonPlayer>();
+        PlayerList.Add(PhotonNetwork.masterClient); //1
+        PlayerList.Add(PhotonNetwork.masterClient.GetNext()); //2
+        PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext()); //3
+        PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext().GetNext()); //4
+
         int winMoney = playerMoney[0];//儲存目前最大的錢(預設為第一個player的Money
         //int winPlayerIndex = 0;//儲存目前的贏家(預設為第一個人)
         for(int i = 1; i < playerMoney.Length; i++)
@@ -669,6 +675,15 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
                 winMoney = playerMoney[i];
                 winPlayerIndex = i+1; 
             }
+        }
+
+        if(player == PlayerList[winPlayerIndex-1]) //把閃電按鈕打開
+        { 
+            bombObj.SetActive(true);
+        }
+        else //把閃電按鈕關閉
+        {
+            bombObj.SetActive(false);
         }
     }
     #region 人物表情
@@ -989,7 +1004,7 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
             }
             setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
             identificatePlayerMoney();
-            //identificateWinPlayer();
+            identificateWinPlayer();
         }
     }
 
@@ -1006,7 +1021,7 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
             }
             setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
             identificatePlayerMoney();
-            //identificateWinPlayer();
+            identificateWinPlayer();
         }
     }
 
@@ -1023,7 +1038,7 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
             }
             setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
             identificatePlayerMoney();
-            //identificateWinPlayer();
+            identificateWinPlayer();
         }
     }
 
@@ -1040,7 +1055,7 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
             }
             setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
             identificatePlayerMoney();
-            //identificateWinPlayer();
+            identificateWinPlayer();
         }
     }
 

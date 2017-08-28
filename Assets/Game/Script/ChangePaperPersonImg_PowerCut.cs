@@ -35,19 +35,19 @@ public class ChangePaperPersonImg_PowerCut : MonoBehaviour {
     }*/
 
     //直接改變人物圖片
-    public void ChangeImg1() //吳指癢
+    public void ChangeImg1() //蔡中聞
     {
         paperPerson.sprite = paperPersonAllImage[0];
     }
-    public void ChangeImg2() //洪咻柱
+    public void ChangeImg2() //承包商
     {
         paperPerson.sprite = paperPersonAllImage[1];
     }
-    public void ChangeImg3() //蔡中聞
+    public void ChangeImg3() //陳金德
     {
         paperPerson.sprite = paperPersonAllImage[2];
     }
-    public void ChangeImg4() //蘇嘎拳
+    public void ChangeImg4() //朱文成
     {
         paperPerson.sprite = paperPersonAllImage[3];
     }
