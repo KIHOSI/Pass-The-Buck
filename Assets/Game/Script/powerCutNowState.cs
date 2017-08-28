@@ -684,6 +684,7 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
         else //把閃電按鈕關閉
         {
             bombObj.SetActive(false);
+            forbiddenObj.SetActive(false);
         }
     }
     #region 人物表情

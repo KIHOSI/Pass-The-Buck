@@ -39,7 +39,8 @@ public class GenerateFlashing : MonoBehaviour {
     [PunRPC]
     void sendPowerCutEffect(string getColor) //傳送停電效果
     {
-        Debug.Log("getColor");
+        Debug.Log("getColor:"+getColor);
+        Debug.Log("partyColor:" + partyColor);
         if (partyColor != getColor) //如果是不同政黨，才要被停電
         {
             powerCutPanel.SetActive(true);
