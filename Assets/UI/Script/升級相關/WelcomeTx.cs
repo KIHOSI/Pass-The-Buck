@@ -13,7 +13,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 	  void Start () 
 	  {
 		name = PlayerPrefs.GetString ("PlayerName");
-		this.GetComponent<Text> ().text = "嗨~" + name + " ◕‿◕";
+		this.GetComponent<Text> ().text = "嗨~" + name + " o(^▽^)o";
 	  }
 
     }
