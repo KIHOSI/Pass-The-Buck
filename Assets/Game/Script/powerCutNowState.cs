@@ -26,8 +26,7 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
 
     //執政
     public GameObject winLogo; //中選logo
-                               //public int winColor = 0; //判斷現在是誰執政，0:預設、1:綠、2:藍
-    public int winPlayerIndex = 1; //贏家，預設是1(player1)
+    public int winPlayerIndex = -1; //贏家，預設是-1
     public GameObject[] allArray; //全部球+道具
     public Hashtable hash; //宣告HashTable變數:
 
@@ -105,34 +104,13 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
     public GameObject[] partyColorBadText; //存取各政黨壞的布告欄文字(綠、紫、紅、黃)
 
     public GameObject badNoticeBoard; //顯示黑訊息
-    //public GameObject bombNoticeBoard; //顯示炸彈訊息
     public GameObject microphoneNoticeBoard; //顯示麥克風訊息
-                                       //public GameObject blueNoticeBoard; //顯示藍黨執政
-                                       //public GameObject noColorNoticeBoard; //顯示無黨執政
-                                       //好、壞訊息
-    /*public GameObject greenGoodText;
-    public GameObject greenBadText;
-    public GameObject purpleGoodText;
-    public GameObject purpleBadText;
-    public GameObject redGoodText;
-    public GameObject redBadText;
-    public GameObject yellowGoodText;
-    public GameObject yellowBadText;*/
     public Text badNoticeBoardText; //黑訊息文字
     public Text microphoneNoticeBoardText; //麥克風
-    //public GameObject goodNoticeBoard; //顯示金訊息
-  
-  
-    //public Text goodNoticeBoardText; //金訊息文字
     public Text paperNoticeBoardText; //報紙訊息文字
-    //public Text bombNoticeBoardText; //炸彈訊息文字
-    //string[] blackMessage = { "反對年金改革", "反對同婚", "支持一例一休", "支持美牛進口", "反對加入TPP", "反對空服員罷工", "反對調漲最低薪資", "支持建造四", "支持進口核災食品" };
-    //string[] goldMessage = { "支持年金改革", "支持同婚", "反對一例一休", "反對美牛進口", "支持加入TPP", "支持空服員罷工", "支持調漲最低薪資", "反對建造核四", "反對進口核災食品" };
     string badMessage; //黑訊息
     string[] microphoneMessage = { "政府發布最新能源政策，\n獲民眾支持", "中油公布最新調查進度", "台電宣布全台恢復供電", "巨路發表照常營運聲明" }; //麥克風訊息
-    //string goodMessage; //金訊息
     string paperMessage;//報紙訊息
-    //string bombMessage; //炸彈訊息(毀謗)
 
     //音樂
     public GameObject bgm; //遊戲bgm
@@ -143,22 +121,16 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
     public GameObject readyMusic; //ready音樂
     public GameObject goMusic; //go音樂
 
-    /*//麥克風功能，儲存目的地位置
-    Vector3 leftPortalPos;
-    Vector3 upPortalPos;
-    Vector3 rightPortalPos;*/
+    //停電效果
+    public GameObject powerCutPanel; //造成停電效果
 
     // Use this for initialization
     void Start() {
 
+        winPlayerIndex = -1;
+
         //獲得所有的球+道具
         allArray = GameObject.Find("左Portal(真)").GetComponent<SendBall>().allArray;
-
-        /*//麥克風功能，儲存目的地位置
-        leftPortalPos = GameObject.Find("左Portal(真)").transform.position; //左邊portal位置
-        upPortalPos = GameObject.Find("上Portal(真)").transform.position; //上邊portal位置
-        rightPortalPos = GameObject.Find("右Portal(真)").transform.position; //右邊portal位置
-        */
 
         //UI
         moneyText.text = money + "(百萬)";
@@ -187,9 +159,6 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
         setRoleImg(PlayerCharacterImg, role);
         //判斷是哪個政黨，以利之後判斷是否為同顏色的球
         decideWhichBallColor();
-
-        //Debug.Log(""+PhotonNetwork.player.name);
-        //Debug.Log("" + PhotonNetwork.player.CustomProperties["PartyColor"]);
 
         //根據政黨顏色換配置(Edge)
         if (partyColor == "green") //綠黨
@@ -223,9 +192,6 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
             setRoleImg(paperPersonMenu[0].GetComponent<Image>(), (string)PlayerList[1].CustomProperties["Role"]); //Paper第一個人物圖片
             setRoleImg(paperPersonMenu[1].GetComponent<Image>(), (string)PlayerList[2].CustomProperties["Role"]); //Paper第二個人物圖片
             setRoleImg(paperPersonMenu[2].GetComponent<Image>(), (string)PlayerList[3].CustomProperties["Role"]); //Paper第三個人物圖片
-            /*decideWhichPortal(PlayerList[1], 0); //顯示portal人物圖片
-            decideWhichPortal(PlayerList[2], 1); //顯示portal人物圖片
-            decideWhichPortal(PlayerList[3], 2); //顯示portal人物圖片*/
         }
         else if (player == PlayerList[1]) //Player2
         {
@@ -236,9 +202,6 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
             setRoleImg(paperPersonMenu[0].GetComponent<Image>(), (string)PlayerList[2].CustomProperties["Role"]); //Paper第一個人物圖片
             setRoleImg(paperPersonMenu[1].GetComponent<Image>(), (string)PlayerList[3].CustomProperties["Role"]); //Paper第二個人物圖片
             setRoleImg(paperPersonMenu[2].GetComponent<Image>(), (string)PlayerList[0].CustomProperties["Role"]); //Paper第三個人物圖片
-            /*decideWhichPortal(PlayerList[2], 0); //顯示portal人物圖片
-            decideWhichPortal(PlayerList[3], 1); //顯示portal人物圖片
-            decideWhichPortal(PlayerList[0], 2); //顯示portal人物圖片*/
         }
         else if (player == PlayerList[2]) //Player3
         {
@@ -249,9 +212,6 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
             setRoleImg(paperPersonMenu[0].GetComponent<Image>(), (string)PlayerList[3].CustomProperties["Role"]); //Paper第一個人物圖片
             setRoleImg(paperPersonMenu[1].GetComponent<Image>(), (string)PlayerList[0].CustomProperties["Role"]); //Paper第二個人物圖片
             setRoleImg(paperPersonMenu[2].GetComponent<Image>(), (string)PlayerList[1].CustomProperties["Role"]); //Paper第三個人物圖片
-           /* decideWhichPortal(PlayerList[3], 0); //顯示portal人物圖片
-            decideWhichPortal(PlayerList[0], 1); //顯示portal人物圖片
-            decideWhichPortal(PlayerList[1], 2); //顯示portal人物圖片*/
         }
         else if (player == PlayerList[3]) //Player4
         {
@@ -262,9 +222,6 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
             setRoleImg(paperPersonMenu[0].GetComponent<Image>(), (string)PlayerList[0].CustomProperties["Role"]); //Paper第一個人物圖片
             setRoleImg(paperPersonMenu[1].GetComponent<Image>(), (string)PlayerList[1].CustomProperties["Role"]); //Paper第二個人物圖片
             setRoleImg(paperPersonMenu[2].GetComponent<Image>(), (string)PlayerList[2].CustomProperties["Role"]); //Paper第三個人物圖片
-            /*decideWhichPortal(PlayerList[0], 0); //顯示portal人物圖片
-            decideWhichPortal(PlayerList[1], 1); //顯示portal人物圖片
-            decideWhichPortal(PlayerList[2], 2); //顯示portal人物圖片*/
         }
 
         //根據政黨顏色換配置(Edge)
@@ -355,9 +312,6 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
         //讓遊戲時間一致
         photonView.RPC("sendOk", PhotonTargets.MasterClient,1); //只傳給masterClient
        
-
-        //onClikc
-        //GameObject.Find("Player1").GetComponent<Button>().onClick.AddListener(sendPaperMessage,0); //點選按鈕，啟動動作
     }
 
     // Update is called once per frame
@@ -521,7 +475,6 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
         {
             hash = new Hashtable();
             hash.Add("Money", money); //把錢加進hash
-            //hash.Add("WinColor", winColor); //把執政黨判斷加進hash
             hash.Add("WinPlayer", winPlayerIndex);
             PhotonNetwork.player.SetCustomProperties(hash);
             CancelInvoke("timeCountDown");
@@ -555,53 +508,9 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(blackBallMusic);
             setFaceImg(cryPersonImg); //把圖片換成奸笑的表情
             identificatePlayerMoney(); //判斷是哪個player
-
-            /*for(int i =0; i < allArray.Length; i++) //判斷是哪個球，給予對應的話
-            {
-                if (allArray[i].name+"(Clone)" == collision.name)
-                {
-                    badMessage = role + blackMessage[i]; //要記得照順序排
-                    break;
-                }
-            }*/
             badMessage = role + "講幹話";
             photonView.RPC("sendBadMessage", PhotonTargets.All, badMessage); //第三個參數:傳送要顯示的話
         }
-
-        /*else if (collision.gameObject.CompareTag("金球"))
-        { //金球 
-            money += 10;
-            moneyText.text = money + "(百萬)";
-            GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(goldBallMusic);
-            setFaceImg(SneerPersonImg); //把圖片換成奸笑的表情
-            identificatePlayerMoney(); //判斷是哪個player
-
-            int ballIndex = 0; //儲存球的位置
-            for (int i = 0; i < allArray.Length; i++) //判斷是哪個球，給予對應的話
-            {
-                if (allArray[i].name + "(Clone)" == collision.name)
-                {
-                    ballIndex = i;
-                    goodMessage = role + goldMessage[i - (allArray.Length-3)/2]; //要記得照順序排
-                    break;
-                }
-            }
-            
-            photonView.RPC("sendGoodMessage", PhotonTargets.All, goodMessage); //第三個參數:傳送要顯示的話
-        }*/
-        /*else if (collision.gameObject.CompareTag("炸彈"))
-        { //炸彈，扣50%的錢
-            if (money > 0)
-            {
-                money = money / 2;
-                moneyText.text = money + "(百萬)";
-            }
-            GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(bombMusic);
-            identificatePlayerMoney(); //判斷是哪個player
-            bombMessage = role + "與企業董事秘密餐會!";
-            setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
-           // photonView.RPC("sendBombMessage", PhotonTargets.All, bombMessage); //第三個參數:傳送要顯示的話
-        }*/
         else if (collision.gameObject.CompareTag("報紙")) //報紙效果:出現選單可以陷害人，指定敵對黨某人有誹聞(意涵:爆料)，被指定者扣錢20%
         {
             //先顯示報紙選單
@@ -615,12 +524,9 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
         {
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(itemMusic);
             photonView.RPC("sendMicrophoneMessage", PhotonTargets.All, (int)playerCode); //傳送此玩家吃到麥克風的訊息
-            //goodMessage = role + "發表直播演說，\n獲得民眾支持";
-            //photonView.RPC("sendGoodMessage", PhotonTargets.All, goodMessage); //第三個參數:傳送要顯示的話
 
             photonView.RPC("sendFaceImg", PhotonTargets.Others); //改變表情
             microphoneEffect();
-            //photonView.RPC("microphoneEffect2", PhotonTargets.Others,player); //麥克風效果2，參數為使用麥克風的player
         }
         else //皆不是的話，就是不同色的球，扣分
         {
@@ -666,26 +572,38 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
         PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext()); //3
         PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext().GetNext()); //4
 
-        int winMoney = playerMoney[0];//儲存目前最大的錢(預設為第一個player的Money
-        //int winPlayerIndex = 0;//儲存目前的贏家(預設為第一個人)
-        for(int i = 1; i < playerMoney.Length; i++)
+        int winMoney = 100;//儲存目前最大的錢(預設100)
+     
+        for (int i = 0; i < playerMoney.Length; i++)
         {
-            if(playerMoney[i] > winMoney) //如果出現比較大的，儲存
+            Debug.Log("winMoney:"+winMoney);
+            Debug.Log("playerMoney" + i + ":" + playerMoney[i]);
+           
+            if (playerMoney[i] - winMoney > 30) //如果出現比較大的，儲存
             {
+                Debug.Log("winerChange");
                 winMoney = playerMoney[i];
-                winPlayerIndex = i+1; 
+                winPlayerIndex = i+1;
             }
         }
 
-        if(player == PlayerList[winPlayerIndex-1]) //把閃電按鈕打開
-        { 
-            bombObj.SetActive(true);
-        }
-        else //把閃電按鈕關閉
+        Debug.Log("winPlayerIndex:"+winPlayerIndex);
+
+        if(winPlayerIndex > 0) //如果不是預設-1，表示有更動到
         {
-            bombObj.SetActive(false);
-            forbiddenObj.SetActive(false);
+            if (player == PlayerList[winPlayerIndex - 1]) //把閃電按鈕打開
+            {
+                Debug.Log("open btn");
+                bombObj.SetActive(true);
+            }
+            else //把閃電按鈕關閉
+            {
+                Debug.Log("close btn");
+                bombObj.SetActive(false);
+                forbiddenObj.SetActive(false);
+            }
         }
+        
     }
     #region 人物表情
 
@@ -862,7 +780,7 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
     #region 報紙
     public void sendPaperMessage(int pIndex) //點選按鈕才可以傳送開啟報紙的資訊
     {
-        Debug.Log("sendPaperMessage:"+pIndex);
+        //Debug.Log("sendPaperMessage:"+pIndex);
         //playerIndex = pIndex; //設定圖片為誰，0:player1、1:player2、2:player3
         PlayerList = new List<PhotonPlayer>();
         PlayerList.Add(PhotonNetwork.masterClient); //1
@@ -958,7 +876,7 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
     {
         paper.SetActive(true); //開啟報紙
         GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg_PowerCut>().ChangeImg1();
-        Invoke("paperTimeCountDown", 2);
+        Invoke("paperTimeCountDown", 1);
     }
 
     [PunRPC]
@@ -966,7 +884,7 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
     {
         paper.SetActive(true); //開啟報紙
         GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg_PowerCut>().ChangeImg2();
-        Invoke("paperTimeCountDown", 2);
+        Invoke("paperTimeCountDown", 1);
     }
 
     [PunRPC]
@@ -974,7 +892,7 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
     {
         paper.SetActive(true); //開啟報紙
         GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg_PowerCut>().ChangeImg3();
-        Invoke("paperTimeCountDown", 2);
+        Invoke("paperTimeCountDown", 1);
     }
 
     [PunRPC]
@@ -982,7 +900,7 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
     {
         paper.SetActive(true); //開啟報紙
         GameObject.Find("人物圖片").GetComponent<ChangePaperPersonImg_PowerCut>().ChangeImg4();
-        Invoke("paperTimeCountDown", 2);
+        Invoke("paperTimeCountDown", 1);
     }
 
     void paperTimeCountDown() //過3秒報紙自動關閉
@@ -1204,7 +1122,31 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
     }
     #endregion
 
-	public override void OnDisconnectedFromPhoton()
+    #region 停電效果
+    public void openPowerCutEffect() //使用PowerCut停電
+    {
+        photonView.RPC("sendPowerCutEffect", PhotonTargets.All, partyColor); //第三個參數:傳送要顯示的話
+    }
+
+    [PunRPC]
+    void sendPowerCutEffect(string getColor) //傳送停電效果
+    {
+        Debug.Log("getColor:" + getColor);
+        Debug.Log("partyColor:" + partyColor);
+        if (partyColor != getColor) //如果是不同政黨，才要被停電
+        {
+            powerCutPanel.SetActive(true);
+            Invoke("closePowerCutEffect", 2); //一秒後關閉
+        }
+    }
+
+    void closePowerCutEffect() //關閉停電效果
+    {
+        powerCutPanel.SetActive(false);
+    }
+
+    #endregion
+    public override void OnDisconnectedFromPhoton()
 	{
 		SceneManager.LoadScene("Main");
 	}
