@@ -1093,6 +1093,11 @@ Prefab:
       propertyPath: m_AnchoredPosition.x
       value: -0.000005722
       objectReference: {fileID: 0}
+    - target: {fileID: 114050068225254526, guid: 6eb0476c59a9271429e20437b9b13efd,
+        type: 2}
+      propertyPath: m_Text
+      value: "\u7D93\u5178\u4E2D\u7684\u7D93\u5178\n\u4E00\u8D77\u9AD4\u6703\u5E73\u6642\u958B\u8B70\u6703\u7684\u6C1B\u570D!"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6eb0476c59a9271429e20437b9b13efd, type: 2}
   m_IsPrefabParent: 0

@@ -44,13 +44,13 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 			if (ButtonText == "遊戲介紹") 
 			{
-				GameObject.Find ("IntroPanel1ForCL").GetComponent<Image> ().color = new Color32 (255, 255, 225, 19);
+				GameObject.Find ("IntroPanel1ForCL").GetComponent<Image> ().color = new Color32 (255, 255, 225, 1);
 				GameObject.Find ("IntroPanel2ForCL").GetComponent<Image> ().color = new Color32 (255, 255, 225, 0);
 			}
 			else if (ButtonText == "道具介紹") 
 			{
 				GameObject.Find ("IntroPanel1ForCL").GetComponent<Image> ().color = new Color32 (255, 255, 225, 0);
-				GameObject.Find ("IntroPanel2ForCL").GetComponent<Image> ().color = new Color32 (255, 255, 225, 19);
+				GameObject.Find ("IntroPanel2ForCL").GetComponent<Image> ().color = new Color32 (255, 255, 225, 1);
 			}
 		}
 
@@ -60,13 +60,13 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 			if (ButtonText == "遊戲介紹") 
 			{
-				GameObject.Find ("IntroPanel1ForPC").GetComponent<Image> ().color = new Color32 (255, 255, 225, 19);
+				GameObject.Find ("IntroPanel1ForPC").GetComponent<Image> ().color = new Color32 (255, 255, 225, 1);
 				GameObject.Find ("IntroPanel2ForPC").GetComponent<Image> ().color = new Color32 (255, 255, 225, 0);
 			}
 			else if (ButtonText == "道具介紹") 
 			{
 				GameObject.Find ("IntroPanel1ForPC").GetComponent<Image> ().color = new Color32 (255, 255, 225, 0);
-				GameObject.Find ("IntroPanel2ForPC").GetComponent<Image> ().color = new Color32 (255, 255, 225, 19);
+				GameObject.Find ("IntroPanel2ForPC").GetComponent<Image> ().color = new Color32 (255, 255, 225, 1);
 			}
 		}
 
