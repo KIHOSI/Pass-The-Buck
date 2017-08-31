@@ -617,11 +617,11 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
         {
             personImg.sprite = role2;
         }
-        else if (person == "陳金德")
+        else if (person == "陳銀德")
         {
             personImg.sprite = role3;
         }
-        else if (person == "朱文成")
+        else if (person == "朱聞誠")
         {
             personImg.sprite = role4;
         }
@@ -637,11 +637,11 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
         {
             PlayerCharacterImg.sprite = img[1];
         }
-        else if (role == "陳金德")
+        else if (role == "陳銀德")
         {
             PlayerCharacterImg.sprite = img[2];
         }
-        else if (role == "朱文成")
+        else if (role == "朱聞誠")
         {
             PlayerCharacterImg.sprite = img[3];
         }
@@ -658,11 +658,11 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
         {
             PlayerCharacterImg.sprite = role2;
         }
-        else if (role == "陳金德")
+        else if (role == "陳銀德")
         {
             PlayerCharacterImg.sprite = role3;
         }
-        else if (role == "朱文成")
+        else if (role == "朱聞誠")
         {
             PlayerCharacterImg.sprite = role4;
         }
@@ -860,11 +860,11 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
         {
             photonView.RPC("SetPaperOn2", PhotonTargets.All);
         }
-        else if (img.sprite.name == "陳金德-半身")
+        else if (img.sprite.name == "陳銀德-半身")
         {
             photonView.RPC("SetPaperOn3", PhotonTargets.All);
         }
-        else if (img.sprite.name == "朱文成-半身")
+        else if (img.sprite.name == "朱聞誠-半身")
         {
             photonView.RPC("SetPaperOn4", PhotonTargets.All);
         }

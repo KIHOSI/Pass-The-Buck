@@ -23,11 +23,11 @@ public class showPortalPersonImg_PowerCut : MonoBehaviour {
             {
                 portalPersonImg.sprite = leftPortalImg[1];
             }
-            else if (playerChooseRole == "陳金德")
+            else if (playerChooseRole == "陳銀德")
             {
                 portalPersonImg.sprite = leftPortalImg[2];
             }
-            else if (playerChooseRole == "朱文成")
+            else if (playerChooseRole == "朱聞誠")
             {
                 portalPersonImg.sprite = leftPortalImg[3];
             }
@@ -42,11 +42,11 @@ public class showPortalPersonImg_PowerCut : MonoBehaviour {
             {
                 portalPersonImg.sprite = upPortalImg[1];
             }
-            else if (playerChooseRole == "陳金德")
+            else if (playerChooseRole == "陳銀德")
             {
                 portalPersonImg.sprite = upPortalImg[2];
             }
-            else if (playerChooseRole == "朱文成")
+            else if (playerChooseRole == "朱聞誠")
             {
                 portalPersonImg.sprite = upPortalImg[3];
             }
@@ -61,11 +61,11 @@ public class showPortalPersonImg_PowerCut : MonoBehaviour {
             {
                 portalPersonImg.sprite = rightPortalImg[1];
             }
-            else if (playerChooseRole == "陳金德")
+            else if (playerChooseRole == "陳銀德")
             {
                 portalPersonImg.sprite = rightPortalImg[2];
             }
-            else if (playerChooseRole == "朱文成")
+            else if (playerChooseRole == "朱聞誠")
             {
                 portalPersonImg.sprite = rightPortalImg[3];
             }

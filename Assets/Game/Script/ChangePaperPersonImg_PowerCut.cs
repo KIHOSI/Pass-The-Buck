@@ -43,11 +43,11 @@ public class ChangePaperPersonImg_PowerCut : MonoBehaviour {
     {
         paperPerson.sprite = paperPersonAllImage[1];
     }
-    public void ChangeImg3() //陳金德
+    public void ChangeImg3() //陳銀德
     {
         paperPerson.sprite = paperPersonAllImage[2];
     }
-    public void ChangeImg4() //朱文成
+    public void ChangeImg4() //朱聞誠
     {
         paperPerson.sprite = paperPersonAllImage[3];
     }
