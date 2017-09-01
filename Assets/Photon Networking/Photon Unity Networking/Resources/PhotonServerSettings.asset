@@ -76,4 +76,5 @@ MonoBehaviour:
   - sendPartyBadMessage
   - sendPartyGoodMessage
   - sendMicrophoneMessage
+  - sendPlayerMoney
   DisableAutoOpenWizard: 1

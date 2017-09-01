@@ -1365,6 +1365,7 @@ GameObject:
   - component: {fileID: 388955873}
   - component: {fileID: 388955874}
   - component: {fileID: 388955875}
+  - component: {fileID: 388955876}
   m_Layer: 0
   m_Name: Script
   m_TagString: Untagged
@@ -1409,6 +1410,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicPlay: {fileID: 0}
   musicPause: {fileID: 0}
+--- !u!114 &388955876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 388955872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9e4d7aa3696fbf43b171819787f6b3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMoney: 00000000000000000000000000000000
 --- !u!1 &401758184
 GameObject:
   m_ObjectHideFlags: 0
@@ -3786,6 +3799,7 @@ GameObject:
   - component: {fileID: 973616875}
   - component: {fileID: 973616880}
   - component: {fileID: 973616878}
+  - component: {fileID: 973616879}
   m_Layer: 0
   m_Name: "\u6D1E\u53E3"
   m_TagString: "\u6D1E\u53E3"
@@ -3890,6 +3904,18 @@ MonoBehaviour:
   instantiationId: 1
   currentMasterID: -1
   isRuntimeInstantiated: 0
+--- !u!114 &973616879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 973616874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9e4d7aa3696fbf43b171819787f6b3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMoney: 00000000000000000000000000000000
 --- !u!114 &973616880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4702,7 +4728,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1094222557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8031,7 +8057,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1977004258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8306,7 +8332,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &2007934109
 SpriteRenderer:
   m_ObjectHideFlags: 0

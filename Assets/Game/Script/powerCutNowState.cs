@@ -497,7 +497,7 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
             moneyText.text = money + "(百萬)";
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(goldBallMusic);
             setFaceImg(SneerPersonImg); //把圖片換成奸笑的表情
-            identificatePlayerMoney(); //判斷是哪個player
+            //identificatePlayerMoney(); //判斷是哪個player
 
             photonView.RPC("sendPartyGoodMessage", PhotonTargets.All, partyColorNum); //第三個參數:傳送要顯示的話
         }
@@ -507,7 +507,7 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
             moneyText.text = money + "(百萬)";
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(blackBallMusic);
             setFaceImg(cryPersonImg); //把圖片換成奸笑的表情
-            identificatePlayerMoney(); //判斷是哪個player
+            //identificatePlayerMoney(); //判斷是哪個player
             badMessage = role + "講幹話";
             photonView.RPC("sendBadMessage", PhotonTargets.All, badMessage); //第三個參數:傳送要顯示的話
         }
@@ -534,34 +534,69 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
             moneyText.text = money + "(百萬)";
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(blackBallMusic);
             setFaceImg(cryPersonImg); //把圖片換成奸笑的表情
-            identificatePlayerMoney(); //判斷是哪個player
+            //identificatePlayerMoney(); //判斷是哪個player
 
             photonView.RPC("sendPartyBadMessage", PhotonTargets.All, partyColorNum); //第三個參數:傳送要顯示的話
         }
-        
+
         //每次金錢變動時，來檢查金錢總額
-        identificateWinPlayer();
+        photonView.RPC("sendPlayerMoney", PhotonTargets.All, player, money); 
+        //identificateWinPlayer();
         Destroy(collision.gameObject); //把碰觸到的球刪掉
     }
 
-    void identificatePlayerMoney()     //判斷是哪個Player,加到對應的錢
+    [PunRPC]
+    void sendPlayerMoney(PhotonPlayer targetPlayer,int targetMoney)     //判斷是哪個Player,加到對應的錢
     {
-        if (player == PhotonNetwork.masterClient)  //player1
+        //取得玩家list(同樣順序)
+        PlayerList = new List<PhotonPlayer>();
+        PlayerList.Add(PhotonNetwork.masterClient); //1
+        PlayerList.Add(PhotonNetwork.masterClient.GetNext()); //2
+        PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext()); //3
+        PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext().GetNext()); //4
+
+        Debug.Log("targetPlayer" + targetPlayer);
+        Debug.Log("targetMoney:" + targetMoney);
+
+        for(int i = 0; i < PlayerList.Count; i++)
         {
+            //Debug.Log("PlayerMoney" + i + ":" + playerMoney[i]);
+            if(targetPlayer == PlayerList[i]) //判斷是哪個Player，把對應的錢加近陣列
+            {
+                playerMoney[i] = targetMoney;
+                break;
+            }
+        }
+
+        identificateWinPlayer();
+        //GameObject.Find("Script").GetComponent<PlayerMoney>().storePlayerMoney(player,money);
+        //GameObject.Find("Script").GetComponent<PlayerMoney>
+        //GameObject.Find("洞口").GetComponent<PlayerMoney>().storePlayerMoney(player, money);
+        /*if (player == PhotonNetwork.masterClient)  //player1
+        {
+            Debug.Log("Player1");
             playerMoney[0] = money;
         }
         else if (player == PhotonNetwork.masterClient.GetNext()) //player2
         {
+            Debug.Log("Player2");
             playerMoney[1] = money;
         }
         else if (player == PhotonNetwork.masterClient.GetNext().GetNext()) //player3
         {
+            Debug.Log("Player3");
             playerMoney[2] = money;
         }
         else if (player == PhotonNetwork.masterClient.GetNext().GetNext().GetNext()) //player4
         {
+            Debug.Log("Player4");
             playerMoney[3] = money;
         }
+
+        for(int i = 0; i < playerMoney.Length; i++)
+        {
+            Debug.Log("playerMoney"+i+":" + playerMoney[i]);
+        }*/
     }
 
     void identificateWinPlayer() //判斷哪個玩家是最多錢
@@ -572,11 +607,38 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
         PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext()); //3
         PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext().GetNext()); //4
 
-        int winMoney = 100;//儲存目前最大的錢(預設100)
-     
+        int j;
+        for (int i = 0; i< playerMoney.Length; i++)
+        {
+            //Debug.Log("i:" + i);
+            
+            Debug.Log("playerMoney" + i + ":" + playerMoney[i]);
+            int targetMoney = playerMoney[i]; //儲存要比較的錢
+            for (j = 0; j < playerMoney.Length; j++)
+            {
+                Debug.Log("j:" + j);
+                Debug.Log("targetMoney:" + targetMoney);
+                Debug.Log("playerMoney" + j + ":" + playerMoney[j]);
+                if (i == j) { continue; } //如果是比到自己，跳過
+                if(targetMoney - playerMoney[j] < 30) //如果目標的錢沒有比其他玩家的錢多30，跳出
+                {
+                    Debug.Log("沒比較大");
+                    break;
+                }
+            }
+            if(j == 3) //如果全部跑完，表示這個玩家錢都大於其他人，儲存起來
+            {
+                Debug.Log("有比其他人大");
+                winPlayerIndex = i +1; //表示Player1、2、3、4
+                break;
+            }
+        }
+
+        //int winMoney = 100;//儲存目前最大的錢(預設100)
+        /*Debug.Log("winMoney:" + winMoney);
         for (int i = 0; i < playerMoney.Length; i++)
         {
-            Debug.Log("winMoney:"+winMoney);
+           
             Debug.Log("playerMoney" + i + ":" + playerMoney[i]);
            
             if (playerMoney[i] - winMoney > 30) //如果出現比較大的，儲存
@@ -585,8 +647,7 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
                 winMoney = playerMoney[i];
                 winPlayerIndex = i+1;
             }
-        }
-
+        }*/
         Debug.Log("winPlayerIndex:"+winPlayerIndex);
 
         if(winPlayerIndex > 0) //如果不是預設-1，表示有更動到
@@ -922,8 +983,10 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
                 moneyText.text = money + "(百萬)";
             }
             setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
-            identificatePlayerMoney();
-            identificateWinPlayer();
+                                        //identificatePlayerMoney();
+                                        //每次金錢變動時，來檢查金錢總額
+            photonView.RPC("sendPlayerMoney", PhotonTargets.All, player, money);
+            //identificateWinPlayer();
         }
     }
 
@@ -939,8 +1002,10 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
                 moneyText.text = money + "(百萬)";
             }
             setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
-            identificatePlayerMoney();
-            identificateWinPlayer();
+                                        //identificatePlayerMoney();
+                                        //每次金錢變動時，來檢查金錢總額
+            photonView.RPC("sendPlayerMoney", PhotonTargets.All, player, money);
+            //identificateWinPlayer();
         }
     }
 
@@ -956,8 +1021,10 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
                 moneyText.text = money + "(百萬)";
             }
             setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
-            identificatePlayerMoney();
-            identificateWinPlayer();
+                                        //identificatePlayerMoney();
+                                        //每次金錢變動時，來檢查金錢總額
+            photonView.RPC("sendPlayerMoney", PhotonTargets.All, player, money);
+            //identificateWinPlayer();
         }
     }
 
@@ -973,8 +1040,10 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
                 moneyText.text = money + "(百萬)";
             }
             setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
-            identificatePlayerMoney();
-            identificateWinPlayer();
+                                        //identificatePlayerMoney();
+                                        //每次金錢變動時，來檢查金錢總額
+            photonView.RPC("sendPlayerMoney", PhotonTargets.All, player, money);
+            //identificateWinPlayer();
         }
     }
 
