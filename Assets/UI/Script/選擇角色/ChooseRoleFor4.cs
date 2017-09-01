@@ -65,7 +65,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 		public string Role1IntroForPowerCut = "中油董事長";
 		public string Role2IntroForPowerCut = "台電董事長";
 		public string Role3IntroForPowerCut = "天天怒的新上任總理";
-		public string Role4IntroForPowerCut = "巨路巨路巨路巨路";
+		public string Role4IntroForPowerCut = "巨X路巨X路巨X路";
 
 		void Start () 
 		{
@@ -91,8 +91,8 @@ namespace Com.MyProject.MyPassTheBuckGame
 				Role3Img.GetComponent<Image> ().sprite = Role3ForPowerCut;
 				Role4Img.GetComponent<Image> ().sprite = Role4ForPowerCut;
 
-				Role1NameTx.text = "陳金德";
-				Role2NameTx.text = "朱文成";
+				Role1NameTx.text = "陳銀德";
+				Role2NameTx.text = "朱聞誠";
 				Role4NameTx.text = "承包商";
 
 				Role1InfoTx.text = Role1IntroForPowerCut;
@@ -134,11 +134,11 @@ namespace Com.MyProject.MyPassTheBuckGame
 			//關卡選擇815大停電
 			else if (MapChoosed.Equals("PowerCut"))
 			{
-				if (Player1Choose == "陳金德" || Player2Choose == "陳金德" || Player3Choose == "陳金德" || Player4Choose == "陳金德")
+				if (Player1Choose == "陳銀德" || Player2Choose == "陳銀德" || Player3Choose == "陳銀德" || Player4Choose == "陳銀德")
 				{
 					Role1Bt.interactable = false;
 				}
-				else if (Player1Choose == "朱文成" || Player2Choose == "朱文成" || Player3Choose == "朱文成" || Player4Choose == "朱文成")
+				else if (Player1Choose == "朱聞誠" || Player2Choose == "朱聞誠" || Player3Choose == "朱聞誠" || Player4Choose == "朱聞誠")
 				{
 					Role2Bt.interactable = false;
 				}
@@ -403,7 +403,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 				if (Role1Bt.GetComponent<Image> ().sprite == BackWithFrame)
 				{
 					
-					if (Player1Choose == "陳金德" || Player2Choose == "陳金德" || Player3Choose == "陳金德" || Player4Choose == "陳金德") 
+					if (Player1Choose == "陳銀德" || Player2Choose == "陳銀德" || Player3Choose == "陳銀德" || Player4Choose == "陳銀德") 
 					{
 						onTips ("此角色已被選擇");
 						Role1Bt.interactable = false;
@@ -413,7 +413,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 						//儲存黨派顏色和選擇的角色
 						hash = new Hashtable ();
 						PartyColor = "red";
-						RoleChoosed = "陳金德";
+						RoleChoosed = "陳銀德";
 						hash.Add ("PartyColor", PartyColor);
 						hash.Add ("Role", RoleChoosed);
 						PhotonNetwork.player.SetCustomProperties (hash);
@@ -434,7 +434,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 				else if (Role2Bt.GetComponent<Image> ().sprite == BackWithFrame)
 				{
 					
-					if (Player1Choose == "朱文成" || Player2Choose == "朱文成" || Player3Choose == "朱文成" || Player4Choose == "朱文成") 
+					if (Player1Choose == "朱聞誠" || Player2Choose == "朱聞誠" || Player3Choose == "朱聞誠" || Player4Choose == "朱聞誠") 
 					{
 						onTips ("此角色已被選擇");
 						Role2Bt.interactable = false;
@@ -444,7 +444,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 						//儲存黨派顏色和選擇的角色
 						hash = new Hashtable ();
 						PartyColor = "yellow";
-						RoleChoosed = "朱文成";
+						RoleChoosed = "朱聞誠";
 						hash.Add ("PartyColor", PartyColor);
 						hash.Add ("Role", RoleChoosed);
 						PhotonNetwork.player.SetCustomProperties (hash);
@@ -513,7 +513,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 
 						//更改panel顏色和文字
 						GameObject.Find ("AfterChoosePanel4-4").GetComponent<Image> ().color = new Color32 (255, 255, 255, 255);
-						AfterChooseTx4.text = "你選擇了 '巨路承包商'";
+						AfterChooseTx4.text = "你選擇了 '巨X路承包商'";
 
 						Role1Bt.interactable = false;
 						Role2Bt.interactable = false;

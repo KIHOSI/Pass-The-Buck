@@ -251,6 +251,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 				//玩家贏了
 				if (GetWinPlayerForPowerCut ().Equals (PhotonNetwork.player)) 
 				{
+					Debug.Log ("贏家是:" + GetWinPlayerForPowerCut ().NickName);
 					audiosre = GameObject.Find ("GameWin").GetComponent<AudioSource> ();
 					audiosre.Play ();
 
@@ -359,6 +360,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 				else if (!GetWinPlayerForPowerCut ().Equals (PhotonNetwork.player))
 				{
 					
+					    Debug.Log ("贏家是:" + GetWinPlayerForPowerCut ().NickName);
 					    audiosre = GameObject.Find ("GameLose").GetComponent<AudioSource> ();
 					    audiosre.Play ();
 				
@@ -537,11 +539,11 @@ namespace Com.MyProject.MyPassTheBuckGame
 		{
 			string PlayerRole = (string)PhotonNetwork.player.CustomProperties ["Role"];
 
-			if (PlayerRole == "陳金德")
+			if (PlayerRole == "陳銀德")
 			{
 				return SmileRedRole;
 			} 
-			else if (PlayerRole == "朱文成") 
+			else if (PlayerRole == "朱聞誠") 
 			{
 				return SmileYellowRole;
 			} 
@@ -564,11 +566,11 @@ namespace Com.MyProject.MyPassTheBuckGame
 		{
 			string PlayerRole = (string)PhotonNetwork.player.CustomProperties ["Role"];
 
-			if (PlayerRole == "陳金德")
+			if (PlayerRole == "陳銀德")
 			{
 				return CryRedRole;
 			} 
-			else if (PlayerRole == "朱文成") 
+			else if (PlayerRole == "朱聞誠") 
 			{
 				return CryYellowRole;
 			} 
