@@ -66,11 +66,6 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
     public Sprite[] AngryPersonImg; //人物憤怒
     public Sprite[] cryPersonImg; //人物哭泣
 
-    /*public Sprite[] leftPersonImg; //左邊位置顯示人物圖
-    public Sprite[] upPersonImg; //上面位置顯示人物圖
-    public Sprite[] rightPersonImg; //右邊位置顯示人物圖
-    */
-
     //Edge、Portal
     public GameObject edge1_green;
     public GameObject edge2_green;
@@ -94,11 +89,6 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
     public GameObject portalRight_yellow;
 
     //佈告欄
-    /*public GameObject greenNoticeBoard; //顯示綠黨
-    public GameObject purpleNoticeBoard; //顯示紫(巨龍)
-    public GameObject redNoticeBoard; //顯示紅(中油)
-    public GameObject yellowNoticeBoar;//顯示黃(台電)*/
-
     public GameObject[] partyColorNoticeBoard; //存取各政黨的布告欄(綠、紫、紅、黃)
     public GameObject[] partyColorGoodText; //存取各政黨好的布告欄文字(綠、紫、紅、黃)
     public GameObject[] partyColorBadText; //存取各政黨壞的布告欄文字(綠、紫、紅、黃)
@@ -497,8 +487,6 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
             moneyText.text = money + "(百萬)";
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(goldBallMusic);
             setFaceImg(SneerPersonImg); //把圖片換成奸笑的表情
-            //identificatePlayerMoney(); //判斷是哪個player
-
             photonView.RPC("sendPartyGoodMessage", PhotonTargets.All, partyColorNum); //第三個參數:傳送要顯示的話
         }
         else if (collision.gameObject.CompareTag("黑球"))
@@ -507,7 +495,6 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
             moneyText.text = money + "(百萬)";
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(blackBallMusic);
             setFaceImg(cryPersonImg); //把圖片換成奸笑的表情
-            //identificatePlayerMoney(); //判斷是哪個player
             badMessage = role + "講幹話";
             photonView.RPC("sendBadMessage", PhotonTargets.All, badMessage); //第三個參數:傳送要顯示的話
         }
@@ -534,14 +521,11 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
             moneyText.text = money + "(百萬)";
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(blackBallMusic);
             setFaceImg(cryPersonImg); //把圖片換成奸笑的表情
-            //identificatePlayerMoney(); //判斷是哪個player
-
             photonView.RPC("sendPartyBadMessage", PhotonTargets.All, partyColorNum); //第三個參數:傳送要顯示的話
         }
 
         //每次金錢變動時，來檢查金錢總額
         photonView.RPC("sendPlayerMoney", PhotonTargets.All, player, money); 
-        //identificateWinPlayer();
         Destroy(collision.gameObject); //把碰觸到的球刪掉
     }
 
@@ -555,12 +539,8 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
         PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext()); //3
         PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext().GetNext()); //4
 
-        Debug.Log("targetPlayer" + targetPlayer);
-        Debug.Log("targetMoney:" + targetMoney);
-
         for(int i = 0; i < PlayerList.Count; i++)
         {
-            //Debug.Log("PlayerMoney" + i + ":" + playerMoney[i]);
             if(targetPlayer == PlayerList[i]) //判斷是哪個Player，把對應的錢加近陣列
             {
                 playerMoney[i] = targetMoney;
@@ -569,34 +549,6 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
         }
 
         identificateWinPlayer();
-        //GameObject.Find("Script").GetComponent<PlayerMoney>().storePlayerMoney(player,money);
-        //GameObject.Find("Script").GetComponent<PlayerMoney>
-        //GameObject.Find("洞口").GetComponent<PlayerMoney>().storePlayerMoney(player, money);
-        /*if (player == PhotonNetwork.masterClient)  //player1
-        {
-            Debug.Log("Player1");
-            playerMoney[0] = money;
-        }
-        else if (player == PhotonNetwork.masterClient.GetNext()) //player2
-        {
-            Debug.Log("Player2");
-            playerMoney[1] = money;
-        }
-        else if (player == PhotonNetwork.masterClient.GetNext().GetNext()) //player3
-        {
-            Debug.Log("Player3");
-            playerMoney[2] = money;
-        }
-        else if (player == PhotonNetwork.masterClient.GetNext().GetNext().GetNext()) //player4
-        {
-            Debug.Log("Player4");
-            playerMoney[3] = money;
-        }
-
-        for(int i = 0; i < playerMoney.Length; i++)
-        {
-            Debug.Log("playerMoney"+i+":" + playerMoney[i]);
-        }*/
     }
 
     void identificateWinPlayer() //判斷哪個玩家是最多錢
@@ -610,45 +562,21 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
         int j;
         for (int i = 0; i< playerMoney.Length; i++)
         {
-            //Debug.Log("i:" + i);
-            
-            Debug.Log("playerMoney" + i + ":" + playerMoney[i]);
             int targetMoney = playerMoney[i]; //儲存要比較的錢
             for (j = 0; j < playerMoney.Length; j++)
             {
-                Debug.Log("j:" + j);
-                Debug.Log("targetMoney:" + targetMoney);
-                Debug.Log("playerMoney" + j + ":" + playerMoney[j]);
                 if (i == j) { continue; } //如果是比到自己，跳過
                 if(targetMoney - playerMoney[j] < 30) //如果目標的錢沒有比其他玩家的錢多30，跳出
                 {
-                    Debug.Log("沒比較大");
                     break;
                 }
             }
             if(j == 3) //如果全部跑完，表示這個玩家錢都大於其他人，儲存起來
             {
-                Debug.Log("有比其他人大");
                 winPlayerIndex = i +1; //表示Player1、2、3、4
                 break;
             }
         }
-
-        //int winMoney = 100;//儲存目前最大的錢(預設100)
-        /*Debug.Log("winMoney:" + winMoney);
-        for (int i = 0; i < playerMoney.Length; i++)
-        {
-           
-            Debug.Log("playerMoney" + i + ":" + playerMoney[i]);
-           
-            if (playerMoney[i] - winMoney > 30) //如果出現比較大的，儲存
-            {
-                Debug.Log("winerChange");
-                winMoney = playerMoney[i];
-                winPlayerIndex = i+1;
-            }
-        }*/
-        Debug.Log("winPlayerIndex:"+winPlayerIndex);
 
         if(winPlayerIndex > 0) //如果不是預設-1，表示有更動到
         {
@@ -734,8 +662,6 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
     [PunRPC]
     void sendBadMessage(string text) //傳遞好訊息
     {
-        // bombNoticeBoard.SetActive(false); //炸彈顯示關閉
-        //goodNoticeBoard.SetActive(false);// 關閉好訊息顯示
         microphoneNoticeBoard.SetActive(false); //關閉麥克風顯示
         for (int i = 0; i < partyColorNoticeBoard.Length; i++) //把政黨相關訊息關閉
         {
@@ -758,8 +684,6 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
     [PunRPC]
     void sendPartyGoodMessage(int nowPartyColorNum) //傳遞好訊息
     {
-
-        //bombNoticeBoard.SetActive(false); //炸彈顯示關閉
         microphoneNoticeBoard.SetActive(false); //麥克風訊息關閉
         badNoticeBoard.SetActive(false); //關閉壞訊息顯示
         for(int i = 0; i < partyColorNoticeBoard.Length; i++) //把政黨相關訊息關閉
@@ -770,15 +694,12 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
         }
         partyColorNoticeBoard[nowPartyColorNum].SetActive(true); //把對應政黨訊息開啟
         partyColorGoodText[nowPartyColorNum].SetActive(true); //好訊息開啟
-        // goodNoticeBoard.SetActive(true);// 開啟訊息顯示
-        //goodNoticeBoardText.text = text;
         Invoke("partyGoodTimeCountDown",3);//三秒便會關閉訊息
     }
 
     [PunRPC]
     void sendPartyBadMessage(int nowPartyColorNum) //傳遞好訊息
     {
-        //bombNoticeBoard.SetActive(false); //炸彈顯示關閉
         microphoneNoticeBoard.SetActive(false); //麥克風訊息關閉
         badNoticeBoard.SetActive(false); //關閉壞訊息顯示
         for (int i = 0; i < partyColorNoticeBoard.Length; i++) //把政黨相關訊息關閉
@@ -789,8 +710,6 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
         }
         partyColorNoticeBoard[nowPartyColorNum].SetActive(true); //把對應政黨訊息開啟
         partyColorBadText[nowPartyColorNum].SetActive(true); //好訊息開啟
-        // goodNoticeBoard.SetActive(true);// 開啟訊息顯示
-        //goodNoticeBoardText.text = text;
         Invoke("partyBadTimeCountDown", 3);//三秒便會關閉訊息
     }
 
@@ -819,30 +738,9 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
     }
     #endregion
 
-    #region 毀謗
-
-    /*[PunRPC]
-    void sendBombMessage() //傳遞毀謗訊息
-    {
-        badNoticeBoard.SetActive(false); //關閉壞訊息顯示
-        //goodNoticeBoard.SetActive(false);// 關閉好訊息顯示
-        //bombNoticeBoard.SetActive(true);
-        //bombNoticeBoardText.text = text;
-        //Invoke("bombTimeCountDown", 3); //三秒便會關閉訊息
-    }*/
-
-    /*void bombTimeCountDown()
-    {
-        bombNoticeBoard.SetActive(false);
-    }*/
-
-    #endregion
-
     #region 報紙
     public void sendPaperMessage(int pIndex) //點選按鈕才可以傳送開啟報紙的資訊
     {
-        //Debug.Log("sendPaperMessage:"+pIndex);
-        //playerIndex = pIndex; //設定圖片為誰，0:player1、1:player2、2:player3
         PlayerList = new List<PhotonPlayer>();
         PlayerList.Add(PhotonNetwork.masterClient); //1
         PlayerList.Add(PhotonNetwork.masterClient.GetNext()); //2
@@ -983,10 +881,8 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
                 moneyText.text = money + "(百萬)";
             }
             setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
-                                        //identificatePlayerMoney();
-                                        //每次金錢變動時，來檢查金錢總額
+            //每次金錢變動時，來檢查金錢總額
             photonView.RPC("sendPlayerMoney", PhotonTargets.All, player, money);
-            //identificateWinPlayer();
         }
     }
 
@@ -1002,10 +898,8 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
                 moneyText.text = money + "(百萬)";
             }
             setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
-                                        //identificatePlayerMoney();
-                                        //每次金錢變動時，來檢查金錢總額
+            //每次金錢變動時，來檢查金錢總額
             photonView.RPC("sendPlayerMoney", PhotonTargets.All, player, money);
-            //identificateWinPlayer();
         }
     }
 
@@ -1021,10 +915,8 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
                 moneyText.text = money + "(百萬)";
             }
             setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
-                                        //identificatePlayerMoney();
-                                        //每次金錢變動時，來檢查金錢總額
+            //每次金錢變動時，來檢查金錢總額
             photonView.RPC("sendPlayerMoney", PhotonTargets.All, player, money);
-            //identificateWinPlayer();
         }
     }
 
@@ -1040,10 +932,8 @@ public class powerCutNowState : Photon.PunBehaviour { //控制連線及背景com
                 moneyText.text = money + "(百萬)";
             }
             setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
-                                        //identificatePlayerMoney();
-                                        //每次金錢變動時，來檢查金錢總額
+            //每次金錢變動時，來檢查金錢總額
             photonView.RPC("sendPlayerMoney", PhotonTargets.All, player, money);
-            //identificateWinPlayer();
         }
     }
 

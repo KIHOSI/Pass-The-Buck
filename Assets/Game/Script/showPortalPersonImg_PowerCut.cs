@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class showPortalPersonImg_PowerCut : MonoBehaviour {
-    //public showImg
     public int portalPosition; //判斷是左上右portal，0:左、1:上、2:右
     public Image portalPersonImg; //要放的人物
     public Sprite[] leftPortalImg; //左邊要放的人物

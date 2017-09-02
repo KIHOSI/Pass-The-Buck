@@ -172,9 +172,6 @@ public class fourPlayerNowState : Photon.PunBehaviour { //控制連線及背景c
             setRoleImg(paperPersonMenu[0].GetComponent<Image>(), (string)PlayerList[1].CustomProperties["Role"]); //Paper第一個人物圖片
             setRoleImg(paperPersonMenu[1].GetComponent<Image>(), (string)PlayerList[2].CustomProperties["Role"]); //Paper第二個人物圖片
             setRoleImg(paperPersonMenu[2].GetComponent<Image>(), (string)PlayerList[3].CustomProperties["Role"]); //Paper第三個人物圖片
-            /*decideWhichPortal(PlayerList[1], 0); //顯示portal人物圖片
-            decideWhichPortal(PlayerList[2], 1); //顯示portal人物圖片
-            decideWhichPortal(PlayerList[3], 2); //顯示portal人物圖片*/
         }
         else if (player == PlayerList[1]) //Player2
         {
@@ -185,9 +182,6 @@ public class fourPlayerNowState : Photon.PunBehaviour { //控制連線及背景c
             setRoleImg(paperPersonMenu[0].GetComponent<Image>(), (string)PlayerList[2].CustomProperties["Role"]); //Paper第一個人物圖片
             setRoleImg(paperPersonMenu[1].GetComponent<Image>(), (string)PlayerList[3].CustomProperties["Role"]); //Paper第二個人物圖片
             setRoleImg(paperPersonMenu[2].GetComponent<Image>(), (string)PlayerList[0].CustomProperties["Role"]); //Paper第三個人物圖片
-            /*decideWhichPortal(PlayerList[2], 0); //顯示portal人物圖片
-            decideWhichPortal(PlayerList[3], 1); //顯示portal人物圖片
-            decideWhichPortal(PlayerList[0], 2); //顯示portal人物圖片*/
         }
         else if (player == PlayerList[2]) //Player3
         {
@@ -198,9 +192,6 @@ public class fourPlayerNowState : Photon.PunBehaviour { //控制連線及背景c
             setRoleImg(paperPersonMenu[0].GetComponent<Image>(), (string)PlayerList[3].CustomProperties["Role"]); //Paper第一個人物圖片
             setRoleImg(paperPersonMenu[1].GetComponent<Image>(), (string)PlayerList[0].CustomProperties["Role"]); //Paper第二個人物圖片
             setRoleImg(paperPersonMenu[2].GetComponent<Image>(), (string)PlayerList[1].CustomProperties["Role"]); //Paper第三個人物圖片
-           /* decideWhichPortal(PlayerList[3], 0); //顯示portal人物圖片
-            decideWhichPortal(PlayerList[0], 1); //顯示portal人物圖片
-            decideWhichPortal(PlayerList[1], 2); //顯示portal人物圖片*/
         }
         else if (player == PlayerList[3]) //Player4
         {
@@ -211,9 +202,6 @@ public class fourPlayerNowState : Photon.PunBehaviour { //控制連線及背景c
             setRoleImg(paperPersonMenu[0].GetComponent<Image>(), (string)PlayerList[0].CustomProperties["Role"]); //Paper第一個人物圖片
             setRoleImg(paperPersonMenu[1].GetComponent<Image>(), (string)PlayerList[1].CustomProperties["Role"]); //Paper第二個人物圖片
             setRoleImg(paperPersonMenu[2].GetComponent<Image>(), (string)PlayerList[2].CustomProperties["Role"]); //Paper第三個人物圖片
-            /*decideWhichPortal(PlayerList[0], 0); //顯示portal人物圖片
-            decideWhichPortal(PlayerList[1], 1); //顯示portal人物圖片
-            decideWhichPortal(PlayerList[2], 2); //顯示portal人物圖片*/
         }
 
         //根據政黨顏色換配置(Edge)
@@ -408,8 +396,6 @@ public class fourPlayerNowState : Photon.PunBehaviour { //控制連線及背景c
 
             photonView.RPC("sendOk",PhotonTargets.MasterClient,2);
 
-           
-           
         }
     }
 
@@ -417,16 +403,12 @@ public class fourPlayerNowState : Photon.PunBehaviour { //控制連線及背景c
     {
         //根據故事，判斷是有幾種顏色的球(金、藍、綠)
 
-
-
         if (collision.gameObject.CompareTag("黑球"))
         { //黑球
             money -= 10;
             moneyText.text = money + "(百萬)";
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(blackBallMusic);
             setFaceImg(cryPersonImg); //把圖片換成奸笑的表情
-            //identificatePlayerMoney(); //判斷是哪個player
-            
             for(int i =0; i < allArray.Length; i++) //判斷是哪個球，給予對應的話
             {
                 if (allArray[i].name+"(Clone)" == collision.name)
@@ -444,8 +426,6 @@ public class fourPlayerNowState : Photon.PunBehaviour { //控制連線及背景c
             moneyText.text = money + "(百萬)";
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(goldBallMusic);
             setFaceImg(SneerPersonImg); //把圖片換成奸笑的表情
-            //identificatePlayerMoney(); //判斷是哪個player
-
             int ballIndex = 0; //儲存球的位置
             for (int i = 0; i < allArray.Length; i++) //判斷是哪個球，給予對應的話
             {
@@ -456,11 +436,6 @@ public class fourPlayerNowState : Photon.PunBehaviour { //控制連線及背景c
                     break;
                 }
             }
-            /*Destroy(collision.gameObject); //把金球刪掉
-            //金球吃完後會產生黑球彈出去，意味著拿完好處就丟掉
-            int newBallIndex = ballIndex - (allArray.Length - 3) / 2; //此金球的黑球相應位置，要記得排好
-            GameObject newBlackBall = Instantiate(allArray[newBallIndex], transform.position + new Vector3(0, 1, 0), new Quaternion(0, 0, 0, 0));
-            newBlackBall.GetComponent<Rigidbody2D>().velocity = new Vector2(0,2); //新產生一顆黑球，彈出去*/
             photonView.RPC("sendGoodMessage", PhotonTargets.All, goodMessage); //第三個參數:傳送要顯示的話
         }
         else if (collision.gameObject.CompareTag("炸彈"))
@@ -471,7 +446,6 @@ public class fourPlayerNowState : Photon.PunBehaviour { //控制連線及背景c
                 moneyText.text = money + "(百萬)";
             }
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(bombMusic);
-            //identificatePlayerMoney(); //判斷是哪個player
             bombMessage = role + "與企業董事秘密餐會!";
             setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
             photonView.RPC("sendBombMessage", PhotonTargets.All, bombMessage); //第三個參數:傳送要顯示的話
@@ -496,7 +470,6 @@ public class fourPlayerNowState : Photon.PunBehaviour { //控制連線及背景c
 
         //每次金錢變動時，來檢查金錢總額
         photonView.RPC("sendPlayerMoney", PhotonTargets.All, player, money);
-        //identificateWinPlayer();
         Destroy(collision.gameObject); //把碰觸到的球刪掉
     }
 
@@ -510,9 +483,6 @@ public class fourPlayerNowState : Photon.PunBehaviour { //控制連線及背景c
         PlayerList.Add(PhotonNetwork.masterClient.GetNext()); //2
         PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext()); //3
         PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext().GetNext()); //4
-
-        Debug.Log("targetPlayer" + targetPlayer);
-        Debug.Log("targetMoney:" + targetMoney);
 
         for (int i = 0; i < PlayerList.Count; i++)
         {
@@ -647,7 +617,6 @@ public class fourPlayerNowState : Photon.PunBehaviour { //控制連線及背景c
     #region 報紙
     public void sendPaperMessage(int pIndex) //點選按鈕才可以傳送開啟報紙的資訊
     {
-        //playerIndex = pIndex; //設定圖片為誰，0:player1、1:player2、2:player3
         PlayerList = new List<PhotonPlayer>();
         PlayerList.Add(PhotonNetwork.masterClient); //1
         PlayerList.Add(PhotonNetwork.masterClient.GetNext()); //2
@@ -788,9 +757,7 @@ public class fourPlayerNowState : Photon.PunBehaviour { //控制連線及背景c
                 moneyText.text = money + "(百萬)";
             }
             setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
-                                        //identificatePlayerMoney();
             photonView.RPC("sendPlayerMoney", PhotonTargets.All, player, money);
-            //identificateWinPlayer();
         }
     }
 
@@ -806,9 +773,7 @@ public class fourPlayerNowState : Photon.PunBehaviour { //控制連線及背景c
                 moneyText.text = money + "(百萬)";
             }
             setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
-                                        //identificatePlayerMoney();
             photonView.RPC("sendPlayerMoney", PhotonTargets.All, player, money);
-            //identificateWinPlayer();
         }
     }
 
@@ -825,8 +790,6 @@ public class fourPlayerNowState : Photon.PunBehaviour { //控制連線及背景c
             }
             setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
             photonView.RPC("sendPlayerMoney", PhotonTargets.All, player, money);
-            //identificatePlayerMoney();
-            //identificateWinPlayer();
         }
     }
 
@@ -843,8 +806,6 @@ public class fourPlayerNowState : Photon.PunBehaviour { //控制連線及背景c
             }
             setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
             photonView.RPC("sendPlayerMoney", PhotonTargets.All, player, money);
-            //identificatePlayerMoney();
-            //identificateWinPlayer();
         }
     }
 

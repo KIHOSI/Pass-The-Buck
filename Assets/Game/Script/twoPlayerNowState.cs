@@ -42,9 +42,7 @@ public class twoPlayerNowState : Photon.PunBehaviour { //控制連線及背景co
 
     //連線
     List<PhotonPlayer> PlayerList; //儲存玩家(要照順序)
-    //public GameObject portalLeft; //左portal
     public GameObject portalUp; //上portal
-    //public GameObject portalRight; //右portal
     byte playerCode; //此player的code，用以判斷要不要接收訊息
     PhotonView photonView;
 
@@ -64,22 +62,14 @@ public class twoPlayerNowState : Photon.PunBehaviour { //控制連線及背景co
     public Sprite[] AngryPersonImg; //人物憤怒
     public Sprite[] cryPersonImg; //人物哭泣
 
-    //public Sprite[] leftPersonImg; //左邊位置顯示人物圖
-    //public Sprite[] upPersonImg; //上面位置顯示人物圖
-    //public Sprite[] rightPersonImg; //右邊位置顯示人物圖
-
 
     //Edge、Portal
     public GameObject edge1_blue;
     public GameObject edge2_blue;
     public GameObject edge1_green;
     public GameObject edge2_green;
-   // public GameObject portalLeft_blue;
     public GameObject portalUp_blue;
-   // public GameObject portalRight_blue;
-   // public GameObject portalLeft_green;
     public GameObject portalUp_green;
-   // public GameObject portalRight_green;
 
     //佈告欄
     public GameObject greenNoticeBoard; //顯示綠黨執政
@@ -109,9 +99,7 @@ public class twoPlayerNowState : Photon.PunBehaviour { //控制連線及背景co
     public GameObject goMusic; //go音樂
 
     //麥克風功能，儲存目的地位置
-    //Vector3 leftPortalPos;
     Vector3 upPortalPos;
-    //Vector3 rightPortalPos;
 
     // Use this for initialization
     void Start() {
@@ -120,9 +108,7 @@ public class twoPlayerNowState : Photon.PunBehaviour { //控制連線及背景co
         allArray = GameObject.Find("上Portal(真)").GetComponent<SendBall>().allArray;
 
         //麥克風功能，儲存目的地位置
-        //leftPortalPos = GameObject.Find("左Portal(真)").transform.position; //左邊portal位置
         upPortalPos = GameObject.Find("上Portal(真)").transform.position; //上邊portal位置
-        //rightPortalPos = GameObject.Find("右Portal(真)").transform.position; //右邊portal位置
 
         //UI
         moneyText.text = money + "(百萬)";
@@ -131,8 +117,6 @@ public class twoPlayerNowState : Photon.PunBehaviour { //控制連線及背景co
         PlayerList = new List<PhotonPlayer>();
         PlayerList.Add(PhotonNetwork.masterClient); //1
         PlayerList.Add(PhotonNetwork.masterClient.GetNext()); //2
-        //PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext()); //3
-        //PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext().GetNext()); //4
 
         photonView = PhotonView.Get(this);
 
@@ -166,66 +150,16 @@ public class twoPlayerNowState : Photon.PunBehaviour { //控制連線及背景co
         if (player == PlayerList[0]) //Player1
         {
             playerCode = (byte)0; //setTarget，1.傳送的目標，2.目標code，3.玩家自己的playerCode
-            //portalLeft.GetComponent<SendBall>().setTarget(PlayerList[1], 1, playerCode, 0); //Player2放左
             portalUp.GetComponent<SendBall>().setTarget(PlayerList[1], 1, playerCode,1); //Player2放上
-            //portalRight.GetComponent<SendBall>().setTarget(PlayerList[3], 3, playerCode, 2); //Player4放右
             setRoleImg(paperPersonMenu[1].GetComponent<Image>(), (string)PlayerList[1].CustomProperties["Role"]); //Paper第一個人物圖片
-            //setRoleImg(paperPersonMenu[1].GetComponent<Image>(), (string)PlayerList[2].CustomProperties["Role"]); //Paper第二個人物圖片
-            //setRoleImg(paperPersonMenu[2].GetComponent<Image>(), (string)PlayerList[3].CustomProperties["Role"]); //Paper第三個人物圖片
-            //decideWhichPortal(PlayerList[1], 1); //顯示portal人物圖片
-            //decideWhichPortal(PlayerList[2], 1); //顯示portal人物圖片
-            //decideWhichPortal(PlayerList[3], 2); //顯示portal人物圖片
         }
         else if (player == PlayerList[1]) //Player2
         {
             playerCode = (byte)1;
-            //portalLeft.GetComponent<SendBall>().setTarget(PlayerList[2], 2, playerCode, 0); //Player3放左
             portalUp.GetComponent<SendBall>().setTarget(PlayerList[0], 0, playerCode,1); //Player1放上
-            //portalRight.GetComponent<SendBall>().setTarget(PlayerList[0], 0, playerCode, 2); //Player1放右
             setRoleImg(paperPersonMenu[1].GetComponent<Image>(), (string)PlayerList[0].CustomProperties["Role"]); //Paper第一個人物圖片
-            //setRoleImg(paperPersonMenu[1].GetComponent<Image>(), (string)PlayerList[3].CustomProperties["Role"]); //Paper第二個人物圖片
-            //setRoleImg(paperPersonMenu[2].GetComponent<Image>(), (string)PlayerList[0].CustomProperties["Role"]); //Paper第三個人物圖片
-            //decideWhichPortal(PlayerList[2], 0); //顯示portal人物圖片
-            //decideWhichPortal(PlayerList[0], 1); //顯示portal人物圖片
-            //decideWhichPortal(PlayerList[0], 2); //顯示portal人物圖片
         }
-        /*else if (player == PlayerList[2]) //Player3
-        {
-            playerCode = (byte)2;
-            portalLeft.GetComponent<SendBall>().setTarget(PlayerList[3], 3, playerCode, 0); //Player4放左
-            portalUp.GetComponent<SendBall>().setTarget(PlayerList[0], 0, playerCode, 1); //Player1放上
-            portalRight.GetComponent<SendBall>().setTarget(PlayerList[1], 1, playerCode, 2); //Player2放右
-            setRoleImg(paperPersonMenu[0].GetComponent<Image>(), (string)PlayerList[3].CustomProperties["Role"]); //Paper第一個人物圖片
-            setRoleImg(paperPersonMenu[1].GetComponent<Image>(), (string)PlayerList[0].CustomProperties["Role"]); //Paper第二個人物圖片
-            setRoleImg(paperPersonMenu[2].GetComponent<Image>(), (string)PlayerList[1].CustomProperties["Role"]); //Paper第三個人物圖片
-            decideWhichPortal(PlayerList[3], 0); //顯示portal人物圖片
-            decideWhichPortal(PlayerList[0], 1); //顯示portal人物圖片
-            decideWhichPortal(PlayerList[1], 2); //顯示portal人物圖片
-        }
-        else if (player == PlayerList[3]) //Player4
-        {
-            playerCode = (byte)3;
-            portalLeft.GetComponent<SendBall>().setTarget(PlayerList[0], 0, playerCode, 0); //Player1放左
-            portalUp.GetComponent<SendBall>().setTarget(PlayerList[1], 1, playerCode, 1); //Player2放上
-            portalRight.GetComponent<SendBall>().setTarget(PlayerList[2], 2, playerCode, 2); //Player3放右
-            setRoleImg(paperPersonMenu[0].GetComponent<Image>(), (string)PlayerList[0].CustomProperties["Role"]); //Paper第一個人物圖片
-            setRoleImg(paperPersonMenu[1].GetComponent<Image>(), (string)PlayerList[1].CustomProperties["Role"]); //Paper第二個人物圖片
-            setRoleImg(paperPersonMenu[2].GetComponent<Image>(), (string)PlayerList[2].CustomProperties["Role"]); //Paper第三個人物圖片
-            decideWhichPortal(PlayerList[0], 0); //顯示portal人物圖片
-            decideWhichPortal(PlayerList[1], 1); //顯示portal人物圖片
-            decideWhichPortal(PlayerList[2], 2); //顯示portal人物圖片
-        }*/
-
-        //根據政黨顏色換配置(Edge)
-        //左
-       /* if ((string)portalLeft.GetComponent<SendBall>().targetPlayer.CustomProperties["PartyColor"] == "green")
-        {
-            portalLeft_blue.SetActive(false);
-        }
-        else
-        {
-            portalLeft_green.SetActive(false);
-        }*/
+      
         //上
         if ((string)portalUp.GetComponent<SendBall>().targetPlayer.CustomProperties["PartyColor"] == "green")
         {
@@ -235,42 +169,17 @@ public class twoPlayerNowState : Photon.PunBehaviour { //控制連線及背景co
         {
             portalUp_green.SetActive(false);
         }
-        //右
-        /*if ((string)portalRight.GetComponent<SendBall>().targetPlayer.CustomProperties["PartyColor"] == "green")
-        {
-            portalRight_blue.SetActive(false);
-        }
-        else
-        {
-            portalRight_green.SetActive(false);
-        }*/
-
+        
         //設定portal顯示人物圖
         if (player == PlayerList[0]) //Player1
         {
             decideWhichPortal(PlayerList[1]); //顯示portal人物圖片
-            //decideWhichPortal(PlayerList[2], 1); //顯示portal人物圖片
-            //decideWhichPortal(PlayerList[3], 2); //顯示portal人物圖片
         }
         else if (player == PlayerList[1]) //Player2
         {
             decideWhichPortal(PlayerList[0]); //顯示portal人物圖片
-            //decideWhichPortal(PlayerList[3], 1); //顯示portal人物圖片
-            //decideWhichPortal(PlayerList[0], 2); //顯示portal人物圖片
         }
-        /*else if (player == PlayerList[2]) //Player3
-        {
-            decideWhichPortal(PlayerList[3], 0); //顯示portal人物圖片
-            decideWhichPortal(PlayerList[0], 1); //顯示portal人物圖片
-            decideWhichPortal(PlayerList[1], 2); //顯示portal人物圖片
-        }
-        else if (player == PlayerList[3]) //Player4
-        {
-            decideWhichPortal(PlayerList[0], 0); //顯示portal人物圖片
-            decideWhichPortal(PlayerList[1], 1); //顯示portal人物圖片
-            decideWhichPortal(PlayerList[2], 2); //顯示portal人物圖片
-        }*/
-
+       
         //把paper人物圖片儲存
         //for (int i = 0; i < paperPersonMenu.Length; i++)
         //{
@@ -319,20 +228,7 @@ public class twoPlayerNowState : Photon.PunBehaviour { //控制連線及背景co
 
     void decideWhichPortal(PhotonPlayer decidePlayer) //要顯示的圖片，哪個Portal
     {
-        /*if(portalPos == 0)
-        {
-            //左邊
-            if (portalLeft_blue.activeSelf == true) //藍色
-            {
-                portalLeft_blue.GetComponent<showPortalPersonImg>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
-            }
-            else if (portalLeft_blue.activeSelf == false) //綠色
-            {
-                portalLeft_green.GetComponent<showPortalPersonImg>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
-            }
-        }*/
-        //else if(portalPos == 1)
-        //{
+      
             //上面
             if (portalUp_blue.activeSelf == true) //藍色
             {
@@ -342,19 +238,7 @@ public class twoPlayerNowState : Photon.PunBehaviour { //控制連線及背景co
             {
                 portalUp_green.GetComponent<showPortalPersonImg_Classic>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
             }
-        //}
-        /*else if(portalPos == 2)
-        {
-            //右邊
-            if (portalRight_blue.activeSelf == true) //藍色
-            {
-                portalRight_blue.GetComponent<showPortalPersonImg>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
-            }
-            else if (portalRight_blue.activeSelf == false) //綠色
-            {
-                portalRight_green.GetComponent<showPortalPersonImg>().setPortalPersonImg((string)decidePlayer.CustomProperties["Role"]);
-            }
-        }*/
+       
     }
 
     #region ReadyAndGO
@@ -438,7 +322,6 @@ public class twoPlayerNowState : Photon.PunBehaviour { //控制連線及背景co
             moneyText.text = money + "(百萬)";
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(goldBallMusic);
             setFaceImg(SneerPersonImg); //把圖片換成奸笑的表情
-            //identificatePlayerMoney(); //判斷是哪個player
 
             int ballIndex = 0; //儲存球的位置
             for (int i = 0; i < allArray.Length; i++) //判斷是哪個球，給予對應的話
@@ -450,11 +333,6 @@ public class twoPlayerNowState : Photon.PunBehaviour { //控制連線及背景co
                     break;
                 }
             }
-            /*Destroy(collision.gameObject); //把金球刪掉
-            //金球吃完後會產生黑球彈出去，意味著拿完好處就丟掉
-            int newBallIndex = ballIndex - (allArray.Length - 3) / 2; //此金球的黑球相應位置，要記得排好
-            GameObject newBlackBall = Instantiate(allArray[newBallIndex], transform.position + new Vector3(0, 1, 0), new Quaternion(0, 0, 0, 0));
-            newBlackBall.GetComponent<Rigidbody2D>().velocity = new Vector2(0,2); //新產生一顆黑球，彈出去*/
             photonView.RPC("sendGoodMessage", PhotonTargets.All, goodMessage); //第三個參數:傳送要顯示的話
         }
         else if (collision.gameObject.CompareTag("炸彈"))
@@ -465,7 +343,6 @@ public class twoPlayerNowState : Photon.PunBehaviour { //控制連線及背景co
                 moneyText.text = money + "(百萬)";
             }
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(bombMusic);
-            //identificatePlayerMoney(); //判斷是哪個player
             bombMessage = role + "與企業董事秘密餐會!";
             setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
             photonView.RPC("sendBombMessage", PhotonTargets.All, bombMessage); //第三個參數:傳送要顯示的話
@@ -489,7 +366,6 @@ public class twoPlayerNowState : Photon.PunBehaviour { //控制連線及背景co
         }
 
         //每次金錢變動時，來檢查金錢總額
-        //identificateWinPlayer();
         photonView.RPC("sendPlayerMoney", PhotonTargets.All, player, money);
         Destroy(collision.gameObject); //把碰觸到的球刪掉
     }
@@ -508,7 +384,6 @@ public class twoPlayerNowState : Photon.PunBehaviour { //控制連線及背景co
 
         for (int i = 0; i < PlayerList.Count; i++)
         {
-            //Debug.Log("PlayerMoney" + i + ":" + playerMoney[i]);
             if (targetPlayer == PlayerList[i]) //判斷是哪個Player，把對應的錢加近陣列
             {
                 playerMoney[i] = targetMoney;
@@ -517,14 +392,6 @@ public class twoPlayerNowState : Photon.PunBehaviour { //控制連線及背景co
         }
 
         identificateWinPlayer();
-        /*else if (player == PhotonNetwork.masterClient.GetNext().GetNext()) //player3
-        {
-            playerMoney[2] = money;
-        }
-        else if (player == PhotonNetwork.masterClient.GetNext().GetNext().GetNext()) //player4
-        {
-            playerMoney[3] = money;
-        }*/
     }
 
     #region 人物表情
@@ -647,34 +514,10 @@ public class twoPlayerNowState : Photon.PunBehaviour { //控制連線及背景co
     #region 報紙
     public void sendPaperMessage() //點選按鈕才可以傳送開啟報紙的資訊
     {
-        //playerIndex = pIndex; //設定圖片為誰，0:player1、1:player2、2:player3
         PlayerList = new List<PhotonPlayer>();
         PlayerList.Add(PhotonNetwork.masterClient); //1
         PlayerList.Add(PhotonNetwork.masterClient.GetNext()); //2
-        //PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext()); //3
-        //PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext().GetNext()); //4
-
-        //switch (pIndex) //判斷是改哪個玩家的圖片
-        //{
-          /*  case 0: //第一個人
-                sendRoleImg(paperPersonImage[0]);
-                if (player == PlayerList[0]) //Player1
-                {
-                    photonView.RPC("paperEffect2",PhotonTargets.All); //扣Player2
-                }
-                else if(player == PlayerList[1]) //Player2
-                {
-                    photonView.RPC("paperEffect3", PhotonTargets.All); //扣Player3
-                }
-                else if(player == PlayerList[2]) //Player3
-                {
-                    photonView.RPC("paperEffect4", PhotonTargets.All); //扣Player4
-                }
-                else if(player == PlayerList[3]) //Player4
-                {
-                    photonView.RPC("paperEffect1", PhotonTargets.All); //扣Player1
-                }
-                break;*/
+      
            // case 1: //第二個人
                 sendRoleImg(paperPersonImage[1]);
                 if (player == PlayerList[0]) //Player1
@@ -685,35 +528,6 @@ public class twoPlayerNowState : Photon.PunBehaviour { //控制連線及背景co
                 {
                     photonView.RPC("paperEffect1", PhotonTargets.All); //扣Player1
                 }
-                /*else if (player == PlayerList[2]) //Player3
-                {
-                    photonView.RPC("paperEffect1", PhotonTargets.All); //扣Player1
-                }
-                else if (player == PlayerList[3]) //Player4
-                {
-                    photonView.RPC("paperEffect2", PhotonTargets.All); //扣Player2
-                }*/
-             //   break;
-            /*case 2: //第三個人
-                sendRoleImg(paperPersonImage[2]);
-                if (player == PlayerList[0]) //Player1
-                {
-                    photonView.RPC("paperEffect4", PhotonTargets.All); //扣Player4
-                }
-                else if (player == PlayerList[1]) //Player2
-                {
-                    photonView.RPC("paperEffect1", PhotonTargets.All); //扣Player1
-                }
-                else if (player == PlayerList[2]) //Player3
-                {
-                    photonView.RPC("paperEffect2", PhotonTargets.All); //扣Player2
-                }
-                else if (player == PlayerList[3]) //Player4
-                {
-                    photonView.RPC("paperEffect3", PhotonTargets.All); //扣Player3
-                }
-                break;
-        }*/
     }
 
     void sendRoleImg(Image img) //判斷是哪張圖片，傳送該圖片以顯示在報紙上
@@ -789,8 +603,6 @@ public class twoPlayerNowState : Photon.PunBehaviour { //控制連線及背景co
             }
             setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
             photonView.RPC("sendPlayerMoney", PhotonTargets.All, player, money);
-            //identificatePlayerMoney();
-            //identificateWinPlayer();
         }
     }
 
@@ -807,45 +619,8 @@ public class twoPlayerNowState : Photon.PunBehaviour { //控制連線及背景co
             }
             setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
             photonView.RPC("sendPlayerMoney", PhotonTargets.All, player, money);
-            //identificatePlayerMoney();
-            //identificateWinPlayer();
         }
     }
-
-    /*[PunRPC]
-    void paperEffect3() //扣Player3的錢
-    {
-        paperNoticeBoardText.text = "知名政治人物" + PhotonNetwork.masterClient.GetNext().GetNext().CustomProperties["Role"] + "酒後失態，服務員控訴性騷擾!";
-        if (player == PhotonNetwork.masterClient.GetNext().GetNext()) //如果是Player3才執行
-        {
-            if(money > 0)
-            {
-                money = (int)(money * 0.8);
-                moneyText.text = money + "(百萬)";
-            }
-            setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
-            identificatePlayerMoney();
-            identificateWinPlayer();
-        }
-    }
-
-    [PunRPC]
-    void paperEffect4() //扣Player4的錢
-    {
-        paperNoticeBoardText.text = "知名政治人物" + PhotonNetwork.masterClient.GetNext().GetNext().GetNext().CustomProperties["Role"] + "酒後失態，服務員控訴性騷擾!";
-        if (player == PhotonNetwork.masterClient.GetNext().GetNext().GetNext()) //如果是Player4才執行
-        {
-            if(money > 0)
-            {
-                money = (int)(money * 0.8);
-                moneyText.text = money + "(百萬)";
-            }
-            setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
-            identificatePlayerMoney();
-            identificateWinPlayer();
-        }
-    }
-    */
     #endregion
 
     #region 麥克風
@@ -1024,15 +799,12 @@ public class twoPlayerNowState : Photon.PunBehaviour { //控制連線及背景co
         //藍黨執政的效果要改回來
         GameObject.Find("左邊框").GetComponent<GenerateBall>().changeSpeedX = 2;
         GameObject.Find("右邊框").GetComponent<GenerateBall>().changeSpeedY = 2;
-        //GameObject.Find("左Portal(真)").GetComponent<SendBall>().generateBallSpeed = 2;
-        //GameObject.Find("右Portal(真)").GetComponent<SendBall>().generateBallSpeed = 2;
         GameObject.Find("上Portal(真)").GetComponent<SendBall>().generateBallSpeed = 2;
             //場上的球速度也要變2
         foreach (GameObject obj in Object.FindObjectsOfType(typeof(GameObject))) //得到所有hierarchy的物件
         {
             if (obj.CompareTag("黑球") || obj.CompareTag("金球") || obj.CompareTag("麥克風") || obj.CompareTag("報紙") || obj.CompareTag("炸彈"))
             {
-                //obj.GetComponent<Rigidbody2D>().velocity = new Vector2(2, 2);
                 checkOriginalSpeed(obj, 2); //改變速度
                 obj.GetComponent<BallMove>().blueEffectButton(); //將鎖住速度功能關閉
            }
@@ -1054,8 +826,6 @@ public class twoPlayerNowState : Photon.PunBehaviour { //控制連線及背景co
         //藍黨執政效果:所有東西速度變慢(新產生的物體，速度變為1)
         GameObject.Find("左邊框").GetComponent<GenerateBall>().changeSpeedX = 1;
         GameObject.Find("右邊框").GetComponent<GenerateBall>().changeSpeedY = 1;
-        //GameObject.Find("左Portal(真)").GetComponent<SendBall>().generateBallSpeed = 1;
-        //GameObject.Find("右Portal(真)").GetComponent<SendBall>().generateBallSpeed = 1;
         GameObject.Find("上Portal(真)").GetComponent<SendBall>().generateBallSpeed = 1;
             //場上的球速度也要變1
         foreach (GameObject obj in Object.FindObjectsOfType(typeof(GameObject))) //得到所有hierarchy的物件
@@ -1092,15 +862,12 @@ public class twoPlayerNowState : Photon.PunBehaviour { //控制連線及背景co
         //藍黨
         GameObject.Find("左邊框").GetComponent<GenerateBall>().changeSpeedX = 2;
         GameObject.Find("右邊框").GetComponent<GenerateBall>().changeSpeedY = 2;
-       // GameObject.Find("左Portal(真)").GetComponent<SendBall>().generateBallSpeed = 2;
-       // GameObject.Find("右Portal(真)").GetComponent<SendBall>().generateBallSpeed = 2;
         GameObject.Find("上Portal(真)").GetComponent<SendBall>().generateBallSpeed = 2;
             //場上的球速度要變2
         foreach (GameObject obj in Object.FindObjectsOfType(typeof(GameObject))) //得到所有hierarchy的物件
         {
             if (obj.CompareTag("黑球") || obj.CompareTag("金球") || obj.CompareTag("麥克風") || obj.CompareTag("報紙") || obj.CompareTag("炸彈"))
             {
-                //obj.GetComponent<Rigidbody2D>().velocity = new Vector2(2, 2);
                 checkOriginalSpeed(obj, 2); //改變速度
                 obj.GetComponent<BallMove>().blueEffectButton(); //將鎖住速度功能關閉
             }
