@@ -9,9 +9,7 @@ namespace Com.MyProject.MyPassTheBuckGame
 {
 	public class WaitingRoom :Photon.PunBehaviour {
 
-		public Sprite role1;
-		public Sprite role2;
-		public Sprite role3;
+
 		public Sprite FrameImg;
 
 		public Text PlayerTx1;
