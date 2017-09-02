@@ -421,7 +421,7 @@ public class threePlayerNowState : Photon.PunBehaviour { //控制連線及背景
             moneyText.text = money + "(百萬)";
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(blackBallMusic);
             setFaceImg(cryPersonImg); //把圖片換成奸笑的表情
-            identificatePlayerMoney(); //判斷是哪個player
+            //identificatePlayerMoney(); //判斷是哪個player
             
             for(int i =0; i < allArray.Length; i++) //判斷是哪個球，給予對應的話
             {
@@ -440,7 +440,7 @@ public class threePlayerNowState : Photon.PunBehaviour { //控制連線及背景
             moneyText.text = money + "(百萬)";
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(goldBallMusic);
             setFaceImg(SneerPersonImg); //把圖片換成奸笑的表情
-            identificatePlayerMoney(); //判斷是哪個player
+            //identificatePlayerMoney(); //判斷是哪個player
 
             int ballIndex = 0; //儲存球的位置
             for (int i = 0; i < allArray.Length; i++) //判斷是哪個球，給予對應的話
@@ -467,7 +467,7 @@ public class threePlayerNowState : Photon.PunBehaviour { //控制連線及背景
                 moneyText.text = money + "(百萬)";
             }
             GameObject.Find("Script").GetComponent<Com.MyProject.MyPassTheBuckGame.Audio>().MusicPlay(bombMusic);
-            identificatePlayerMoney(); //判斷是哪個player
+            //identificatePlayerMoney(); //判斷是哪個player
             bombMessage = role + "與企業董事秘密餐會!";
             setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
             photonView.RPC("sendBombMessage", PhotonTargets.All, bombMessage); //第三個參數:傳送要顯示的話
@@ -489,30 +489,38 @@ public class threePlayerNowState : Photon.PunBehaviour { //控制連線及背景
             photonView.RPC("sendFaceImg", PhotonTargets.Others); //改變表情
             photonView.RPC("microphoneEffect2", PhotonTargets.Others,player); //麥克風效果2，參數為使用麥克風的player
         }
-        
+
         //每次金錢變動時，來檢查金錢總額
-        identificateWinPlayer();
+        photonView.RPC("sendPlayerMoney", PhotonTargets.All, player, money);
+        //identificateWinPlayer();
         Destroy(collision.gameObject); //把碰觸到的球刪掉
     }
 
-    void identificatePlayerMoney()     //判斷是哪個Player,加到對應的錢
+
+    [PunRPC]
+    void sendPlayerMoney(PhotonPlayer targetPlayer, int targetMoney)     //判斷是哪個Player,加到對應的錢
     {
-        if (player == PhotonNetwork.masterClient)  //player1
+        //取得玩家list(同樣順序)
+        PlayerList = new List<PhotonPlayer>();
+        PlayerList.Add(PhotonNetwork.masterClient); //1
+        PlayerList.Add(PhotonNetwork.masterClient.GetNext()); //2
+        PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext()); //3
+        PlayerList.Add(PhotonNetwork.masterClient.GetNext().GetNext().GetNext()); //4
+
+        Debug.Log("targetPlayer" + targetPlayer);
+        Debug.Log("targetMoney:" + targetMoney);
+
+        for (int i = 0; i < PlayerList.Count; i++)
         {
-            playerMoney[0] = money;
+            //Debug.Log("PlayerMoney" + i + ":" + playerMoney[i]);
+            if (targetPlayer == PlayerList[i]) //判斷是哪個Player，把對應的錢加近陣列
+            {
+                playerMoney[i] = targetMoney;
+                break;
+            }
         }
-        else if (player == PhotonNetwork.masterClient.GetNext()) //player2
-        {
-            playerMoney[1] = money;
-        }
-        else if (player == PhotonNetwork.masterClient.GetNext().GetNext()) //player3
-        {
-            playerMoney[2] = money;
-        }
-        else if (player == PhotonNetwork.masterClient.GetNext().GetNext().GetNext()) //player4
-        {
-            playerMoney[3] = money;
-        }
+
+        identificateWinPlayer();
     }
 
     #region 人物表情
@@ -776,8 +784,9 @@ public class threePlayerNowState : Photon.PunBehaviour { //控制連線及背景
                 moneyText.text = money + "(百萬)";
             }
             setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
-            identificatePlayerMoney();
-            identificateWinPlayer();
+            photonView.RPC("sendPlayerMoney", PhotonTargets.All, player, money);
+            //identificatePlayerMoney();
+            // identificateWinPlayer();
         }
     }
 
@@ -793,8 +802,9 @@ public class threePlayerNowState : Photon.PunBehaviour { //控制連線及背景
                 moneyText.text = money + "(百萬)";
             }
             setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
-            identificatePlayerMoney();
-            identificateWinPlayer();
+            photonView.RPC("sendPlayerMoney", PhotonTargets.All, player, money);
+            //identificatePlayerMoney();
+            // identificateWinPlayer();
         }
     }
 
@@ -810,8 +820,9 @@ public class threePlayerNowState : Photon.PunBehaviour { //控制連線及背景
                 moneyText.text = money + "(百萬)";
             }
             setFaceImg(AngryPersonImg); //把圖片換成生氣的表情
-            identificatePlayerMoney();
-            identificateWinPlayer();
+            photonView.RPC("sendPlayerMoney", PhotonTargets.All, player, money);
+            // identificatePlayerMoney();
+            // identificateWinPlayer();
         }
     }
 
