@@ -3799,7 +3799,6 @@ GameObject:
   - component: {fileID: 973616875}
   - component: {fileID: 973616880}
   - component: {fileID: 973616878}
-  - component: {fileID: 973616879}
   m_Layer: 0
   m_Name: "\u6D1E\u53E3"
   m_TagString: "\u6D1E\u53E3"
@@ -3904,18 +3903,6 @@ MonoBehaviour:
   instantiationId: 1
   currentMasterID: -1
   isRuntimeInstantiated: 0
---- !u!114 &973616879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 973616874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9e4d7aa3696fbf43b171819787f6b3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerMoney: 00000000000000000000000000000000
 --- !u!114 &973616880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6267,7 +6254,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 164.02998, y: -5.696594}
+  m_AnchoredPosition: {x: 164.03, y: -5.696594}
   m_SizeDelta: {x: 189.4, y: 60.4}
   m_Pivot: {x: 1, y: 0}
 --- !u!1 &1391849397
